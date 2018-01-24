@@ -70,13 +70,17 @@
 - (void)loadWebView {
     //清理缓存
     if (iOS9_OR_LATER) {
-        NSSet *websiteDataTypes = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache,WKWebsiteDataTypeMemoryCache]];
-        //日期
-        NSDate * dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-        ////执行
-        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^ {
-            NSLog(@"清除缓存成功");
-        }];
+        if (@available(iOS 9.0, *)) {
+            NSSet *websiteDataTypes = [NSSet setWithArray:@[WKWebsiteDataTypeDiskCache,WKWebsiteDataTypeMemoryCache]];
+            //日期
+            NSDate * dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+            ////执行
+            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^ {
+                NSLog(@"清除缓存成功");
+            }];
+        } else {
+            // Fallback on earlier versions
+        }
     }else {
         NSString *cachePath = [[NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject] stringByAppendingString:@"/Cookies"];
         [[NSFileManager defaultManager] removeItemAtPath:cachePath error:nil];
@@ -220,6 +224,7 @@ initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completi
     if ([keyPath isEqualToString:@"title"]) {
         if (object == self.webView) {
             self.title = self.webView.title;
+            
         }
     }else if ([keyPath isEqualToString:@"estimatedProgress"]) {
         CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];

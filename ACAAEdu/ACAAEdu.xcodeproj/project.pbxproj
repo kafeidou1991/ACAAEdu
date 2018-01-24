@@ -37,6 +37,10 @@
 		B9B9173720187DE2002A63CE /* MeCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173620187DE2002A63CE /* MeCenterVC.m */; };
 		B9B9173A20187F30002A63CE /* AEBaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173920187F30002A63CE /* AEBaseTableController.m */; };
 		B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173C2018832F002A63CE /* AEBaseWebVC.m */; };
+		B9B9174320188DF0002A63CE /* AECache.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173F20188DF0002A63CE /* AECache.m */; };
+		B9B9174420188DF0002A63CE /* AENetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174020188DF0002A63CE /* AENetworkingTool.m */; };
+		B9B917492018907F002A63CE /* DateCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B917482018907F002A63CE /* DateCenter.m */; };
+		B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174B201891B8002A63CE /* AEUserInfo.m */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +128,14 @@
 		B9B9173920187F30002A63CE /* AEBaseTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseTableController.m; sourceTree = "<group>"; };
 		B9B9173B2018832F002A63CE /* AEBaseWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBaseWebVC.h; sourceTree = "<group>"; };
 		B9B9173C2018832F002A63CE /* AEBaseWebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseWebVC.m; sourceTree = "<group>"; };
+		B9B9173F20188DF0002A63CE /* AECache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECache.m; sourceTree = "<group>"; };
+		B9B9174020188DF0002A63CE /* AENetworkingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AENetworkingTool.m; sourceTree = "<group>"; };
+		B9B9174220188DF0002A63CE /* AENetworkingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AENetworkingTool.h; sourceTree = "<group>"; };
+		B9B9174520188E0C002A63CE /* AECache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECache.h; sourceTree = "<group>"; };
+		B9B917472018907F002A63CE /* DateCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCenter.h; sourceTree = "<group>"; };
+		B9B917482018907F002A63CE /* DateCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCenter.m; sourceTree = "<group>"; };
+		B9B9174A201891B8002A63CE /* AEUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfo.h; sourceTree = "<group>"; };
+		B9B9174B201891B8002A63CE /* AEUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfo.m; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,8 +269,10 @@
 		B9B916EC20187493002A63CE /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				B9B9173E20188DF0002A63CE /* AENetworking */,
 				B9B91728201879AE002A63CE /* BaseController */,
 				B9B916ED201874C3002A63CE /* TabBarController */,
+				B9B917462018907F002A63CE /* DateCenter */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -376,6 +390,28 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B9B9173E20188DF0002A63CE /* AENetworking */ = {
+			isa = PBXGroup;
+			children = (
+				B9B9174220188DF0002A63CE /* AENetworkingTool.h */,
+				B9B9174020188DF0002A63CE /* AENetworkingTool.m */,
+				B9B9174520188E0C002A63CE /* AECache.h */,
+				B9B9173F20188DF0002A63CE /* AECache.m */,
+			);
+			path = AENetworking;
+			sourceTree = "<group>";
+		};
+		B9B917462018907F002A63CE /* DateCenter */ = {
+			isa = PBXGroup;
+			children = (
+				B9B9174A201891B8002A63CE /* AEUserInfo.h */,
+				B9B9174B201891B8002A63CE /* AEUserInfo.m */,
+				B9B917472018907F002A63CE /* DateCenter.h */,
+				B9B917482018907F002A63CE /* DateCenter.m */,
+			);
+			path = DateCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -586,9 +622,12 @@
 				B9B9171E201877EC002A63CE /* WLScaleLayoutConstrain.m in Sources */,
 				B9B9171D201877EC002A63CE /* NSArray+description.m in Sources */,
 				B9B91725201877EC002A63CE /* NSString+CommonFunc.m in Sources */,
+				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
+				B9B9174420188DF0002A63CE /* AENetworkingTool.m in Sources */,
 				B9B91720201877EC002A63CE /* UITableViewCell+HM.m in Sources */,
 				B9B9171A201877EC002A63CE /* NSMutableArray+safe.m in Sources */,
 				B9B91723201877EC002A63CE /* NSTimer+addition.m in Sources */,
+				B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */,
 				B9B9164720186209002A63CE /* main.m in Sources */,
 				B9B91718201877EC002A63CE /* UIView+Extend.m in Sources */,
 				B9B9173720187DE2002A63CE /* MeCenterVC.m in Sources */,
@@ -596,6 +635,7 @@
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
 				B9B91722201877EC002A63CE /* NSObject+entend.m in Sources */,
 				B9B9171C201877EC002A63CE /* UIView+Frame.m in Sources */,
+				B9B9174320188DF0002A63CE /* AECache.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
