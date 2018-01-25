@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B97447672019E04C00A6A538 /* ACLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B97447652019E04C00A6A538 /* ACLoginVC.m */; };
+		B97447682019E04C00A6A538 /* ACLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B97447662019E04C00A6A538 /* ACLoginVC.xib */; };
 		B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F01201826C200BA38BE /* AppDelegate.m */; };
 		B9B18F1A201826C200BA38BE /* ACAAEduTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F19201826C200BA38BE /* ACAAEduTests.m */; };
 		B9B18F25201826C200BA38BE /* ACAAEduUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F24201826C200BA38BE /* ACAAEduUITests.m */; };
@@ -64,6 +66,9 @@
 /* Begin PBXFileReference section */
 		056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACAAEdu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		B97447642019E04C00A6A538 /* ACLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACLoginVC.h; sourceTree = "<group>"; };
+		B97447652019E04C00A6A538 /* ACLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACLoginVC.m; sourceTree = "<group>"; };
+		B97447662019E04C00A6A538 /* ACLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ACLoginVC.xib; sourceTree = "<group>"; };
 		B9B18EFD201826C200BA38BE /* ACAAEdu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACAAEdu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B18F00201826C200BA38BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9B18F01201826C200BA38BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -182,6 +187,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		B97447612019E01900A6A538 /* Login&Regist */ = {
+			isa = PBXGroup;
+			children = (
+				B97447622019E01900A6A538 /* Controllers */,
+				B97447632019E01900A6A538 /* views */,
+			);
+			path = "Login&Regist";
+			sourceTree = "<group>";
+		};
+		B97447622019E01900A6A538 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B97447642019E04C00A6A538 /* ACLoginVC.h */,
+				B97447652019E04C00A6A538 /* ACLoginVC.m */,
+				B97447662019E04C00A6A538 /* ACLoginVC.xib */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B97447632019E01900A6A538 /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		B9B18EF4201826C200BA38BE = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +293,7 @@
 			children = (
 				B9B9172C20187DA4002A63CE /* Home */,
 				B9B9172F20187DA4002A63CE /* MeCenter */,
+				B97447612019E01900A6A538 /* Login&Regist */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -524,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
+				B97447682019E04C00A6A538 /* ACLoginVC.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B9173420187DCE002A63CE /* HomePageVC.m in Sources */,
+				B97447672019E04C00A6A538 /* ACLoginVC.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
 				B9B91721201877EC002A63CE /* NSNull+safe.m in Sources */,
 				B9B916F0201874F9002A63CE /* AETabBarController.m in Sources */,

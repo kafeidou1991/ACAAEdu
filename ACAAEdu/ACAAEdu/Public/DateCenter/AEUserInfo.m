@@ -18,19 +18,27 @@ static AEUserInfo * info = nil;
 
 @implementation AEUserInfo
 
-+(instancetype)shareInstance {
++ (instancetype)shareInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [self getInfo];
         if (!info) {
             info = [AEUserInfo new];
+            info.isLogin = NO;
+        }else {
+            info.isLogin = YES;
         }
+        
     });
     return info;
 }
 
 +(instancetype)allocWithZone:(struct _NSZone *)zone {
-    return [AEUserInfo shareInstance];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        info = [super allocWithZone:zone];
+    });
+    return info;
 }
 - (id)copyWithZone:(NSZone *)zone {
     return [AEUserInfo shareInstance];
@@ -51,7 +59,7 @@ static AEUserInfo * info = nil;
 }
 
 + (void)getInfo {
-    info = [[NSUserDefaults standardUserDefaults]objectForKey:LOGIN_DATA_KEY];
+    info = (AEUserInfo *)[AEUserInfo yy_modelWithDictionary:[[NSUserDefaults standardUserDefaults]objectForKey:LOGIN_DATA_KEY]];
 }
 
 - (void)remove {
