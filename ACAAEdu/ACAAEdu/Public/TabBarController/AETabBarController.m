@@ -19,7 +19,7 @@
 + (void)load {
     UITabBarItem *tabBarItemAppearance = [UITabBarItem appearance];
     NSDictionary *normalAttr = @{NSFontAttributeName: [UIFont wlfontWithName:AECustomFont size:9], NSForegroundColorAttributeName: AEHexColor(@"#777777")};
-    NSDictionary *selectedAttr = @{NSFontAttributeName: [UIFont wlfontWithName:AECustomFont size:9], NSForegroundColorAttributeName: AEColorBlue};
+    NSDictionary *selectedAttr = @{NSFontAttributeName: [UIFont wlfontWithName:AECustomFont size:9], NSForegroundColorAttributeName: AEThemeColor};
     [tabBarItemAppearance setTitleTextAttributes:normalAttr forState:UIControlStateNormal];
     [tabBarItemAppearance setTitleTextAttributes:selectedAttr forState:UIControlStateSelected];
     

@@ -16,16 +16,15 @@
 
 + (void)load {
     
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:AENavColor] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:AEFontColor, NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]}];
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:AEThemeColor] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]}];
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.translucent = NO;
     //    self.delegate = self;
     self.navigationBar.shadowImage = [UIImage new];
-    self.navigationBar.tintColor   = AEFontColor;
+//    self.navigationBar.tintColor   = AEFontColor;
     
 }
 
