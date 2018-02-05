@@ -187,12 +187,61 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B97447612019E01900A6A538 /* Login&Regist */ = {
+		B96FD8682027FA9A00FE7495 /* Exam(考试) */ = {
+			isa = PBXGroup;
+			children = (
+				B96FD8692027FA9A00FE7495 /* Controllers */,
+				B96FD86A2027FA9A00FE7495 /* Views */,
+			);
+			name = "Exam(考试)";
+			path = Exam;
+			sourceTree = "<group>";
+		};
+		B96FD8692027FA9A00FE7495 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B96FD86A2027FA9A00FE7495 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B96FD86B2027FA9A00FE7495 /* Find(发现) */ = {
+			isa = PBXGroup;
+			children = (
+				B96FD86C2027FA9A00FE7495 /* Controllers */,
+				B96FD86D2027FA9A00FE7495 /* Views */,
+			);
+			name = "Find(发现)";
+			path = Find;
+			sourceTree = "<group>";
+		};
+		B96FD86C2027FA9A00FE7495 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B96FD86D2027FA9A00FE7495 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B97447612019E01900A6A538 /* Login&Regist(登录注册) */ = {
 			isa = PBXGroup;
 			children = (
 				B97447622019E01900A6A538 /* Controllers */,
 				B97447632019E01900A6A538 /* views */,
 			);
+			name = "Login&Regist(登录注册)";
 			path = "Login&Regist";
 			sourceTree = "<group>";
 		};
@@ -291,9 +340,11 @@
 		B9B916EB20187493002A63CE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B9B9172C20187DA4002A63CE /* Home */,
-				B9B9172F20187DA4002A63CE /* MeCenter */,
-				B97447612019E01900A6A538 /* Login&Regist */,
+				B9B9172C20187DA4002A63CE /* Home(首页) */,
+				B96FD8682027FA9A00FE7495 /* Exam(考试) */,
+				B96FD86B2027FA9A00FE7495 /* Find(发现) */,
+				B9B9172F20187DA4002A63CE /* MeCenter(我的) */,
+				B97447612019E01900A6A538 /* Login&Regist(登录注册) */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -374,12 +425,13 @@
 			path = BaseController;
 			sourceTree = "<group>";
 		};
-		B9B9172C20187DA4002A63CE /* Home */ = {
+		B9B9172C20187DA4002A63CE /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
 				B9B9172D20187DA4002A63CE /* Controllers */,
 				B9B9172E20187DA4002A63CE /* Views */,
 			);
+			name = "Home(首页)";
 			path = Home;
 			sourceTree = "<group>";
 		};
@@ -399,12 +451,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		B9B9172F20187DA4002A63CE /* MeCenter */ = {
+		B9B9172F20187DA4002A63CE /* MeCenter(我的) */ = {
 			isa = PBXGroup;
 			children = (
 				B9B9173020187DA4002A63CE /* Controllers */,
 				B9B9173120187DA4002A63CE /* Views */,
 			);
+			name = "MeCenter(我的)";
 			path = MeCenter;
 			sourceTree = "<group>";
 		};
