@@ -16,4 +16,5 @@ target 'ACAAEdu' do
  pod 'XXNibBridge'
  pod 'LYEmptyView'
  pod 'WebViewJavascriptBridge'
+ pod 'RSAEncryptor'
 end

@@ -16,7 +16,7 @@
 @property (nonatomic, strong) UITableView * tableView;
 
 /** 数据源 */
-@property (nonatomic, strong) NSArray * dataSources;
+@property (nonatomic, strong) NSMutableArray * dataSources;
 
 /**
  创建tableView

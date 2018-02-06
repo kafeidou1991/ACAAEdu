@@ -6,8 +6,8 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseController.h"
+#import "AEBaseTableController.h"
 
-@interface MeCenterVC : AEBaseController
+@interface MeCenterVC : AEBaseTableController
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MeCenterVC.h"
+#import "MeCenterCell.h"
 
 @interface MeCenterVC ()
 
@@ -16,23 +17,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor greenColor];
+    self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
+                        @{@"icon" :@"meceter2",@"title":@"通知"},
+                        @{@"icon" :@"meceter3",@"title":@"我的模考"},
+                        @{@"icon" :@"meceter4",@"title":@"我的订单"},
+                        @{@"icon" :@"meceter5",@"title":@"关于我们"}].mutableCopy;
+    [self createTableViewStyle:UITableViewStylePlain];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    MeCenterCell * cell = [MeCenterCell cellWithTableView:tableView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary * dict = self.dataSources[indexPath.row];
+    cell.leftImageView.image = [UIImage imageNamed:dict[@"icon"]];
+    cell.titleLabel.text = dict[@"title"];
+    return cell;
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

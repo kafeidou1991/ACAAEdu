@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		B96FD87220294F4200FE7495 /* PlaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD87120294F4200FE7495 /* PlaceView.m */; };
+		B96FD98D2029851500FE7495 /* AEHttpInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD98C2029851500FE7495 /* AEHttpInfo.m */; };
+		B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD98F2029857200FE7495 /* AENetworkingTool.m */; };
+		B96FD9AD202998E200FE7495 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9A2202998E200FE7495 /* NSString+MD5Addition.m */; };
+		B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9A3202998E200FE7495 /* NSMutableDictionary+Json.m */; };
+		B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9A7202998E200FE7495 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9A8202998E200FE7495 /* NSObject+Json.m */; };
+		B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9B22029B98A00FE7495 /* MeCenterCell.m */; };
+		B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */; };
 		B97447672019E04C00A6A538 /* ACLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B97447652019E04C00A6A538 /* ACLoginVC.m */; };
 		B97447682019E04C00A6A538 /* ACLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B97447662019E04C00A6A538 /* ACLoginVC.xib */; };
 		B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F01201826C200BA38BE /* AppDelegate.m */; };
@@ -40,8 +48,6 @@
 		B9B9173720187DE2002A63CE /* MeCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173620187DE2002A63CE /* MeCenterVC.m */; };
 		B9B9173A20187F30002A63CE /* AEBaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173920187F30002A63CE /* AEBaseTableController.m */; };
 		B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173C2018832F002A63CE /* AEBaseWebVC.m */; };
-		B9B9174320188DF0002A63CE /* AECache.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173F20188DF0002A63CE /* AECache.m */; };
-		B9B9174420188DF0002A63CE /* AENetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174020188DF0002A63CE /* AENetworkingTool.m */; };
 		B9B917492018907F002A63CE /* DateCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B917482018907F002A63CE /* DateCenter.m */; };
 		B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174B201891B8002A63CE /* AEUserInfo.m */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
@@ -69,6 +75,23 @@
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
 		B96FD87020294F4200FE7495 /* PlaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceView.h; sourceTree = "<group>"; };
 		B96FD87120294F4200FE7495 /* PlaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceView.m; sourceTree = "<group>"; };
+		B96FD98B2029851500FE7495 /* AEHttpInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHttpInfo.h; sourceTree = "<group>"; };
+		B96FD98C2029851500FE7495 /* AEHttpInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEHttpInfo.m; sourceTree = "<group>"; };
+		B96FD98E2029857200FE7495 /* AENetworkingTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AENetworkingTool.h; sourceTree = "<group>"; };
+		B96FD98F2029857200FE7495 /* AENetworkingTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AENetworkingTool.m; sourceTree = "<group>"; };
+		B96FD9A2202998E200FE7495 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		B96FD9A3202998E200FE7495 /* NSMutableDictionary+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Json.m"; sourceTree = "<group>"; };
+		B96FD9A5202998E200FE7495 /* ARCCompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCCompile.h; sourceTree = "<group>"; };
+		B96FD9A6202998E200FE7495 /* DebugMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugMarco.h; sourceTree = "<group>"; };
+		B96FD9A7202998E200FE7495 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		B96FD9A8202998E200FE7495 /* NSObject+Json.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Json.m"; sourceTree = "<group>"; };
+		B96FD9A9202998E200FE7495 /* NSMutableDictionary+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Json.h"; sourceTree = "<group>"; };
+		B96FD9AA202998E200FE7495 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		B96FD9AB202998E200FE7495 /* NSObject+Json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Json.h"; sourceTree = "<group>"; };
+		B96FD9AC202998E200FE7495 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		B96FD9B12029B98A00FE7495 /* MeCenterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeCenterCell.h; sourceTree = "<group>"; };
+		B96FD9B22029B98A00FE7495 /* MeCenterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeCenterCell.m; sourceTree = "<group>"; };
+		B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeCenterCell.xib; sourceTree = "<group>"; };
 		B97447642019E04C00A6A538 /* ACLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACLoginVC.h; sourceTree = "<group>"; };
 		B97447652019E04C00A6A538 /* ACLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACLoginVC.m; sourceTree = "<group>"; };
 		B97447662019E04C00A6A538 /* ACLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ACLoginVC.xib; sourceTree = "<group>"; };
@@ -136,10 +159,6 @@
 		B9B9173920187F30002A63CE /* AEBaseTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseTableController.m; sourceTree = "<group>"; };
 		B9B9173B2018832F002A63CE /* AEBaseWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBaseWebVC.h; sourceTree = "<group>"; };
 		B9B9173C2018832F002A63CE /* AEBaseWebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseWebVC.m; sourceTree = "<group>"; };
-		B9B9173F20188DF0002A63CE /* AECache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AECache.m; sourceTree = "<group>"; };
-		B9B9174020188DF0002A63CE /* AENetworkingTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AENetworkingTool.m; sourceTree = "<group>"; };
-		B9B9174220188DF0002A63CE /* AENetworkingTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AENetworkingTool.h; sourceTree = "<group>"; };
-		B9B9174520188E0C002A63CE /* AECache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AECache.h; sourceTree = "<group>"; };
 		B9B917472018907F002A63CE /* DateCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateCenter.h; sourceTree = "<group>"; };
 		B9B917482018907F002A63CE /* DateCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateCenter.m; sourceTree = "<group>"; };
 		B9B9174A201891B8002A63CE /* AEUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfo.h; sourceTree = "<group>"; };
@@ -238,6 +257,31 @@
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B96FD9A1202998E200FE7495 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				B96FD9A2202998E200FE7495 /* NSString+MD5Addition.m */,
+				B96FD9A3202998E200FE7495 /* NSMutableDictionary+Json.m */,
+				B96FD9A4202998E200FE7495 /* DebugMacro */,
+				B96FD9AC202998E200FE7495 /* JSONKit.h */,
+				B96FD9A7202998E200FE7495 /* JSONKit.m */,
+				B96FD9A8202998E200FE7495 /* NSObject+Json.m */,
+				B96FD9A9202998E200FE7495 /* NSMutableDictionary+Json.h */,
+				B96FD9AA202998E200FE7495 /* NSString+MD5Addition.h */,
+				B96FD9AB202998E200FE7495 /* NSObject+Json.h */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		B96FD9A4202998E200FE7495 /* DebugMacro */ = {
+			isa = PBXGroup;
+			children = (
+				B96FD9A5202998E200FE7495 /* ARCCompile.h */,
+				B96FD9A6202998E200FE7495 /* DebugMarco.h */,
+			);
+			path = DebugMacro;
 			sourceTree = "<group>";
 		};
 		B97447612019E01900A6A538 /* Login&Regist(登录注册) */ = {
@@ -478,6 +522,9 @@
 		B9B9173120187DA4002A63CE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B96FD9B12029B98A00FE7495 /* MeCenterCell.h */,
+				B96FD9B22029B98A00FE7495 /* MeCenterCell.m */,
+				B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -485,10 +532,11 @@
 		B9B9173E20188DF0002A63CE /* AENetworking */ = {
 			isa = PBXGroup;
 			children = (
-				B9B9174220188DF0002A63CE /* AENetworkingTool.h */,
-				B9B9174020188DF0002A63CE /* AENetworkingTool.m */,
-				B9B9174520188E0C002A63CE /* AECache.h */,
-				B9B9173F20188DF0002A63CE /* AECache.m */,
+				B96FD9A1202998E200FE7495 /* JSON */,
+				B96FD98B2029851500FE7495 /* AEHttpInfo.h */,
+				B96FD98C2029851500FE7495 /* AEHttpInfo.m */,
+				B96FD98E2029857200FE7495 /* AENetworkingTool.h */,
+				B96FD98F2029857200FE7495 /* AENetworkingTool.m */,
 			);
 			path = AENetworking;
 			sourceTree = "<group>";
@@ -613,6 +661,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B97447682019E04C00A6A538 /* ACLoginVC.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
@@ -713,22 +762,27 @@
 				B9B916F32018770E002A63CE /* AENavigationController.m in Sources */,
 				B9B9171F201877EC002A63CE /* UIButton+safeClick.m in Sources */,
 				B9B9171E201877EC002A63CE /* WLScaleLayoutConstrain.m in Sources */,
+				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,
 				B9B9171D201877EC002A63CE /* NSArray+description.m in Sources */,
 				B9B91725201877EC002A63CE /* NSString+CommonFunc.m in Sources */,
+				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
-				B9B9174420188DF0002A63CE /* AENetworkingTool.m in Sources */,
 				B9B91720201877EC002A63CE /* UITableViewCell+HM.m in Sources */,
 				B9B9171A201877EC002A63CE /* NSMutableArray+safe.m in Sources */,
+				B96FD9AD202998E200FE7495 /* NSString+MD5Addition.m in Sources */,
+				B96FD98D2029851500FE7495 /* AEHttpInfo.m in Sources */,
 				B9B91723201877EC002A63CE /* NSTimer+addition.m in Sources */,
 				B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */,
+				B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */,
 				B9B9164720186209002A63CE /* main.m in Sources */,
 				B9B91718201877EC002A63CE /* UIView+Extend.m in Sources */,
 				B9B9173720187DE2002A63CE /* MeCenterVC.m in Sources */,
+				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B91724201877EC002A63CE /* WLSpecScaleLayoutConstrain.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
+				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,
 				B9B91722201877EC002A63CE /* NSObject+entend.m in Sources */,
 				B9B9171C201877EC002A63CE /* UIView+Frame.m in Sources */,
-				B9B9174320188DF0002A63CE /* AECache.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

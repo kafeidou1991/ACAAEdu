@@ -17,8 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [UIColor redColor];
-    
+    self.view.backgroundColor = [UIColor yellowColor];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"api/user/login" query:nil path:nil body:@{@"username":@"18511032576",@"password":@"123456",@"scene":@"acount"} success:^(id object) {
+        NSLog(@"-----%@",object);
+    } faile:^(NSInteger code, NSString *error) {
+        NSLog(@"code---%ld,error--%@",code,error);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

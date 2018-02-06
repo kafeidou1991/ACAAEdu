@@ -19,6 +19,7 @@
 #import <IQKeyboardManager.h>
 #import <UIImageView+WebCache.h>
 #import <WKWebViewJavascriptBridge.h>
+#import <RSAEncryptor.h>
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
