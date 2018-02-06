@@ -22,6 +22,7 @@
     //兼容第三方键盘
     [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 0;
     [self performSelector:@selector(afterProFun) withObject:nil afterDelay:0.3];
+    self.view.backgroundColor = AEColorBgVC;
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -37,7 +38,7 @@
         self.navigationController.interactivePopGestureRecognizer.delegate = _interactivePopGestureRecognizerDelegate;
     }
 }
-
+//x进行一些网络请求
 - (void)afterProFun{
 }
 

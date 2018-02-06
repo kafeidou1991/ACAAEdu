@@ -1,5 +1,5 @@
 //
-//  PlaceView.h
+//  HomeCollectionLayout.h
 //  ACAAEdu
 //
 //  Created by 张竟巍 on 2018/2/6.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PlaceView : UIView
+@interface HomeCollectionLayout : UICollectionViewFlowLayout
 
 @end

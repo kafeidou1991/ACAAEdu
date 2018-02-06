@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="164" height="120"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="164" height="120"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_default" translatesAutoresizingMaskIntoConstraints="NO" id="pV6-cN-1iB">
+                        <rect key="frame" x="0.0" y="0.0" width="164" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="tR8-5o-8KZ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MySQL DBA及Linux运维" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1he-Bn-ctM">
+                        <rect key="frame" x="0.0" y="85" width="164" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="来源：我赢职场" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrv-lT-Z0H">
+                        <rect key="frame" x="0.0" y="101" width="164" height="13.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="1he-Bn-ctM" firstAttribute="trailing" secondItem="pV6-cN-1iB" secondAttribute="trailing" id="01e-8B-COD"/>
+                <constraint firstItem="zrv-lT-Z0H" firstAttribute="leading" secondItem="1he-Bn-ctM" secondAttribute="leading" id="43A-TJ-W4o"/>
+                <constraint firstItem="pV6-cN-1iB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BP5-YI-C34"/>
+                <constraint firstItem="1he-Bn-ctM" firstAttribute="top" secondItem="pV6-cN-1iB" secondAttribute="bottom" constant="5" id="Vtf-xd-fuB"/>
+                <constraint firstAttribute="trailing" secondItem="pV6-cN-1iB" secondAttribute="trailing" id="YKb-8c-dXZ"/>
+                <constraint firstItem="1he-Bn-ctM" firstAttribute="leading" secondItem="pV6-cN-1iB" secondAttribute="leading" id="fmK-Yg-DTQ"/>
+                <constraint firstItem="zrv-lT-Z0H" firstAttribute="top" secondItem="1he-Bn-ctM" secondAttribute="bottom" id="luS-1U-5Wa"/>
+                <constraint firstItem="zrv-lT-Z0H" firstAttribute="trailing" secondItem="1he-Bn-ctM" secondAttribute="trailing" id="mJ8-ry-V9R"/>
+                <constraint firstItem="pV6-cN-1iB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rX6-nk-Lv1"/>
+            </constraints>
+            <size key="customSize" width="164" height="117"/>
+            <point key="canvasLocation" x="-166" y="-28.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="banner_default" width="310" height="174"/>
+    </resources>
+</document>
