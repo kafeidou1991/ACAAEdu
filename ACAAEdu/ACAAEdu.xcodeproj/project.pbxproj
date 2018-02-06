@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B96FD87220294F4200FE7495 /* PlaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD87120294F4200FE7495 /* PlaceView.m */; };
 		B97447672019E04C00A6A538 /* ACLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B97447652019E04C00A6A538 /* ACLoginVC.m */; };
 		B97447682019E04C00A6A538 /* ACLoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B97447662019E04C00A6A538 /* ACLoginVC.xib */; };
 		B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F01201826C200BA38BE /* AppDelegate.m */; };
@@ -66,6 +67,8 @@
 /* Begin PBXFileReference section */
 		056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACAAEdu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		B96FD87020294F4200FE7495 /* PlaceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceView.h; sourceTree = "<group>"; };
+		B96FD87120294F4200FE7495 /* PlaceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceView.m; sourceTree = "<group>"; };
 		B97447642019E04C00A6A538 /* ACLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACLoginVC.h; sourceTree = "<group>"; };
 		B97447652019E04C00A6A538 /* ACLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ACLoginVC.m; sourceTree = "<group>"; };
 		B97447662019E04C00A6A538 /* ACLoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ACLoginVC.xib; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 		B96FD86A2027FA9A00FE7495 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B96FD87020294F4200FE7495 /* PlaceView.h */,
+				B96FD87120294F4200FE7495 /* PlaceView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -699,6 +704,7 @@
 				B9B91721201877EC002A63CE /* NSNull+safe.m in Sources */,
 				B9B916F0201874F9002A63CE /* AETabBarController.m in Sources */,
 				B9B91727201877EC002A63CE /* NSObject+swizzling.m in Sources */,
+				B96FD87220294F4200FE7495 /* PlaceView.m in Sources */,
 				B9B91717201877EC002A63CE /* UIFont+wl.m in Sources */,
 				B9B91726201877EC002A63CE /* NSDictionary+safe.m in Sources */,
 				B9B9171B201877EC002A63CE /* UIColor+hexcolor.m in Sources */,
