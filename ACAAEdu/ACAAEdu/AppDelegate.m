@@ -19,6 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setupKeyWindow];
+    [self setupIQKeyBoard];
     return YES;
 }
 
@@ -29,6 +30,12 @@
     AETabBarController *tabBarVC = [AETabBarController new];
     self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
+}
+- (void)setupIQKeyBoard {
+    // 去除键盘上的工具栏
+    IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
+    keyboardManager.enableAutoToolbar= NO;
+    keyboardManager.shouldResignOnTouchOutside = YES;
 }
 
 

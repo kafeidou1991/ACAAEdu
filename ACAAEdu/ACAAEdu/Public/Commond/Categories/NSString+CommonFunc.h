@@ -27,9 +27,6 @@
 /// eg. 张恒力 -> ××力
 - (NSString *)encryptName;
 
-/// 去掉字符串中的空格
-- (instancetype)trimString;
-
 /// 给字符串添加空格 例: 12345678 => 1234 5678
 - (instancetype)addTrimString;
 

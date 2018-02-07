@@ -30,10 +30,10 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
         _tableView.tableFooterView = [UIView new];
         if ([_tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-            [_tableView setSeparatorInset:UIEdgeInsetsZero];
+            [_tableView setSeparatorInset:UIEdgeInsetsMake(0, 16, 0, 0)];
         }
         if ([_tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-            [_tableView setLayoutMargins:UIEdgeInsetsZero];
+            [_tableView setLayoutMargins:UIEdgeInsetsMake(0, 16, 0, 0)];
         }
         if (@available(iOS 11.0, *)) {
             _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;

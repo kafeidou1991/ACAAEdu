@@ -31,7 +31,8 @@
 #import "AENetworkingTool.h"
 #import "DateCenter.h"
 #import "AEUserInfo.h"
-//#import "WLNotificationConstant.h"
+#import "AETextField.h"
+#import "AEBase.h"
 //#import "WLStaticConstant.h"
 //#import "WLSeverEnvironment.h"
 //
@@ -75,5 +76,6 @@
 #import "UITableViewCell+HM.h"
 #import "UIButton+safeClick.h"
 #import "NSNull+safe.h"
+#import "NSString+category.h"
 
 #endif /* PrefixHeader_pch */

@@ -25,9 +25,13 @@
  */
 #define stringFormat(string) (string == nil)?@"":[@"<null>" isEqualToString:[NSString stringWithFormat:@"%@",string]]?@"":[NSString stringWithFormat:@"%@",string]
 
+#define STR_FONT_SIZE(str,maxWidth,font) [str boundingRectWithSize:CGSizeMake(maxWidth, MAXFLOAT) options:NSStringDrawingUsesFontLeading | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:font} context:nil].size
+
 
 /// 非空判断
 #define IsNilOrNull(_ref)   (((_ref) == nil) || ([(_ref) isEqual:[NSNull null]]) || [(_ref) isEqual:@"(null)"])
+//字符串是否为空
+#define STRISEMPTY(str) (str==nil || [str isEqual:[NSNull null]] || [str isEqualToString:@""])
 
 // MARK: -----颜色相关-----
 #define COLOR_RGB(r,g,b) [UIColor colorWithRed:(r/255.0f) green:(g/255.0f) blue:(b/255.0f) alpha:1]
@@ -74,7 +78,7 @@
 #define AECustomFont  @"PingFangSC-Regular"
 
 // MARK: -----颜色相关-----
-#define AEThemeColor      AEHexColor(@"#00CCFF")   ///< 项目蓝
+#define AEThemeColor      AEHexColor(@"#308BE5")   ///< 项目蓝
 #define AEColorLightText  AEHexColor(@"#494949")   ///< 字体颜色  偏黑
 #define AEColorLine       AEHexColor(@"#E5E5E5")   ///< 分割线颜色
 #define AEColorBgVC       AEHexColor(@"#f0f2f6")   ///< 控制器背景颜色F5F5F5

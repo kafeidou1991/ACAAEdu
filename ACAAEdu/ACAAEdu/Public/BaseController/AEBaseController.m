@@ -8,7 +8,9 @@
 
 #import "AEBaseController.h"
 
-@interface AEBaseController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>
+@interface AEBaseController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>{
+    MBProgressHUD   *_mbProgressHud;
+}
 
 @end
 
@@ -21,6 +23,8 @@
     [super viewDidLoad];
     //兼容第三方键盘
     [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 0;
+    //统一左部返回键
+    self.navigationItem.leftBarButtonItem = [self createLeftBarBackItemHandle];
     [self performSelector:@selector(afterProFun) withObject:nil afterDelay:0.3];
     self.view.backgroundColor = AEColorBgVC;
 }
@@ -38,10 +42,41 @@
         self.navigationController.interactivePopGestureRecognizer.delegate = _interactivePopGestureRecognizerDelegate;
     }
 }
+- (UIBarButtonItem *)createLeftBarBackItemHandle{
+    UIImage * image = [UIImage imageNamed:@"ic_global_return"];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn setImage:image forState:UIControlStateNormal];
+    [btn setImage:image forState:UIControlStateHighlighted];
+    btn.bounds = CGRectMake(0, 0, 60, 40);
+    [btn addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
+    btn.imageEdgeInsets = UIEdgeInsetsMake(0, - btn.width + MIN(image.size.width, 14), 0, 0);
+    return [[UIBarButtonItem alloc]initWithCustomView:btn];
+}
+- (void)backAction:(UIBarButtonItem *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 //x进行一些网络请求
 - (void)afterProFun{
 }
 
+- (void)hudShow:(UIView *)inView msg:(NSString *)msgText{
+    if (_mbProgressHud == nil) {
+        _mbProgressHud = [MBProgressHUD showHUDAddedTo:inView animated:YES];
+    }
+    _mbProgressHud.contentColor = [UIColor whiteColor];
+    _mbProgressHud.bezelView.color = [UIColor blackColor];
+    _mbProgressHud.label.text = msgText;
+    _mbProgressHud.animationType = MBProgressHUDAnimationZoom;
+    [_mbProgressHud showAnimated:YES];
+}
+- (void)hudclose{
+    if (_mbProgressHud) {
+        [_mbProgressHud removeFromSuperview];
+        [_mbProgressHud hideAnimated:NO];
+        _mbProgressHud = nil;
+    }
+}
 
 
 #pragma mark - UIGestureRecognizerDelegate

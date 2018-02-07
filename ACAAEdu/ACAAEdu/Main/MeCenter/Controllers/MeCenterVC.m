@@ -10,6 +10,7 @@
 #import "MeCenterCell.h"
 #import "CExpandHeader.h"
 #import "MeCenterHeaderView.h"
+#import "AELoginVC.h"
 
 static CGFloat customViewHeight = 180.f;
 
@@ -24,6 +25,7 @@ static CGFloat customViewHeight = 180.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.delegate = self;
+    self.navigationItem.leftBarButtonItem = nil;
     self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
                         @{@"icon" :@"meceter2",@"title":@"通知"},
                         @{@"icon" :@"meceter3",@"title":@"我的模考"},
@@ -35,7 +37,9 @@ static CGFloat customViewHeight = 180.f;
 #pragma mark - 头部登录
 - (void)headerClickToLogin {
     
-    NSLog(@"111");
+    [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
+        NSLog(@"登录完成");
+    }];
     
 }
 
@@ -46,6 +50,9 @@ static CGFloat customViewHeight = 180.f;
     cell.leftImageView.image = [UIImage imageNamed:dict[@"icon"]];
     cell.titleLabel.text = dict[@"title"];
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.f;
 }
 #pragma mark - 头部视图
 - (void)createHeaderView {

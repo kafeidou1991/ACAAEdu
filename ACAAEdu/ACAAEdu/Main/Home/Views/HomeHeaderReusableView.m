@@ -20,6 +20,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.bannerView.delegate =self;
+    
 }
 
 #pragma mark - banner点击

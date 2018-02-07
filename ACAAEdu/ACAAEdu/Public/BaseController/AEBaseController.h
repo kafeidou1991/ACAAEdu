@@ -10,6 +10,28 @@
 
 @interface AEBaseController : UIViewController
 
-- (void)afterProFun;  //用于加载网络请求
+/**
+ 于加载网络请求方法
+ */
+- (void)afterProFun;
+
+/**
+ 返回键返回
+
+ @param sender button
+ */
+- (void)backAction:(UIBarButtonItem *)sender;
+
+/**
+ 开启当前加载
+
+ @param inView 当前view
+ @param msgText 信息
+ */
+- (void)hudShow:(UIView *)inView msg:(NSString *)msgText;
+/**
+ 关闭加载
+ */
+- (void)hudclose;
 
 @end
