@@ -8,6 +8,8 @@
 
 #import "AELoginVC.h"
 #import "AENavigationController.h"
+#import "AERegistVC.h"
+
 typedef NS_ENUM(NSInteger, LoginType) {
     AccountLoginType = 100,
     CardLoginType,
@@ -89,7 +91,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
 }
 
 - (IBAction)registClick:(id)sender {
-    
+    [self.navigationController pushViewController:[AERegistVC new] animated:YES];
 }
 
 #pragma mark - 切换登录方式

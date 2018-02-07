@@ -6,7 +6,7 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "MeCenterVC.h"
+#import "AEMeCenterVC.h"
 #import "MeCenterCell.h"
 #import "CExpandHeader.h"
 #import "MeCenterHeaderView.h"
@@ -14,13 +14,13 @@
 
 static CGFloat customViewHeight = 180.f;
 
-@interface MeCenterVC ()<UINavigationControllerDelegate>{
+@interface AEMeCenterVC ()<UINavigationControllerDelegate>{
     CExpandHeader     *_header;             //可拉伸区域
 }
 @property (nonatomic, strong) MeCenterHeaderView * loginHeaderView;
 @end
 
-@implementation MeCenterVC
+@implementation AEMeCenterVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

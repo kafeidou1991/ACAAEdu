@@ -1,13 +1,13 @@
 //
-//  HomePageVC.h
+//  MeCenterVC.h
 //  ACAAEdu
 //
 //  Created by 张竟巍 on 2018/1/24.
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseController.h"
+#import "AEBaseTableController.h"
 
-@interface HomePageVC : AEBaseController
+@interface AEMeCenterVC : AEBaseTableController
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AERegistVC.m */; };
+		B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AERegistVC.xib */; };
 		B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92542029DCC9002D0B66 /* CExpandHeader.m */; };
 		B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92572029DFB9002D0B66 /* MeCenterHeaderView.m */; };
 		B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C92592029DFC2002D0B66 /* MeCenterHeaderView.xib */; };
@@ -57,8 +59,8 @@
 		B9B916F0201874F9002A63CE /* AETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B916EF201874F9002A63CE /* AETabBarController.m */; };
 		B9B916F32018770E002A63CE /* AENavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B916F22018770E002A63CE /* AENavigationController.m */; };
 		B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9172A201879BF002A63CE /* AEBaseController.m */; };
-		B9B9173420187DCE002A63CE /* HomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173320187DCE002A63CE /* HomePageVC.m */; };
-		B9B9173720187DE2002A63CE /* MeCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173620187DE2002A63CE /* MeCenterVC.m */; };
+		B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173320187DCE002A63CE /* AEHomePageVC.m */; };
+		B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173620187DE2002A63CE /* AEMeCenterVC.m */; };
 		B9B9173A20187F30002A63CE /* AEBaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173920187F30002A63CE /* AEBaseTableController.m */; };
 		B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9173C2018832F002A63CE /* AEBaseWebVC.m */; };
 		B9B917492018907F002A63CE /* DateCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B917482018907F002A63CE /* DateCenter.m */; };
@@ -86,6 +88,9 @@
 /* Begin PBXFileReference section */
 		056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACAAEdu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		B713101C202B55C6001CBAE8 /* AERegistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistVC.h; sourceTree = "<group>"; };
+		B713101D202B55C7001CBAE8 /* AERegistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERegistVC.m; sourceTree = "<group>"; };
+		B713101E202B55C7001CBAE8 /* AERegistVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERegistVC.xib; sourceTree = "<group>"; };
 		B79C92532029DCC9002D0B66 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		B79C92542029DCC9002D0B66 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		B79C92562029DFB9002D0B66 /* MeCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeCenterHeaderView.h; sourceTree = "<group>"; };
@@ -187,10 +192,10 @@
 		B9B916F22018770E002A63CE /* AENavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AENavigationController.m; sourceTree = "<group>"; };
 		B9B91729201879BF002A63CE /* AEBaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBaseController.h; sourceTree = "<group>"; };
 		B9B9172A201879BF002A63CE /* AEBaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseController.m; sourceTree = "<group>"; };
-		B9B9173220187DCE002A63CE /* HomePageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomePageVC.h; sourceTree = "<group>"; };
-		B9B9173320187DCE002A63CE /* HomePageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomePageVC.m; sourceTree = "<group>"; };
-		B9B9173520187DE2002A63CE /* MeCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeCenterVC.h; sourceTree = "<group>"; };
-		B9B9173620187DE2002A63CE /* MeCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeCenterVC.m; sourceTree = "<group>"; };
+		B9B9173220187DCE002A63CE /* AEHomePageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHomePageVC.h; sourceTree = "<group>"; };
+		B9B9173320187DCE002A63CE /* AEHomePageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEHomePageVC.m; sourceTree = "<group>"; };
+		B9B9173520187DE2002A63CE /* AEMeCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMeCenterVC.h; sourceTree = "<group>"; };
+		B9B9173620187DE2002A63CE /* AEMeCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMeCenterVC.m; sourceTree = "<group>"; };
 		B9B9173820187F30002A63CE /* AEBaseTableController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBaseTableController.h; sourceTree = "<group>"; };
 		B9B9173920187F30002A63CE /* AEBaseTableController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseTableController.m; sourceTree = "<group>"; };
 		B9B9173B2018832F002A63CE /* AEBaseWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBaseWebVC.h; sourceTree = "<group>"; };
@@ -427,6 +432,9 @@
 				B97447642019E04C00A6A538 /* AELoginVC.h */,
 				B918BB1D202ACEBD00EDB00D /* AELoginVC.m */,
 				B97447662019E04C00A6A538 /* AELoginVC.xib */,
+				B713101C202B55C6001CBAE8 /* AERegistVC.h */,
+				B713101D202B55C7001CBAE8 /* AERegistVC.m */,
+				B713101E202B55C7001CBAE8 /* AERegistVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -574,8 +582,8 @@
 		B9B9172D20187DA4002A63CE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B9B9173220187DCE002A63CE /* HomePageVC.h */,
-				B9B9173320187DCE002A63CE /* HomePageVC.m */,
+				B9B9173220187DCE002A63CE /* AEHomePageVC.h */,
+				B9B9173320187DCE002A63CE /* AEHomePageVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -610,8 +618,8 @@
 		B9B9173020187DA4002A63CE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B9B9173520187DE2002A63CE /* MeCenterVC.h */,
-				B9B9173620187DE2002A63CE /* MeCenterVC.m */,
+				B9B9173520187DE2002A63CE /* AEMeCenterVC.h */,
+				B9B9173620187DE2002A63CE /* AEMeCenterVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -765,6 +773,7 @@
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
 				B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */,
+				B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */,
 				B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */,
 				B79C9277202A0255002D0B66 /* HomeCollectionCell.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
@@ -852,7 +861,7 @@
 			files = (
 				B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */,
 				B918BB25202AECD200EDB00D /* AETextField.m in Sources */,
-				B9B9173420187DCE002A63CE /* HomePageVC.m in Sources */,
+				B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
 				B918BBCA202B088700EDB00D /* UIButton+safeClick.m in Sources */,
@@ -870,6 +879,7 @@
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
 				B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */,
+				B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */,
 				B918BBC5202B088700EDB00D /* NSMutableArray+safe.m in Sources */,
 				B918BBBF202B088700EDB00D /* NSArray+description.m in Sources */,
 				B96FD9AD202998E200FE7495 /* NSString+MD5Addition.m in Sources */,
@@ -883,7 +893,7 @@
 				B918BBC2202B088700EDB00D /* UIView+Frame.m in Sources */,
 				B9B9164720186209002A63CE /* main.m in Sources */,
 				B79C926B2029F430002D0B66 /* HomeCollectionLayout.m in Sources */,
-				B9B9173720187DE2002A63CE /* MeCenterVC.m in Sources */,
+				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
 				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,

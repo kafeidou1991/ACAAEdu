@@ -39,8 +39,8 @@
 #pragma mark - Private
 
 - (void)setupChildViewControllers {
-    [self addChildControllerName:@"HomePageVC" normalImage:@"tabBar_home_l" selectedImage:@"tabBar_home_h" title:@"首页"];
-    [self addChildControllerName:@"MeCenterVC" normalImage:@"tabBar_me_l" selectedImage:@"tabBar_me_h" title:@"我的"];
+    [self addChildControllerName:@"AEHomePageVC" normalImage:@"tabBar_home_l" selectedImage:@"tabBar_home_h" title:@"首页"];
+    [self addChildControllerName:@"AEMeCenterVC" normalImage:@"tabBar_me_l" selectedImage:@"tabBar_me_h" title:@"我的"];
 }
 
 - (void)addChildControllerName:(NSString *)controllerName

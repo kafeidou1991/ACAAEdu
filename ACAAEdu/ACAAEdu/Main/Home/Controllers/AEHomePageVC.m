@@ -6,13 +6,13 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "HomePageVC.h"
+#import "AEHomePageVC.h"
 #import "HomeCollectionView.h"
-@interface HomePageVC ()
+@interface AEHomePageVC ()
 @property (nonatomic, strong) HomeCollectionView * mainCollectionView;
 @end
 
-@implementation HomePageVC
+@implementation AEHomePageVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

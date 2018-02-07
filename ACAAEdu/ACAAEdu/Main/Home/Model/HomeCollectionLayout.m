@@ -8,14 +8,18 @@
 
 #import "HomeCollectionLayout.h"
 
+static const CGFloat space = 10.f;
+static const CGFloat cellHeight = 80.f;
+
+
 @implementation HomeCollectionLayout
 
 -(instancetype)init {
     if (self = [super init]) {
-        self.itemSize = CGSizeMake((SCREEN_WIDTH - 30)/2, 120);
-        self.minimumLineSpacing = 10.f;
-        self.minimumInteritemSpacing = 10.f;
-        self.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
+        self.itemSize = CGSizeMake(SCREEN_WIDTH - 2 * space, cellHeight);
+        self.minimumLineSpacing = space;
+        self.minimumInteritemSpacing = space;
+        self.sectionInset = UIEdgeInsetsMake(0, space, 0, space);
     }
     return self;
 }
