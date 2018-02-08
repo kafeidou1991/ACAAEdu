@@ -8,7 +8,7 @@
 
 #import "AEBaseController.h"
 
-@interface AEBaseController ()<UIGestureRecognizerDelegate, UINavigationControllerDelegate>{
+@interface AEBaseController ()<UIGestureRecognizerDelegate>{
     MBProgressHUD   *_mbProgressHud;
 }
 
@@ -34,7 +34,6 @@
         _interactivePopGestureRecognizerDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;
         self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     }
-    self.navigationController.delegate = self;
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -85,12 +84,7 @@
     return self.navigationController.viewControllers.count > 1;
 }
 
-#pragma mark - UINavigationControllerDelegate
 
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//    BOOL isShowHomePage = [viewController isKindOfClass:[self class]];
-//    [self.navigationController setNavigationBarHidden:isShowHomePage animated:animated];
-}
 
 
 

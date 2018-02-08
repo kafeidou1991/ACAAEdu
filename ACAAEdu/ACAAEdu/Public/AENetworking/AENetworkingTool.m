@@ -214,7 +214,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     responseSerialiazer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/xml",@"text/plain", @"application/javascript", @"image/*", nil];
     manager.responseSerializer = responseSerialiazer;
 #ifdef DEBUG
-    NSLog(@"httpHeader %@",manager.requestSerializer.HTTPRequestHeaders);
+//    NSLog(@"httpHeader %@",manager.requestSerializer.HTTPRequestHeaders);
 #endif
     return manager;
 }

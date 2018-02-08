@@ -52,8 +52,8 @@ typedef NS_ENUM(NSInteger, LoginType) {
             [AEBase alertMessage:@"请输入正确的手机号/邮箱!" cb:nil];
             return;
         }
-        if (password.length <= 0) {
-            [AEBase alertMessage:@"请输入正确的密码!" cb:nil];
+        if (password.length < 6) {
+            [AEBase alertMessage:@"请输入6-30位的密码!" cb:nil];
             return;
         }
     }else {
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
             [AEBase alertMessage:@"请输入正确的身份证号码!" cb:nil];
             return;
         }
-        if (password.length <= 0) {
+        if (password.length <=0) {
             [AEBase alertMessage:@"请输入正确的姓名!" cb:nil];
             return;
         }
@@ -70,11 +70,13 @@ typedef NS_ENUM(NSInteger, LoginType) {
     WS(weakSelf);
 //    18511032576  123456
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"api/user/login" query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user/login" query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
         [weakSelf hudclose];
         NSLog(@"-----%@",object);
-        [AEUserInfo yy_modelWithDictionary:@{@"user_id":@"11"}];
-        [User save];
+        if (object) {
+           [AEUserInfo yy_modelWithDictionary:object];
+            [User save];
+        }
         if (weakSelf.loginCompletion) {
             weakSelf.loginCompletion(YES);
         }
@@ -91,7 +93,8 @@ typedef NS_ENUM(NSInteger, LoginType) {
 }
 
 - (IBAction)registClick:(id)sender {
-    [self.navigationController pushViewController:[AERegistVC new] animated:YES];
+    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:[AERegistVC new]];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 #pragma mark - 切换登录方式
@@ -112,6 +115,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     self.accountTextField.placeholder = b ? @"请输入身份证号" : @"请输入手机号/邮箱";
     self.accountTextField.text =@"";
     self.passwordTextField.secureTextEntry = !b;
+    self.passwordTextField.lengthLimit = 30;
     self.passwordTextField.keyboardType = b ? UIKeyboardTypeDefault : UIKeyboardTypeNumberPad;
     self.passwordTextField.placeholder = b ? @"请输入姓名" : @"请输入密码";
     self.passwordTextField.text =@"";

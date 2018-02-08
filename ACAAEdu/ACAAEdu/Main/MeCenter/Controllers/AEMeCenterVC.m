@@ -11,6 +11,7 @@
 #import "CExpandHeader.h"
 #import "MeCenterHeaderView.h"
 #import "AELoginVC.h"
+#import "AEAboutMeVC.h"
 
 static CGFloat customViewHeight = 180.f;
 
@@ -80,6 +81,14 @@ static CGFloat customViewHeight = 180.f;
         
         _header = [CExpandHeader expandWithScrollView:self.tableView expandView:customView];
     });
+}
+
+#pragma mark - 跳转
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString * title = self.dataSources[indexPath.row][@"title"];
+    if ([title isEqualToString:@"关于我们"]) {
+      [self.navigationController pushViewController:[AEAboutMeVC new] animated:YES];
+    }
 }
 
 

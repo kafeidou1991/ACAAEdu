@@ -77,5 +77,6 @@
 #import "UIButton+safeClick.h"
 #import "NSNull+safe.h"
 #import "NSString+category.h"
+#import "UIView+Animation.h"
 
 #endif /* PrefixHeader_pch */

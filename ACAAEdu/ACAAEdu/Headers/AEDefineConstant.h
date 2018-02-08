@@ -52,6 +52,7 @@
 #define AEUserDefaults [NSUserDefaults standardUserDefaults]
 // 6.版本号
 #define AEVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define AEAppName [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]
 // MARK: -----屏幕尺寸相关-----
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
