@@ -11,6 +11,11 @@
 
 @interface HomeCollectionView : UICollectionView
 
-- (void)updateBanner:(NSArray *)array;
+/**
+ 更新banner数据
+
+ @param array banner数组
+ */
+- (void)updateBanner:(NSArray <NSString *>*)array;
 
 @end
