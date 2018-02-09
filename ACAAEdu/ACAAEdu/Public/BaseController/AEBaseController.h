@@ -34,4 +34,9 @@
  */
 - (void)hudclose;
 
+/**
+ 添加子view
+ */
+- (void)addSubViews;
+
 @end

@@ -13,6 +13,7 @@
 @interface HomeCollectionView()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong)HomeHeaderReusableView * headerView;
+
 @end
 
 @implementation HomeCollectionView
@@ -51,7 +52,6 @@
     return cell;
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    
     if (kind == UICollectionElementKindSectionHeader) {
         HomeHeaderReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:NSStringFromClass([HomeHeaderReusableView class]) forIndexPath:indexPath];
         if (view == nil) {
@@ -67,7 +67,6 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(nonnull UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake(SCREEN_WIDTH, 200);
-    
 }
 
 

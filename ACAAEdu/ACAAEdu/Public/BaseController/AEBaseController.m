@@ -25,8 +25,12 @@
     [IQKeyboardManager sharedManager].keyboardDistanceFromTextField = 0;
     //统一左部返回键
     self.navigationItem.leftBarButtonItem = [self createLeftBarBackItemHandle];
+    [self addSubViews];
     [self performSelector:@selector(afterProFun) withObject:nil afterDelay:0.3];
     self.view.backgroundColor = AEColorBgVC;
+}
+- (void)addSubViews {
+    //添加views
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
