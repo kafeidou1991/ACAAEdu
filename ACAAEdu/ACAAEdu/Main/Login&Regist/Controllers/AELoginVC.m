@@ -45,6 +45,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
 }
 #pragma mark - 忘记密码 登录 注册
 - (IBAction)loginClick:(UIButton *)sender {
+    [self.view endEditing:YES];
     NSString * account = self.accountTextField.text.trimString;
     NSString * password = self.passwordTextField.text.trimString;
     if (self.loginType == AccountLoginType) {
@@ -70,7 +71,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     WS(weakSelf);
 //    18511032576  123456
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user/login" query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLoginAPI query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
         [weakSelf hudclose];
         NSLog(@"-----%@",object);
         if (object) {
@@ -80,6 +81,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
         if (weakSelf.loginCompletion) {
             weakSelf.loginCompletion(YES);
         }
+        [[NSNotificationCenter defaultCenter]postNotificationName:kLoginSuccess object:nil];
         [weakSelf backAction:nil];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -90,9 +92,11 @@ typedef NS_ENUM(NSInteger, LoginType) {
     }];
 }
 - (IBAction)forgetClick:(UIButton *)sender {
+    [self.view endEditing:YES];
 }
 
 - (IBAction)registClick:(id)sender {
+    [self.view endEditing:YES];
     AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:[AERegistVC new]];
     [self presentViewController:nav animated:YES completion:nil];
 }
@@ -141,7 +145,6 @@ typedef NS_ENUM(NSInteger, LoginType) {
 }
 - (void)click1 {
     NSLog(@"%d",User.isLogin);
-    NSLog(@"%@",User.user_id);
 }
 - (void)click2 {
     [User removeLoginData];

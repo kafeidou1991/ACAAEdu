@@ -19,11 +19,11 @@
 		B79C9283202A03EB002D0B66 /* HomeCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C9282202A03EB002D0B66 /* HomeCollectionView.m */; };
 		B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C9285202A0630002D0B66 /* HomeHeaderReusableView.m */; };
 		B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */; };
-		B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
 		B7FB06AB202C996200D5642D /* ExamCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06AA202C996200D5642D /* ExamCollectionLayout.m */; };
 		B7FB06AE202C9C0000D5642D /* ExameCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06AD202C9C0000D5642D /* ExameCollectionView.m */; };
+		B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */; };
 		B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB1D202ACEBD00EDB00D /* AELoginVC.m */; };
 		B918BB25202AECD200EDB00D /* AETextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB24202AECD100EDB00D /* AETextField.m */; };
 		B918BB2C202B051600EDB00D /* AEBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB2B202B051600EDB00D /* AEBase.m */; };
@@ -116,8 +116,6 @@
 		B79C9284202A0630002D0B66 /* HomeHeaderReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeaderReusableView.h; sourceTree = "<group>"; };
 		B79C9285202A0630002D0B66 /* HomeHeaderReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderReusableView.m; sourceTree = "<group>"; };
 		B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderReusableView.xib; sourceTree = "<group>"; };
-		B913B09D202D8BAD006C7414 /* AEMyOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMyOrderVC.h; sourceTree = "<group>"; };
-		B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMyOrderVC.m; sourceTree = "<group>"; };
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
@@ -125,6 +123,9 @@
 		B7FB06AA202C996200D5642D /* ExamCollectionLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExamCollectionLayout.m; sourceTree = "<group>"; };
 		B7FB06AC202C9C0000D5642D /* ExameCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExameCollectionView.h; sourceTree = "<group>"; };
 		B7FB06AD202C9C0000D5642D /* ExameCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExameCollectionView.m; sourceTree = "<group>"; };
+		B913B09D202D8BAD006C7414 /* AEMyOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMyOrderVC.h; sourceTree = "<group>"; };
+		B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMyOrderVC.m; sourceTree = "<group>"; };
+		B913B0A0202D9124006C7414 /* AENotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AENotificationCenter.h; sourceTree = "<group>"; };
 		B918BB1D202ACEBD00EDB00D /* AELoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELoginVC.m; sourceTree = "<group>"; };
 		B918BB23202AECD100EDB00D /* AETextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AETextField.h; sourceTree = "<group>"; };
 		B918BB24202AECD100EDB00D /* AETextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AETextField.m; sourceTree = "<group>"; };
@@ -550,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				B9B916B420186700002A63CE /* API_Parameter.h */,
+				B913B0A0202D9124006C7414 /* AENotificationCenter.h */,
 				B9B916B22018651A002A63CE /* AEDefineConstant.h */,
 				B9B916B620186B82002A63CE /* AEAppConfig.h */,
 				B9B91641201860F0002A63CE /* PrefixHeader.pch */,

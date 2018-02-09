@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MeCenterHeaderView : UIView
+//更新头部信息
+- (void)updateheaderInfo;
 
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
-@property (nonatomic, copy) dispatch_block_t loginBlock;
 @end

@@ -10,7 +10,6 @@
 #import "MeCenterCell.h"
 #import "CExpandHeader.h"
 #import "MeCenterHeaderView.h"
-#import "AELoginVC.h"
 #import "AEAboutMeVC.h"
 #import "AEMyOrderVC.h"
 
@@ -28,6 +27,7 @@ static CGFloat customViewHeight = 180.f;
     [super viewDidLoad];
     self.navigationController.delegate = self;
     self.navigationItem.leftBarButtonItem = nil;
+    [self addNotifications];
     self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
                         @{@"icon" :@"meceter2",@"title":@"通知"},
                         @{@"icon" :@"meceter3",@"title":@"我的模考"},
@@ -36,13 +36,13 @@ static CGFloat customViewHeight = 180.f;
     [self createTableViewStyle:UITableViewStylePlain];
     [self createHeaderView];
 }
-#pragma mark - 头部登录
-- (void)headerClickToLogin {
-    
-    [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
-        NSLog(@"登录完成");
-    }];
-    
+- (void)addNotifications{
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginSuccess) name:kLoginSuccess object:nil];
+}
+
+#pragma mark - 登陆成功
+- (void)loginSuccess {
+    [self.loginHeaderView updateheaderInfo];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,12 +59,9 @@ static CGFloat customViewHeight = 180.f;
 #pragma mark - 头部视图
 - (void)createHeaderView {
     dispatch_async(dispatch_get_main_queue(), ^{
-        WS(weakSelf);
         //登录头像姓名
-        _loginHeaderView = [[NSBundle mainBundle]loadNibNamed:@"MeCenterHeaderView" owner:nil options:nil].lastObject;
-        _loginHeaderView.loginBlock = ^{
-            [weakSelf headerClickToLogin];
-        };
+        _loginHeaderView = [[NSBundle mainBundle]loadNibNamed:@"MeCenterHeaderView" owner:nil options:nil].firstObject;
+        [_loginHeaderView updateheaderInfo];
         self.tableView.tableHeaderView = _loginHeaderView;
         //背景
         UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, customViewHeight)];
@@ -83,6 +80,11 @@ static CGFloat customViewHeight = 180.f;
         _header = [CExpandHeader expandWithScrollView:self.tableView expandView:customView];
     });
 }
+- (void)headerClickToLogin {
+    if (!AEUser.isLogin) {
+        [AELoginVC OpenLogin:self callback:nil];
+    }
+}
 
 #pragma mark - 跳转
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -93,7 +95,9 @@ static CGFloat customViewHeight = 180.f;
         [self.navigationController pushViewController:[AEMyOrderVC new] animated:YES];
     }
 }
-
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 //隐藏导航栏
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {

@@ -15,18 +15,15 @@
             <rect key="frame" x="0.0" y="0.0" width="349" height="60"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="215-7x-Uo8">
-                    <rect key="frame" x="122" y="-50" width="105" height="110"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mecenter_headnomal" translatesAutoresizingMaskIntoConstraints="NO" id="ozh-EX-J5N">
+                    <rect key="frame" x="137" y="-50" width="74" height="74"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqS-mQ-p1O">
+                    <rect key="frame" x="158.5" y="29" width="31" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <inset key="titleEdgeInsets" minX="-74" minY="70" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="30"/>
-                    <state key="normal" title="登录" image="mecenter_headnomal">
-                        <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="loginClick:" destination="iN0-l3-epB" eventType="touchUpInside" id="289-1n-gmz"/>
-                    </connections>
-                </button>
+                    <color key="textColor" red="0.28627450980000002" green="0.28627450980000002" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCR-Xc-Rjq">
                     <rect key="frame" x="0.0" y="59" width="349" height="1"/>
                     <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,22 +33,31 @@
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <gestureRecognizers/>
             <constraints>
-                <constraint firstItem="215-7x-Uo8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-50" id="8gn-6Z-tlB"/>
+                <constraint firstItem="hqS-mQ-p1O" firstAttribute="top" secondItem="ozh-EX-J5N" secondAttribute="bottom" constant="5" id="2fO-yF-cHI"/>
+                <constraint firstItem="ozh-EX-J5N" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-50" id="CTI-Vv-QBU"/>
                 <constraint firstItem="UCR-Xc-Rjq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ebX-Ik-ikG"/>
-                <constraint firstAttribute="bottom" secondItem="215-7x-Uo8" secondAttribute="bottom" id="hDc-O2-DAK"/>
-                <constraint firstItem="215-7x-Uo8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qiI-NA-eS5"/>
+                <constraint firstItem="hqS-mQ-p1O" firstAttribute="centerX" secondItem="ozh-EX-J5N" secondAttribute="centerX" id="n2t-jZ-KJ5"/>
                 <constraint firstAttribute="trailing" secondItem="UCR-Xc-Rjq" secondAttribute="trailing" id="sxW-eh-rLA"/>
                 <constraint firstAttribute="bottom" secondItem="UCR-Xc-Rjq" secondAttribute="bottom" id="tre-GU-54Z"/>
+                <constraint firstItem="ozh-EX-J5N" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uhH-ki-4qJ"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="loginBtn" destination="215-7x-Uo8" id="GLX-WV-Zti"/>
+                <outlet property="iconImageView" destination="ozh-EX-J5N" id="lXv-tM-9Vd"/>
+                <outlet property="nameLabel" destination="hqS-mQ-p1O" id="Ssv-Ji-VPU"/>
+                <outletCollection property="gestureRecognizers" destination="lcV-Jv-wao" appends="YES" id="kIX-ma-AQh"/>
             </connections>
             <point key="canvasLocation" x="12.5" y="-125"/>
         </view>
+        <tapGestureRecognizer id="lcV-Jv-wao">
+            <connections>
+                <action selector="loginClick:" destination="iN0-l3-epB" id="KCA-45-05z"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="mecenter_headnomal" width="74" height="74"/>

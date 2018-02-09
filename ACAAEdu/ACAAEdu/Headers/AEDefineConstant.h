@@ -50,6 +50,8 @@
 #define AEStringFormat(_ref) IsNilOrNull(_ref) ? @"--" : [NSString stringWithFormat:@"%@", _ref]
 // 5.NSUserDefaults
 #define AEUserDefaults [NSUserDefaults standardUserDefaults]
+//User
+#define AEUser  [AEUserInfo shareInstance]
 // 6.版本号
 #define AEVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define AEAppName [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]
