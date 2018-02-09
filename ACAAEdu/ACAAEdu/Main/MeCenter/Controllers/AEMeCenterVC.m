@@ -12,6 +12,7 @@
 #import "MeCenterHeaderView.h"
 #import "AELoginVC.h"
 #import "AEAboutMeVC.h"
+#import "AEMyOrderVC.h"
 
 static CGFloat customViewHeight = 180.f;
 
@@ -87,7 +88,9 @@ static CGFloat customViewHeight = 180.f;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * title = self.dataSources[indexPath.row][@"title"];
     if ([title isEqualToString:@"关于我们"]) {
-      [self.navigationController pushViewController:[AEAboutMeVC new] animated:YES];
+        [self.navigationController pushViewController:[AEAboutMeVC new] animated:YES];
+    }else if ([title isEqualToString:@"我的订单"]) {
+        [self.navigationController pushViewController:[AEMyOrderVC new] animated:YES];
     }
 }
 
