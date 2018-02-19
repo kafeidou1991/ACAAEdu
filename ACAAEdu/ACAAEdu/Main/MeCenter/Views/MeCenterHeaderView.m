@@ -8,6 +8,7 @@
 
 #import "MeCenterHeaderView.h"
 #import "AEAboutMeVC.h"
+#import "AEUserInfoVC.h"
 
 @interface MeCenterHeaderView()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -29,16 +30,18 @@
     }
     return self;
 }
-
+//跳转个人中心
 - (IBAction)loginClick:(UITapGestureRecognizer *)sender {
-    if (!AEUser.isLogin) {
+    if (!User.isLogin) {
         [AELoginVC OpenLogin:self.viewController callback:nil];
+    }else {
+        [self.viewController.navigationController pushViewController:[AEUserInfoVC new] animated:YES];
     }
 }
 
 -(void)updateheaderInfo {
-    if (AEUser.isLogin) {
-        self.nameLabel.text =AEUser.username;
+    if (User.isLogin) {
+        self.nameLabel.text =User.username;
     }else {
         self.nameLabel.text = @"登录";
     }

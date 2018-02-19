@@ -11,5 +11,9 @@
 @interface MeCenterHeaderView : UIView
 //更新头部信息
 - (void)updateheaderInfo;
-
+/**
+ 点击登录按钮
+ @param sender 按钮
+ */
+- (IBAction)loginClick:(UITapGestureRecognizer *)sender;
 @end

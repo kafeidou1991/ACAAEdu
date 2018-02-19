@@ -10,7 +10,7 @@
 #define AENotificationCenter_h
 
 static NSString * const kLoginSuccess = @"loginSuccess";
-
+static NSString * const kLoginExit = @"loginExit";
 
 
 

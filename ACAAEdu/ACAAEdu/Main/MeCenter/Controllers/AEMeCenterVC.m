@@ -12,6 +12,7 @@
 #import "MeCenterHeaderView.h"
 #import "AEAboutMeVC.h"
 #import "AEMyOrderVC.h"
+#import "AESettingVC.h"
 
 static CGFloat customViewHeight = 180.f;
 
@@ -37,11 +38,12 @@ static CGFloat customViewHeight = 180.f;
     [self createHeaderView];
 }
 - (void)addNotifications{
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loginSuccess) name:kLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginSuccess object:nil];
 }
 
 #pragma mark - 登陆成功
-- (void)loginSuccess {
+- (void)updateInfo {
     [self.loginHeaderView updateheaderInfo];
 }
 
@@ -81,9 +83,7 @@ static CGFloat customViewHeight = 180.f;
     });
 }
 - (void)headerClickToLogin {
-    if (!AEUser.isLogin) {
-        [AELoginVC OpenLogin:self callback:nil];
-    }
+    [self.loginHeaderView loginClick:nil];
 }
 
 #pragma mark - 跳转
@@ -93,6 +93,8 @@ static CGFloat customViewHeight = 180.f;
         [self.navigationController pushViewController:[AEAboutMeVC new] animated:YES];
     }else if ([title isEqualToString:@"我的订单"]) {
         [self.navigationController pushViewController:[AEMyOrderVC new] animated:YES];
+    }else if ([title isEqualToString:@"设置"]) {
+        [self.navigationController pushViewController:[AESettingVC new] animated:YES];
     }
 }
 -(void)dealloc {

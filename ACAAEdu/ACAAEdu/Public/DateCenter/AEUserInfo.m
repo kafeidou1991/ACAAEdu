@@ -10,7 +10,7 @@
 #define LOGIN_DATA_KEY @"ACAA-EDU-KEY"
 
 static AEUserInfo * info = nil;
-@interface AEUserInfo ()<NSCopying>
+@interface AEUserInfo ()
 
 @end
 

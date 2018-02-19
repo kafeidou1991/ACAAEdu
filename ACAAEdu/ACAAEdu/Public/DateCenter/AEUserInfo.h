@@ -8,25 +8,6 @@
 
 #import "DateCenter.h"
 
-#define User [AEUserInfo shareInstance]
-//"token" : "5b0da604-2fd1-4999-a67a-6d9fdb3ac9c2",
-//"status" : "normal",
-//"uid" : "588712",
-//"mobile" : "15565208789",
-//"id_card" : "",
-//"myidkey" : "",
-//"lastloginip" : "3054637986",
-//"lastlogintime" : 1518163633,
-//"password" : "2aadbc69c6288272885eccbeb2898636",
-//"card_type" : "0",
-//"real_auth" : "2",
-//"username" : "63a663ae3730ee0",
-//"regip" : "3054637986",
-//"regdate" : "1518082548",
-//"salt" : "EDOlqW",
-//"email" : "",
-//"myid" : "",
-//"secques" : ""
 @interface AEUserInfo : DateCenter
 /**
  是否登录
@@ -95,7 +76,9 @@
  
 #pragma mark - methods
 + (instancetype)shareInstance;
+//删除登录数据
 - (void)removeLoginData;
+//保存登录数据
 - (void)save;
 
 @end

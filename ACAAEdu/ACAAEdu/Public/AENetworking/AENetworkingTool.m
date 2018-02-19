@@ -10,7 +10,6 @@
 #import "NSString+MD5Addition.h"
 #import "JSONKit.h"
 
-#define STRISEMPTY(str) (str==nil || [str isEqualToString:@""])
 #define kArrayIsEmpty(array) (array == nil || [array isKindOfClass:[NSNull class]] || array.count == 0)
 #define openHttpsSSL NO    // 是否使用ssl验证
 #define TIMEOUT_INTERVAL 60

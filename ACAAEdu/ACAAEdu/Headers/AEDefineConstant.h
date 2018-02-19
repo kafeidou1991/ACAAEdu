@@ -51,7 +51,7 @@
 // 5.NSUserDefaults
 #define AEUserDefaults [NSUserDefaults standardUserDefaults]
 //User
-#define AEUser  [AEUserInfo shareInstance]
+#define User  [AEUserInfo shareInstance]
 // 6.版本号
 #define AEVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define AEAppName [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]

@@ -3,7 +3,7 @@
 //  ACAAEdu
 //
 //  Created by 张竟巍 on 2018/2/8.
-//  Copyright © 2018年 ACAA. All rights reserved.
+//  Copyright © 2018年 ACAA. A	ll rights reserved.
 //
 
 #import "ExamCollectionLayout.h"
