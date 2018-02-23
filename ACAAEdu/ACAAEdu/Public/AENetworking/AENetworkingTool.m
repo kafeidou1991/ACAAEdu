@@ -233,6 +233,9 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
+#ifdef DEBUG
+    NSLog(@"参数 %@\n",body);
+#endif
     return req;
 }
 #pragma mark -- Domain&Path

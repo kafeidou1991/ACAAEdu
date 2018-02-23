@@ -7,6 +7,7 @@
 //
 
 #import "AESettingVC.h"
+#import "AEAccountSetVC.h"
 
 @interface AESettingVC ()
 
@@ -17,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
-    self.dataSources = @[@"清除信息",@"版本信息"].mutableCopy;
+    self.dataSources = @[@"账户安全",@"清除信息",@"版本信息"].mutableCopy;
     [self createTableViewStyle:UITableViewStylePlain];
     
     if ([AEUserInfo shareInstance].isLogin) {
@@ -40,6 +41,9 @@
     cell.textLabel.text = self.dataSources[indexPath.row];
     if (indexPath.row == 0) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.detailTextLabel.text = @"";
+    }else if (indexPath.row == 1) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.2fMB",[self computeCache]];
     }else {
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -54,6 +58,8 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
+        [self.navigationController pushViewController:[AEAccountSetVC new] animated:YES];
+    }else if (indexPath.row == 1){
         [self cleanCache];
     }
 }

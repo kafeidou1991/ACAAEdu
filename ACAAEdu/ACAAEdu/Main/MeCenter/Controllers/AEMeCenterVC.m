@@ -39,7 +39,7 @@ static CGFloat customViewHeight = 180.f;
 }
 - (void)addNotifications{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginSuccess object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginSuccess object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginExit object:nil];
 }
 
 #pragma mark - 登陆成功

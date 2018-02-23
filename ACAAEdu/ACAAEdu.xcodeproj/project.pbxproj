@@ -21,8 +21,8 @@
 		B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C9285202A0630002D0B66 /* HomeHeaderReusableView.m */; };
 		B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */; };
 		B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952A203A637B00AB8513 /* AEUserInfoVC.m */; };
-		B7C3952F203A650900AB8513 /* AEUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952D203A650900AB8513 /* AEUserInfoCell.m */; };
-		B7C39530203A650900AB8513 /* AEUserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C3952E203A650900AB8513 /* AEUserInfoCell.xib */; };
+		B7C3952F203A650900AB8513 /* AEModifierInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */; };
+		B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
 		B7FB06AB202C996200D5642D /* ExamCollectionLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06AA202C996200D5642D /* ExamCollectionLayout.m */; };
@@ -49,6 +49,21 @@
 		B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBC202B088600EDB00D /* NSObject+entend.m */; };
 		B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBD202B088700EDB00D /* UIView+Extend.m */; };
 		B918BBD0202B088700EDB00D /* WLSpecScaleLayoutConstrain.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */; };
+		B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */; };
+		B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */; };
+		B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC9203FF54E006344F2 /* AEAccountSetVC.m */; };
+		B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CCC20400054006344F2 /* AEUserInfoCell.m */; };
+		B94C1CCF20400054006344F2 /* AEUserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CCD20400054006344F2 /* AEUserInfoCell.xib */; };
+		B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CD220401B3F006344F2 /* CGXAddressCity.plist */; };
+		B94C1CE420401B3F006344F2 /* CGXPickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CD420401B3F006344F2 /* CGXPickerViewManager.m */; };
+		B94C1CE520401B3F006344F2 /* NSDate+CGXPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CD920401B3F006344F2 /* NSDate+CGXPicker.m */; };
+		B94C1CE620401B3F006344F2 /* CGXAddressPcikerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CDA20401B3F006344F2 /* CGXAddressPcikerView.m */; };
+		B94C1CE720401B3F006344F2 /* CGXDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CDC20401B3F006344F2 /* CGXDatePickerView.m */; };
+		B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CDD20401B3F006344F2 /* CGXPickerUIBaseView.m */; };
+		B94C1CE920401B3F006344F2 /* CGXAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CDE20401B3F006344F2 /* CGXAddressModel.m */; };
+		B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CDF20401B3F006344F2 /* CGXBasicInfoPicker.plist */; };
+		B94C1CEB20401B3F006344F2 /* CGXStringPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CE120401B3F006344F2 /* CGXStringPickerView.m */; };
+		B94C1CEC20401B3F006344F2 /* CGXPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CE220401B3F006344F2 /* CGXPickerView.m */; };
 		B96FD98D2029851500FE7495 /* AEHttpInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD98C2029851500FE7495 /* AEHttpInfo.m */; };
 		B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD98F2029857200FE7495 /* AENetworkingTool.m */; };
 		B96FD9AD202998E200FE7495 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9A2202998E200FE7495 /* NSString+MD5Addition.m */; };
@@ -124,9 +139,9 @@
 		B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderReusableView.xib; sourceTree = "<group>"; };
 		B7C39529203A637B00AB8513 /* AEUserInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfoVC.h; sourceTree = "<group>"; };
 		B7C3952A203A637B00AB8513 /* AEUserInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfoVC.m; sourceTree = "<group>"; };
-		B7C3952C203A650900AB8513 /* AEUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfoCell.h; sourceTree = "<group>"; };
-		B7C3952D203A650900AB8513 /* AEUserInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfoCell.m; sourceTree = "<group>"; };
-		B7C3952E203A650900AB8513 /* AEUserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEUserInfoCell.xib; sourceTree = "<group>"; };
+		B7C3952C203A650900AB8513 /* AEModifierInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoCell.h; sourceTree = "<group>"; };
+		B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModifierInfoCell.m; sourceTree = "<group>"; };
+		B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEModifierInfoCell.xib; sourceTree = "<group>"; };
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
@@ -178,6 +193,32 @@
 		B918BBBC202B088600EDB00D /* NSObject+entend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+entend.m"; sourceTree = "<group>"; };
 		B918BBBD202B088700EDB00D /* UIView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extend.m"; sourceTree = "<group>"; };
 		B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSpecScaleLayoutConstrain.m; sourceTree = "<group>"; };
+		B94C1CC3203FC155006344F2 /* AEModifierInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoVC.h; sourceTree = "<group>"; };
+		B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModifierInfoVC.m; sourceTree = "<group>"; };
+		B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEModifierInfoVC.xib; sourceTree = "<group>"; };
+		B94C1CC8203FF54E006344F2 /* AEAccountSetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAccountSetVC.h; sourceTree = "<group>"; };
+		B94C1CC9203FF54E006344F2 /* AEAccountSetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAccountSetVC.m; sourceTree = "<group>"; };
+		B94C1CCB20400054006344F2 /* AEUserInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfoCell.h; sourceTree = "<group>"; };
+		B94C1CCC20400054006344F2 /* AEUserInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfoCell.m; sourceTree = "<group>"; };
+		B94C1CCD20400054006344F2 /* AEUserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEUserInfoCell.xib; sourceTree = "<group>"; };
+		B94C1CD120401B3F006344F2 /* CGXAddressPcikerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXAddressPcikerView.h; sourceTree = "<group>"; };
+		B94C1CD220401B3F006344F2 /* CGXAddressCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CGXAddressCity.plist; sourceTree = "<group>"; };
+		B94C1CD320401B3F006344F2 /* CGXDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXDatePickerView.h; sourceTree = "<group>"; };
+		B94C1CD420401B3F006344F2 /* CGXPickerViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXPickerViewManager.m; sourceTree = "<group>"; };
+		B94C1CD520401B3F006344F2 /* CGXAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXAddressModel.h; sourceTree = "<group>"; };
+		B94C1CD620401B3F006344F2 /* CGXPickerUIBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXPickerUIBaseView.h; sourceTree = "<group>"; };
+		B94C1CD720401B3F006344F2 /* CGXPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXPickerView.h; sourceTree = "<group>"; };
+		B94C1CD820401B3F006344F2 /* CGXStringPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXStringPickerView.h; sourceTree = "<group>"; };
+		B94C1CD920401B3F006344F2 /* NSDate+CGXPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CGXPicker.m"; sourceTree = "<group>"; };
+		B94C1CDA20401B3F006344F2 /* CGXAddressPcikerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXAddressPcikerView.m; sourceTree = "<group>"; };
+		B94C1CDB20401B3F006344F2 /* CGXPickerViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGXPickerViewManager.h; sourceTree = "<group>"; };
+		B94C1CDC20401B3F006344F2 /* CGXDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXDatePickerView.m; sourceTree = "<group>"; };
+		B94C1CDD20401B3F006344F2 /* CGXPickerUIBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXPickerUIBaseView.m; sourceTree = "<group>"; };
+		B94C1CDE20401B3F006344F2 /* CGXAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXAddressModel.m; sourceTree = "<group>"; };
+		B94C1CDF20401B3F006344F2 /* CGXBasicInfoPicker.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CGXBasicInfoPicker.plist; sourceTree = "<group>"; };
+		B94C1CE020401B3F006344F2 /* NSDate+CGXPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+CGXPicker.h"; sourceTree = "<group>"; };
+		B94C1CE120401B3F006344F2 /* CGXStringPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXStringPickerView.m; sourceTree = "<group>"; };
+		B94C1CE220401B3F006344F2 /* CGXPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGXPickerView.m; sourceTree = "<group>"; };
 		B96FD98B2029851500FE7495 /* AEHttpInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHttpInfo.h; sourceTree = "<group>"; };
 		B96FD98C2029851500FE7495 /* AEHttpInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEHttpInfo.m; sourceTree = "<group>"; };
 		B96FD98E2029857200FE7495 /* AENetworkingTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AENetworkingTool.h; sourceTree = "<group>"; };
@@ -291,6 +332,7 @@
 				B918BB29202B051600EDB00D /* BaseClass */,
 				B918BB22202AEC2700EDB00D /* TextField */,
 				B79C92522029DCC9002D0B66 /* CExpandHeader */,
+				B94C1CD020401B3F006344F2 /* CGXPickerView */,
 				B918BB64202B081C00EDB00D /* Categories */,
 			);
 			name = "Commond(通用类)";
@@ -385,6 +427,31 @@
 				B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		B94C1CD020401B3F006344F2 /* CGXPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				B94C1CD120401B3F006344F2 /* CGXAddressPcikerView.h */,
+				B94C1CD220401B3F006344F2 /* CGXAddressCity.plist */,
+				B94C1CD320401B3F006344F2 /* CGXDatePickerView.h */,
+				B94C1CD420401B3F006344F2 /* CGXPickerViewManager.m */,
+				B94C1CD520401B3F006344F2 /* CGXAddressModel.h */,
+				B94C1CD620401B3F006344F2 /* CGXPickerUIBaseView.h */,
+				B94C1CD720401B3F006344F2 /* CGXPickerView.h */,
+				B94C1CD820401B3F006344F2 /* CGXStringPickerView.h */,
+				B94C1CD920401B3F006344F2 /* NSDate+CGXPicker.m */,
+				B94C1CDA20401B3F006344F2 /* CGXAddressPcikerView.m */,
+				B94C1CDB20401B3F006344F2 /* CGXPickerViewManager.h */,
+				B94C1CDC20401B3F006344F2 /* CGXDatePickerView.m */,
+				B94C1CDD20401B3F006344F2 /* CGXPickerUIBaseView.m */,
+				B94C1CDE20401B3F006344F2 /* CGXAddressModel.m */,
+				B94C1CDF20401B3F006344F2 /* CGXBasicInfoPicker.plist */,
+				B94C1CE020401B3F006344F2 /* NSDate+CGXPicker.h */,
+				B94C1CE120401B3F006344F2 /* CGXStringPickerView.m */,
+				B94C1CE220401B3F006344F2 /* CGXPickerView.m */,
+			);
+			path = CGXPickerView;
 			sourceTree = "<group>";
 		};
 		B96FD8682027FA9A00FE7495 /* Exam(考试) */ = {
@@ -689,6 +756,11 @@
 				B7129A672031AF460081472E /* AESettingVC.m */,
 				B7C39529203A637B00AB8513 /* AEUserInfoVC.h */,
 				B7C3952A203A637B00AB8513 /* AEUserInfoVC.m */,
+				B94C1CC8203FF54E006344F2 /* AEAccountSetVC.h */,
+				B94C1CC9203FF54E006344F2 /* AEAccountSetVC.m */,
+				B94C1CC3203FC155006344F2 /* AEModifierInfoVC.h */,
+				B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */,
+				B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -702,9 +774,12 @@
 				B79C92562029DFB9002D0B66 /* MeCenterHeaderView.h */,
 				B79C92572029DFB9002D0B66 /* MeCenterHeaderView.m */,
 				B79C92592029DFC2002D0B66 /* MeCenterHeaderView.xib */,
-				B7C3952C203A650900AB8513 /* AEUserInfoCell.h */,
-				B7C3952D203A650900AB8513 /* AEUserInfoCell.m */,
-				B7C3952E203A650900AB8513 /* AEUserInfoCell.xib */,
+				B7C3952C203A650900AB8513 /* AEModifierInfoCell.h */,
+				B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */,
+				B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */,
+				B94C1CCB20400054006344F2 /* AEUserInfoCell.h */,
+				B94C1CCC20400054006344F2 /* AEUserInfoCell.m */,
+				B94C1CCD20400054006344F2 /* AEUserInfoCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -841,9 +916,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B7C39530203A650900AB8513 /* AEUserInfoCell.xib in Resources */,
+				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
+				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
+				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
+				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
 				B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */,
@@ -852,6 +930,7 @@
 				B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */,
 				B79C9277202A0255002D0B66 /* HomeCollectionCell.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
+				B94C1CCF20400054006344F2 /* AEUserInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,22 +1014,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */,
+				B94C1CE520401B3F006344F2 /* NSDate+CGXPicker.m in Sources */,
 				B918BB25202AECD200EDB00D /* AETextField.m in Sources */,
 				B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */,
+				B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
 				B7129A682031AF460081472E /* AESettingVC.m in Sources */,
+				B94C1CE720401B3F006344F2 /* CGXDatePickerView.m in Sources */,
 				B918BBCA202B088700EDB00D /* UIButton+safeClick.m in Sources */,
+				B94C1CE620401B3F006344F2 /* CGXAddressPcikerView.m in Sources */,
+				B94C1CE420401B3F006344F2 /* CGXPickerViewManager.m in Sources */,
 				B79C927B202A0277002D0B66 /* HomeCollectionCell.m in Sources */,
 				B9B916F0201874F9002A63CE /* AETabBarController.m in Sources */,
 				B79C9283202A03EB002D0B66 /* HomeCollectionView.m in Sources */,
 				B9B9173A20187F30002A63CE /* AEBaseTableController.m in Sources */,
 				B9B916F32018770E002A63CE /* AENavigationController.m in Sources */,
+				B94C1CEC20401B3F006344F2 /* CGXPickerView.m in Sources */,
+				B94C1CE920401B3F006344F2 /* CGXAddressModel.m in Sources */,
+				B94C1CEB20401B3F006344F2 /* CGXStringPickerView.m in Sources */,
 				B918BBC6202B088700EDB00D /* WLScaleLayoutConstrain.m in Sources */,
 				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,
 				B918BBCB202B088700EDB00D /* NSString+category.m in Sources */,
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
+				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
@@ -967,6 +1055,7 @@
 				B918BBC0202B088700EDB00D /* NSNull+safe.m in Sources */,
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,
 				B918BBC8202B088700EDB00D /* NSObject+swizzling.m in Sources */,
+				B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */,
 				B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */,
 				B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */,
 				B918BBC2202B088700EDB00D /* UIView+Frame.m in Sources */,
@@ -976,6 +1065,7 @@
 				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
+				B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */,
 				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,
 				B918BBCC202B088700EDB00D /* UIFont+wl.m in Sources */,
 				B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */,
@@ -990,7 +1080,7 @@
 				B918BBD0202B088700EDB00D /* WLSpecScaleLayoutConstrain.m in Sources */,
 				B918BBC7202B088700EDB00D /* UIColor+hexcolor.m in Sources */,
 				B7FB06AB202C996200D5642D /* ExamCollectionLayout.m in Sources */,
-				B7C3952F203A650900AB8513 /* AEUserInfoCell.m in Sources */,
+				B7C3952F203A650900AB8513 /* AEModifierInfoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

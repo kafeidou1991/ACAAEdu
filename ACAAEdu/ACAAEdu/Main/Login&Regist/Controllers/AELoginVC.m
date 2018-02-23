@@ -73,7 +73,6 @@ typedef NS_ENUM(NSInteger, LoginType) {
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLoginAPI query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
         [weakSelf hudclose];
-        NSLog(@"-----%@",object);
         if (object) {
            [AEUserInfo yy_modelWithDictionary:object];
             [User save];
