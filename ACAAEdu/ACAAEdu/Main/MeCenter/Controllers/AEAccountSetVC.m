@@ -37,7 +37,24 @@
     return 50.f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController pushViewController:[AEModifierInfoVC new] animated:YES];
+    AEModifierInfoVC * pushVC = [AEModifierInfoVC new];
+    if (indexPath.row == 0) {
+        if (STRISEMPTY(User.mobile)) {
+            pushVC.type = BindMobileType;
+        }else {
+            pushVC.type = UnBindMobileType;
+        }
+        [self.navigationController pushViewController:pushVC animated:YES];
+    }else if (indexPath.row == 1) {
+        if (STRISEMPTY(User.email)) {
+            pushVC.type = BindEmailType;
+        }else {
+            pushVC.type = UnBindEmailType;
+        }
+        [self.navigationController pushViewController:pushVC animated:YES];
+    }else {
+        //身份证验证
+    }
 }
 
 
