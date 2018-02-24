@@ -13,10 +13,13 @@
             <connections>
                 <outlet property="accountTextField" destination="maQ-IF-alJ" id="z7O-V9-dRt"/>
                 <outlet property="bottomViewConstrain" destination="had-LG-El4" id="ARY-Hz-Djf"/>
+                <outlet property="bttomButton" destination="qai-TD-uo2" id="wHt-zZ-PEb"/>
                 <outlet property="circularBar" destination="mb2-a1-KSd" id="wsp-dt-wvv"/>
                 <outlet property="codeImageView" destination="tRi-fO-4ec" id="UbY-Rc-dkA"/>
                 <outlet property="codeTextField" destination="xN1-kc-pLR" id="MyW-cF-sFx"/>
+                <outlet property="emailButton" destination="nto-ZH-bUd" id="eiN-bw-TEE"/>
                 <outlet property="imageTextField" destination="hdE-DR-DYk" id="fKR-Bm-f27"/>
+                <outlet property="mobileButton" destination="eet-KN-vYM" id="GKj-Ar-rMh"/>
                 <outlet property="passwordTextField" destination="OoJ-nT-76Y" id="Yle-lU-O2w"/>
                 <outlet property="sendCodeBtn" destination="hT1-2y-e3h" id="qPN-9J-jml"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

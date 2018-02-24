@@ -10,4 +10,9 @@
 
 @interface AERegistVC : AEBaseController
 
+/**
+ 找回密码页面
+ */
+@property (nonatomic, assign) BOOL isFindPassword;
+
 @end

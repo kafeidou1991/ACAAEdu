@@ -35,6 +35,8 @@
 + (NSString *)getCurrentDateString;
 //NSDate 转 NSString 
 + (NSString *)dateToString:(NSDate *)date;
+//NSDate 转 NSString  指定格式
++ (NSString *)dateToStringFormatter:(NSString *)formatter date:(NSDate *)date;
 
 
 

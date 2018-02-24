@@ -231,6 +231,8 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
                                                            options:0
                                                              error:&error];
         NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//        jsonString = @"{\\\"gender\\\":\\\"2\\\",\\\"birthday\\\":\\\"2018-02-24\\\"}";
+//        jsonString = [jsonString JSONString];
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
 #ifdef DEBUG

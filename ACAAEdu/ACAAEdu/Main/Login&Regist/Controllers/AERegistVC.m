@@ -21,6 +21,14 @@ typedef NS_ENUM(NSInteger, RegistType) {
  */
 @property (nonatomic, assign) RegistType registType;
 /**
+ 顶部手机按钮
+ */
+@property (weak, nonatomic) IBOutlet UIButton *mobileButton;
+/**
+ 顶部邮箱按钮
+ */
+@property (weak, nonatomic) IBOutlet UIButton *emailButton;
+/**
  底部横线左约束
  */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewConstrain;
@@ -52,6 +60,10 @@ typedef NS_ENUM(NSInteger, RegistType) {
  密码框
  */
 @property (weak, nonatomic) IBOutlet AETextField *passwordTextField;
+/**
+ 底部button
+ */
+@property (weak, nonatomic) IBOutlet UIButton *bttomButton;
 
 @end
 
@@ -61,7 +73,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"注册";
+    self.title = self.isFindPassword ? @"找回密码" : @"注册";
     [self initComonpent];
     
 }
@@ -69,6 +81,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
     self.registType = MobileRegistType;
     self.circularBar.delegate =self;
     [self changeTextFieldStatus];
+    [self setButtonsTitle];
 }
 -(void)afterProFun {
     //获取图形验证码
@@ -121,12 +134,14 @@ typedef NS_ENUM(NSInteger, RegistType) {
     [pramsDict setObject:account forKey:(self.registType == MobileRegistType) ? @"mobile" : @"email"];
     [pramsDict setObject:password forKey:@"password"];
     [pramsDict setObject:code forKey:@"verify"];
-    [pramsDict setObject:(self.registType == MobileRegistType) ? @"mobile" : @"email" forKey:@"scene"];
+    if (!self.isFindPassword) {
+        [pramsDict setObject:(self.registType == MobileRegistType) ? @"mobile" : @"email" forKey:@"scene"];
+    }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegister query:nil path:nil body:pramsDict success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:self.isFindPassword ? kFindPassword :kRegister query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
-        [AEBase alertMessage:@"注册成功!" cb:nil];
+        [AEBase alertMessage:self.isFindPassword ? @"密码已重置":@"注册成功!" cb:nil];
 //        if (weakSelf.presentingViewController.presentingViewController) {
 //            [weakSelf.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 //        }else {
@@ -162,7 +177,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
         [weakSelf hudclose];
-        [AEBase alertMessage:@"验证码已发送至手机" cb:nil];
+        [AEBase alertMessage:@"验证码已发送..." cb:nil];
         [weakSelf circleProgressStart];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -198,6 +213,17 @@ typedef NS_ENUM(NSInteger, RegistType) {
     if ([self.accountTextField canBecomeFirstResponder]) {
         [self.accountTextField becomeFirstResponder];
     }
+}
+- (void)setButtonsTitle {
+    [self.mobileButton setTitle:self.isFindPassword ? @"手机找回" : @"手机注册" forState:UIControlStateNormal];
+    [self.mobileButton setTitle:self.isFindPassword ? @"手机找回" : @"手机注册" forState:UIControlStateHighlighted];
+    [self.mobileButton setTitle:self.isFindPassword ? @"手机找回" : @"手机注册" forState:UIControlStateSelected];
+    [self.emailButton setTitle:self.isFindPassword ? @"邮箱找回" : @"邮箱注册" forState:UIControlStateNormal];
+    [self.emailButton setTitle:self.isFindPassword ? @"邮箱找回" : @"邮箱注册" forState:UIControlStateHighlighted];
+    [self.emailButton setTitle:self.isFindPassword ? @"邮箱找回" : @"邮箱注册" forState:UIControlStateSelected];
+    [self.bttomButton setTitle:self.isFindPassword ? @"找回" : @"注册" forState:UIControlStateNormal];
+    [self.bttomButton setTitle:self.isFindPassword ? @"找回" : @"注册" forState:UIControlStateHighlighted];
+    [self.bttomButton setTitle:self.isFindPassword ? @"找回" : @"注册" forState:UIControlStateSelected];
 }
 #pragma mark - 进度条
 // 开启圆形进度条

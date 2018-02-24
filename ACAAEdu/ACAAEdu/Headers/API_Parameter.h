@@ -29,6 +29,8 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 #define kLogin @"mobile/user/login"
 //注册
 #define kRegister @"mobile/user/register"
+//找回密码
+#define kFindPassword @"mobile/user/findpwd"
 //获取图形验证码
 #define kCaptcha @"mobile/user/captcha"
 //绑定邮箱

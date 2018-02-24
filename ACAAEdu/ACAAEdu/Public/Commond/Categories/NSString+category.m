@@ -153,6 +153,13 @@
     NSString *dateString = [dateFormatter stringFromDate:date];
     return dateString;
 }
++ (NSString *)dateToStringFormatter:(NSString *)formatter date:(NSDate *)date {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:formatter];
+    NSString *dateString = [dateFormatter stringFromDate:date];
+    return dateString;
+}
+
 
 - (NSString *)URLEncodedString
 {

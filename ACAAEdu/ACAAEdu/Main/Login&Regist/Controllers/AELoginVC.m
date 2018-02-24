@@ -92,6 +92,10 @@ typedef NS_ENUM(NSInteger, LoginType) {
 }
 - (IBAction)forgetClick:(UIButton *)sender {
     [self.view endEditing:YES];
+    AERegistVC * vc = [AERegistVC new];
+    vc.isFindPassword = YES;
+    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:vc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (IBAction)registClick:(id)sender {
@@ -114,7 +118,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
 - (void)changeTextFieldStatus {
     BOOL b = self.loginType - 100;
     //身份证18位 手机号11位
-    self.accountTextField.lengthLimit = b ? 18 : 11;
+    self.accountTextField.lengthLimit = b ? 18 : 40;
     self.accountTextField.placeholder = b ? @"请输入身份证号" : @"请输入手机号/邮箱";
     self.accountTextField.text =@"";
     self.passwordTextField.secureTextEntry = !b;
@@ -137,19 +141,6 @@ typedef NS_ENUM(NSInteger, LoginType) {
     }];
 }
 
-- (void)click {
-    [AEUserInfo yy_modelWithDictionary:@{@"user_id":@"11"}];
-    [User save];
-    NSLog(@"-----");
-}
-- (void)click1 {
-    NSLog(@"%d",User.isLogin);
-}
-- (void)click2 {
-    [User removeLoginData];
-    NSLog(@"%d",User.isLogin);
-    NSLog(@"%@",User);
-}
 #pragma mark - other
 //吊起登录
 +(void) OpenLogin:(UIViewController *)viewController callback:(CBLoginCompletion) loginComplation {

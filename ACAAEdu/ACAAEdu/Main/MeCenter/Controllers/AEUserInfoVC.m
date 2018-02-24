@@ -19,7 +19,7 @@
 /**
  参数模型
  */
-@property (nonatomic, strong) AEUserInfo * info;
+@property (nonatomic, strong) AEUserProfile * info;
 
 @end
 
@@ -28,6 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人资料";
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:1482422400];
+    NSDateFormatter * ff = [NSDateFormatter new];
+    [ff setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString * s = [ff stringFromDate:date];
+    NSLog(@"%@",s);
+    
     [self reloadDataSources];
     [self createTableViewStyle:UITableViewStylePlain];
     self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(save) title:@"保存"];
@@ -81,14 +87,23 @@
     }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
+//    pramaDict
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kProfile query:nil path:nil body:pramaDict success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"恭喜你，完善成功" cb:nil];
+        [weakSelf updateSuccess:object];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
     
+}
+- (void)updateSuccess:(id)object {
+    _info = [AEUserProfile yy_modelWithDictionary:object];
+    //生日需要转一下
+    _info.birthday = [NSString dateToStringFormatter:@"yyyy-MM-dd" date:[NSDate dateWithTimeIntervalSince1970:_info.birthday.integerValue]];
+    [self reloadDataSources];
+    [self.tableView reloadData];
 }
 //刷新数据源
 - (void)reloadDataSources {
@@ -174,7 +189,7 @@
 //性别
 - (void)gender {
     WS(weakSelf);
-    [CGXPickerView showStringPickerWithTitle:@"性别" DataSource:@[@"女", @"男", @"保密"] DefaultSelValue:[self toString:_info.gender] IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
+    [CGXPickerView showStringPickerWithTitle:@"性别" DataSource:@[@"女", @"男", @"保密"] DefaultSelValue:STRISEMPTY([self toString:_info.gender]) ? nil :[self toString:_info.gender] IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
         _info.gender = (NSString *)selectRow;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         cell.contentTextField.text = [weakSelf toString:_info.gender];
@@ -196,7 +211,7 @@
 //职业
 - (void)vocation {
     WS(weakSelf);
-    [CGXPickerView showStringPickerWithTitle:@"职业" DataSource:@[@"学生", @"教师", @"设计",@"工程师",@"管理人员",@"其他"] DefaultSelValue:_info.vocation IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
+    [CGXPickerView showStringPickerWithTitle:@"职业" DataSource:@[@"学生", @"教师", @"设计",@"工程师",@"管理人员",@"其他"] DefaultSelValue:STRISEMPTY(_info.vocation) ? nil : _info.vocation IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
         _info.vocation = (NSString *)selectValue;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
         cell.contentTextField.text = _info.vocation;
@@ -206,7 +221,7 @@
 //学历
 - (void)eduLevel {
     WS(weakSelf);
-    [CGXPickerView showStringPickerWithTitle:@"学历" DataSource:@[@"高中", @"大专", @"本科",@"学士",@"硕士",@"博士"] DefaultSelValue:_info.edu_level IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
+    [CGXPickerView showStringPickerWithTitle:@"学历" DataSource:@[@"高中", @"大专", @"本科",@"学士",@"硕士",@"博士"] DefaultSelValue:STRISEMPTY(_info.edu_level) ? nil : _info.edu_level IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
         _info.edu_level = (NSString *)selectValue;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
         cell.contentTextField.text = _info.edu_level;
@@ -253,9 +268,9 @@
     }
     return _pickViewManage;
 }
--(AEUserInfo *)info {
+-(AEUserProfile *)info {
     if (!_info) {
-        _info = [AEUserInfo new];
+        _info = [AEUserProfile new];
     }
     return _info;
 }
