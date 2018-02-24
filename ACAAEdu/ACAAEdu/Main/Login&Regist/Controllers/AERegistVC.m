@@ -74,7 +74,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
     //获取图形验证码
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:@"mobile/user/captcha" query:nil path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kCaptcha query:nil path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
         [weakSelf.codeImageView sd_setImageWithURL:[NSURL URLWithString:object[@"imgUrl"]]];
     } faile:^(NSInteger code, NSString *error) {
@@ -124,7 +124,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
     [pramsDict setObject:(self.registType == MobileRegistType) ? @"mobile" : @"email" forKey:@"scene"];
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user/register" query:nil path:nil body:pramsDict success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegister query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"注册成功!" cb:nil];
 //        if (weakSelf.presentingViewController.presentingViewController) {
@@ -160,7 +160,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
     
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user/verify" query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"验证码已发送至手机" cb:nil];
         [weakSelf circleProgressStart];

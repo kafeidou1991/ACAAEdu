@@ -162,7 +162,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
             _faile(error.code,error.domain);
         }
     }
-    NSLog(@"接收消息[%@]---json = \n%@",methodName,[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+    NSLog(@"接收消息[%@]---json = \n%@",[NSString stringWithFormat:@"%@%@",_info.networkDomain,methodName],[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
 }
 //检查是否有是正确参数返回
 -(id) checkIsSuccess:(id)responseObject
@@ -193,7 +193,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
         if (_faile) {
             _faile(error.code,errorStr);
         }
-        NSLog(@"Mothed:%@--Error.localizedDescription:%@,code :%ld",methodName,errorStr,(long)error.code);
+        NSLog(@"Mothed:%@--Error.localizedDescription:%@,code :%ld",[NSString stringWithFormat:@"%@%@",_info.networkDomain,methodName],errorStr,(long)error.code);
     }
 }
 #pragma mark - http header
@@ -213,7 +213,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     responseSerialiazer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/xml",@"text/plain", @"application/javascript", @"image/*", nil];
     manager.responseSerializer = responseSerialiazer;
 #ifdef DEBUG
-//    NSLog(@"httpHeader %@",manager.requestSerializer.HTTPRequestHeaders);
+    NSLog(@"httpHeader %@",manager.requestSerializer.HTTPRequestHeaders);
 #endif
     return manager;
 }

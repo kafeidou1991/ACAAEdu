@@ -98,7 +98,8 @@
             arrData = [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingAllowFragments error:nil];
         }
     } else{
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"CGXAddressCity" ofType:@"plist"];
+        //CGXAddressCity   CGXAddressCity_child 两个pist文件的区别就是不带有 “不限”的选择
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"CGXAddressCity_child" ofType:@"plist"];
         arrData = [NSMutableArray arrayWithContentsOfFile:filePath];
     }
     for (NSDictionary *dict in arrData) {

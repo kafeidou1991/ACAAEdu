@@ -49,6 +49,9 @@
 		B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBC202B088600EDB00D /* NSObject+entend.m */; };
 		B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBD202B088700EDB00D /* UIView+Extend.m */; };
 		B918BBD0202B088700EDB00D /* WLSpecScaleLayoutConstrain.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */; };
+		B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */ = {isa = PBXBuildFile; fileRef = B92733A6204148DE006F48C2 /* CGXAddressCity_child.plist */; };
+		B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92733A920415E61006F48C2 /* AEUserRemarkCell.m */; };
+		B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */; };
 		B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */; };
 		B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */; };
 		B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC9203FF54E006344F2 /* AEAccountSetVC.m */; };
@@ -193,6 +196,10 @@
 		B918BBBC202B088600EDB00D /* NSObject+entend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+entend.m"; sourceTree = "<group>"; };
 		B918BBBD202B088700EDB00D /* UIView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extend.m"; sourceTree = "<group>"; };
 		B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSpecScaleLayoutConstrain.m; sourceTree = "<group>"; };
+		B92733A6204148DE006F48C2 /* CGXAddressCity_child.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CGXAddressCity_child.plist; sourceTree = "<group>"; };
+		B92733A820415E61006F48C2 /* AEUserRemarkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserRemarkCell.h; sourceTree = "<group>"; };
+		B92733A920415E61006F48C2 /* AEUserRemarkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserRemarkCell.m; sourceTree = "<group>"; };
+		B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEUserRemarkCell.xib; sourceTree = "<group>"; };
 		B94C1CC3203FC155006344F2 /* AEModifierInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoVC.h; sourceTree = "<group>"; };
 		B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModifierInfoVC.m; sourceTree = "<group>"; };
 		B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEModifierInfoVC.xib; sourceTree = "<group>"; };
@@ -434,6 +441,7 @@
 			children = (
 				B94C1CD120401B3F006344F2 /* CGXAddressPcikerView.h */,
 				B94C1CD220401B3F006344F2 /* CGXAddressCity.plist */,
+				B92733A6204148DE006F48C2 /* CGXAddressCity_child.plist */,
 				B94C1CD320401B3F006344F2 /* CGXDatePickerView.h */,
 				B94C1CD420401B3F006344F2 /* CGXPickerViewManager.m */,
 				B94C1CD520401B3F006344F2 /* CGXAddressModel.h */,
@@ -780,6 +788,9 @@
 				B94C1CCB20400054006344F2 /* AEUserInfoCell.h */,
 				B94C1CCC20400054006344F2 /* AEUserInfoCell.m */,
 				B94C1CCD20400054006344F2 /* AEUserInfoCell.xib */,
+				B92733A820415E61006F48C2 /* AEUserRemarkCell.h */,
+				B92733A920415E61006F48C2 /* AEUserRemarkCell.m */,
+				B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -924,6 +935,8 @@
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
+				B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */,
+				B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */,
 				B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */,
 				B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */,
 				B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */,
@@ -1062,6 +1075,7 @@
 				B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */,
 				B9B9164720186209002A63CE /* main.m in Sources */,
 				B79C926B2029F430002D0B66 /* HomeCollectionLayout.m in Sources */,
+				B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */,
 				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,

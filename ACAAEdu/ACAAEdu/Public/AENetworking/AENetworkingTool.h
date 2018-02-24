@@ -10,7 +10,7 @@
 #import "AEHttpInfo.h"
 
 typedef void(^RequestSuccessBlock)(id object);
-typedef void(^RequestFailureBlock)(NSInteger code,NSString * error);
+typedef void(^RequestFailureBlock)(NSInteger code,id error);
 
 @interface AENetworkingTool : NSObject
 

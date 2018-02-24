@@ -53,8 +53,15 @@
 - (void)initComonpent {
     if (self.type == BindEmailType) {
         self.title = @"绑定邮箱";
-        [self.bindBtn setTitle:@"确定绑定" forState:UIControlStateNormal];
+    }else if (self.type == BindMobileType) {
+        self.title = @"绑定手机号";
     }
+    if (self.type == BindMobileType || self.type == BindMobileIdCardType || self.type == BindEmailType) {
+        [self.bindBtn setTitle:@"确定绑定" forState:UIControlStateNormal];
+    }else {
+        [self.bindBtn setTitle:@"解除绑定" forState:UIControlStateNormal];
+    }
+    
     self.circularBar.delegate =self;
     [self changeTextFieldStatus];
 }
@@ -63,6 +70,9 @@
     if (self.type == BindEmailType) {
         self.accountTextField.lengthLimit = 40;
         self.accountTextField.placeholder = @"请输入邮箱";
+    }else if (self.type == BindMobileType) {
+        self.accountTextField.lengthLimit = 11;
+        self.accountTextField.placeholder = @"请输入手机号";
     }
     if ([self.accountTextField canBecomeFirstResponder]) {
         [self.accountTextField becomeFirstResponder];
@@ -72,7 +82,7 @@
     //获取图形验证码
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:@"mobile/user/captcha" query:nil path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kCaptcha query:nil path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
         [weakSelf.codeImageView sd_setImageWithURL:[NSURL URLWithString:object[@"imgUrl"]]];
     } faile:^(NSInteger code, NSString *error) {
@@ -94,6 +104,11 @@
             [AEBase alertMessage:@"请输入正确邮箱!" cb:nil];
             return;
         }
+    }else if (self.type == BindMobileType) {
+        if (!account.isValidateMobile) {
+            [AEBase alertMessage:@"请输入正确手机号!" cb:nil];
+            return;
+        }
     }
     if (imageCode.length <= 0) {
         [AEBase alertMessage:@"请输入正确的图形验证码!" cb:nil];
@@ -105,20 +120,25 @@
     }
     //注册
     NSMutableDictionary * pramsDict = @{}.mutableCopy;
-    [pramsDict setObject:account forKey:@"email"];
+    NSString * methodName = @"";
+    if (self.type ==BindEmailType) {
+        [pramsDict setObject:account forKey:@"email"];
+        methodName = kBindEmail;
+    }else if (self.type == BindMobileType) {
+        [pramsDict setObject:account forKey:@"mobile"];
+        methodName = kBindMobile;
+    }
     [pramsDict setObject:code forKey:@"verify"];
-    NSLog(@"%@",pramsDict);
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user/bindEmail" query:nil path:nil body:pramsDict success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:methodName query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
-        [AEBase alertMessage:@"绑定成功!" cb:nil];
-        //        if (weakSelf.presentingViewController.presentingViewController) {
-        //            [weakSelf.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-        //        }else {
-        //            [weakSelf dismissViewControllerAnimated:YES completion:nil];
-        //        }
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        if (self.type == BindMobileType || self.type == BindMobileIdCardType || self.type == BindEmailType) {
+            [AEBase alertMessage:@"绑定成功!" cb:nil];
+        }else {
+            [AEBase alertMessage:@"解绑成功!" cb:nil];
+        }
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -137,10 +157,15 @@
             [AEBase alertMessage:@"请输入正确邮箱!" cb:nil];
             return;
         }
+    }else if (self.type == BindMobileType) {
+        if (!account.isValidateMobile) {
+            [AEBase alertMessage:@"请输入正确手机号!" cb:nil];
+            return;
+        }
     }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user/verify" query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"验证码已发送..." cb:nil];
         [weakSelf circleProgressStart];

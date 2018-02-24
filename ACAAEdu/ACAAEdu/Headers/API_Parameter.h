@@ -26,7 +26,19 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 
 #pragma mark ---------------------- 参数字段、功能 ----------------------------
 //登录
-#define kLoginAPI @"mobile/user/login"
+#define kLogin @"mobile/user/login"
+//注册
+#define kRegister @"mobile/user/register"
+//获取图形验证码
+#define kCaptcha @"mobile/user/captcha"
+//绑定邮箱
+#define kBindEmail @"mobile/user/bindEmail"
+//绑定手机
+#define kBindMobile @"mobile/user/bindMobile"
+//获取验证码
+#define kVerifyCode @"mobile/user/verify"
+//上传用户资料
+#define kProfile @"mobile/user/profile"
 
 
 

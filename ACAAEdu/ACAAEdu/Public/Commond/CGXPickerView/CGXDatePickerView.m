@@ -109,7 +109,12 @@
             _datePicker.maximumDate = maxDate;
         }
         // 把当前时间赋值给 _datePicker
-        [_datePicker setDate:[NSDate date] animated:YES];
+        // 默认选中今天的日期
+        if (_selectValue.length > 0) {
+            [_datePicker setDate:[self toDateWithDateString:_selectValue] animated:YES];
+        } else {
+            [_datePicker setDate:[NSDate date] animated:YES];
+        }
 //        [_datePicker setLocale:[NSLocale systemLocale]];
         // 设置时区
 //        [_datePicker setTimeZone:[NSTimeZone localTimeZone]];

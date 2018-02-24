@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     WS(weakSelf);
 //    18511032576  123456
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLoginAPI query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
         [weakSelf hudclose];
         if (object) {
            [AEUserInfo yy_modelWithDictionary:object];

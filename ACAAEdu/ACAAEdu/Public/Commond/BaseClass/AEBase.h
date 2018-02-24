@@ -22,5 +22,4 @@ typedef void (^ALertCompletion)(BOOL compliont);
 
 //提醒
 + (void)alertMessage:(NSString*)msg cb:(ALertCompletion) completion;
-+ (void)hahahahaha;
 @end
