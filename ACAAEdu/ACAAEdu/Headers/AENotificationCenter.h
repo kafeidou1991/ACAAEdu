@@ -11,6 +11,7 @@
 
 static NSString * const kLoginSuccess = @"loginSuccess";
 static NSString * const kLoginExit = @"loginExit";
+static NSString * const kBindAccountSuccess = @"BindAccountSuccess";
 
 
 

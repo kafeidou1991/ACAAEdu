@@ -9,6 +9,7 @@
 #import "AEAccountSetVC.h"
 #import "AEModifierInfoCell.h"
 #import "AEModifierInfoVC.h"
+#import "AEBindIdCardVC.h"
 
 @interface AEAccountSetVC ()
 
@@ -23,6 +24,13 @@
                          @{@"title":@"邮箱账号",@"value":User.email},
                          @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;
     [self createTableViewStyle:UITableViewStylePlain];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:kBindAccountSuccess object:nil];
+}
+- (void)reload {
+    self.dataSources = @[@{@"title":@"手机号",@"value":User.mobile},
+                         @{@"title":@"邮箱账号",@"value":User.email},
+                         @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;
+    [self.tableView reloadData];
 }
 
 #pragma mark - tableview delegate & datesource
@@ -53,9 +61,16 @@
         }
         [self.navigationController pushViewController:pushVC animated:YES];
     }else {
-        //身份证验证
+        //身份证验证  不支持解绑
+        [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
+//        if (STRISEMPTY(User.id_card)) {
+//            [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
+//        }
     }
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

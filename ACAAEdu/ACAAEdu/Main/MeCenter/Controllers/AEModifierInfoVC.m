@@ -56,7 +56,7 @@
     }else if (self.type == BindMobileType) {
         self.title = @"绑定手机号";
     }
-    if (self.type == BindMobileType || self.type == BindMobileIdCardType || self.type == BindEmailType) {
+    if (self.type == BindMobileType || self.type == BindEmailType) {
         [self.bindBtn setTitle:@"确定绑定" forState:UIControlStateNormal];
     }else {
         [self.bindBtn setTitle:@"解除绑定" forState:UIControlStateNormal];
@@ -133,8 +133,9 @@
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:methodName query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
-        if (self.type == BindMobileType || self.type == BindMobileIdCardType || self.type == BindEmailType) {
+        if (weakSelf.type == BindMobileType || weakSelf.type == BindEmailType) {
             [AEBase alertMessage:@"绑定成功!" cb:nil];
+            [weakSelf bindSuccess:account];
         }else {
             [AEBase alertMessage:@"解绑成功!" cb:nil];
         }
@@ -143,6 +144,16 @@
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
+}
+//绑定成功
+- (void)bindSuccess:(NSString *)account {
+    if (self.type == BindMobileType) {
+        User.mobile =account;
+    }else if (self.type == BindEmailType) {
+        User.email = account;
+    }
+    [User save];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kBindAccountSuccess object:nil];
 }
 #pragma mark - 发送验证码
 - (IBAction)sendCodeClick:(UIButton *)sender {

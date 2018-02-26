@@ -6,9 +6,9 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "HomeCollectionCell.h"
+#import "AEHomeCollectionCell.h"
 
-@implementation HomeCollectionCell
+@implementation AEHomeCollectionCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

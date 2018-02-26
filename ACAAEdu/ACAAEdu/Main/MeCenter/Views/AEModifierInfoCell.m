@@ -34,6 +34,11 @@
     }else {
         [self.functionBtn setTitle:@"绑定" forState:UIControlStateNormal];
     }
+    if ([dict[@"title"] isEqualToString:@"身份证账号"] && !STRISEMPTY(User.id_card)) {
+        self.functionBtn.hidden = YES;
+    }else {
+        self.functionBtn.hidden = NO;
+    }
 }
 - (IBAction)functionClick:(UIButton *)sender {
     

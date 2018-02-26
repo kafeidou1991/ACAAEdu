@@ -8,7 +8,7 @@
 
 #import "ExameCollectionView.h"
 #import "ExamCollectionLayout.h"
-#import "HomeCollectionCell.h"
+#import "AEHomeCollectionCell.h"
 
 @interface ExameCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -22,7 +22,7 @@
         self.backgroundColor = [UIColor clearColor];
         self.dataSource = self;
         self.delegate = self;
-        [self registerNib:[UINib nibWithNibName:@"HomeCollectionCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([HomeCollectionCell class])];
+        [self registerNib:[UINib nibWithNibName:@"AEHomeCollectionCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AEHomeCollectionCell class])];
     }
     return self;
 }
@@ -40,7 +40,7 @@
     return 10.f;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    HomeCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([HomeCollectionCell class]) forIndexPath:indexPath];
+    AEHomeCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AEHomeCollectionCell class]) forIndexPath:indexPath];
     return cell;
 }
 @end

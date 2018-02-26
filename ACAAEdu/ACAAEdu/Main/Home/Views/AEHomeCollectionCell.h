@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeCollectionCell : UICollectionViewCell
+@interface AEHomeCollectionCell : UICollectionViewCell
 
 @end

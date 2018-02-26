@@ -100,6 +100,7 @@
         [weakSelf hudclose];
         [AEBase alertMessage:@"恭喜你，完善成功" cb:nil];
         [weakSelf updateSuccess:object];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -180,11 +181,6 @@
             [cell.contentTextView becomeFirstResponder];
         }
     }
-    
-//    AEUserInfoCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-//    if ([cell.contentTextField canBecomeFirstResponder]) {
-//        [cell.contentTextField becomeFirstResponder];
-//    }
 }
 #pragma mark - 处理事件
 //生日

@@ -41,7 +41,10 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 #define kVerifyCode @"mobile/user/verify"
 //上传用户资料
 #define kProfile @"mobile/user/profile"
+//获取用户资料
 #define kGetProfile @"mobile/user/getProfile"
+//绑定身份证
+#define kBindIdCard @"mobile/user/bindIdCard"
 
 
 
