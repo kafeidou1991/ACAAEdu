@@ -11,13 +11,13 @@
 #import "CGXPickerView.h"
 #import "AEUserRemarkCell.h"
 
-@interface AEUserInfoVC ()<UITextFieldDelegate,UITextViewDelegate>
+@interface AEUserInfoVC ()<UITextFieldDelegate,UITextViewDelegate,UIGestureRecognizerDelegate>
 /**
  pickview 字体颜色等
  */
 @property (nonatomic, strong) CGXPickerViewManager * pickViewManage;
 /**
- 参数模型
+ 用户资料
  */
 @property (nonatomic, strong) AEUserProfile * info;
 
@@ -28,18 +28,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"个人资料";
-    NSDate * date = [NSDate dateWithTimeIntervalSince1970:1482422400];
-    NSDateFormatter * ff = [NSDateFormatter new];
-    [ff setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString * s = [ff stringFromDate:date];
-    NSLog(@"%@",s);
-    
-    [self reloadDataSources];
-    [self createTableViewStyle:UITableViewStylePlain];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(save) title:@"保存"];
+}
+-(void)afterProFun {
+    WS(weakSelf);
+    [self hudShow:self.view msg:STTR_ater_on];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kGetProfile query:nil path:nil body:nil success:^(id object) {
+        [weakSelf hudclose];
+        weakSelf.info = [AEUserProfile yy_modelWithJSON:object[@"user_profile"]];
+        //服务器返回时间戳 单独处理下
+        weakSelf.info.birthday = [NSString dateToStringFormatter:@"yyyy-MM-dd" date:[NSDate dateWithTimeIntervalSince1970:weakSelf.info.birthday.integerValue]];
+        [weakSelf reloadDataSources];
+        [weakSelf createTableViewStyle:UITableViewStylePlain];
+    } faile:^(NSInteger code, NSString *error) {
+        [weakSelf hudclose];
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 #pragma mark - 上传表单
 - (void)save {
+    [self.view endEditing:YES];
     NSMutableDictionary * pramaDict = @{}.mutableCopy;
     //英文名 性别  必传
     if (STRISEMPTY(_info.user_name_en)) {
@@ -87,7 +96,6 @@
     }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-//    pramaDict
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kProfile query:nil path:nil body:pramaDict success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"恭喜你，完善成功" cb:nil];
@@ -100,15 +108,17 @@
 }
 - (void)updateSuccess:(id)object {
     _info = [AEUserProfile yy_modelWithDictionary:object];
-    //生日需要转一下
+    //服务器返回时间戳 单独处理下
     _info.birthday = [NSString dateToStringFormatter:@"yyyy-MM-dd" date:[NSDate dateWithTimeIntervalSince1970:_info.birthday.integerValue]];
+    User.user_profile = _info;
+    [User save];
     [self reloadDataSources];
     [self.tableView reloadData];
 }
-//刷新数据源
+#pragma mark -刷新数据源
 - (void)reloadDataSources {
-    self.dataSources = @[@{@"title":@"英文名",@"value":self.info.user_name_en},
-                         @{@"title":@"生日",@"value":_info.birthday},
+    self.dataSources = @[@{@"title":@"英文名",@"value":_info.user_name_en},
+                         @{@"title":@"生日",@"value":STRISEMPTY(_info.birthday) ? @"" : _info.birthday},
                          @{@"title":@"性别",@"value":[self toString:_info.gender]},
                          @{@"title":@"所在地",@"value":STRISEMPTY(_info.province) ? @"" : [NSString stringWithFormat:@"%@ %@",_info.province,_info.city]},
                          @{@"title":@"详细地址",@"value":_info.address},
@@ -164,6 +174,11 @@
         [self vocation];
     }else if (indexPath.row == 9) {
         [self eduLevel];
+    }else if (indexPath.row == 10) {
+        AEUserRemarkCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
+        if ([cell.contentTextView canBecomeFirstResponder]) {
+            [cell.contentTextView becomeFirstResponder];
+        }
     }
     
 //    AEUserInfoCell * cell = [tableView cellForRowAtIndexPath:indexPath];

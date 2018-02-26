@@ -37,6 +37,10 @@
  昵称
  */
 @property (nonatomic, copy) NSString * username;
+/**
+ 用户资料
+ */
+@property (nonatomic, strong) AEUserProfile * user_profile;
 
 
 #pragma mark - methods
