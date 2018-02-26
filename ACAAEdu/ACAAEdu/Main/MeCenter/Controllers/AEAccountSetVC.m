@@ -62,10 +62,9 @@
         [self.navigationController pushViewController:pushVC animated:YES];
     }else {
         //身份证验证  不支持解绑
-        [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
-//        if (STRISEMPTY(User.id_card)) {
-//            [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
-//        }
+        if (STRISEMPTY(User.id_card)) {
+            [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
+        }
     }
 }
 
