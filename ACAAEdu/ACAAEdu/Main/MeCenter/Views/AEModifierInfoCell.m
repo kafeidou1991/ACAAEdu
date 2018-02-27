@@ -41,8 +41,9 @@
     }
 }
 - (IBAction)functionClick:(UIButton *)sender {
-    
-    
+    if (_actionBlock) {
+        _actionBlock();
+    }
 }
 
 @end

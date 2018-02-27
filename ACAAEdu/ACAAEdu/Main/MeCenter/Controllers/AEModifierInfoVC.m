@@ -55,6 +55,10 @@
         self.title = @"绑定邮箱";
     }else if (self.type == BindMobileType) {
         self.title = @"绑定手机号";
+    }else if (self.type == UnBindEmailType) {
+        self.title = @"解绑邮箱";
+    }else if (self.type == UnBindMobileType) {
+        self.title = @"解绑手机号";
     }
     if (self.type == BindMobileType || self.type == BindEmailType) {
         [self.bindBtn setTitle:@"确定绑定" forState:UIControlStateNormal];
@@ -67,10 +71,10 @@
 }
 - (void)changeTextFieldStatus {
     //身份证18位 手机号11位 邮箱40
-    if (self.type == BindEmailType) {
+    if (self.type == BindEmailType || self.type == UnBindEmailType) {
         self.accountTextField.lengthLimit = 40;
         self.accountTextField.placeholder = @"请输入邮箱";
-    }else if (self.type == BindMobileType) {
+    }else if (self.type == BindMobileType || self.type == UnBindMobileType) {
         self.accountTextField.lengthLimit = 11;
         self.accountTextField.placeholder = @"请输入手机号";
     }
@@ -99,12 +103,12 @@
     NSString * account = self.accountTextField.text.trimString;
     NSString * imageCode = self.imageTextField.text.trimString;
     NSString * code = self.codeTextField.text.trimString;
-    if (self.type == BindEmailType) {
+    if (self.type == BindEmailType || self.type == UnBindEmailType) {
         if (!account.isValidateEmail) {
             [AEBase alertMessage:@"请输入正确邮箱!" cb:nil];
             return;
         }
-    }else if (self.type == BindMobileType) {
+    }else if (self.type == BindMobileType || self.type == UnBindMobileType) {
         if (!account.isValidateMobile) {
             [AEBase alertMessage:@"请输入正确手机号!" cb:nil];
             return;
@@ -127,6 +131,8 @@
     }else if (self.type == BindMobileType) {
         [pramsDict setObject:account forKey:@"mobile"];
         methodName = kBindMobile;
+    }else if (self.type == UnBindMobileType || self.type == UnBindEmailType) {
+        methodName = kUnBindMobileOrEmile;
     }
     [pramsDict setObject:code forKey:@"verify"];
     WS(weakSelf);
@@ -138,6 +144,7 @@
             [weakSelf bindSuccess:account];
         }else {
             [AEBase alertMessage:@"解绑成功!" cb:nil];
+            [weakSelf unBindSuccess:account];
         }
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } faile:^(NSInteger code, NSString *error) {
@@ -151,6 +158,16 @@
         User.mobile =account;
     }else if (self.type == BindEmailType) {
         User.email = account;
+    }
+    [User save];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kBindAccountSuccess object:nil];
+}
+//解绑成功
+- (void)unBindSuccess:(NSString *)account {
+    if (self.type == UnBindMobileType) {
+        User.mobile = @"";
+    }else if (self.type == UnBindEmailType) {
+        User.email = @"";
     }
     [User save];
     [[NSNotificationCenter defaultCenter]postNotificationName:kBindAccountSuccess object:nil];

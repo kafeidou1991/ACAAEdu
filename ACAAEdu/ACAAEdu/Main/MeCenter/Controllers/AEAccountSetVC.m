@@ -39,12 +39,19 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDictionary * dict = self.dataSources[indexPath.row];
     [cell updateCell:dict];
+    WS(weakSelf);
+    cell.actionBlock = ^{
+        [weakSelf bindOrUnBindAction:indexPath];
+    };
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50.f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self bindOrUnBindAction:indexPath];
+}
+- (void)bindOrUnBindAction:(NSIndexPath *)indexPath {
     AEModifierInfoVC * pushVC = [AEModifierInfoVC new];
     if (indexPath.row == 0) {
         if (STRISEMPTY(User.mobile)) {

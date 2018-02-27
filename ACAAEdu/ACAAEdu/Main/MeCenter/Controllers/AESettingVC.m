@@ -81,23 +81,28 @@
     return view;
 }
 - (void)exitAction{
-//    NSDictionary * dict = @{@"token":[AEUserInfo shareInstance].isLogin};
-    WS(weakSelf);
-//    [self hudShow:self.view msg:STTR_ater_on];
-//    [A PostWithUrl:Logout params:dict isReadCache:NO success:^(NSURLSessionDataTask *task, id responseObject) {
-//        [weakSelf hudclose];
-//    } failed:^(NSError *error, id chaceResponseObject) {
-//        [weakSelf hudclose];
-//        [JJWBase alertMessage:error.domain cb:nil];
-//    }];
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您确定要退出么？" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [[AEUserInfo shareInstance]removeLoginData];
-        [[NSNotificationCenter defaultCenter]postNotificationName:kLoginExit object:nil];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [self exit];
+        });
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
+}
+- (void)exit {
+//    WS(weakSelf);
+    [[AEUserInfo shareInstance]removeLoginData];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kLoginExit object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self hudShow:self.view msg:STTR_ater_on];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogout query:nil path:nil body:nil success:^(id object) {
+//        [weakSelf hudclose];
+        
+    } faile:^(NSInteger code, NSString *error) {
+//        [weakSelf hudclose];
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 #pragma mark - 清楚缓存 计算缓存
 - (float)computeCache{

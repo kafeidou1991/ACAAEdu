@@ -21,9 +21,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wjW-VV-c73">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abountme" translatesAutoresizingMaskIntoConstraints="NO" id="wjW-VV-c73">
                     <rect key="frame" x="157" y="273.5" width="60" height="60"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.21960784310000001" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="d4w-nM-DIY"/>
                         <constraint firstAttribute="width" constant="60" id="lGN-zG-LkJ"/>
@@ -64,4 +63,7 @@ copyright @2011-2018 .ALL Right Reserved.</string>
             <point key="canvasLocation" x="32.5" y="121.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="abountme" width="60" height="60"/>
+    </resources>
 </document>

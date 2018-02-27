@@ -27,6 +27,8 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 #pragma mark ---------------------- 参数字段、功能 ----------------------------
 //登录
 #define kLogin @"mobile/user/login"
+//退出登录
+#define kLogout @"mobile/user/logout"
 //注册
 #define kRegister @"mobile/user/register"
 //找回密码
@@ -37,6 +39,8 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 #define kBindEmail @"mobile/user/bindEmail"
 //绑定手机
 #define kBindMobile @"mobile/user/bindMobile"
+//解绑手机号 邮箱
+#define kUnBindMobileOrEmile @"mobile/user/unbind"
 //获取验证码
 #define kVerifyCode @"mobile/user/verify"
 //上传用户资料
