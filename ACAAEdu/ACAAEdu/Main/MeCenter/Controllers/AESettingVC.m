@@ -58,7 +58,13 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        [self.navigationController pushViewController:[AEAccountSetVC new] animated:YES];
+        if (User.isLogin) {
+         [self.navigationController pushViewController:[AEAccountSetVC new] animated:YES];
+        }else {
+            [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
+               [self.navigationController pushViewController:[AEAccountSetVC new] animated:YES];
+            }];
+        }
     }else if (indexPath.row == 1){
         [self cleanCache];
     }

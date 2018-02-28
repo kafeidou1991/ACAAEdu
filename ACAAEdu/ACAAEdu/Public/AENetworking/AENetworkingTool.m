@@ -161,6 +161,10 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
         if (_faile) {
             _faile(error.code,error.domain);
         }
+        if (error.code == 2000) {
+            [self deleteApiToken];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kreLogin object:nil];
+        }
     }
     NSLog(@"接收消息[%@]---json = \n%@",[NSString stringWithFormat:@"%@%@",_info.networkDomain,methodName],[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
 }
@@ -336,6 +340,12 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     NSString *content = [defaults objectForKey:@"token"];
     return content;
+}
+//重新登录用
+- (void)deleteApiToken {
+    NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
+    [defaults setObject:@"" forKey:@"token"];
+    [defaults synchronize];
 }
 
 #pragma mark Https SSL证书适配

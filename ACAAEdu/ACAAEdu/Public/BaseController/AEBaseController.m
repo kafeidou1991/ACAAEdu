@@ -38,13 +38,16 @@
         _interactivePopGestureRecognizerDelegate = self.navigationController.interactivePopGestureRecognizer.delegate;
         self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(relogin) name:kreLogin object:nil];
 }
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     if (_interactivePopGestureRecognizerDelegate) {
         self.navigationController.interactivePopGestureRecognizer.delegate = _interactivePopGestureRecognizerDelegate;
     }
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kreLogin object:nil];
 }
+
 - (UIBarButtonItem *)createLeftBarBackItemHandle{
     UIImage * image = [UIImage imageNamed:@"ic_global_return"];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -62,7 +65,11 @@
 //x进行一些网络请求
 - (void)afterProFun{
 }
-
+- (void)relogin {
+    [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
+        [self afterProFun];
+    }];
+}
 - (void)hudShow:(UIView *)inView msg:(NSString *)msgText{
     if (_mbProgressHud == nil) {
         _mbProgressHud = [MBProgressHUD showHUDAddedTo:inView animated:YES];

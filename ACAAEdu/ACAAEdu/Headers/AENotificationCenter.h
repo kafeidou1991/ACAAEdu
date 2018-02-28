@@ -12,6 +12,7 @@
 static NSString * const kLoginSuccess = @"loginSuccess";
 static NSString * const kLoginExit = @"loginExit";
 static NSString * const kBindAccountSuccess = @"BindAccountSuccess";
+static NSString * const kreLogin = @"reLogin"; //重新登录
 
 
 
