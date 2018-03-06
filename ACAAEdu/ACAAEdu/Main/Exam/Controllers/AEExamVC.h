@@ -10,4 +10,6 @@
 
 @interface AEExamVC : AEBaseController
 
+-(instancetype)initWithFrame:(CGRect)frame dataSources:(NSArray *)data;
+
 @end

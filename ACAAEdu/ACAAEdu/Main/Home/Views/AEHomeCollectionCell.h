@@ -10,4 +10,9 @@
 
 @interface AEHomeCollectionCell : UICollectionViewCell
 
+/**
+ 购买回调
+ */
+@property (nonatomic, copy) dispatch_block_t buyBlock;
+
 @end

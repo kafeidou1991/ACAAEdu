@@ -11,6 +11,7 @@
 
 @interface HomeCollectionView : UICollectionView
 
+-(instancetype)initWithFrame:(CGRect)frame dataSources:(NSArray *)data;
 /**
  更新banner数据
 

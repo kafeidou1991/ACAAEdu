@@ -10,6 +10,8 @@
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AERegistVC.m */; };
 		B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AERegistVC.xib */; };
+		B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */; };
+		B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */; };
 		B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92542029DCC9002D0B66 /* CExpandHeader.m */; };
 		B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92572029DFB9002D0B66 /* MeCenterHeaderView.m */; };
 		B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C92592029DFC2002D0B66 /* MeCenterHeaderView.xib */; };
@@ -126,6 +128,9 @@
 		B713101C202B55C6001CBAE8 /* AERegistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistVC.h; sourceTree = "<group>"; };
 		B713101D202B55C7001CBAE8 /* AERegistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERegistVC.m; sourceTree = "<group>"; };
 		B713101E202B55C7001CBAE8 /* AERegistVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERegistVC.xib; sourceTree = "<group>"; };
+		B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailVC.h; sourceTree = "<group>"; };
+		B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailVC.m; sourceTree = "<group>"; };
+		B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailVC.xib; sourceTree = "<group>"; };
 		B79C92532029DCC9002D0B66 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		B79C92542029DCC9002D0B66 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		B79C92562029DFB9002D0B66 /* MeCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeCenterHeaderView.h; sourceTree = "<group>"; };
@@ -486,6 +491,9 @@
 				B7FB06A3202C93F100D5642D /* AEExamVC.h */,
 				B7FB06A4202C93F100D5642D /* AEExamVC.m */,
 				B7FB06A5202C93F100D5642D /* AEExamVC.xib */,
+				B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */,
+				B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */,
+				B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -944,6 +952,7 @@
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
+				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
@@ -1066,6 +1075,7 @@
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
+				B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */,
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
