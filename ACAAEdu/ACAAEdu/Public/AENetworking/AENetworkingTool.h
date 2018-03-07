@@ -25,8 +25,8 @@ typedef void(^RequestFailureBlock)(NSInteger code,id error);
  @param query query 可为nil  拼接在url之后的 GET请求
  @param path path 可为nil 请求路径(一般为nil)
  @param body body（NSArray/NSDictionary/NSString）可为nil  请求体
- @param RequestSuccessBlock  成功回调
- @param RequestFailureBlock  失败回调 code码error 错误信息
+ @param success  成功回调
+ @param faile  失败回调 code码error 错误信息
  */
 + (void)httpRequestAsynHttpType:(HttpRequestType)type
                      methodName:(NSString *)methodName
@@ -35,6 +35,8 @@ typedef void(^RequestFailureBlock)(NSInteger code,id error);
                      body:(id)body
                      success:(RequestSuccessBlock)success
                      faile:(RequestFailureBlock)faile;
+
+
 
 
 

@@ -24,7 +24,7 @@ static NSString * const baseUrl = @"http://test.yongqingjt.com:8080/yinzhifuapi/
 static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 #endif
 
-#pragma mark ---------------------- 参数字段、功能 ----------------------------
+#pragma mark ---------------------- 用户----------------------------
 //登录
 #define kLogin @"mobile/user/login"
 //退出登录
@@ -50,7 +50,9 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 //绑定身份证
 #define kBindIdCard @"mobile/user/bindIdCard"
 
-
+#pragma mark ---------------------- 科目----------------------------
+//科目列表
+#define kSubjectList @"mobile/subject/index"
 
 
 #endif /* API_Parameter_h */

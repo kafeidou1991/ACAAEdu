@@ -9,19 +9,12 @@
 #import <Foundation/Foundation.h>
 @class PageItem;
 @interface DateCenter : NSObject
-@property (nonatomic, strong) PageItem * page;//分页使用
+@property (nonatomic, copy) NSString * current_page;
+@property (nonatomic, copy) NSString * last_page;
+@property (nonatomic, copy) NSString * per_page;
+@property (nonatomic, copy) NSString * total;//页数
 @end
 
-@interface PageItem : NSObject
-@property (nonatomic, copy) NSString * pageSize;
-@property (nonatomic, copy) NSString * pageNo;//页数
-@property (nonatomic, copy) NSString * lastIndex;
-@property (nonatomic, copy) NSString * firstIndex;
-@property (nonatomic, copy) NSString * pageCount;
-@property (nonatomic, copy) NSString * lastPage;//是否是最后一页
-@property (nonatomic, copy) NSString * firstPage;
-@property (nonatomic, copy) NSString * resultCount;
-@end
 
 @interface AEAppVersion : DateCenter
 @property (nonatomic, copy) NSString * version_id; //公告

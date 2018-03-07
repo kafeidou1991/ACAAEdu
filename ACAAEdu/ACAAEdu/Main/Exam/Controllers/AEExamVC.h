@@ -6,10 +6,9 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseController.h"
+#import "AEBaseTableController.h"
 
-@interface AEExamVC : AEBaseController
+@interface AEExamVC : AEBaseTableController
 
--(instancetype)initWithFrame:(CGRect)frame dataSources:(NSArray *)data;
 
 @end

@@ -60,7 +60,7 @@
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 #define NAVIGATION_HEIGHT (IS_IPHONEX ? 88 : 64)
-#define TAB_BAR_HEIGHT (IS_IPHONEX ? 83 : 49)
+#define TAB_BAR_HEIGHT 49
 #define STATUS_BAR_HEIGHT (IS_IPHONEX ? 44 : 20)
 // home indicator
 #define HOME_INDICATOR_HEIGHT (IS_IPHONEX ? 34.f : 0.f)

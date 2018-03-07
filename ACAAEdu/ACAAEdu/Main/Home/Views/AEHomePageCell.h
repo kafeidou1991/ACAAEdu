@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class AEExamItem;
 
-@interface AEHomeCollectionCell : UICollectionViewCell
+static const CGFloat cellHeight = 80.f;
 
+@interface AEHomePageCell : UITableViewCell
+
+- (void)updateCell:(AEExamItem *)item;
 /**
  购买回调
  */

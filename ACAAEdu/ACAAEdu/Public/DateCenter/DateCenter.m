@@ -9,14 +9,11 @@
 #import "DateCenter.h"
 
 @implementation DateCenter
-+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
-    return @{@"userId":@"id"};
-}
+//+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
+//    return @{@"userId":@"id"};
+//}
 @end
 
-@implementation PageItem
-
-@end
 
 
 @implementation AEAppVersion
