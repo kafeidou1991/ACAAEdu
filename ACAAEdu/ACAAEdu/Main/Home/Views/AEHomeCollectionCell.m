@@ -15,5 +15,10 @@
     // Initialization code
     
 }
+- (IBAction)buyAction:(UIButton *)sender {
+    if (_buyBlock) {
+        _buyBlock();
+    }
+}
 
 @end

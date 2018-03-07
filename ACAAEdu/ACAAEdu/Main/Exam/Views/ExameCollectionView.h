@@ -10,4 +10,6 @@
 
 @interface ExameCollectionView : UICollectionView
 
+-(instancetype)initWithFrame:(CGRect)frame dataSources:(NSArray *)data;
+
 @end

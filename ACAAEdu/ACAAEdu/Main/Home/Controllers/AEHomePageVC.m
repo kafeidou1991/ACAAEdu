@@ -42,7 +42,7 @@
 #pragma mark - UI懒加载
 -(HomeCollectionView *)mainCollectionView {
     if (!_mainCollectionView) {
-        _mainCollectionView = [[HomeCollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT  - NAVIGATION_HEIGHT - 49)];
+        _mainCollectionView = [[HomeCollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT  - NAVIGATION_HEIGHT - 49) dataSources:@[@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1",@"1"]];
     }
     return _mainCollectionView;
 }

@@ -67,7 +67,7 @@
 }
 - (void)relogin {
     [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
-        [self afterProFun];
+//        [self afterProFun];
     }];
 }
 - (void)hudShow:(UIView *)inView msg:(NSString *)msgText{

@@ -9,15 +9,20 @@
 #import "ExameCollectionView.h"
 #import "ExamCollectionLayout.h"
 #import "AEHomeCollectionCell.h"
+#import "AEOrderDetailVC.h"
 
 @interface ExameCollectionView ()<UICollectionViewDelegate,UICollectionViewDataSource>
+
+//数据源
+@property (nonatomic, strong) NSArray * dataSources;
 
 @end
 
 @implementation ExameCollectionView
 
 #pragma mark - init
--(instancetype)initWithFrame:(CGRect)frame {
+-(instancetype)initWithFrame:(CGRect)frame dataSources:(NSArray *)data {
+    self.dataSources = data;
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
         self.dataSource = self;
@@ -37,10 +42,20 @@
 
 #pragma mark - collection delegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10.f;
+    return self.dataSources.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AEHomeCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AEHomeCollectionCell class]) forIndexPath:indexPath];
+    WS(weakSelf)
+    cell.buyBlock = ^{
+        [weakSelf.viewController.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+    };
     return cell;
 }
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    [self.viewController.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+}
+
+
 @end
