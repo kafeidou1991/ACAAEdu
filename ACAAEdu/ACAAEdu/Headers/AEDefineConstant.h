@@ -81,7 +81,7 @@
 #define AECustomFont  @"PingFangSC-Regular"
 
 // MARK: -----颜色相关-----
-#define AEThemeColor      AEHexColor(@"#308BE5")   ///< 项目蓝
+#define AEThemeColor      AEHexColor(@"#F55F62")   ///< 项目红
 #define AEColorLightText  AEHexColor(@"#494949")   ///< 字体颜色  偏黑
 #define AEColorLine       AEHexColor(@"#E5E5E5")   ///< 分割线颜色
 #define AEColorBgVC       AEHexColor(@"#f0f2f6")   ///< 控制器背景颜色F5F5F5

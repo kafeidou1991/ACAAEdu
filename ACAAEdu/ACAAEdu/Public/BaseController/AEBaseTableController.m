@@ -129,4 +129,9 @@
 }
 
 
+- (void)createEmptyViewBlock:(LYActionTapBlock)block {
+    //框架方法
+    self.tableView.ly_emptyView = [LYEmptyView emptyActionViewWithImageStr:@"noData" titleStr:@"暂无数据，点击重新加载" detailStr:@"" btnTitleStr:@"重新加载" btnClickBlock:block];
+}
+
 @end

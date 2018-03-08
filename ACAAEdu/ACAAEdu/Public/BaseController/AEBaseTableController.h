@@ -23,6 +23,13 @@
  */
 - (void)createTableViewStyle:(UITableViewStyle)style;
 
+/**
+ 创建空视图展位图
+
+ @param block 回调
+ */
+- (void)createEmptyViewBlock:(LYActionTapBlock)block;
+
 #pragma mark - 刷新相关
 /**
  增加头部刷新

@@ -26,7 +26,7 @@
     //统一左部返回键
     self.navigationItem.leftBarButtonItem = [self createLeftBarBackItemHandle];
     [self addSubViews];
-    [self performSelector:@selector(afterProFun) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(afterProFun) withObject:nil afterDelay:0.15];
     self.view.backgroundColor = AEColorBgVC;
 }
 - (void)addSubViews {

@@ -52,12 +52,14 @@
     AEBaseController *controller = [class new];
     
     UIImage *normalImg = [[UIImage imageNamed:normalImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
     UIImage *selectedImg = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     controller.title = title;
     
     UITabBarItem *item = controller.tabBarItem;
     item.image = normalImg;
     item.selectedImage = selectedImg;
+    
     
     UINavigationController *navi = [[AENavigationController alloc] initWithRootViewController:controller];
     [self addChildViewController:navi];

@@ -20,6 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = nil;
+    [self createTableViewStyle:UITableViewStylePlain];
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
+    WS(weakSelf)
+    [self createEmptyViewBlock:^{
+        [weakSelf loadData:YES];
+    }];
 }
 -(void)afterProFun {
     [self loadData:YES];
@@ -39,8 +45,7 @@
                     [weakSelf.dataSources removeAllObjects];
                 }
                 [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEExamItem class] json:object[@"data"]]];
-                [weakSelf createTableViewStyle:UITableViewStylePlain];
-                weakSelf.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
+                [weakSelf.tableView reloadData];
                 [weakSelf addHeaderRefesh:NO Block:^{
                     [weakSelf afterProFun];
                 }];
