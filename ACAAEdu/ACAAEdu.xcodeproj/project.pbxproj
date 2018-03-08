@@ -98,6 +98,8 @@
 		B9B917492018907F002A63CE /* DateCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B917482018907F002A63CE /* DateCenter.m */; };
 		B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174B201891B8002A63CE /* AEUserInfo.m */; };
 		B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C320102046BBFB0022A562 /* LaunchScreen.xib */; };
+		B9CCAF1B205140D700F58971 /* AEGoodsBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CCAF1A205140D700F58971 /* AEGoodsBasketView.m */; };
+		B9CCAF1D205140DE00F58971 /* AEGoodsBasketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9CCAF1C205140DE00F58971 /* AEGoodsBasketView.xib */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -292,6 +294,9 @@
 		B9B9174A201891B8002A63CE /* AEUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfo.h; sourceTree = "<group>"; };
 		B9B9174B201891B8002A63CE /* AEUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfo.m; sourceTree = "<group>"; };
 		B9C320102046BBFB0022A562 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		B9CCAF19205140D700F58971 /* AEGoodsBasketView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEGoodsBasketView.h; sourceTree = "<group>"; };
+		B9CCAF1A205140D700F58971 /* AEGoodsBasketView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEGoodsBasketView.m; sourceTree = "<group>"; };
+		B9CCAF1C205140DE00F58971 /* AEGoodsBasketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEGoodsBasketView.xib; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -574,6 +579,9 @@
 		B97447632019E01900A6A538 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				B9CCAF19205140D700F58971 /* AEGoodsBasketView.h */,
+				B9CCAF1A205140D700F58971 /* AEGoodsBasketView.m */,
+				B9CCAF1C205140DE00F58971 /* AEGoodsBasketView.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -938,6 +946,7 @@
 			files = (
 				B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
+				B9CCAF1D205140DE00F58971 /* AEGoodsBasketView.xib in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
@@ -1099,6 +1108,7 @@
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,
 				B918BB2C202B051600EDB00D /* AEBase.m in Sources */,
+				B9CCAF1B205140D700F58971 /* AEGoodsBasketView.m in Sources */,
 				B9B1CD45202C54360017C97D /* AEAboutMeVC.m in Sources */,
 				B918BBC1202B088700EDB00D /* UIImage+help.m in Sources */,
 				B79C925D2029EBFA002D0B66 /* HMBannerView.m in Sources */,
