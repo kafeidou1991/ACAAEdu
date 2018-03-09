@@ -80,5 +80,6 @@
 #import "NSNull+safe.h"
 #import "NSString+category.h"
 #import "UIView+Animation.h"
+#import "UIImage+RTTint.h"
 
 #endif /* PrefixHeader_pch */

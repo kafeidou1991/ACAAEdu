@@ -17,4 +17,5 @@ target 'ACAAEdu' do
  pod 'LYEmptyView'
  pod 'WebViewJavascriptBridge'
  pod 'RSAEncryptor'
+ pod 'UIImage+RTTint'
 end
