@@ -582,8 +582,7 @@
 				B97B9E4620522343002654EE /* UITableViewCell+HM.h */,
 				B97B9E4720522343002654EE /* UIButton+safeClick.h */,
 			);
-			name = Categories;
-			path = ../../../../Categories;
+			path = Categories;
 			sourceTree = "<group>";
 		};
 		B9B18EF4201826C200BA38BE = {
