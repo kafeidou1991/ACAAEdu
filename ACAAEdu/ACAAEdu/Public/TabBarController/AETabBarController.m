@@ -54,7 +54,6 @@
     UIImage *normalImg = [[UIImage imageNamed:normalImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIImage *selectedImg = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
     controller.title = title;
     
     UITabBarItem *item = controller.tabBarItem;

@@ -29,7 +29,6 @@ PODS:
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - UIImage+RTTint (1.0.0)
   - WebViewJavascriptBridge (6.0.3)
   - XXNibBridge (2.3.1)
   - YYCache (1.0.4)
@@ -50,7 +49,6 @@ DEPENDENCIES:
   - OpenUDID
   - RSAEncryptor
   - SDWebImage
-  - UIImage+RTTint
   - WebViewJavascriptBridge
   - XXNibBridge
   - YYCache
@@ -71,13 +69,12 @@ SPEC CHECKSUMS:
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   RSAEncryptor: d0c9c7f81493aa42e6cdf64e533bcb6ce37377b7
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  UIImage+RTTint: b274eeaefaba631e4527317768d3590345267e51
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   XXNibBridge: addb780e6db076eb2c61716aa60b176a6799b80f
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZLPhotoBrowser: ab32e3bf7ef4a3569c96cdfea3be393d45595b5a
 
-PODFILE CHECKSUM: fae0e535586f6d2318c27c58490f8a2eeafdafd9
+PODFILE CHECKSUM: 2f617a1732690896c8d4d58fa01e580f8d3fcfa9
 
 COCOAPODS: 1.3.1
