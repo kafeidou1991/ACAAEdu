@@ -10,6 +10,8 @@
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AERegistVC.m */; };
 		B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AERegistVC.xib */; };
+		B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */; };
+		B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */; };
 		B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */; };
 		B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */; };
 		B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92542029DCC9002D0B66 /* CExpandHeader.m */; };
@@ -98,8 +100,6 @@
 		B9B917492018907F002A63CE /* DateCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B917482018907F002A63CE /* DateCenter.m */; };
 		B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174B201891B8002A63CE /* AEUserInfo.m */; };
 		B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C320102046BBFB0022A562 /* LaunchScreen.xib */; };
-		B9CCAF1B205140D700F58971 /* AEGoodsBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9CCAF1A205140D700F58971 /* AEGoodsBasketView.m */; };
-		B9CCAF1D205140DE00F58971 /* AEGoodsBasketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9CCAF1C205140DE00F58971 /* AEGoodsBasketView.xib */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +128,9 @@
 		B713101C202B55C6001CBAE8 /* AERegistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistVC.h; sourceTree = "<group>"; };
 		B713101D202B55C7001CBAE8 /* AERegistVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERegistVC.m; sourceTree = "<group>"; };
 		B713101E202B55C7001CBAE8 /* AERegistVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERegistVC.xib; sourceTree = "<group>"; };
+		B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AEGoodsBasketView.xib; sourceTree = "<group>"; };
+		B73ED697205408AC00B7C2B3 /* AEGoodsBasketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEGoodsBasketView.h; sourceTree = "<group>"; };
+		B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEGoodsBasketView.m; sourceTree = "<group>"; };
 		B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailVC.h; sourceTree = "<group>"; };
 		B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailVC.m; sourceTree = "<group>"; };
 		B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailVC.xib; sourceTree = "<group>"; };
@@ -294,9 +297,6 @@
 		B9B9174A201891B8002A63CE /* AEUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfo.h; sourceTree = "<group>"; };
 		B9B9174B201891B8002A63CE /* AEUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfo.m; sourceTree = "<group>"; };
 		B9C320102046BBFB0022A562 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		B9CCAF19205140D700F58971 /* AEGoodsBasketView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEGoodsBasketView.h; sourceTree = "<group>"; };
-		B9CCAF1A205140D700F58971 /* AEGoodsBasketView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEGoodsBasketView.m; sourceTree = "<group>"; };
-		B9CCAF1C205140DE00F58971 /* AEGoodsBasketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEGoodsBasketView.xib; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,6 +341,16 @@
 				E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B73ED695205408AC00B7C2B3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B73ED697205408AC00B7C2B3 /* AEGoodsBasketView.h */,
+				B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */,
+				B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
@@ -477,7 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				B96FD8692027FA9A00FE7495 /* Controllers */,
-				B96FD86A2027FA9A00FE7495 /* Views */,
+				B73ED695205408AC00B7C2B3 /* Views */,
 				B7FB06A8202C994700D5642D /* Model */,
 			);
 			name = "Exam(考试)";
@@ -495,13 +505,6 @@
 				B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		B96FD86A2027FA9A00FE7495 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B96FD86B2027FA9A00FE7495 /* Find(发现) */ = {
@@ -579,56 +582,8 @@
 		B97447632019E01900A6A538 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				B9CCAF19205140D700F58971 /* AEGoodsBasketView.h */,
-				B9CCAF1A205140D700F58971 /* AEGoodsBasketView.m */,
-				B9CCAF1C205140DE00F58971 /* AEGoodsBasketView.xib */,
 			);
 			path = views;
-			sourceTree = "<group>";
-		};
-		B97B9E2120522343002654EE /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				B97B9E2220522343002654EE /* UIFont+wl.m */,
-				B97B9E2320522343002654EE /* UIView+Extend.m */,
-				B97B9E2420522343002654EE /* NSString+category.h */,
-				B97B9E2520522343002654EE /* NSObject+entend.h */,
-				B97B9E2620522343002654EE /* UIImage+help.m */,
-				B97B9E2720522343002654EE /* NSMutableArray+safe.m */,
-				B97B9E2820522343002654EE /* NSTimer+addition.h */,
-				B97B9E2920522343002654EE /* UIColor+hexcolor.m */,
-				B97B9E2A20522343002654EE /* UIView+Frame.m */,
-				B97B9E2B20522343002654EE /* NSDictionary+safe.h */,
-				B97B9E2C20522343002654EE /* NSArray+description.m */,
-				B97B9E2D20522343002654EE /* NSString+CommonFunc.h */,
-				B97B9E2E20522343002654EE /* WLSpecScaleLayoutConstrain.h */,
-				B97B9E2F20522343002654EE /* WLScaleLayoutConstrain.m */,
-				B97B9E3020522343002654EE /* UIButton+safeClick.m */,
-				B97B9E3120522343002654EE /* UITableViewCell+HM.m */,
-				B97B9E3220522343002654EE /* UIView+Animation.m */,
-				B97B9E3320522343002654EE /* NSNull+safe.m */,
-				B97B9E3420522343002654EE /* NSObject+swizzling.h */,
-				B97B9E3520522343002654EE /* UIImage+help.h */,
-				B97B9E3620522343002654EE /* NSObject+entend.m */,
-				B97B9E3720522343002654EE /* NSString+category.m */,
-				B97B9E3820522343002654EE /* UIView+Extend.h */,
-				B97B9E3920522343002654EE /* UIFont+wl.h */,
-				B97B9E3A20522343002654EE /* NSTimer+addition.m */,
-				B97B9E3B20522343002654EE /* NSMutableArray+safe.h */,
-				B97B9E3C20522343002654EE /* WLScaleLayoutConstrain.h */,
-				B97B9E3D20522343002654EE /* WLSpecScaleLayoutConstrain.m */,
-				B97B9E3E20522343002654EE /* NSString+CommonFunc.m */,
-				B97B9E3F20522343002654EE /* NSArray+description.h */,
-				B97B9E4020522343002654EE /* NSDictionary+safe.m */,
-				B97B9E4120522343002654EE /* UIColor+hexcolor.h */,
-				B97B9E4220522343002654EE /* UIView+Frame.h */,
-				B97B9E4320522343002654EE /* NSObject+swizzling.m */,
-				B97B9E4420522343002654EE /* NSNull+safe.h */,
-				B97B9E4520522343002654EE /* UIView+Animation.h */,
-				B97B9E4620522343002654EE /* UITableViewCell+HM.h */,
-				B97B9E4720522343002654EE /* UIButton+safeClick.h */,
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		B9B18EF4201826C200BA38BE = {
@@ -991,13 +946,13 @@
 			files = (
 				B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
-				B9CCAF1D205140DE00F58971 /* AEGoodsBasketView.xib in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
+				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
 				B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */,
@@ -1144,6 +1099,7 @@
 				B9B9164720186209002A63CE /* main.m in Sources */,
 				B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */,
 				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
+				B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */,
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
 				B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */,
@@ -1153,7 +1109,6 @@
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,
 				B918BB2C202B051600EDB00D /* AEBase.m in Sources */,
-				B9CCAF1B205140D700F58971 /* AEGoodsBasketView.m in Sources */,
 				B9B1CD45202C54360017C97D /* AEAboutMeVC.m in Sources */,
 				B918BBC1202B088700EDB00D /* UIImage+help.m in Sources */,
 				B79C925D2029EBFA002D0B66 /* HMBannerView.m in Sources */,

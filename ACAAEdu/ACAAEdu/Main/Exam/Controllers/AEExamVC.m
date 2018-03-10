@@ -19,7 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
+    
+}
+- (void)moreList {
+    
+}
+- (void)initComponent {
     [self createTableViewStyle:UITableViewStylePlain];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
     WS(weakSelf)
