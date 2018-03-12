@@ -10,8 +10,17 @@
 #import "AEHomePageCell.h"
 #import "AEOrderDetailVC.h"
 #import "AEExamItem.h"
+#import "AEGoodsBasketView.h"
+typedef NS_ENUM(NSInteger, BuyExamType) {
+    BuySigleExamType = 0,  //单选购买考试
+    BuyMoreExamType        //多选购买考试
+};
+static CGFloat const GoodsViewHeight = 50.f;
 
 @interface AEExamVC ()
+
+@property (nonatomic, assign) BuyExamType buyType;
+@property (nonatomic, strong) AEGoodsBasketView * goodsView; //购物篮
 
 @end
 
@@ -20,12 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
-    
+    [self initComponent];
 }
+//点击更多
 - (void)moreList {
-    
+    self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:_buyType == BuyMoreExamType ? @"多选":@"取消"];
+    _buyType = !_buyType;
+    [self.tableView reloadData];
+    [self showOrHiddenGoodsView:_buyType];
+    [self.goodsView updateGoods:[self matchSelectItem]];
 }
 - (void)initComponent {
+    self.buyType = BuySigleExamType;
     [self createTableViewStyle:UITableViewStylePlain];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
     WS(weakSelf)
@@ -95,10 +110,19 @@
     AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
+    if (_buyType == BuySigleExamType) {
+        [cell updateCell:self.dataSources[indexPath.section]];
+    }else {
+        [cell updateMoreCell:self.dataSources[indexPath.section]];
+    }
+    //点击购买
     cell.buyBlock = ^{
         [weakSelf.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
     };
-    [cell updateCell:self.dataSources[indexPath.section]];
+    //多选
+    cell.moreBlock = ^(UIButton * btn) {
+        [weakSelf changeItemInfo:indexPath];
+    };
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,11 +136,42 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+    if (self.buyType == BuySigleExamType) {
+       [self.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+    }else {
+        [self changeItemInfo:indexPath];
+    }
+}
+#pragma mark - 改变多选选中单位
+- (void)changeItemInfo:(NSIndexPath *)indexPath {
+    AEExamItem * item = self.dataSources[indexPath.section];
+    item.isSelect = !item.isSelect;
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [self.goodsView updateGoods:[self matchSelectItem]];
 }
 
-
 #pragma mark - UI懒加载
-
+-(AEGoodsBasketView *)goodsView {
+    if (!_goodsView) {
+        _goodsView = [[NSBundle mainBundle]loadNibNamed:@"AEGoodsBasketView" owner:nil options:nil].firstObject;
+        _goodsView.frame = CGRectMake(0, self.view.height - GoodsViewHeight , SCREEN_WIDTH, GoodsViewHeight);
+        [self.view addSubview:_goodsView];
+    }
+    return _goodsView;
+}
+- (void)showOrHiddenGoodsView:(BOOL)isShow {
+    self.goodsView.hidden = !isShow;
+    self.tableView.height =  isShow ? SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT - GoodsViewHeight : SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT;
+}
+//找出已选择的多项项目
+- (NSArray *)matchSelectItem {
+    NSMutableArray * temp = @[].mutableCopy;
+    for (AEExamItem * item in self.dataSources) {
+        if (item.isSelect) {
+            [temp addObject:item];
+        }
+    }
+    return temp.copy;
+}
 
 @end

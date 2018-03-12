@@ -9,12 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface AEGoodsBasketView : UIView
-//显示隐藏view
-- (void)showGoodsView;
-- (void)hiddenGoodsView;
 
 //刷新数据
-//- (void)uo
+- (void)updateGoods:(NSArray *)array;
 
 
 @end

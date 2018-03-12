@@ -61,6 +61,15 @@
                             <action selector="buyAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="0Tt-UX-gGk"/>
                         </connections>
                     </button>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaZ-E1-oGc">
+                        <rect key="frame" x="269" y="33" width="80" height="35"/>
+                        <state key="normal" image="exam_buy_cancel"/>
+                        <state key="selected" image="exam_buy_select"/>
+                        <state key="highlighted" image="exam_buy_select"/>
+                        <connections>
+                            <action selector="moreAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="vJk-iA-7E2"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgj-rI-sFG">
                         <rect key="frame" x="221" y="42" width="38" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -68,6 +77,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="jaZ-E1-oGc" firstAttribute="centerY" secondItem="Kz2-2y-e5l" secondAttribute="centerY" id="5MN-LV-G4V"/>
+                    <constraint firstItem="jaZ-E1-oGc" firstAttribute="height" secondItem="Kz2-2y-e5l" secondAttribute="height" id="AJ9-cS-Goq"/>
+                    <constraint firstItem="jaZ-E1-oGc" firstAttribute="centerX" secondItem="Kz2-2y-e5l" secondAttribute="centerX" id="XIu-7t-sbe"/>
+                    <constraint firstItem="jaZ-E1-oGc" firstAttribute="width" secondItem="Kz2-2y-e5l" secondAttribute="width" id="xTH-b9-fwL"/>
+                </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -89,8 +104,10 @@
                 <constraint firstItem="pV6-cN-1iB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="w9P-Pi-Jg9"/>
             </constraints>
             <connections>
+                <outlet property="buyBtn" destination="Kz2-2y-e5l" id="Lpk-xe-GNU"/>
                 <outlet property="categoryLabel" destination="43g-V8-mIT" id="dSP-yl-tou"/>
                 <outlet property="iconView" destination="pV6-cN-1iB" id="Cnw-tG-StB"/>
+                <outlet property="moreBtn" destination="jaZ-E1-oGc" id="mIb-nT-ZDY"/>
                 <outlet property="nameLabel" destination="1he-Bn-ctM" id="5tP-Sp-fPR"/>
                 <outlet property="priceLabel" destination="sgj-rI-sFG" id="eIV-Eo-Aa5"/>
                 <outlet property="versionLabel" destination="zrv-lT-Z0H" id="hVW-eu-4Df"/>
@@ -100,5 +117,7 @@
     </objects>
     <resources>
         <image name="banner_default" width="310" height="174"/>
+        <image name="exam_buy_cancel" width="20" height="20"/>
+        <image name="exam_buy_select" width="20" height="20"/>
     </resources>
 </document>

@@ -8,14 +8,24 @@
 
 #import "AEGoodsBasketView.h"
 
+@interface AEGoodsBasketView ()
+
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
+@end
+
 @implementation AEGoodsBasketView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+//更新款项
+-(void)updateGoods:(NSArray *)array {
+    //合计
+    self.countLabel.text = [NSString stringWithFormat:@"包含：%lu个考试",(unsigned long)array.count];
+    self.priceLabel.text = [NSString stringWithFormat:@"合计：￥%@",@"999"];
 }
-*/
+//立即付款
+- (IBAction)buyNow:(UIButton *)sender {
+}
+
 
 @end

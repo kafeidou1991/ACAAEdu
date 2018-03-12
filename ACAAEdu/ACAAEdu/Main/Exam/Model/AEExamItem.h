@@ -25,4 +25,7 @@
 @property (nonatomic, copy) NSString * update_time;
 @property (nonatomic, copy) NSString * version;
 
+//本地多选使用
+@property (nonatomic, assign) BOOL isSelect;
+
 @end
