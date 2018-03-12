@@ -29,15 +29,21 @@ static CGFloat const GoodsViewHeight = 50.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
+    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"];
     [self initComponent];
 }
-//点击更多
+#pragma mark - 更多
 - (void)moreList {
     self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:_buyType == BuyMoreExamType ? @"多选":@"取消"];
+    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:_buyType == BuyMoreExamType ? @"筛选":@""];
     _buyType = !_buyType;
     [self.tableView reloadData];
     [self showOrHiddenGoodsView:_buyType];
     [self.goodsView updateGoods:[self matchSelectItem]];
+}
+#pragma mark - 筛选
+- (void)matchItem {
+    
 }
 - (void)initComponent {
     self.buyType = BuySigleExamType;
