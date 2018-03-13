@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AEOrderPayVC">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qL8-WR-XDb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="订单号:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0QW-23-kFG">
+                            <rect key="frame" x="16" y="15" width="47" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123123123123123" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvE-JG-2T6">
+                            <rect key="frame" x="68" y="15" width="117" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="待支付金额:￥999" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VX4-pf-iDR">
+                            <rect key="frame" x="16" y="48" width="116" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="VX4-pf-iDR" secondAttribute="bottom" constant="15" id="DYj-2P-IgI"/>
+                        <constraint firstItem="QvE-JG-2T6" firstAttribute="leading" secondItem="0QW-23-kFG" secondAttribute="trailing" constant="5" id="LQL-JD-zTn"/>
+                        <constraint firstItem="QvE-JG-2T6" firstAttribute="centerY" secondItem="0QW-23-kFG" secondAttribute="centerY" id="QMA-bM-2Ah"/>
+                        <constraint firstItem="VX4-pf-iDR" firstAttribute="leading" secondItem="0QW-23-kFG" secondAttribute="leading" id="XFJ-NV-L2m"/>
+                        <constraint firstItem="0QW-23-kFG" firstAttribute="leading" secondItem="qL8-WR-XDb" secondAttribute="leading" constant="16" id="gAl-I4-TSa"/>
+                        <constraint firstItem="0QW-23-kFG" firstAttribute="top" secondItem="qL8-WR-XDb" secondAttribute="top" constant="15" id="hoc-HQ-L9B"/>
+                        <constraint firstAttribute="height" constant="80" id="nrv-QC-JsJ"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuB-S0-vIW">
+                    <rect key="frame" x="16" y="100" width="343" height="40"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="GHf-DM-Ehr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="立即支付">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647058823528" green="0.94901960784313721" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qL8-WR-XDb" secondAttribute="trailing" id="FSE-Yd-Wl5"/>
+                <constraint firstItem="qL8-WR-XDb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SRC-MR-tPT"/>
+                <constraint firstAttribute="trailing" secondItem="fuB-S0-vIW" secondAttribute="trailing" constant="16" id="TZE-PH-oZI"/>
+                <constraint firstItem="fuB-S0-vIW" firstAttribute="top" secondItem="qL8-WR-XDb" secondAttribute="bottom" constant="20" id="d1W-Sn-HFf"/>
+                <constraint firstItem="qL8-WR-XDb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sdr-D2-dwg"/>
+                <constraint firstItem="fuB-S0-vIW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="yeD-Yb-wZz"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="52.5"/>
+        </view>
+    </objects>
+</document>

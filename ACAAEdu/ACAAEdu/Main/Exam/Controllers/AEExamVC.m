@@ -123,7 +123,7 @@ static CGFloat const GoodsViewHeight = 50.f;
     }
     //点击购买
     cell.buyBlock = ^{
-        [weakSelf.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+        [weakSelf pushOrderDetailVC:@[weakSelf.dataSources[indexPath.section]]];
     };
     //多选
     cell.moreBlock = ^(UIButton * btn) {
@@ -143,7 +143,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.buyType == BuySigleExamType) {
-       [self.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+        [self pushOrderDetailVC:@[self.dataSources[indexPath.section]]];
     }else {
         [self changeItemInfo:indexPath];
     }
@@ -155,13 +155,21 @@ static CGFloat const GoodsViewHeight = 50.f;
     [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
     [self.goodsView updateGoods:[self matchSelectItem]];
 }
-
+- (void)pushOrderDetailVC:(NSArray *)data {
+    AEOrderDetailVC * VC = [AEOrderDetailVC new];
+    [VC loadData:data];
+    [self.navigationController pushViewController:VC animated:YES];
+}
 #pragma mark - UI懒加载
 -(AEGoodsBasketView *)goodsView {
     if (!_goodsView) {
         _goodsView = [[NSBundle mainBundle]loadNibNamed:@"AEGoodsBasketView" owner:nil options:nil].firstObject;
         _goodsView.frame = CGRectMake(0, self.view.height - GoodsViewHeight , SCREEN_WIDTH, GoodsViewHeight);
         [self.view addSubview:_goodsView];
+        WS(weakSelf)
+        _goodsView.buyNowBlock = ^(NSArray * array) {
+            [weakSelf pushOrderDetailVC:array];
+        };
     }
     return _goodsView;
 }

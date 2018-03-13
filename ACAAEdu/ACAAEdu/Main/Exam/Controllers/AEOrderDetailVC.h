@@ -6,8 +6,10 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseController.h"
+#import "AEBaseTableController.h"
 
-@interface AEOrderDetailVC : AEBaseController
+@interface AEOrderDetailVC : AEBaseTableController
+
+- (void)loadData:(NSArray *)data;
 
 @end

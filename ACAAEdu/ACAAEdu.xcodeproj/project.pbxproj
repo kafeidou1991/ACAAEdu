@@ -29,6 +29,12 @@
 		B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D682050293B008D6970 /* AEExamItem.m */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
+		B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B90615752057EC2600801D38 /* AEOrderDetailCell.m */; };
+		B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90615762057EC2600801D38 /* AEOrderDetailCell.xib */; };
+		B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */; };
+		B906157D2057F8BE00801D38 /* AEOrderDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */; };
+		B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B906157F2058018D00801D38 /* AEOrderPayVC.m */; };
+		B90615822058018D00801D38 /* AEOrderPayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90615802058018D00801D38 /* AEOrderPayVC.xib */; };
 		B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */; };
 		B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB1D202ACEBD00EDB00D /* AELoginVC.m */; };
 		B918BB25202AECD200EDB00D /* AETextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB24202AECD100EDB00D /* AETextField.m */; };
@@ -159,6 +165,15 @@
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
+		B90615742057EC2600801D38 /* AEOrderDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailCell.h; sourceTree = "<group>"; };
+		B90615752057EC2600801D38 /* AEOrderDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailCell.m; sourceTree = "<group>"; };
+		B90615762057EC2600801D38 /* AEOrderDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailCell.xib; sourceTree = "<group>"; };
+		B90615792057F8B700801D38 /* AEOrderDetailFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailFooterView.h; sourceTree = "<group>"; };
+		B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailFooterView.m; sourceTree = "<group>"; };
+		B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailFooterView.xib; sourceTree = "<group>"; };
+		B906157E2058018D00801D38 /* AEOrderPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderPayVC.h; sourceTree = "<group>"; };
+		B906157F2058018D00801D38 /* AEOrderPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderPayVC.m; sourceTree = "<group>"; };
+		B90615802058018D00801D38 /* AEOrderPayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderPayVC.xib; sourceTree = "<group>"; };
 		B913B09D202D8BAD006C7414 /* AEMyOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMyOrderVC.h; sourceTree = "<group>"; };
 		B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMyOrderVC.m; sourceTree = "<group>"; };
 		B913B0A0202D9124006C7414 /* AENotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AENotificationCenter.h; sourceTree = "<group>"; };
@@ -349,6 +364,12 @@
 				B73ED697205408AC00B7C2B3 /* AEGoodsBasketView.h */,
 				B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */,
 				B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */,
+				B90615742057EC2600801D38 /* AEOrderDetailCell.h */,
+				B90615752057EC2600801D38 /* AEOrderDetailCell.m */,
+				B90615762057EC2600801D38 /* AEOrderDetailCell.xib */,
+				B90615792057F8B700801D38 /* AEOrderDetailFooterView.h */,
+				B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */,
+				B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -503,6 +524,9 @@
 				B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */,
 				B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */,
 				B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */,
+				B906157E2058018D00801D38 /* AEOrderPayVC.h */,
+				B906157F2058018D00801D38 /* AEOrderPayVC.m */,
+				B90615802058018D00801D38 /* AEOrderPayVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -949,11 +973,13 @@
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
+				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
+				B906157D2057F8BE00801D38 /* AEOrderDetailFooterView.xib in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
 				B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */,
 				B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */,
@@ -964,6 +990,7 @@
 				B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */,
 				B79C9277202A0255002D0B66 /* AEHomePageCell.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
+				B90615822058018D00801D38 /* AEOrderPayVC.xib in Resources */,
 				B94C1CCF20400054006344F2 /* AEUserInfoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,7 +1101,9 @@
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
+				B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */,
 				B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */,
+				B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */,
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
@@ -1089,6 +1118,7 @@
 				B92B9783204400AF0086DBA9 /* AEBindIdCardVC.m in Sources */,
 				B918BBCD202B088700EDB00D /* UITableViewCell+HM.m in Sources */,
 				B918BBC0202B088700EDB00D /* NSNull+safe.m in Sources */,
+				B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */,
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,
 				B918BBC8202B088700EDB00D /* NSObject+swizzling.m in Sources */,
 				B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */,
