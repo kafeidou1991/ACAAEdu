@@ -11,6 +11,7 @@
 #import "AEOrderDetailVC.h"
 #import "AEExamItem.h"
 #import "AEGoodsBasketView.h"
+#import "AEScreeningVC.h"
 typedef NS_ENUM(NSInteger, BuyExamType) {
     BuySigleExamType = 0,  //单选购买考试
     BuyMoreExamType        //多选购买考试
@@ -43,7 +44,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 }
 #pragma mark - 筛选
 - (void)matchItem {
-    
+    [self.navigationController pushViewController:[AEScreeningVC new] animated:YES];
 }
 - (void)initComponent {
     self.buyType = BuySigleExamType;
@@ -163,6 +164,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 #pragma mark - UI懒加载
 -(AEGoodsBasketView *)goodsView {
     if (!_goodsView) {
+        
         _goodsView = [[NSBundle mainBundle]loadNibNamed:@"AEGoodsBasketView" owner:nil options:nil].firstObject;
         _goodsView.frame = CGRectMake(0, self.view.height - GoodsViewHeight , SCREEN_WIDTH, GoodsViewHeight);
         [self.view addSubview:_goodsView];

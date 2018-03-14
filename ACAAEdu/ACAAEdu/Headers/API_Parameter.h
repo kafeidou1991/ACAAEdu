@@ -9,21 +9,6 @@
 #ifndef API_Parameter_h
 #define API_Parameter_h
 
-#pragma mark ---------------------- 域名 ---------------------------
-#ifdef DEBUG //开发环境
-//0 测试环境  1 正式环境
-#define environment 1
-
-#if environment
-static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
-#else
-static NSString * const baseUrl = @"http://test.yongqingjt.com:8080/yinzhifuapi/"; //101.201.117.15:8080
-#endif
-
-#else //发布环境
-static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
-#endif
-
 #pragma mark ---------------------- 用户----------------------------
 //登录
 #define kLogin @"mobile/user/login"
@@ -53,6 +38,9 @@ static NSString * const baseUrl = @"https://api.yongqingjt.com/yinzhifuapi/";
 #pragma mark ---------------------- 科目----------------------------
 //科目列表
 #define kSubjectList @"mobile/subject/index"
+
+#pragma mark ---------------------- 订单----------------------------
+#define kOrderList @"mobile/shop/orders"
 
 
 #endif /* API_Parameter_h */

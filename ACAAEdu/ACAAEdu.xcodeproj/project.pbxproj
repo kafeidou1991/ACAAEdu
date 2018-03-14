@@ -36,6 +36,9 @@
 		B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B906157F2058018D00801D38 /* AEOrderPayVC.m */; };
 		B90615822058018D00801D38 /* AEOrderPayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90615802058018D00801D38 /* AEOrderPayVC.xib */; };
 		B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */; };
+		B916E37220591D1D007EB40B /* AEScreeningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B916E37120591D1D007EB40B /* AEScreeningVC.m */; };
+		B916E37620591D64007EB40B /* AEScreeningCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B916E37420591D64007EB40B /* AEScreeningCell.m */; };
+		B916E37720591D64007EB40B /* AEScreeningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B916E37520591D64007EB40B /* AEScreeningCell.xib */; };
 		B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB1D202ACEBD00EDB00D /* AELoginVC.m */; };
 		B918BB25202AECD200EDB00D /* AETextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB24202AECD100EDB00D /* AETextField.m */; };
 		B918BB2C202B051600EDB00D /* AEBase.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BB2B202B051600EDB00D /* AEBase.m */; };
@@ -177,6 +180,11 @@
 		B913B09D202D8BAD006C7414 /* AEMyOrderVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMyOrderVC.h; sourceTree = "<group>"; };
 		B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMyOrderVC.m; sourceTree = "<group>"; };
 		B913B0A0202D9124006C7414 /* AENotificationCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AENotificationCenter.h; sourceTree = "<group>"; };
+		B916E37020591D1D007EB40B /* AEScreeningVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreeningVC.h; sourceTree = "<group>"; };
+		B916E37120591D1D007EB40B /* AEScreeningVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreeningVC.m; sourceTree = "<group>"; };
+		B916E37320591D64007EB40B /* AEScreeningCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreeningCell.h; sourceTree = "<group>"; };
+		B916E37420591D64007EB40B /* AEScreeningCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreeningCell.m; sourceTree = "<group>"; };
+		B916E37520591D64007EB40B /* AEScreeningCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEScreeningCell.xib; sourceTree = "<group>"; };
 		B918BB1D202ACEBD00EDB00D /* AELoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AELoginVC.m; sourceTree = "<group>"; };
 		B918BB23202AECD100EDB00D /* AETextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AETextField.h; sourceTree = "<group>"; };
 		B918BB24202AECD100EDB00D /* AETextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AETextField.m; sourceTree = "<group>"; };
@@ -370,6 +378,9 @@
 				B90615792057F8B700801D38 /* AEOrderDetailFooterView.h */,
 				B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */,
 				B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */,
+				B916E37320591D64007EB40B /* AEScreeningCell.h */,
+				B916E37420591D64007EB40B /* AEScreeningCell.m */,
+				B916E37520591D64007EB40B /* AEScreeningCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -527,6 +538,8 @@
 				B906157E2058018D00801D38 /* AEOrderPayVC.h */,
 				B906157F2058018D00801D38 /* AEOrderPayVC.m */,
 				B90615802058018D00801D38 /* AEOrderPayVC.xib */,
+				B916E37020591D1D007EB40B /* AEScreeningVC.h */,
+				B916E37120591D1D007EB40B /* AEScreeningVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -968,6 +981,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B916E37720591D64007EB40B /* AEScreeningCell.xib in Resources */,
 				B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
@@ -1083,6 +1097,7 @@
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
 				B7129A682031AF460081472E /* AESettingVC.m in Sources */,
 				B94C1CE720401B3F006344F2 /* CGXDatePickerView.m in Sources */,
+				B916E37220591D1D007EB40B /* AEScreeningVC.m in Sources */,
 				B918BBCA202B088700EDB00D /* UIButton+safeClick.m in Sources */,
 				B94C1CE620401B3F006344F2 /* CGXAddressPcikerView.m in Sources */,
 				B94C1CE420401B3F006344F2 /* CGXPickerViewManager.m in Sources */,
@@ -1096,6 +1111,7 @@
 				B918BBC6202B088700EDB00D /* WLScaleLayoutConstrain.m in Sources */,
 				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,
 				B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */,
+				B916E37620591D64007EB40B /* AEScreeningCell.m in Sources */,
 				B918BBCB202B088700EDB00D /* NSString+category.m in Sources */,
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
