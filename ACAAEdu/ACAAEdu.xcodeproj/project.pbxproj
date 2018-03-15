@@ -65,6 +65,8 @@
 		B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */; };
 		B92B97812043FCA30086DBA9 /* AEBindIdCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92B977F2043FCA30086DBA9 /* AEBindIdCardVC.xib */; };
 		B92B9783204400AF0086DBA9 /* AEBindIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B92B9782204400AF0086DBA9 /* AEBindIdCardVC.m */; };
+		B93C7CE0205A154300FC5E6C /* AEPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */; };
+		B93C7CE2205A162F00FC5E6C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93C7CE1205A162F00FC5E6C /* StoreKit.framework */; };
 		B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */; };
 		B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */; };
 		B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC9203FF54E006344F2 /* AEAccountSetVC.m */; };
@@ -233,6 +235,9 @@
 		B92B977D2043FCA30086DBA9 /* AEBindIdCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBindIdCardVC.h; sourceTree = "<group>"; };
 		B92B977F2043FCA30086DBA9 /* AEBindIdCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEBindIdCardVC.xib; sourceTree = "<group>"; };
 		B92B9782204400AF0086DBA9 /* AEBindIdCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEBindIdCardVC.m; sourceTree = "<group>"; };
+		B93C7CDE205A154300FC5E6C /* AEPurchaseManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEPurchaseManage.h; sourceTree = "<group>"; };
+		B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEPurchaseManage.m; sourceTree = "<group>"; };
+		B93C7CE1205A162F00FC5E6C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B94C1CC3203FC155006344F2 /* AEModifierInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoVC.h; sourceTree = "<group>"; };
 		B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModifierInfoVC.m; sourceTree = "<group>"; };
 		B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEModifierInfoVC.xib; sourceTree = "<group>"; };
@@ -328,6 +333,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B93C7CE2205A162F00FC5E6C /* StoreKit.framework in Frameworks */,
 				BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +358,7 @@
 		1C1F4F90A1E25E98800B55C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B93C7CE1205A162F00FC5E6C /* StoreKit.framework */,
 				056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */,
 			);
 			name = Frameworks;
@@ -487,6 +494,16 @@
 				B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */,
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		B93C7CDD205A14F200FC5E6C /* Purchase(购买) */ = {
+			isa = PBXGroup;
+			children = (
+				B93C7CDE205A154300FC5E6C /* AEPurchaseManage.h */,
+				B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */,
+			);
+			name = "Purchase(购买)";
+			path = Purchase;
 			sourceTree = "<group>";
 		};
 		B94C1CD020401B3F006344F2 /* CGXPickerView */ = {
@@ -728,6 +745,7 @@
 				B9B91728201879AE002A63CE /* BaseController */,
 				B9B916ED201874C3002A63CE /* TabBarController */,
 				B9B917462018907F002A63CE /* DateCenter */,
+				B93C7CDD205A14F200FC5E6C /* Purchase(购买) */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -1143,6 +1161,7 @@
 				B918BBC2202B088700EDB00D /* UIView+Frame.m in Sources */,
 				B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */,
 				B9B9164720186209002A63CE /* main.m in Sources */,
+				B93C7CE0205A154300FC5E6C /* AEPurchaseManage.m in Sources */,
 				B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */,
 				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
 				B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */,
