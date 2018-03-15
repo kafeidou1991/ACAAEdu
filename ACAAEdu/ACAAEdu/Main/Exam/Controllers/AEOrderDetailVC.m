@@ -10,6 +10,7 @@
 #import "AEOrderDetailCell.h"
 #import "AEOrderDetailFooterView.h"
 #import "AEOrderPayVC.h"
+#import "AEExamItem.h"
 
 @interface AEOrderDetailVC ()
 @property (nonatomic, strong) AEOrderDetailFooterView * footerView;
@@ -28,13 +29,23 @@
 - (void)loadData:(NSArray *)data {
     self.dataSources = data.mutableCopy;
     [self.tableView reloadData];
+    
+    
+    CGFloat  price = 0.00;
+    for (AEExamItem * item in self.dataSources) {
+        price += item.subject_price.floatValue;
+    }
+    self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f",price];
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90.f;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEOrderDetailCell * cell = [AEOrderDetailCell cellWithTableView:tableView];
-    
+    if (self.dataSources.count) {
+        [cell updateCell:self.dataSources[indexPath.row]];
+    }
     return cell;
 }
 

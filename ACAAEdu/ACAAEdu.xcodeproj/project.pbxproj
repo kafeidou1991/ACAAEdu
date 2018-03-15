@@ -67,6 +67,11 @@
 		B92B9783204400AF0086DBA9 /* AEBindIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B92B9782204400AF0086DBA9 /* AEBindIdCardVC.m */; };
 		B93C7CE0205A154300FC5E6C /* AEPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */; };
 		B93C7CE2205A162F00FC5E6C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93C7CE1205A162F00FC5E6C /* StoreKit.framework */; };
+		B93C7CE8205A79F000FC5E6C /* UIView+category.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CE7205A79F000FC5E6C /* UIView+category.m */; };
+		B93C7CEC205A7C0200FC5E6C /* AEOrderLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CEB205A7C0200FC5E6C /* AEOrderLabel.m */; };
+		B93C7CEF205A9DFB00FC5E6C /* AEMyOrderHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CEE205A9DFB00FC5E6C /* AEMyOrderHeaderView.m */; };
+		B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CF1205AA0F000FC5E6C /* AEMyOrderCell.m */; };
+		B93C7CF4205AA0F000FC5E6C /* AEMyOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B93C7CF2205AA0F000FC5E6C /* AEMyOrderCell.xib */; };
 		B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */; };
 		B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */; };
 		B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B94C1CC9203FF54E006344F2 /* AEAccountSetVC.m */; };
@@ -238,6 +243,15 @@
 		B93C7CDE205A154300FC5E6C /* AEPurchaseManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEPurchaseManage.h; sourceTree = "<group>"; };
 		B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEPurchaseManage.m; sourceTree = "<group>"; };
 		B93C7CE1205A162F00FC5E6C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		B93C7CE6205A79F000FC5E6C /* UIView+category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+category.h"; sourceTree = "<group>"; };
+		B93C7CE7205A79F000FC5E6C /* UIView+category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+category.m"; sourceTree = "<group>"; };
+		B93C7CEA205A7C0200FC5E6C /* AEOrderLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderLabel.h; sourceTree = "<group>"; };
+		B93C7CEB205A7C0200FC5E6C /* AEOrderLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderLabel.m; sourceTree = "<group>"; };
+		B93C7CED205A9DFB00FC5E6C /* AEMyOrderHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMyOrderHeaderView.h; sourceTree = "<group>"; };
+		B93C7CEE205A9DFB00FC5E6C /* AEMyOrderHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMyOrderHeaderView.m; sourceTree = "<group>"; };
+		B93C7CF0205AA0F000FC5E6C /* AEMyOrderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMyOrderCell.h; sourceTree = "<group>"; };
+		B93C7CF1205AA0F000FC5E6C /* AEMyOrderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMyOrderCell.m; sourceTree = "<group>"; };
+		B93C7CF2205AA0F000FC5E6C /* AEMyOrderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEMyOrderCell.xib; sourceTree = "<group>"; };
 		B94C1CC3203FC155006344F2 /* AEModifierInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoVC.h; sourceTree = "<group>"; };
 		B94C1CC4203FC155006344F2 /* AEModifierInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModifierInfoVC.m; sourceTree = "<group>"; };
 		B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEModifierInfoVC.xib; sourceTree = "<group>"; };
@@ -395,6 +409,7 @@
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
 			isa = PBXGroup;
 			children = (
+				B93C7CE9205A7BED00FC5E6C /* Label */,
 				B9B1CD19202BFCB60017C97D /* CircularProgressBar */,
 				B918BB29202B051600EDB00D /* BaseClass */,
 				B918BB22202AEC2700EDB00D /* TextField */,
@@ -454,6 +469,8 @@
 		B918BB64202B081C00EDB00D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				B93C7CE6205A79F000FC5E6C /* UIView+category.h */,
+				B93C7CE7205A79F000FC5E6C /* UIView+category.m */,
 				B9B1CD1E202C2FBB0017C97D /* UIView+Animation.h */,
 				B9B1CD1D202C2FBB0017C97D /* UIView+Animation.m */,
 				B918BB9E202B088400EDB00D /* NSArray+description.h */,
@@ -504,6 +521,15 @@
 			);
 			name = "Purchase(购买)";
 			path = Purchase;
+			sourceTree = "<group>";
+		};
+		B93C7CE9205A7BED00FC5E6C /* Label */ = {
+			isa = PBXGroup;
+			children = (
+				B93C7CEA205A7C0200FC5E6C /* AEOrderLabel.h */,
+				B93C7CEB205A7C0200FC5E6C /* AEOrderLabel.m */,
+			);
+			path = Label;
 			sourceTree = "<group>";
 		};
 		B94C1CD020401B3F006344F2 /* CGXPickerView */ = {
@@ -863,6 +889,11 @@
 				B92733A820415E61006F48C2 /* AEUserRemarkCell.h */,
 				B92733A920415E61006F48C2 /* AEUserRemarkCell.m */,
 				B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */,
+				B93C7CED205A9DFB00FC5E6C /* AEMyOrderHeaderView.h */,
+				B93C7CEE205A9DFB00FC5E6C /* AEMyOrderHeaderView.m */,
+				B93C7CF0205AA0F000FC5E6C /* AEMyOrderCell.h */,
+				B93C7CF1205AA0F000FC5E6C /* AEMyOrderCell.m */,
+				B93C7CF2205AA0F000FC5E6C /* AEMyOrderCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -882,10 +913,10 @@
 		B9B917462018907F002A63CE /* DateCenter */ = {
 			isa = PBXGroup;
 			children = (
-				B9B9174A201891B8002A63CE /* AEUserInfo.h */,
-				B9B9174B201891B8002A63CE /* AEUserInfo.m */,
 				B9B917472018907F002A63CE /* DateCenter.h */,
 				B9B917482018907F002A63CE /* DateCenter.m */,
+				B9B9174A201891B8002A63CE /* AEUserInfo.h */,
+				B9B9174B201891B8002A63CE /* AEUserInfo.m */,
 			);
 			path = DateCenter;
 			sourceTree = "<group>";
@@ -1005,6 +1036,7 @@
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
+				B93C7CF4205AA0F000FC5E6C /* AEMyOrderCell.xib in Resources */,
 				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
@@ -1133,6 +1165,7 @@
 				B918BBCB202B088700EDB00D /* NSString+category.m in Sources */,
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
+				B93C7CEF205A9DFB00FC5E6C /* AEMyOrderHeaderView.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
 				B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */,
@@ -1156,6 +1189,7 @@
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,
 				B918BBC8202B088700EDB00D /* NSObject+swizzling.m in Sources */,
 				B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */,
+				B93C7CEC205A7C0200FC5E6C /* AEOrderLabel.m in Sources */,
 				B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */,
 				B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */,
 				B918BBC2202B088700EDB00D /* UIView+Frame.m in Sources */,
@@ -1170,11 +1204,13 @@
 				B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */,
 				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,
 				B918BBCC202B088700EDB00D /* UIFont+wl.m in Sources */,
+				B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */,
 				B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,
 				B918BB2C202B051600EDB00D /* AEBase.m in Sources */,
 				B9B1CD45202C54360017C97D /* AEAboutMeVC.m in Sources */,
+				B93C7CE8205A79F000FC5E6C /* UIView+category.m in Sources */,
 				B918BBC1202B088700EDB00D /* UIImage+help.m in Sources */,
 				B79C925D2029EBFA002D0B66 /* HMBannerView.m in Sources */,
 				B918BBC4202B088700EDB00D /* NSTimer+addition.m in Sources */,

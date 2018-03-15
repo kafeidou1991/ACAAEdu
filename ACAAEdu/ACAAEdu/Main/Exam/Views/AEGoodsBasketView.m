@@ -7,6 +7,7 @@
 //
 
 #import "AEGoodsBasketView.h"
+#import "AEExamItem.h"
 
 @interface AEGoodsBasketView ()
 
@@ -22,7 +23,11 @@
     //合计
     self.array = array;
     self.countLabel.text = [NSString stringWithFormat:@"包含：%lu个考试",(unsigned long)array.count];
-    self.priceLabel.text = [NSString stringWithFormat:@"合计：￥%@",@"999"];
+    CGFloat  price = 0.00;
+    for (AEExamItem * item in array) {
+        price += item.subject_price.floatValue;
+    }
+    self.priceLabel.text = [NSString stringWithFormat:@"合计：￥%.2f",price];
 }
 //立即付款
 - (IBAction)buyNow:(UIButton *)sender {

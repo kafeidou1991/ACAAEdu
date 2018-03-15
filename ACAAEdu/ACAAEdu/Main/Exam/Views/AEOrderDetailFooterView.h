@@ -10,6 +10,7 @@
 
 @interface AEOrderDetailFooterView : UIView
 
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (nonatomic, copy) dispatch_block_t buyNowBlock;
 
 @end

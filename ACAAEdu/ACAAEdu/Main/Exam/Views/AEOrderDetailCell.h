@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class AEExamItem;
 @interface AEOrderDetailCell : UITableViewCell
+
+/**
+ 单选模式
+ 
+ @param item 数据
+ */
+- (void)updateCell:(AEExamItem *)item;
 
 @end

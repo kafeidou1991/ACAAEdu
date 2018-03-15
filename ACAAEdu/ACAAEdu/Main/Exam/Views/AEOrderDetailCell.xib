@@ -21,27 +21,43 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vil-bL-dFH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_default" translatesAutoresizingMaskIntoConstraints="NO" id="KWP-WU-UQr">
-                                <rect key="frame" x="16" y="10" width="70" height="70"/>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_default" translatesAutoresizingMaskIntoConstraints="NO" id="KWP-WU-UQr">
+                                <rect key="frame" x="16" y="15" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="eO4-Qe-hvr"/>
-                                    <constraint firstAttribute="height" constant="70" id="k5x-iI-g5Y"/>
+                                    <constraint firstAttribute="width" constant="60" id="eO4-Qe-hvr"/>
+                                    <constraint firstAttribute="height" constant="60" id="k5x-iI-g5Y"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mk-dw-hxk">
+                                <rect key="frame" x="16" y="15" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="kb1-cN-SAj"/>
+                                    <constraint firstAttribute="height" constant="60" id="tNX-uw-JKU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MySQL DBA及Linux运维" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="se2-gl-NDM">
-                                <rect key="frame" x="94" y="10" width="156.5" height="17"/>
+                                <rect key="frame" x="84" y="15" width="156.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本：2007" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9Y-jv-KcD">
-                                <rect key="frame" x="94" y="37" width="71" height="16"/>
+                                <rect key="frame" x="84" y="37" width="71" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类别：ACAA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJM-xi-syd">
-                                <rect key="frame" x="94" y="64" width="74.5" height="16"/>
+                                <rect key="frame" x="84" y="59" width="74.5" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,10 +71,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="90" id="6mp-SY-8si"/>
                             <constraint firstItem="se2-gl-NDM" firstAttribute="leading" secondItem="KWP-WU-UQr" secondAttribute="trailing" constant="8" id="9Go-IF-RLt"/>
                             <constraint firstAttribute="trailing" secondItem="fyo-oq-9NK" secondAttribute="trailing" constant="16" id="9Ro-9r-QH7"/>
                             <constraint firstItem="fyo-oq-9NK" firstAttribute="centerY" secondItem="KWP-WU-UQr" secondAttribute="centerY" id="DNk-Mx-bSW"/>
+                            <constraint firstItem="2mk-dw-hxk" firstAttribute="centerY" secondItem="vil-bL-dFH" secondAttribute="centerY" id="QV6-bZ-2Oh"/>
                             <constraint firstItem="s9Y-jv-KcD" firstAttribute="leading" secondItem="se2-gl-NDM" secondAttribute="leading" id="aUh-g6-dun"/>
                             <constraint firstItem="KWP-WU-UQr" firstAttribute="centerY" secondItem="vil-bL-dFH" secondAttribute="centerY" id="d22-K4-uLr"/>
                             <constraint firstItem="QJM-xi-syd" firstAttribute="bottom" secondItem="KWP-WU-UQr" secondAttribute="bottom" id="e6Z-qh-FhA"/>
@@ -74,8 +90,16 @@
                     <constraint firstItem="vil-bL-dFH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9f5-m5-FSL"/>
                     <constraint firstAttribute="bottom" secondItem="vil-bL-dFH" secondAttribute="bottom" id="VXZ-mk-ffV"/>
                     <constraint firstAttribute="trailing" secondItem="vil-bL-dFH" secondAttribute="trailing" id="pMz-uq-ypu"/>
+                    <constraint firstItem="2mk-dw-hxk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rbh-rz-G98"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="categoryLabel" destination="s9Y-jv-KcD" id="pOq-e3-8Ph"/>
+                <outlet property="nameLabel" destination="se2-gl-NDM" id="oo9-hy-gcl"/>
+                <outlet property="priceLabel" destination="fyo-oq-9NK" id="YI1-RP-yJ1"/>
+                <outlet property="titleLabel" destination="2mk-dw-hxk" id="r26-HD-JMN"/>
+                <outlet property="versionLabel" destination="QJM-xi-syd" id="Wt6-g4-wSN"/>
+            </connections>
             <point key="canvasLocation" x="-156" y="-66"/>
         </tableViewCell>
     </objects>
