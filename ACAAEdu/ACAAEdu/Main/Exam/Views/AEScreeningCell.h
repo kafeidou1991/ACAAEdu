@@ -10,11 +10,23 @@
 
 @interface AEScreeningCell : UICollectionViewCell
 /**
- 更新类别cell
+ 更新科目cell
 
  @param item model
  */
 - (void)updateSubjectCell:(AEScreeningItem *)item;
+/**
+ 更新类别cell
+ 
+ @param item model
+ */
+- (void)updateCategoryCell:(AEScreeningItem *)item;
+/**
+ 更新版本cell
+ 
+ @param item model
+ */
+- (void)updateVersionCell:(AEScreeningItem *)item;
 
 /**
  是否选中

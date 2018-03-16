@@ -9,17 +9,21 @@
 #import "AEScreeningVC.h"
 #import "AEScreeningCell.h"
 #import "AEScreenHeaderView.h"
+#import "AEScreeningFooterView.h"
 
 static NSString * kAEScreeningCell = @"AEScreeningCell";
 static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
+
+static CGFloat footViewHeight = 50.f;
 
 @interface AEScreeningVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray * dataSource;
 @property (nonatomic, strong) UICollectionView * collectionView;
-
+@property (nonatomic, strong) AEScreeningFooterView * footView;
 //已经选择的行列
 @property (nonatomic, strong) NSMutableArray * selectIndexPaths;
+
 
 @end
 
@@ -35,37 +39,52 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
     self.selectIndexPaths = @[@"",@"",@""].mutableCopy;
     
     [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.footView];
 }
 - (void)afterProFun {
+    //三个接口是否全部加载完成
+    __block NSInteger isFinish = 3;
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kCategoryList query:nil path:nil body:nil success:^(id object) {
-        [weakSelf hudclose];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kSubjectList query:nil path:nil body:nil success:^(id object) {
+        isFinish -= 1;
         NSArray * array = [NSArray yy_modelArrayWithClass:[AEScreeningItem class] json:object];
         weakSelf.dataSource[0] = array;
-        [weakSelf.collectionView reloadData];
+        [weakSelf loadDataFinish:isFinish];
     } faile:^(NSInteger code, NSString *error) {
-        [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
+        isFinish -= 1;
+        [weakSelf loadDataFinish:isFinish];
     }];
-//    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kVersionList query:nil path:nil body:nil success:^(id object) {
-//        [weakSelf hudclose];
-//        NSArray * array = [NSArray yy_modelArrayWithClass:[AEScreeningItem class] json:object];
-//        weakSelf.dataSource[1] = array;
-//        [weakSelf.collectionView reloadData];
-//    } faile:^(NSInteger code, NSString *error) {
-//        [weakSelf hudclose];
-//        [AEBase alertMessage:error cb:nil];
-//    }];
-//    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kCategoryList query:nil path:nil body:nil success:^(id object) {
-//        [weakSelf hudclose];
-//        NSArray * array = [NSArray yy_modelArrayWithClass:[AEScreeningItem class] json:object];
-//        weakSelf.dataSource[0] = array;
-//        [weakSelf.collectionView reloadData];
-//    } faile:^(NSInteger code, NSString *error) {
-//        [weakSelf hudclose];
-//        [AEBase alertMessage:error cb:nil];
-//    }];
+    
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kCategoryList query:nil path:nil body:nil success:^(id object) {
+        isFinish -= 1;
+        NSArray * array = [NSArray yy_modelArrayWithClass:[AEScreeningItem class] json:object];
+        weakSelf.dataSource[1] = array;
+        [weakSelf loadDataFinish:isFinish];
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+        isFinish -= 1;
+        [weakSelf loadDataFinish:isFinish];
+    }];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kVersionList query:nil path:nil body:nil success:^(id object) {
+        isFinish -= 1;
+        NSArray * array = [NSArray yy_modelArrayWithClass:[AEScreeningItem class] json:object];
+        weakSelf.dataSource[2] = array;
+        [weakSelf loadDataFinish:isFinish];
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+        isFinish -= 1;
+        [weakSelf loadDataFinish:isFinish];
+    }];
+    
+}
+- (void)loadDataFinish:(NSInteger)isFinish{
+    if (isFinish) {
+        return;
+    }
+    [self hudclose];
+    [self.collectionView reloadData];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -77,8 +96,13 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AEScreeningCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:kAEScreeningCell forIndexPath:indexPath];
     AEScreeningItem * item = self.dataSource[indexPath.section][indexPath.row];
-    
-    [cell updateSubjectCell:item];
+    if (indexPath.section == 0) {
+        [cell updateSubjectCell:item];
+    }else if (indexPath.section == 1) {
+        [cell updateCategoryCell:item];
+    }else {
+        [cell updateVersionCell:item];
+    }
     
     return cell;
 }
@@ -177,7 +201,7 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
         flowLayout.itemSize = CGSizeMake(SCREEN_WIDTH / 3, 50 );
         flowLayout.sectionInset = UIEdgeInsetsMake(5, 0, 5, 0);
         //暂时隐藏
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT) collectionViewLayout:flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - footViewHeight) collectionViewLayout:flowLayout];
         
         // 设置UICollectionView的其他相关属性
         _collectionView.delegate = self;
@@ -194,6 +218,15 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
         
     }
     return _collectionView;
+}
+
+-(AEScreeningFooterView *)footView {
+    if (!_footView) {
+        _footView = [[NSBundle mainBundle]loadNibNamed:@"AEScreeningFooterView" owner:nil options:nil].firstObject;
+        _footView.frame = CGRectMake(0, SCREEN_HEIGHT - NAVIGATION_HEIGHT - footViewHeight, SCREEN_WIDTH, footViewHeight);
+        [self.view addSubview:_footView];
+    }
+    return _footView;
 }
 
 

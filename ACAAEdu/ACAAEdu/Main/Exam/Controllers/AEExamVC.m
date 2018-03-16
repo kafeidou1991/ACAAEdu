@@ -54,6 +54,9 @@ static CGFloat const GoodsViewHeight = 50.f;
     [self createEmptyViewBlock:^{
         [weakSelf loadData:YES];
     }];
+    [weakSelf addHeaderRefesh:NO Block:^{
+        [weakSelf afterProFun];
+    }];
 }
 -(void)afterProFun {
     [self loadData:YES];
@@ -74,9 +77,6 @@ static CGFloat const GoodsViewHeight = 50.f;
                 }
                 [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEExamItem class] json:object[@"data"]]];
                 [weakSelf.tableView reloadData];
-                [weakSelf addHeaderRefesh:NO Block:^{
-                    [weakSelf afterProFun];
-                }];
                 NSInteger total = [object[@"total"] integerValue];
                 if (total > 1) {
                     if (weakSelf.currPage < total) {

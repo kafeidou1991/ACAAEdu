@@ -13,6 +13,7 @@
 #import "AEAboutMeVC.h"
 #import "AEMyOrderVC.h"
 #import "AESettingVC.h"
+#import "AEMessageListVC.h"
 
 static CGFloat customViewHeight = 180.f;
 
@@ -104,6 +105,17 @@ static CGFloat customViewHeight = 180.f;
         }
     }else if ([title isEqualToString:@"设置"]) {
         [self.navigationController pushViewController:[AESettingVC new] animated:YES];
+    }else if ([title isEqualToString:@"通知"]) {
+        dispatch_block_t t = ^{
+            [self.navigationController pushViewController:[AEMessageListVC new] animated:YES];
+        };
+        if (User.isLogin) {
+            t();
+        }else {
+            [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
+                t();
+            }];
+        }
     }
 }
 -(void)dealloc {

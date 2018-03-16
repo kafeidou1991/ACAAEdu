@@ -21,7 +21,15 @@
 
 }
 - (void)updateSubjectCell:(AEScreeningItem *)item {
+    self.titleLabel.text = item.subject_name;
+    [self selectLabel:item.isSelect];
+}
+- (void)updateCategoryCell:(AEScreeningItem *)item {
     self.titleLabel.text = item.name;
+    [self selectLabel:item.isSelect];
+}
+- (void)updateVersionCell:(AEScreeningItem *)item {
+    self.titleLabel.text = item.version;
     [self selectLabel:item.isSelect];
 }
 

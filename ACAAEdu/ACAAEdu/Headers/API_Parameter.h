@@ -44,10 +44,15 @@
 #define kCategoryList @"mobile/subject_category/index"
 //筛选版本列表
 #define kVersionList @"mobile/subject_version/index"
+//筛选科目列表
+#define kSubjectList @"mobile/subject/subjectlist"
 
 
 #pragma mark ---------------------- 订单----------------------------
 #define kOrderList @"mobile/shop/orders"
+
+#pragma mark ---------------------- 通知消息----------------------------
+#define kMessageList @"mobile/message/index"
 
 
 #endif /* API_Parameter_h */

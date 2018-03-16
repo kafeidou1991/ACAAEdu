@@ -110,16 +110,15 @@
 @end
 
 @interface AEScreeningItem : DateCenter
-//"update_time" : "1520672188",
-//"id" : "4",
-//"type" : "1",
-//"name" : "分类11",
-//"create_time" : "1520672188"
 @property (nonatomic, copy) NSString * id; //条目id
-@property (nonatomic, copy) NSString * name; //条目名称
 @property (nonatomic, copy) NSString * type; //条目type
 @property (nonatomic, copy) NSString * create_time; //时间
 @property (nonatomic, copy) NSString * update_time; //更新时间
+
+@property (nonatomic, copy) NSString * name; //条目分类
+@property (nonatomic, copy) NSString * version; //条目版本
+@property (nonatomic, copy) NSString * subject_name; //条目科目
+
 
 
 //本地判断 是否已经选择
