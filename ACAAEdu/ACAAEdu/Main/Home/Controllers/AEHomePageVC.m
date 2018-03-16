@@ -10,6 +10,7 @@
 #import "AEHomePageCell.h"
 #import "HomeHeaderReusableView.h"
 #import "AEOrderDetailVC.h"
+#import "AEExamItem.h"
 
 @interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
@@ -21,8 +22,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = nil;
+    [self initTableView];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         NSString * url =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
         NSString * url1 =@"https://www.baidu.com/img/bd_logo1.png";
         NSString * url2 =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
@@ -30,17 +32,37 @@
         [self.headerView updateBanner:array];
     });
 }
-
--(void)afterProFun {
+- (void)initTableView {
+    WS(weakSelf)
     [self createTableViewStyle:UITableViewStylePlain];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
     self.tableView.tableHeaderView = self.headerView;
+    [self addHeaderRefesh:NO Block:^{
+        [weakSelf afterProFun];
+    }];
+}
+
+-(void)afterProFun {
+    WS(weakSelf);
+    [self hudShow:self.view msg:STTR_ater_on];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
+        [weakSelf hudclose];
+        [weakSelf endRefesh:YES];
+        weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+        [weakSelf.tableView reloadData];
+        
+        
+    } faile:^(NSInteger code, NSString *error) {
+        [weakSelf hudclose];
+        [weakSelf endRefesh:YES];
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 
 
 #pragma mark - tableView delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 10;
+    return self.dataSources.count;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -49,8 +71,9 @@
     AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
+    [cell updateCell:self.dataSources[indexPath.section]];
     cell.buyBlock = ^{
-        [weakSelf.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+        [weakSelf pushOrderDetailVC:@[self.dataSources[indexPath.section]]];
     };
     return cell;
 }
@@ -65,7 +88,13 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.navigationController pushViewController:[AEOrderDetailVC new] animated:YES];
+    [self pushOrderDetailVC:@[self.dataSources[indexPath.section]]];
+}
+
+- (void)pushOrderDetailVC:(NSArray *)data {
+    AEOrderDetailVC * VC = [AEOrderDetailVC new];
+    [VC loadData:data];
+    [self.navigationController pushViewController:VC animated:YES];
 }
 
 #pragma mark - 懒加载

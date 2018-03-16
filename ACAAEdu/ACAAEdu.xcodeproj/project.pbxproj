@@ -96,6 +96,8 @@
 		B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9B22029B98A00FE7495 /* MeCenterCell.m */; };
 		B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */; };
 		B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B97447662019E04C00A6A538 /* AELoginVC.xib */; };
+		B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A60440205BA9A100278568 /* AEScreenHeaderView.m */; };
+		B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */; };
 		B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F01201826C200BA38BE /* AppDelegate.m */; };
 		B9B18F1A201826C200BA38BE /* ACAAEduTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F19201826C200BA38BE /* ACAAEduTests.m */; };
 		B9B18F25201826C200BA38BE /* ACAAEduUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F24201826C200BA38BE /* ACAAEduUITests.m */; };
@@ -297,6 +299,9 @@
 		B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeCenterCell.xib; sourceTree = "<group>"; };
 		B97447642019E04C00A6A538 /* AELoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AELoginVC.h; sourceTree = "<group>"; };
 		B97447662019E04C00A6A538 /* AELoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AELoginVC.xib; sourceTree = "<group>"; };
+		B9A6043F205BA9A100278568 /* AEScreenHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreenHeaderView.h; sourceTree = "<group>"; };
+		B9A60440205BA9A100278568 /* AEScreenHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreenHeaderView.m; sourceTree = "<group>"; };
+		B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEScreenHeaderView.xib; sourceTree = "<group>"; };
 		B9B18EFD201826C200BA38BE /* ACAAEdu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ACAAEdu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9B18F00201826C200BA38BE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B9B18F01201826C200BA38BE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -402,6 +407,9 @@
 				B916E37320591D64007EB40B /* AEScreeningCell.h */,
 				B916E37420591D64007EB40B /* AEScreeningCell.m */,
 				B916E37520591D64007EB40B /* AEScreeningCell.xib */,
+				B9A6043F205BA9A100278568 /* AEScreenHeaderView.h */,
+				B9A60440205BA9A100278568 /* AEScreenHeaderView.m */,
+				B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1040,6 +1048,7 @@
 				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
+				B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
@@ -1173,6 +1182,7 @@
 				B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */,
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
+				B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */,
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
 				B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */,
 				B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */,

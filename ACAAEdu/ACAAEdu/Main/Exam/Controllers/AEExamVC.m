@@ -63,7 +63,7 @@ static CGFloat const GoodsViewHeight = 50.f;
         [self hudShow:self.view msg:STTR_ater_on];
     }
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubjectList query:nil path:nil body:@{@"page" : @(self.currPage)} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIndexList query:nil path:nil body:@{@"page" : @(self.currPage)} success:^(id object) {
         isLoad ? [weakSelf hudclose] : nil;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];

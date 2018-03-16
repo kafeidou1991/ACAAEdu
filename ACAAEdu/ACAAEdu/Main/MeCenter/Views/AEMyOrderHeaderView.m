@@ -31,7 +31,6 @@ static const CGFloat labelHeight = 25.f;
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor whiteColor];
         [self addSubviews];
-        [self updateContent];
     }
     return self;
 }
@@ -47,12 +46,12 @@ static const CGFloat labelHeight = 25.f;
 }
 
 
-- (void)updateContent{
-    [self.orderNoLabel updateTitle:@"订单编号：" content:@"no_123245356456456"];
-    self.orderStatusLabel.text = @"已支付";
-    [self.orderPriceLabel updateTitle:@"订单金额：" content:@"￥2342"];
-    [self.orderTimeLabel updateTitle:@"订单时间：" content:@"2015.02.03"];
-    [self.orderTypeLabel updateTitle:@"支付方式：" content:@"支付宝"];
+- (void)updateContent:(AEMyOrderList *)item{
+    [self.orderNoLabel updateTitle:@"订单编号：" content:item.orders_no];
+    self.orderStatusLabel.text = item.pay_status_txt;
+    [self.orderPriceLabel updateTitle:@"订单金额：" content:item.pay_price];
+    [self.orderTimeLabel updateTitle:@"订单时间：" content:item.create_date];
+    [self.orderTypeLabel updateTitle:@"支付方式：" content:item.pay_type_txt];
 }
 
 #pragma mark - initCompents

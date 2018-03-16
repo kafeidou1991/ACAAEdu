@@ -10,4 +10,6 @@
 
 @interface AEMyOrderHeaderView : UIView
 
+- (void)updateContent:(AEMyOrderList *)item;
+
 @end

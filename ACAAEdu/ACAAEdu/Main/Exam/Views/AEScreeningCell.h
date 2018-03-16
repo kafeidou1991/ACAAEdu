@@ -9,7 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface AEScreeningCell : UICollectionViewCell
+/**
+ 更新类别cell
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+ @param item model
+ */
+- (void)updateSubjectCell:(AEScreeningItem *)item;
+
+/**
+ 是否选中
+
+ @param isSelect 是否选中
+ */
+- (void)selectLabel:(BOOL)isSelect;
 
 @end

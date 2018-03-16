@@ -36,8 +36,15 @@
 #define kBindIdCard @"mobile/user/bindIdCard"
 
 #pragma mark ---------------------- 科目----------------------------
+//首页推荐
+#define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"
 //科目列表
-#define kSubjectList @"mobile/subject/index"
+#define kIndexList @"mobile/subject/index"
+//筛选类别列表
+#define kCategoryList @"mobile/subject_category/index"
+//筛选版本列表
+#define kVersionList @"mobile/subject_version/index"
+
 
 #pragma mark ---------------------- 订单----------------------------
 #define kOrderList @"mobile/shop/orders"

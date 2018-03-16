@@ -92,7 +92,16 @@ static CGFloat customViewHeight = 180.f;
     if ([title isEqualToString:@"关于我们"]) {
         [self.navigationController pushViewController:[AEAboutMeVC new] animated:YES];
     }else if ([title isEqualToString:@"我的订单"]) {
-        [self.navigationController pushViewController:[AEMyOrderVC new] animated:YES];
+        dispatch_block_t t = ^{
+            [self.navigationController pushViewController:[AEMyOrderVC new] animated:YES];
+        };
+        if (User.isLogin) {
+            t();
+        }else {
+            [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
+                t();
+            }];
+        }
     }else if ([title isEqualToString:@"设置"]) {
         [self.navigationController pushViewController:[AESettingVC new] animated:YES];
     }

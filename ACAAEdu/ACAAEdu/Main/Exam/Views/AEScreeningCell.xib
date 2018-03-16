@@ -18,18 +18,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="156" height="82"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-jL-gP7">
-                        <rect key="frame" x="28" y="16.5" width="100" height="50"/>
-                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="版本1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hH-jL-gP7">
+                        <rect key="frame" x="16" y="21.5" width="124" height="40"/>
+                        <color key="backgroundColor" red="0.80784313725490198" green="0.80784313725490198" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="100" id="LCq-kC-I3h"/>
-                            <constraint firstAttribute="height" constant="50" id="y6W-CI-LSw"/>
+                            <constraint firstAttribute="height" constant="40" id="y6W-CI-LSw"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                         <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath=" layer.cornerRadius">
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="5"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
@@ -40,6 +39,8 @@
             <constraints>
                 <constraint firstItem="3hH-jL-gP7" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2VB-71-U5L"/>
                 <constraint firstItem="3hH-jL-gP7" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="5hd-eu-tpv"/>
+                <constraint firstItem="3hH-jL-gP7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="GeR-ba-bBn"/>
+                <constraint firstAttribute="trailing" secondItem="3hH-jL-gP7" secondAttribute="trailing" constant="16" id="rXS-pX-QCW"/>
             </constraints>
             <size key="customSize" width="156" height="82"/>
             <connections>

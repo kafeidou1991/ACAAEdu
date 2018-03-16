@@ -8,12 +8,29 @@
 
 #import "AEScreeningCell.h"
 
+@interface AEScreeningCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@end
+
 @implementation AEScreeningCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
-    // Initialization code
+
 }
+- (void)updateSubjectCell:(AEScreeningItem *)item {
+    self.titleLabel.text = item.name;
+    [self selectLabel:item.isSelect];
+}
+
+- (void)selectLabel:(BOOL)isSelect {
+    self.titleLabel.backgroundColor = isSelect ? AEThemeColor : AEHexColor(@"CECECE");
+    self.titleLabel.textColor = isSelect ? [UIColor whiteColor] :AEHexColor(@"333333");
+}
+
+
+
 
 @end

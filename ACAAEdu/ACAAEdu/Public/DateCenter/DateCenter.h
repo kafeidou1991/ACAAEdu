@@ -81,56 +81,51 @@
 
 
 @interface AEMyOrderList :DateCenter
-//{
-//    "ip" : "2130706433",
-//    "pay_time" : 1521036762,
-//    "plat_form" : "",
-//    "create_time" : 1521024483,
-//    "pay_status_txt" : "已支付",
-//    "pay_type" : "alipay",
-//    "create_date" : "2018-03-14 18:48:03",
-//    "send_type" : 0,
-//    "send_price" : 0,
-//    "pay_date" : "2018-03-14 22:12:42",
-//    "delete_time" : null,
-//    "goods" : [
-//               {
-//                   "goods_id" : 1,
-//                   "goods_num" : 1,
-//                   "id" : 20,
-//                   "goods_price" : 0.01,
-//                   "goods_attr" : "[]",
-//                   "goods_name" : "Graphic Design",
-//                   "goods_type" : "subject",
-//                   "orders_no" : "201803141848038096"
-//               }
-//               ],
-//    "orders_no" : "201803141848038096",
-//    "id" : 16,
-//    "pay_price" : 0.01,
-//    "uid" : 121003,
-//    "pay_type_txt" : "支付宝支付",
-//    "pay_status" : 1,
-//    "goods_price" : 0.01,
-//    "send_address_id" : 0,
-//    "send_time" : 0,
-//    "remark" : "",
-//    "send_status" : 0
 @property (nonatomic, copy) NSString * pay_date;    //支付时间
 @property (nonatomic, copy) NSString * create_date; //下单时间
 @property (nonatomic, copy) NSString * create_time; //下单时间时间戳
 @property (nonatomic, copy) NSString * pay_status_txt; //支付状态 已支付 未支付
-@property (nonatomic, copy) NSString * orders_no;
+@property (nonatomic, copy) NSString * orders_no; //订单编号
 @property (nonatomic, copy) NSString * id;
 @property (nonatomic, copy) NSString * pay_price; //
 @property (nonatomic, copy) NSString * pay_type; //支付类型  alipay
 @property (nonatomic, copy) NSString * pay_type_txt;
 @property (nonatomic, copy) NSString * pay_status;
 @property (nonatomic, copy) NSString * goods_price; //商品价格
-@property (nonatomic, strong) NSArray * goods;
+@property (nonatomic, strong) NSArray * goods;   //商品项目
 
 @end
 
+
+@interface AEGoodItem :DateCenter
+
+@property (nonatomic, copy) NSString * goods_id; //商品id
+@property (nonatomic, copy) NSString * goods_num; //商品条目
+@property (nonatomic, copy) NSString * id; //商品id
+@property (nonatomic, copy) NSString * goods_price; //商品价格
+@property (nonatomic, copy) NSString * orders_no; //商品订单
+@property (nonatomic, copy) NSString * goods_name; //商品名称
+@property (nonatomic, copy) NSString * goods_type; //商品类型
+
+@end
+
+@interface AEScreeningItem : DateCenter
+//"update_time" : "1520672188",
+//"id" : "4",
+//"type" : "1",
+//"name" : "分类11",
+//"create_time" : "1520672188"
+@property (nonatomic, copy) NSString * id; //条目id
+@property (nonatomic, copy) NSString * name; //条目名称
+@property (nonatomic, copy) NSString * type; //条目type
+@property (nonatomic, copy) NSString * create_time; //时间
+@property (nonatomic, copy) NSString * update_time; //更新时间
+
+
+//本地判断 是否已经选择
+@property (nonatomic, assign) BOOL isSelect; //是否选择
+
+@end
 
 
 

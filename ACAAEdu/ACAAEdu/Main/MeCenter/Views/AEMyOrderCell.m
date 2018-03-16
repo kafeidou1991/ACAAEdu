@@ -29,6 +29,11 @@
     // Configure the view for the selected state
 }
 
+- (void)updateCell:(AEGoodItem *)item hiddenTitle:(BOOL)isHidden{
+    self.titleLabel.hidden = isHidden;
+    self.contentLabel.text = item.goods_name;
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.goods_price];
+}
 
 
 

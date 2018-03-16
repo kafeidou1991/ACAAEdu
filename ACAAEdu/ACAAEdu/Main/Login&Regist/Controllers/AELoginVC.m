@@ -42,6 +42,12 @@ typedef NS_ENUM(NSInteger, LoginType) {
 - (void)initComonpent {
     self.loginType = AccountLoginType;
     [self changeTextFieldStatus];
+    self.accountTextField.text = [AEUserDefaults objectForKey:@"ACAA_Acount"];
+    if (!STRISEMPTY(self.accountTextField.text)) {
+        if ([self.passwordTextField canBecomeFirstResponder]) {
+            [self.passwordTextField becomeFirstResponder];
+        }
+    }
 }
 #pragma mark - 忘记密码 登录 注册
 - (IBAction)loginClick:(UIButton *)sender {
@@ -76,6 +82,9 @@ typedef NS_ENUM(NSInteger, LoginType) {
         if (object) {
            [AEUserInfo yy_modelWithDictionary:object];
             [User save];
+            if (weakSelf.loginType == AccountLoginType) {
+                [AEUserDefaults setObject:account forKey:@"ACAA_Acount"];
+            }
         }
         if (weakSelf.loginCompletion) {
             weakSelf.loginCompletion(YES);

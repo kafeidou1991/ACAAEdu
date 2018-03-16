@@ -26,8 +26,17 @@
 
 @implementation AEMyOrderList
 
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"goods":[AEGoodItem class]};
+}
+
 @end
 
+@implementation AEGoodItem
+@end
+
+@implementation AEScreeningItem
+@end
 
 
 
