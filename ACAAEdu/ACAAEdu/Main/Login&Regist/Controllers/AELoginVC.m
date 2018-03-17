@@ -157,8 +157,12 @@ typedef NS_ENUM(NSInteger, LoginType) {
     if (loginComplation) {
         loginv.loginCompletion = loginComplation;
     }
-    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:loginv];;
-    [viewController presentViewController:nav animated:YES completion:nil];
+    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:loginv];
+    // 问题：模态的时候有延迟，而且延迟比较厉害。第一次遇到这种问题；上网查了一下，网上给出的答案：由于某种原因： presentViewController:animated:completion 里的内容并不会真的马上触发执行，除非有一个主线程事件触发。比如在弹出慢的时候，你随便点击一下屏幕，马上就能弹出来；这个我亲自测试了是这种情况
+    // 解决方法：将 presentViewController:animated:completion: 添加到主线程
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [viewController presentViewController:nav animated:YES completion:nil];
+    }];
 }
 //返回
 -(void)backAction:(UIBarButtonItem *)sender {

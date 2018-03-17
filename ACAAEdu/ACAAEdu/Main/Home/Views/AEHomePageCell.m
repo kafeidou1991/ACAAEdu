@@ -42,10 +42,10 @@
 }
 
 - (void)setContentText:(AEExamItem *)item {
-    self.titleLabel.text = [NSString stringWithFormat:@"%@",item.subject_full_name.length > 0 ? [item.subject_full_name substringToIndex:1] : @""];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",item.short_name.length > 0 ? [item.short_name substringToIndex:1] : @""];
     self.nameLabel.text = item.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"版本：%@",item.version];
-    self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@",item.subject_type_name];
+    self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@",item.short_name];
     self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_price];
 }
 

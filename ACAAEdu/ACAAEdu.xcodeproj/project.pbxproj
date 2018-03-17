@@ -33,6 +33,12 @@
 		B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6F205C1AAC001CAA02 /* AEMessageListCell.m */; };
 		B7D86B72205C1AAC001CAA02 /* AEMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */; };
 		B7D86B75205C2086001CAA02 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B74205C2085001CAA02 /* NSDate+Extension.m */; };
+		B7DA8CBE205D0CD200511042 /* UIView+SGPagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8CB2205D0CD200511042 /* UIView+SGPagingView.m */; };
+		B7DA8CBF205D0CD200511042 /* SGPageContentScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8CB4205D0CD200511042 /* SGPageContentScrollView.m */; };
+		B7DA8CC0205D0CD200511042 /* SGPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8CB5205D0CD200511042 /* SGPageContentView.m */; };
+		B7DA8CC1205D0CD200511042 /* SGPageTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8CB9205D0CD200511042 /* SGPageTitleView.m */; };
+		B7DA8CC2205D0CD200511042 /* SGPageTitleViewConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8CBA205D0CD200511042 /* SGPageTitleViewConfigure.m */; };
+		B7DA8CC5205D0E1A00511042 /* AEMessageCenterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7DA8CC4205D0E1A00511042 /* AEMessageCenterVC.m */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
 		B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B90615752057EC2600801D38 /* AEOrderDetailCell.m */; };
@@ -190,6 +196,19 @@
 		B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEMessageListCell.xib; sourceTree = "<group>"; };
 		B7D86B73205C2084001CAA02 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		B7D86B74205C2085001CAA02 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		B7DA8CB1205D0CD200511042 /* UIView+SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SGPagingView.h"; sourceTree = "<group>"; };
+		B7DA8CB2205D0CD200511042 /* UIView+SGPagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SGPagingView.m"; sourceTree = "<group>"; };
+		B7DA8CB4205D0CD200511042 /* SGPageContentScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageContentScrollView.m; sourceTree = "<group>"; };
+		B7DA8CB5205D0CD200511042 /* SGPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageContentView.m; sourceTree = "<group>"; };
+		B7DA8CB6205D0CD200511042 /* SGPageContentScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageContentScrollView.h; sourceTree = "<group>"; };
+		B7DA8CB7205D0CD200511042 /* SGPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageContentView.h; sourceTree = "<group>"; };
+		B7DA8CB9205D0CD200511042 /* SGPageTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageTitleView.m; sourceTree = "<group>"; };
+		B7DA8CBA205D0CD200511042 /* SGPageTitleViewConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPageTitleViewConfigure.m; sourceTree = "<group>"; };
+		B7DA8CBB205D0CD200511042 /* SGPageTitleViewConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageTitleViewConfigure.h; sourceTree = "<group>"; };
+		B7DA8CBC205D0CD200511042 /* SGPageTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPageTitleView.h; sourceTree = "<group>"; };
+		B7DA8CBD205D0CD200511042 /* SGPagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPagingView.h; sourceTree = "<group>"; };
+		B7DA8CC3205D0E1A00511042 /* AEMessageCenterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMessageCenterVC.h; sourceTree = "<group>"; };
+		B7DA8CC4205D0E1A00511042 /* AEMessageCenterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMessageCenterVC.m; sourceTree = "<group>"; };
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
@@ -436,6 +455,7 @@
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
 			isa = PBXGroup;
 			children = (
+				B7DA8CAF205D0CD200511042 /* SGPagingView */,
 				B93C7CE9205A7BED00FC5E6C /* Label */,
 				B9B1CD19202BFCB60017C97D /* CircularProgressBar */,
 				B918BB29202B051600EDB00D /* BaseClass */,
@@ -464,6 +484,48 @@
 				B7CA3D6520502761008D6970 /* AESpaceItem.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B7DA8CAF205D0CD200511042 /* SGPagingView */ = {
+			isa = PBXGroup;
+			children = (
+				B7DA8CB0205D0CD200511042 /* Category */,
+				B7DA8CB3205D0CD200511042 /* SGPageContent */,
+				B7DA8CB8205D0CD200511042 /* SGPageTitle */,
+				B7DA8CBD205D0CD200511042 /* SGPagingView.h */,
+			);
+			path = SGPagingView;
+			sourceTree = "<group>";
+		};
+		B7DA8CB0205D0CD200511042 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				B7DA8CB1205D0CD200511042 /* UIView+SGPagingView.h */,
+				B7DA8CB2205D0CD200511042 /* UIView+SGPagingView.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		B7DA8CB3205D0CD200511042 /* SGPageContent */ = {
+			isa = PBXGroup;
+			children = (
+				B7DA8CB4205D0CD200511042 /* SGPageContentScrollView.m */,
+				B7DA8CB5205D0CD200511042 /* SGPageContentView.m */,
+				B7DA8CB6205D0CD200511042 /* SGPageContentScrollView.h */,
+				B7DA8CB7205D0CD200511042 /* SGPageContentView.h */,
+			);
+			path = SGPageContent;
+			sourceTree = "<group>";
+		};
+		B7DA8CB8205D0CD200511042 /* SGPageTitle */ = {
+			isa = PBXGroup;
+			children = (
+				B7DA8CB9205D0CD200511042 /* SGPageTitleView.m */,
+				B7DA8CBA205D0CD200511042 /* SGPageTitleViewConfigure.m */,
+				B7DA8CBB205D0CD200511042 /* SGPageTitleViewConfigure.h */,
+				B7DA8CBC205D0CD200511042 /* SGPageTitleView.h */,
+			);
+			path = SGPageTitle;
 			sourceTree = "<group>";
 		};
 		B7FB06A8202C994700D5642D /* Model */ = {
@@ -896,6 +958,8 @@
 				B92B977D2043FCA30086DBA9 /* AEBindIdCardVC.h */,
 				B92B9782204400AF0086DBA9 /* AEBindIdCardVC.m */,
 				B92B977F2043FCA30086DBA9 /* AEBindIdCardVC.xib */,
+				B7DA8CC3205D0E1A00511042 /* AEMessageCenterVC.h */,
+				B7DA8CC4205D0E1A00511042 /* AEMessageCenterVC.m */,
 				B7D86B6B205C0DC2001CAA02 /* AEMessageListVC.h */,
 				B7D86B6C205C0DC2001CAA02 /* AEMessageListVC.m */,
 			);
@@ -1182,9 +1246,11 @@
 				B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
+				B7DA8CBE205D0CD200511042 /* UIView+SGPagingView.m in Sources */,
 				B7129A682031AF460081472E /* AESettingVC.m in Sources */,
 				B94C1CE720401B3F006344F2 /* CGXDatePickerView.m in Sources */,
 				B916E37220591D1D007EB40B /* AEScreeningVC.m in Sources */,
+				B7DA8CBF205D0CD200511042 /* SGPageContentScrollView.m in Sources */,
 				B918BBCA202B088700EDB00D /* UIButton+safeClick.m in Sources */,
 				B94C1CE620401B3F006344F2 /* CGXAddressPcikerView.m in Sources */,
 				B94C1CE420401B3F006344F2 /* CGXPickerViewManager.m in Sources */,
@@ -1210,6 +1276,7 @@
 				B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */,
 				B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */,
 				B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */,
+				B7DA8CC1205D0CD200511042 /* SGPageTitleView.m in Sources */,
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
 				B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */,
@@ -1240,6 +1307,7 @@
 				B93C7CE0205A154300FC5E6C /* AEPurchaseManage.m in Sources */,
 				B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */,
 				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
+				B7DA8CC0205D0CD200511042 /* SGPageContentView.m in Sources */,
 				B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */,
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
@@ -1250,8 +1318,10 @@
 				B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,
+				B7DA8CC2205D0CD200511042 /* SGPageTitleViewConfigure.m in Sources */,
 				B918BB2C202B051600EDB00D /* AEBase.m in Sources */,
 				B9B1CD45202C54360017C97D /* AEAboutMeVC.m in Sources */,
+				B7DA8CC5205D0E1A00511042 /* AEMessageCenterVC.m in Sources */,
 				B93C7CE8205A79F000FC5E6C /* UIView+category.m in Sources */,
 				B918BBC1202B088700EDB00D /* UIImage+help.m in Sources */,
 				B79C925D2029EBFA002D0B66 /* HMBannerView.m in Sources */,

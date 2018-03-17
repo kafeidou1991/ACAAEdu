@@ -17,7 +17,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"通知";
     [self initTableView];
     
     
@@ -36,7 +35,7 @@
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:nil path:nil body:@{@"status":@"1",@"page":@"1"} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:nil path:nil body:@{@"status":(_messageType == UnReadMessageListType ? @"0" : @"1"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]} success:^(id object) {
         [weakSelf hudclose];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];

@@ -8,6 +8,13 @@
 
 #import "AEBaseTableController.h"
 
+typedef NS_ENUM(NSInteger, MessageListType) {
+    UnReadMessageListType = 0,  //未读
+    ReadMessageListType         //已读
+};
+
 @interface AEMessageListVC : AEBaseTableController
+
+@property (nonatomic, assign) MessageListType messageType;  //消息模式
 
 @end
