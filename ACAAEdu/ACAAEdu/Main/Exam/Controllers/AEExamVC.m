@@ -93,8 +93,6 @@ static CGFloat const GoodsViewHeight = 50.f;
                     weakSelf.currPage = 1;
                     [weakSelf noHasMoreData];
                 }
-//                [self createEmptyView];
-//                [_emptyView setRefreshButtonHiden:YES];
             }
         });
     } faile:^(NSInteger code, NSString *error) {

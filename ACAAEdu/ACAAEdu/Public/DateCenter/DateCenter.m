@@ -38,5 +38,8 @@
 @implementation AEScreeningItem
 @end
 
+@implementation AEMessageList
+@end
+
 
 

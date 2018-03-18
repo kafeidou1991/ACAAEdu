@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
-    
+    self.tableView.height -= 44;
     
 }
 - (void)initTableView {
@@ -32,25 +32,56 @@
     }];
 }
 
+
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:nil path:nil body:@{@"status":(_messageType == UnReadMessageListType ? @"0" : @"1"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:@{@"status":(_messageType == UnReadMessageListType ? @"0" : @"1"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]}.mutableCopy path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
+        [weakSelf endRefesh:YES];
+        [weakSelf endRefesh:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([object[@"data"]count] > 0) {
+                if (weakSelf.currPage == 1) {
+                    [weakSelf.dataSources removeAllObjects];
+                }
+                [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEMessageList class] json:object[@"data"]]];
+                [weakSelf.tableView reloadData];
+                NSInteger total = [object[@"total"] integerValue];
+                if (total > 1) {
+                    if (weakSelf.currPage < total) {
+                        [weakSelf addFooterRefesh:^{
+                            [weakSelf afterProFun];
+                        }];
+                    }else{
+                        [weakSelf noHasMoreData];
+                    }
+                }
+            }else{
+                //超过一页 服务器没返回数据
+                if (weakSelf.currPage > 1) {
+                    weakSelf.currPage = 1;
+                    [weakSelf noHasMoreData];
+                }
+            }
+        });
+        
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
+        [weakSelf endRefesh:YES];
+        [weakSelf endRefesh:NO];
         [AEBase alertMessage:error cb:nil];
     }];
 }
 
 #pragma mark - tableView delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.dataSources.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEMessageListCell * cell = [AEMessageListCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    [cell updateCell:self.dataSources[indexPath.row]];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

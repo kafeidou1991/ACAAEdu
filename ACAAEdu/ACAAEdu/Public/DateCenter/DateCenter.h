@@ -117,13 +117,33 @@
 
 @property (nonatomic, copy) NSString * name; //条目分类
 @property (nonatomic, copy) NSString * version; //条目版本
-@property (nonatomic, copy) NSString * subject_name; //条目科目
+@property (nonatomic, copy) NSString * short_name; //条目科目
 
 
 
 //本地判断 是否已经选择
 @property (nonatomic, assign) BOOL isSelect; //是否选择
 
+@end
+
+//"update_time" : 1521020838,
+//"to_uid" : 121004,
+//"status" : 0,
+//"id" : 115,
+//"message_id" : 18,
+//"title" : "公告1",
+//"to_user_type" : 0,
+//"create_time" : 1521020838,
+//"body" : "111111111111111111",
+//"from_uid" : 1,
+//"delete_time" : null
+@interface AEMessageList :DateCenter
+@property (nonatomic, copy) NSString * create_time; //
+@property (nonatomic, copy) NSString * update_time; //
+@property (nonatomic, copy) NSString * id; //
+@property (nonatomic, copy) NSString * status; //0 未读 1 已读
+@property (nonatomic, copy) NSString * title; // 标题
+@property (nonatomic, copy) NSString * body; //副标题
 @end
 
 

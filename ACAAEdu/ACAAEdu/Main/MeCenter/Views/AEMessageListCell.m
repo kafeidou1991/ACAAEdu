@@ -22,6 +22,13 @@
 
 @implementation AEMessageListCell
 
+- (void)updateCell:(AEMessageList *)item {
+    self.mainTitleLabel.text = item.title;
+    self.subTitleLabel.text = item.body;
+    self.timeLabel.text = [[NSDate dateWithTimeIntervalSince1970:item.create_time.integerValue]ff_dateDescription];
+
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

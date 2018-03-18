@@ -38,6 +38,8 @@
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐
 #define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"
+//首页Banner
+#define kBanner @"mobile/system/banner"
 //科目列表
 #define kIndexList @"mobile/subject/index"
 //筛选类别列表

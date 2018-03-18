@@ -14,6 +14,7 @@
 
 @interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
+
 @end
 
 @implementation AEHomePageVC
@@ -24,13 +25,13 @@
     self.navigationItem.leftBarButtonItem = nil;
     [self initTableView];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString * url =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
-        NSString * url1 =@"https://www.baidu.com/img/bd_logo1.png";
-        NSString * url2 =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
-        NSArray * array = @[url,url1,url2];
-        [self.headerView updateBanner:array];
-    });
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSString * url =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
+//        NSString * url1 =@"https://www.baidu.com/img/bd_logo1.png";
+//        NSString * url2 =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
+//        NSArray * array = @[url,url1,url2];
+//        [self.headerView updateBanner:array];
+//    });
 }
 - (void)initTableView {
     WS(weakSelf)
@@ -45,18 +46,36 @@
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
+    __block NSInteger isEnd = -1; //控制请求是否完成
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
-        [weakSelf hudclose];
-        [weakSelf endRefesh:YES];
+        isEnd += 1;
+        [weakSelf endLoadData:isEnd];
         weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
-        [weakSelf.tableView reloadData];
-        
-        
     } faile:^(NSInteger code, NSString *error) {
-        [weakSelf hudclose];
-        [weakSelf endRefesh:YES];
+        isEnd += 1;
+        [weakSelf endLoadData:isEnd];
         [AEBase alertMessage:error cb:nil];
     }];
+    
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kBanner query:nil path:nil body:nil success:^(id object) {
+        isEnd += 1;
+        if ([object isKindOfClass:[NSArray class]]) {
+            //轮播图
+            [weakSelf.headerView updateBanner:object];
+        }
+        [weakSelf endLoadData:isEnd];
+    } faile:^(NSInteger code, NSString *error) {
+        isEnd += 1;
+        [weakSelf endLoadData:isEnd];
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+- (void)endLoadData:(NSInteger)isEnd {
+    if (isEnd >= 0) {
+        [self hudclose];
+        [self endRefesh:YES];
+        [self.tableView reloadData];
+    }
 }
 
 

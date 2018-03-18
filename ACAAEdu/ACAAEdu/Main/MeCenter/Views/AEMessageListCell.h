@@ -12,6 +12,6 @@ static const CGFloat cellHeight = 60.f;
 
 @interface AEMessageListCell : UITableViewCell
 
-
+- (void)updateCell:(AEMessageList *)item;
 
 @end
