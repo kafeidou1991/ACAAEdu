@@ -117,7 +117,7 @@
 
 @property (nonatomic, copy) NSString * name; //条目分类
 @property (nonatomic, copy) NSString * version; //条目版本
-@property (nonatomic, copy) NSString * short_name; //条目科目
+@property (nonatomic, copy) NSString * subject_type_name; //条目科目
 
 
 

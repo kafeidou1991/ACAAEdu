@@ -14,7 +14,6 @@
 static NSString * kAEScreeningCell = @"AEScreeningCell";
 static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
 
-static CGFloat footViewHeight = 50.f;
 
 @interface AEScreeningVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -40,6 +39,23 @@ static CGFloat footViewHeight = 50.f;
     
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.footView];
+    WS(weakSelf)
+    self.footView.block = ^(BOOL isDone) {
+        [weakSelf doneBootomMenuAction:isDone];
+    };
+}
+- (void)doneBootomMenuAction:(BOOL)isDone {
+    if (isDone) {
+        NSLog(@"确定");
+    }else {
+        for (NSInteger i = 0; i < [self.collectionView numberOfSections]; i++) {
+            [self resetSelectItem:i];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+    }
+    
 }
 - (void)afterProFun {
     //三个接口是否全部加载完成
@@ -114,7 +130,8 @@ static CGFloat footViewHeight = 50.f;
     item.isSelect = !item.isSelect;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-       [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+//       [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
+        [collectionView reloadData];
     });
     self.selectIndexPaths[indexPath.section] = indexPath;
 //    //说明已选择过 应该恢复上个选择的内容
@@ -219,12 +236,10 @@ static CGFloat footViewHeight = 50.f;
     }
     return _collectionView;
 }
-
 -(AEScreeningFooterView *)footView {
     if (!_footView) {
         _footView = [[NSBundle mainBundle]loadNibNamed:@"AEScreeningFooterView" owner:nil options:nil].firstObject;
         _footView.frame = CGRectMake(0, SCREEN_HEIGHT - NAVIGATION_HEIGHT - footViewHeight, SCREEN_WIDTH, footViewHeight);
-        [self.view addSubview:_footView];
     }
     return _footView;
 }

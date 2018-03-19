@@ -28,7 +28,6 @@
 		B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D6520502761008D6970 /* AESpaceItem.m */; };
 		B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D682050293B008D6970 /* AEExamItem.m */; };
 		B7D86B68205C0630001CAA02 /* AEScreeningFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */; };
-		B7D86B6A205C0638001CAA02 /* AEScreeningFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D86B69205C0638001CAA02 /* AEScreeningFooterView.xib */; };
 		B7D86B6D205C0DC2001CAA02 /* AEMessageListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6C205C0DC2001CAA02 /* AEMessageListVC.m */; };
 		B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6F205C1AAC001CAA02 /* AEMessageListCell.m */; };
 		B7D86B72205C1AAC001CAA02 /* AEMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */; };
@@ -72,6 +71,7 @@
 		B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBC202B088600EDB00D /* NSObject+entend.m */; };
 		B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBD202B088700EDB00D /* UIView+Extend.m */; };
 		B918BBD0202B088700EDB00D /* WLSpecScaleLayoutConstrain.m in Sources */ = {isa = PBXBuildFile; fileRef = B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */; };
+		B91A5008205FB29F00750150 /* AEScreeningFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B91A5007205FB29F00750150 /* AEScreeningFooterView.xib */; };
 		B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */ = {isa = PBXBuildFile; fileRef = B92733A6204148DE006F48C2 /* CGXAddressCity_child.plist */; };
 		B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92733A920415E61006F48C2 /* AEUserRemarkCell.m */; };
 		B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */; };
@@ -188,7 +188,6 @@
 		B7CA3D682050293B008D6970 /* AEExamItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamItem.m; sourceTree = "<group>"; };
 		B7D86B66205C0630001CAA02 /* AEScreeningFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreeningFooterView.h; sourceTree = "<group>"; };
 		B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreeningFooterView.m; sourceTree = "<group>"; };
-		B7D86B69205C0638001CAA02 /* AEScreeningFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEScreeningFooterView.xib; sourceTree = "<group>"; };
 		B7D86B6B205C0DC2001CAA02 /* AEMessageListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMessageListVC.h; sourceTree = "<group>"; };
 		B7D86B6C205C0DC2001CAA02 /* AEMessageListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMessageListVC.m; sourceTree = "<group>"; };
 		B7D86B6E205C1AAC001CAA02 /* AEMessageListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMessageListCell.h; sourceTree = "<group>"; };
@@ -270,6 +269,7 @@
 		B918BBBC202B088600EDB00D /* NSObject+entend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+entend.m"; sourceTree = "<group>"; };
 		B918BBBD202B088700EDB00D /* UIView+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extend.m"; sourceTree = "<group>"; };
 		B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLSpecScaleLayoutConstrain.m; sourceTree = "<group>"; };
+		B91A5007205FB29F00750150 /* AEScreeningFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEScreeningFooterView.xib; sourceTree = "<group>"; };
 		B92733A6204148DE006F48C2 /* CGXAddressCity_child.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CGXAddressCity_child.plist; sourceTree = "<group>"; };
 		B92733A820415E61006F48C2 /* AEUserRemarkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserRemarkCell.h; sourceTree = "<group>"; };
 		B92733A920415E61006F48C2 /* AEUserRemarkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserRemarkCell.m; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 				B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */,
 				B7D86B66205C0630001CAA02 /* AEScreeningFooterView.h */,
 				B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */,
-				B7D86B69205C0638001CAA02 /* AEScreeningFooterView.xib */,
+				B91A5007205FB29F00750150 /* AEScreeningFooterView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1152,8 +1152,8 @@
 				B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */,
 				B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */,
 				B79C9277202A0255002D0B66 /* AEHomePageCell.xib in Resources */,
-				B7D86B6A205C0638001CAA02 /* AEScreeningFooterView.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
+				B91A5008205FB29F00750150 /* AEScreeningFooterView.xib in Resources */,
 				B90615822058018D00801D38 /* AEOrderPayVC.xib in Resources */,
 				B7D86B72205C1AAC001CAA02 /* AEMessageListCell.xib in Resources */,
 				B94C1CCF20400054006344F2 /* AEUserInfoCell.xib in Resources */,

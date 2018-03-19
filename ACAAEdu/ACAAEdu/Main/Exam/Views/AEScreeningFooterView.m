@@ -17,11 +17,19 @@
 @implementation AEScreeningFooterView
 
 - (IBAction)resetAction:(UIButton *)sender {
-    
+    if (_block) {
+        _block(NO);
+    }
 }
 
 - (IBAction)doneAction:(UIButton *)sender {
-    
+    if (_block) {
+        _block(YES);
+    }
+}
+-(void)layoutSubviews {
+    [super layoutSubviews];
+    self.height = footViewHeight;
 }
 
 

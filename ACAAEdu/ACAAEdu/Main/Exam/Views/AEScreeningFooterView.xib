@@ -15,19 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdO-ml-YFZ">
-                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="24c-nc-Fya"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                    <state key="normal" title="确定"/>
-                    <connections>
-                        <action selector="doneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="2vl-La-ukG"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCA-TQ-z5P">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNM-ih-TAz">
                     <rect key="frame" x="0.0" y="0.0" width="187.5" height="50"/>
                     <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
@@ -35,22 +23,35 @@
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="FTG-4v-BM1"/>
+                        <action selector="resetAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="TGH-Y9-gms"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yp9-vr-G1d">
+                    <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="BH2-G2-goS"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <state key="normal" title="确定"/>
+                    <connections>
+                        <action selector="doneAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="mcq-YT-sO4"/>
                     </connections>
                 </button>
             </subviews>
             <constraints>
-                <constraint firstItem="cCA-TQ-z5P" firstAttribute="height" secondItem="hdO-ml-YFZ" secondAttribute="height" id="4lq-pm-1lp"/>
-                <constraint firstItem="hdO-ml-YFZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FZv-av-3Nn"/>
-                <constraint firstItem="hdO-ml-YFZ" firstAttribute="leading" secondItem="cCA-TQ-z5P" secondAttribute="trailing" id="RSH-bS-6MU"/>
-                <constraint firstItem="cCA-TQ-z5P" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Y4E-1c-JjN"/>
-                <constraint firstItem="cCA-TQ-z5P" firstAttribute="width" secondItem="hdO-ml-YFZ" secondAttribute="width" id="b3C-9o-Sls"/>
-                <constraint firstItem="cCA-TQ-z5P" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gSg-4W-Bv5"/>
-                <constraint firstAttribute="trailing" secondItem="hdO-ml-YFZ" secondAttribute="trailing" id="pFx-d0-cUN"/>
+                <constraint firstItem="qNM-ih-TAz" firstAttribute="height" secondItem="yp9-vr-G1d" secondAttribute="height" id="MB1-LE-PRf"/>
+                <constraint firstItem="qNM-ih-TAz" firstAttribute="top" secondItem="yp9-vr-G1d" secondAttribute="top" id="POK-bg-51Z"/>
+                <constraint firstItem="qNM-ih-TAz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Rw6-ux-U5T"/>
+                <constraint firstItem="qNM-ih-TAz" firstAttribute="width" secondItem="yp9-vr-G1d" secondAttribute="width" id="Usq-01-TK9"/>
+                <constraint firstItem="yp9-vr-G1d" firstAttribute="leading" secondItem="qNM-ih-TAz" secondAttribute="trailing" id="fQe-kM-Jzj"/>
+                <constraint firstAttribute="trailing" secondItem="yp9-vr-G1d" secondAttribute="trailing" id="sMS-5J-hix"/>
+                <constraint firstItem="yp9-vr-G1d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yfX-CL-96w"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="25.5" y="52"/>
         </view>
     </objects>
 </document>

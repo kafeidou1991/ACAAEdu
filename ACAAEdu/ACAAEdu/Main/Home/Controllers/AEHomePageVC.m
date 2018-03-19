@@ -46,11 +46,11 @@
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    __block NSInteger isEnd = -1; //控制请求是否完成
+    __block NSInteger isEnd = - 2; //控制请求是否完成
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
         isEnd += 1;
-        [weakSelf endLoadData:isEnd];
         weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+        [weakSelf endLoadData:isEnd];
     } faile:^(NSInteger code, NSString *error) {
         isEnd += 1;
         [weakSelf endLoadData:isEnd];
