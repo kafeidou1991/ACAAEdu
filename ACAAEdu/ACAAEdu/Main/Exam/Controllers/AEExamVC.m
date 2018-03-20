@@ -22,11 +22,19 @@ static CGFloat const GoodsViewHeight = 50.f;
 
 @property (nonatomic, assign) BuyExamType buyType;
 @property (nonatomic, strong) AEGoodsBasketView * goodsView; //购物篮
-
+/**
+ 请求参数
+ */
+@property (nonatomic, strong) NSMutableDictionary * pararsDict;
 @end
 
 @implementation AEExamVC
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    //重置选择项
+    self.currPage = 1;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
@@ -44,7 +52,14 @@ static CGFloat const GoodsViewHeight = 50.f;
 }
 #pragma mark - 筛选
 - (void)matchItem {
-    [self.navigationController pushViewController:[AEScreeningVC new] animated:YES];
+    WS(weakSelf);
+    AEScreeningVC * screenVC = [AEScreeningVC new];
+    screenVC.resultBlock = ^(NSDictionary * dict) {
+        weakSelf.pararsDict = [NSMutableDictionary dictionaryWithDictionary:dict];
+        [weakSelf.pararsDict setObject:@(weakSelf.currPage) forKey:@"page"];
+        [weakSelf loadData:YES];
+    };
+    [self.navigationController pushViewController:screenVC animated:YES];
 }
 - (void)initComponent {
     self.buyType = BuySigleExamType;
@@ -59,6 +74,7 @@ static CGFloat const GoodsViewHeight = 50.f;
     }];
 }
 -(void)afterProFun {
+    self.pararsDict = @{@"page" : @(self.currPage)}.mutableCopy;
     [self loadData:YES];
 }
 - (void)loadData:(BOOL)isLoad {
@@ -66,7 +82,7 @@ static CGFloat const GoodsViewHeight = 50.f;
         [self hudShow:self.view msg:STTR_ater_on];
     }
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIndexList query:nil path:nil body:@{@"page" : @(self.currPage)} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIndexList query:nil path:nil body:self.pararsDict.copy success:^(id object) {
         isLoad ? [weakSelf hudclose] : nil;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];

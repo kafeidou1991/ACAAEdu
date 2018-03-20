@@ -21,7 +21,7 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
 @property (nonatomic, strong) UICollectionView * collectionView;
 @property (nonatomic, strong) AEScreeningFooterView * footView;
 //已经选择的行列
-@property (nonatomic, strong) NSMutableArray * selectIndexPaths;
+@property (nonatomic, strong) NSMutableDictionary * selectIndexItems;
 
 
 @end
@@ -35,8 +35,7 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
     self.dataSource = @[@[],
                         @[],
                         @[]].mutableCopy;
-    self.selectIndexPaths = @[@"",@"",@""].mutableCopy;
-    
+    self.selectIndexItems = @{}.mutableCopy;
     [self.view addSubview:self.collectionView];
     [self.view addSubview:self.footView];
     WS(weakSelf)
@@ -46,11 +45,33 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
 }
 - (void)doneBootomMenuAction:(BOOL)isDone {
     if (isDone) {
-        NSLog(@"确定");
+        if (self.selectIndexItems.count) {
+            NSMutableDictionary * parasDic = @{}.mutableCopy;
+            NSArray * allKeys = [self.selectIndexItems allKeys];
+            for (NSString * key in allKeys) {
+                AEScreeningItem * item = self.selectIndexItems[key];
+                if (key.integerValue == 0) {
+                    [parasDic setObject:item.subject_type_name forKey:@"subject_name"];
+                }else if (key.integerValue == 1) {
+                    [parasDic setObject:item.name forKey:@"subject_type_name"];
+                }else {
+                    [parasDic setObject:item.version forKey:@"version"];
+                }
+            }
+            if (_resultBlock) {
+                _resultBlock(parasDic.copy);
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }else {
+            [AEBase alertMessage:@"请选择筛选条件" cb:nil];
+        }
+        
+        
     }else {
         for (NSInteger i = 0; i < [self.collectionView numberOfSections]; i++) {
             [self resetSelectItem:i];
         }
+        self.selectIndexItems = @{}.mutableCopy;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.collectionView reloadData];
         });
@@ -133,7 +154,7 @@ static NSString * kAEScreeningHeaderView = @"AEScreenHeaderView";
 //       [collectionView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section]];
         [collectionView reloadData];
     });
-    self.selectIndexPaths[indexPath.section] = indexPath;
+    [self.selectIndexItems setObject:item forKey:[NSString stringWithFormat:@"%ld",indexPath.section]];
 //    //说明已选择过 应该恢复上个选择的内容
 //    if ([self.selectIndexPaths[indexPath.section] isKindOfClass:[NSIndexPath class]]) {
 //        NSIndexPath *  lastIndexPath = self.selectIndexPaths[indexPath.section];

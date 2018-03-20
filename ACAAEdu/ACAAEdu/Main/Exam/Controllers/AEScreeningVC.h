@@ -8,6 +8,10 @@
 
 #import "AEBaseController.h"
 
+typedef void(^AEScreeningResultBlock)(NSDictionary *);
+
 @interface AEScreeningVC : AEBaseController
+
+@property (nonatomic, copy) AEScreeningResultBlock resultBlock;
 
 @end
