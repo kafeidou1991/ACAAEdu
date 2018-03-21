@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+// MARK: -----切换环境key-----
+#define ChangeServerEnv @"ChangeServerEnv"
+
 typedef NS_ENUM(NSUInteger, HttpRequestType) {
     HttpRequestTypeGET = 0,
     HttpRequestTypePOST,

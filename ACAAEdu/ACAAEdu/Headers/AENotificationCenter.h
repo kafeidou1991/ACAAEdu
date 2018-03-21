@@ -9,9 +9,9 @@
 #ifndef AENotificationCenter_h
 #define AENotificationCenter_h
 
-static NSString * const kLoginSuccess = @"loginSuccess";
-static NSString * const kLoginExit = @"loginExit";
-static NSString * const kBindAccountSuccess = @"BindAccountSuccess";
+static NSString * const kLoginSuccess = @"loginSuccess"; //登录成功
+static NSString * const kLoginExit = @"loginExit";  //退出登录
+static NSString * const kBindAccountSuccess = @"BindAccountSuccess"; //绑定账号成功
 static NSString * const kreLogin = @"reLogin"; //重新登录
 
 

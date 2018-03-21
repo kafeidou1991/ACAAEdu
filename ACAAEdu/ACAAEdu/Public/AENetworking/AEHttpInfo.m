@@ -15,12 +15,31 @@
     if (self = [super init]) {
         self.platform = @"ios";
         self.timestamp = [NSString stringWithFormat:@"%lu",(unsigned long)[NSDate date].timeIntervalSince1970];
-//        self.networkDomain = @"http://www.iww123.com/";
+#ifdef DEBUG
+        self.networkDomain = [self getNetworkDomain];
+#else
         self.networkDomain = @"http://id.acaa.cn/";
-//        self.networkDomain = @"http://www.bagua9.com/";
+#endif
+        
         self.apiToken = @"";
     }
     return self;
+}
+
+- (NSString *)getNetworkDomain {
+    NSString * domain = @"http://id.acaa.cn/";
+    NSString * temp = [AEUserDefaults objectForKey:ChangeServerEnv];
+    if (STRISEMPTY(temp)) {
+        return domain;
+    }
+    if (temp.integerValue == 1) {
+        return domain;
+    }else if (temp.integerValue == 2) {
+        domain = @"http://www.iww123.com/";
+    }else {
+        domain = @"http://www.bagua9.com/";
+    }
+    return domain;
 }
 
 @end
