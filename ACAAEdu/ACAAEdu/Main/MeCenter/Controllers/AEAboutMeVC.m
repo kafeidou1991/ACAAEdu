@@ -25,7 +25,7 @@
     
     //配置环境
 #ifdef DEBUG
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(changeServer) title:@"切换环境"];
+    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(changeServer) title:@"    "];
 #endif
 }
 // 内部测试功能
