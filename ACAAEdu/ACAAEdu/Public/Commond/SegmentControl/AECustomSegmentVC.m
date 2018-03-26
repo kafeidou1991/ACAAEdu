@@ -1,38 +1,27 @@
 //
-//  AEMessageCenterVC.m
+//  AESegmentControl.m
 //  ACAAEdu
 //
-//  Created by 张竟巍 on 2018/3/17.
+//  Created by 张竟巍 on 2018/3/26.
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEMessageCenterVC.h"
+#import "AECustomSegmentVC.h"
 #import "SGPagingView.h"
 #import "AEMessageListVC.h"
 
-@interface AEMessageCenterVC ()<SGPageTitleViewDelegate, SGPageContentViewDelegate>
+@interface AECustomSegmentVC ()<SGPageTitleViewDelegate, SGPageContentViewDelegate>
 
 @property (nonatomic, strong) SGPageTitleView *pageTitleView;
 @property (nonatomic, strong) SGPageContentView *pageContentView;
-
 @end
 
-@implementation AEMessageCenterVC
+@implementation AECustomSegmentVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"通知";
-    [self setupPageView];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (void)setupPageView {
-    
+- (void)setupPageView:(NSArray *)titlesArray ContentViewControllers:(NSArray <UIViewController *> * )viewControllers {
     CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
     CGFloat pageTitleViewY = 0;
     if (statusHeight == 20.0) {
@@ -40,8 +29,10 @@
     } else {
         pageTitleViewY = 88;
     }
-    
-    NSArray *titleArr = @[@"未读", @"已读"];
+    if(titlesArray.count == 0 || viewControllers.count == 0 || (titlesArray.count != viewControllers.count)) {
+        return;
+    }
+    NSArray *titleArr = titlesArray;
     SGPageTitleViewConfigure *configure = [SGPageTitleViewConfigure pageTitleViewConfigure];
     configure.titleColor = AEHexColor(@"333333");
     configure.titleSelectedColor = AEThemeColor;
@@ -52,13 +43,8 @@
     self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44) delegate:self titleNames:titleArr configure:configure];
     self.pageTitleView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_pageTitleView];
-//    _pageTitleView.selectedIndex = 1;
-    
-    AEMessageListVC * unReadMessageVC = [[AEMessageListVC alloc] init];
-    unReadMessageVC.messageType = UnReadMessageListType;
-    AEMessageListVC *readMessageVC = [[AEMessageListVC alloc] init];
-    readMessageVC.messageType = ReadMessageListType;
-    NSArray *childArr = @[unReadMessageVC, readMessageVC];
+    //    _pageTitleView.selectedIndex = 1;
+    NSArray *childArr = viewControllers;
     /// pageContentView
     CGFloat contentViewHeight = self.view.frame.size.height - CGRectGetMaxY(_pageTitleView.frame);
     self.pageContentView = [[SGPageContentView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_pageTitleView.frame), self.view.frame.size.width, contentViewHeight) parentVC:self childVCs:childArr];
@@ -74,14 +60,6 @@
     [self.pageTitleView setPageTitleViewWithProgress:progress originalIndex:originalIndex targetIndex:targetIndex];
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

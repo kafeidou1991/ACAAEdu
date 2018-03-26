@@ -97,6 +97,32 @@
 // MARK: -----客服-----
 #define ServicePhone @"4009650866"
 
+// MARK: -------代码段------
+/**
+ 需要登录的跳转
+ @param pushVC 跳转的VC
+ @param viewController 当前VC
+ @return
+ */
+#define PUSHLoginCustomViewController(pushVC, viewController) dispatch_block_t t = ^{\
+[viewController.navigationController pushViewController:pushVC animated:YES];\
+};\
+if (User.isLogin) {\
+t();\
+}else{\
+[AELoginVC OpenLogin:self callback:^(BOOL compliont) {\
+t();\
+}];\
+};
+
+/**
+ 不需要登录的跳转
+ @param pushVC 跳转的VC
+ @param viewController 当前VC
+ @return
+ */
+#define PUSHCustomViewController(pushVC, viewController) [viewController.navigationController pushViewController:pushVC animated:YES];\
+
 
 
 #endif /* AEDefineConstant_h */

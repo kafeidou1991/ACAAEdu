@@ -13,7 +13,9 @@
 #import "AEAboutMeVC.h"
 #import "AEMyOrderVC.h"
 #import "AESettingVC.h"
-#import "AEMessageCenterVC.h"
+#import "AECustomSegmentVC.h"
+#import "AEMessageListVC.h"
+#import "AEMyTestExamVC.h"
 
 static CGFloat customViewHeight = 180.f;
 
@@ -91,31 +93,29 @@ static CGFloat customViewHeight = 180.f;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * title = self.dataSources[indexPath.row][@"title"];
     if ([title isEqualToString:@"关于我们"]) {
-        [self.navigationController pushViewController:[AEAboutMeVC new] animated:YES];
+        PUSHCustomViewController([AEAboutMeVC new], self)
     }else if ([title isEqualToString:@"我的订单"]) {
-        dispatch_block_t t = ^{
-            [self.navigationController pushViewController:[AEMyOrderVC new] animated:YES];
-        };
-        if (User.isLogin) {
-            t();
-        }else {
-            [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
-                t();
-            }];
-        }
+        PUSHLoginCustomViewController([AEMyOrderVC new], self)
     }else if ([title isEqualToString:@"设置"]) {
-        [self.navigationController pushViewController:[AESettingVC new] animated:YES];
+        PUSHCustomViewController([AESettingVC new], self)
     }else if ([title isEqualToString:@"通知"]) {
-        dispatch_block_t t = ^{
-            [self.navigationController pushViewController:[AEMessageCenterVC new] animated:YES];
-        };
-        if (User.isLogin) {
-            t();
-        }else {
-            [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
-                t();
-            }];
-        }
+        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+        customVC.title = @"通知";
+        AEMessageListVC * unReadMessageVC = [[AEMessageListVC alloc] init];
+        unReadMessageVC.messageType = UnReadMessageListType;
+        AEMessageListVC *readMessageVC = [[AEMessageListVC alloc] init];
+        readMessageVC.messageType = ReadMessageListType;
+        [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
+        PUSHLoginCustomViewController(customVC, self)
+    }else if ([title isEqualToString:@"我的模考"]) {
+        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+        customVC.title = @"我的模考";
+        AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
+        hasExamVC.examType = HasTestExamType;
+        AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
+        noExamVC.examType = NoneTestExamType;
+        [customVC setupPageView:@[@"已考试", @"未考试"] ContentViewControllers:@[hasExamVC, noExamVC]];
+        PUSHLoginCustomViewController(customVC, self)
     }
 }
 -(void)dealloc {

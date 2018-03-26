@@ -13,17 +13,23 @@ static const CGFloat cellHeight = 80.f;
 
 @interface AEHomePageCell : UITableViewCell
 /**
- 单选模式
+ 考试列表单选模式
 
  @param item 数据
  */
 - (void)updateCell:(AEExamItem *)item;
 /**
- 多选模式
+ 考试列表多选模式
  
  @param item 数据
  */
 - (void)updateMoreCell:(AEExamItem *)item;
+/**
+ 我的模考列表
+ 
+ @param item 数据
+ */
+- (void)updateMyTestExamCell:(AEExamItem *)item;
 /**
  购买回调
  */
