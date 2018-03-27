@@ -1102,7 +1102,7 @@
 				TargetAttributes = {
 					B9B18EFC201826C200BA38BE = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					B9B18F14201826C200BA38BE = {
 						CreatedOnToolsVersion = 9.2;
@@ -1489,16 +1489,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 898899N723;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 87YD73XB89;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Headers/PrefixHeader.pch";
 				INFOPLIST_FILE = ACAAEdu/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ACAAedu.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ACAAEdu.iosapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "dd18360e-6ef5-4503-bf5b-b922891874e0";
+				PROVISIONING_PROFILE_SPECIFIER = ACAA_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1508,17 +1508,17 @@
 			baseConfigurationReference = E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 898899N723;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 87YD73XB89;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PRODUCT_NAME)/Headers/PrefixHeader.pch";
 				INFOPLIST_FILE = ACAAEdu/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ACAAedu.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ACAAEdu.iosapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c657e506-2775-4cfd-8a9f-6b21d7626d5c";
+				PROVISIONING_PROFILE_SPECIFIER = ACAA_dis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
