@@ -83,8 +83,24 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [HUD hideAnimated:YES afterDelay:1.5f];
     });
-    
 }
+
++ (void)hudShowInWindowMsg:(NSString *)msgText{
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIWindow *win = app.window;
+    
+    MBProgressHUD * HUD = [MBProgressHUD showHUDAddedTo:win animated:YES];
+    HUD.contentColor = [UIColor whiteColor];
+    HUD.bezelView.color = [UIColor blackColor];
+    HUD.label.text = msgText;
+    HUD.animationType = MBProgressHUDAnimationZoom;
+}
++ (void)hudclose{
+    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    UIWindow *win = app.window;
+    [MBProgressHUD hideHUDForView:win animated:YES];
+}
+
 
 +(UILabel *)createLabel:(CGRect) frame font:(UIFont *)font text:(NSString *)text defaultSizeTxt:(NSString *)sizeDefault color:(UIColor *)txtColor backgroundColor:(UIColor *)backgroundColor alignment:(NSTextAlignment)align{
     CGRect lr = frame;
