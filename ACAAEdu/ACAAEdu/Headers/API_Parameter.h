@@ -51,7 +51,10 @@
 
 
 #pragma mark ---------------------- 订单----------------------------
+//订单列表
 #define kOrderList @"mobile/shop/orders"
+//生产订单
+#define kCreatOrder @"/mobile/shop/order"
 
 #pragma mark ---------------------- 通知消息----------------------------
 #define kMessageList @"mobile/message/index"

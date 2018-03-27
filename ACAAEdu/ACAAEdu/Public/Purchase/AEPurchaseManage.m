@@ -34,7 +34,7 @@ static AEPurchaseManage * manage = nil;
 }
 // MARK: 开始内购
 - (void)startPurchWithID:(NSString *)purchID completeHandle:(IAPCompletionHandle)handle{
-    [AEBase hudShowInWindowMsg:@""];
+    [self showLoading];
     if (purchID) {
         if ([SKPaymentQueue canMakePayments]) {
             // 开始购买服务
@@ -150,6 +150,7 @@ static AEPurchaseManage * manage = nil;
 }
 // 交易失败
 - (void)failedTransaction:(SKPaymentTransaction *)transaction{
+    [self closeLoding];
     if (transaction.error.code != SKErrorPaymentCancelled) {
         [self handleActionWithType:kIAPPurchFailed data:nil];
     }else{
@@ -160,33 +161,41 @@ static AEPurchaseManage * manage = nil;
 }
 
 - (void)handleActionWithType:(IAPPurchType)type data:(NSData *)data{
-#if DEBUG
+    NSString * tipStr =@"";
     switch (type) {
         case kIAPPurchSuccess:
             NSLog(@"购买成功");
+            tipStr = @"购买成功";
             break;
         case kIAPPurchFailed:
             NSLog(@"购买失败");
+            tipStr = @"购买失败";
             break;
         case kIAPPurchCancle:
             NSLog(@"用户取消购买");
+            tipStr = @"取消购买";
             break;
         case KIAPPurchVerFailed:
             NSLog(@"订单校验失败");
+            tipStr = @"订单校验失败";
             break;
         case KIAPPurchVerSuccess:
             NSLog(@"订单校验成功");
+            tipStr = @"购买成功";
             break;
         case kIAPPurchNotArrow:
             NSLog(@"不允许程序内付费");
+            tipStr = @"不允许程序内付费";
             break;
         default:
             break;
     }
-#endif
     dispatch_async(dispatch_get_main_queue(), ^{
         if(self.handle){
             self.handle(type,data);
+        }
+        if (type != kIAPPurchSuccess) {
+            [AEBase alertMessage:tipStr cb:nil];
         }
     });
 }
@@ -195,7 +204,6 @@ static AEPurchaseManage * manage = nil;
     //交易验证
     NSURL *recepitURL = [[NSBundle mainBundle] appStoreReceiptURL];
     NSData *receipt = [NSData dataWithContentsOfURL:recepitURL];
-    
     if(!receipt){
         // 交易凭证为空验证失败
         [self handleActionWithType:KIAPPurchVerFailed data:nil];
@@ -225,27 +233,29 @@ static AEPurchaseManage * manage = nil;
     NSMutableURLRequest *storeRequest = [NSMutableURLRequest requestWithURL:storeURL];
     [storeRequest setHTTPMethod:@"POST"];
     [storeRequest setHTTPBody:requestData];
-    
+    WS(weakSelf)
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     [NSURLConnection sendAsynchronousRequest:storeRequest queue:queue
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               [self closeLoding];
                                if (connectionError) {
                                    // 无法连接服务器,购买校验失败
-                                   [self handleActionWithType:KIAPPurchVerFailed data:nil];
+                                   [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
                                } else {
                                    NSError *error;
                                    NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
                                    if (!jsonResponse) {
                                        // 苹果服务器校验数据返回为空校验失败
-                                       [self handleActionWithType:KIAPPurchVerFailed data:nil];
+                                       [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
                                    }
                                    
                                    // 先验证正式服务器,如果正式服务器返回21007再去苹果测试服务器验证,沙盒测试环境苹果用的是测试服务器
                                    NSString *status = [NSString stringWithFormat:@"%@",jsonResponse[@"status"]];
                                    if (status && [status isEqualToString:@"21007"]) {
-                                       [self verifyPurchaseWithPaymentTransaction:transaction isTestServer:YES];
+                                       [weakSelf showLoading];
+                                       [weakSelf verifyPurchaseWithPaymentTransaction:transaction isTestServer:YES];
                                    }else if(status && [status isEqualToString:@"0"]){
-                                       [self handleActionWithType:KIAPPurchVerSuccess data:nil];
+                                       [weakSelf handleActionWithType:KIAPPurchVerSuccess data:nil];
                                    }
 #if DEBUG
                                    NSLog(@"----验证结果 %@",jsonResponse);
@@ -278,6 +288,17 @@ static AEPurchaseManage * manage = nil;
 - (void)dealloc{
     // 移除观察者
     [[SKPaymentQueue defaultQueue] removeTransactionObserver:self];
+}
+
+- (void)showLoading {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [AEBase hudShowInWindowMsg:@""];
+    });
+}
+- (void)closeLoding {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [AEBase hudclose];
+    });
 }
 
 

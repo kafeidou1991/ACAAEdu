@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger,IAPPurchType) {
     kIAPPurchFailed = 1,        // 购买失败
     kIAPPurchCancle = 2,        // 取消购买
     KIAPPurchVerFailed = 3,     // 订单校验失败
-    KIAPPurchVerSuccess = 4,    // 订单校验成功
+    KIAPPurchVerSuccess = 4,    // 订单校验成功  才是正真的购买成功
     kIAPPurchNotArrow = 5,      // 不允许内购
 };
 

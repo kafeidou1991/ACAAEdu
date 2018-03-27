@@ -26,16 +26,34 @@
     self.tableView.tableFooterView = self.footerView;
     
 }
+-(void)createOrderDetail {
+    WS(weakSelf);
+    [self hudShow:self.view msg:STTR_ater_on];
+    NSMutableArray * paramArray = @[].mutableCopy;
+    for (AEExamItem * item in self.dataSources) {
+        [paramArray addObject:@{@"goods_type":@"subject",@"goods_id":item.id,@"goods_num":@"1"}];
+    }
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kCreatOrder query:nil path:nil body:paramArray success:^(id object) {
+        [weakSelf hudclose];
+        
+    } faile:^(NSInteger code, NSString *error) {
+        [weakSelf hudclose];
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+
+
 - (void)loadData:(NSArray *)data {
     self.dataSources = data.mutableCopy;
     [self.tableView reloadData];
-    
     
     CGFloat  price = 0.00;
     for (AEExamItem * item in self.dataSources) {
         price += item.subject_price.floatValue;
     }
     self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f",price];
+    
+    [self createOrderDetail];
     
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

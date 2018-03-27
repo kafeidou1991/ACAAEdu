@@ -17,7 +17,7 @@
 @interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
 
-@property (nonatomic, strong) AEPurchaseManage * mange;
+//@property (nonatomic, strong) AEPurchaseManage * mange;
 @end
 
 @implementation AEHomePageVC
@@ -35,19 +35,18 @@
 //        NSArray * array = @[url,url1,url2];
 //        [self.headerView updateBanner:array];
 //    });
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor redColor];
-    [self.view addSubview:btn];
-    btn.frame = CGRectMake(100, 100, 100, 100);
-    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:btn];
+//    btn.frame = CGRectMake(100, 100, 100, 100);
+//    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)buy {
-    _mange = [AEPurchaseManage new];
-    [AEBase alertMessage:@"" cb:nil];
-    [_mange startPurchWithID:@"com.acaaedu.1" completeHandle:^(IAPPurchType type, NSData *data) {
-        
-        
-    }];
+//    _mange = [AEPurchaseManage new];
+//    [_mange startPurchWithID:@"com.acaaedu.1" completeHandle:^(IAPPurchType type, NSData *data) {
+//        NSLog(@"回调");
+//
+//    }];
 }
 
 - (void)initTableView {
