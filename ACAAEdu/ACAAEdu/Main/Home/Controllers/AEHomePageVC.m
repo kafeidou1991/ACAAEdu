@@ -12,8 +12,12 @@
 #import "AEOrderDetailVC.h"
 #import "AEExamItem.h"
 
+#import "AEPurchaseManage.h"
+
 @interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
+
+
 
 @end
 
@@ -32,7 +36,22 @@
 //        NSArray * array = @[url,url1,url2];
 //        [self.headerView updateBanner:array];
 //    });
+    
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:btn];
+    btn.frame = CGRectMake(100, 100, 100, 100);
+    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
+- (void)buy {
+//    NSLog(@"11");
+   AEPurchaseManage * _iapManager = [[AEPurchaseManage alloc] init];
+    // iTunesConnect 苹果后台配置的产品ID
+    [_iapManager startPurchWithID:@"com.acaaedu.1" completeHandle:^(IAPPurchType type,NSData *data) {
+        NSLog(@"---------%ld",(long)type);
+    }];
+}
+
 - (void)initTableView {
     WS(weakSelf)
     [self createTableViewStyle:UITableViewStylePlain];
