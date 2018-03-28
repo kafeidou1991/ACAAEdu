@@ -9,8 +9,8 @@
 #import "AEBaseTableController.h"
 
 typedef NS_ENUM(NSInteger, TestExamType) {
-    HasTestExamType = 0,  //已考试
-    NoneTestExamType         //未考试
+    NoneTestExamType = 0,         //未考试
+    HasTestExamType,  //已考试
 };
 
 @interface AEMyTestExamVC : AEBaseTableController

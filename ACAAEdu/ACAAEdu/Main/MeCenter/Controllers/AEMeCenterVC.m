@@ -117,11 +117,11 @@ static CGFloat customViewHeight = 180.f;
     }else if ([title isEqualToString:@"我的模考"]) {
         AECustomSegmentVC * customVC = [AECustomSegmentVC new];
         customVC.title = @"我的模考";
-        AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
-        hasExamVC.examType = HasTestExamType;
         AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
         noExamVC.examType = NoneTestExamType;
-        [customVC setupPageView:@[@"已考试", @"未考试"] ContentViewControllers:@[hasExamVC, noExamVC]];
+        AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
+        hasExamVC.examType = HasTestExamType;
+        [customVC setupPageView:@[@"未考试",@"已考试"] ContentViewControllers:@[noExamVC,hasExamVC]];
         PUSHLoginCustomViewController(customVC, self)
     }
 }

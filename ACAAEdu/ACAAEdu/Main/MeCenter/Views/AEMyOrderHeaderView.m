@@ -72,6 +72,9 @@ static const CGFloat labelHeight = 25.f;
 - (UILabel *)orderStatusLabel {
     if (!_orderStatusLabel) {
         _orderStatusLabel = [AEBase createLabel:CGRectMake(SCREEN_WIDTH - leftMargin - 70, _orderNoLabel.top, 70, labelHeight) font:[UIFont systemFontOfSize:14] text:@"" defaultSizeTxt:@"" color:AEThemeColor backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentCenter];
+        _orderStatusLabel.layer.cornerRadius = 5.f;
+        _orderStatusLabel.layer.borderWidth = .5f;
+        _orderStatusLabel.layer.borderColor = AEThemeColor.CGColor;
     }
     return _orderStatusLabel;
 }
