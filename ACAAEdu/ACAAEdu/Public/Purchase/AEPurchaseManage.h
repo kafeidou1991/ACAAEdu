@@ -13,7 +13,7 @@ typedef NS_ENUM(NSInteger,IAPPurchType) {
     kIAPPurchFailed = 1,        // 购买失败
     kIAPPurchCancle = 2,        // 取消购买
     KIAPPurchVerFailed = 3,     // 订单校验失败
-    KIAPPurchVerSuccess = 4,    // 订单校验成功  才是正真的购买成功
+    KIAPPurchVerSuccess = 4,    // 订单校验成功  现在给服务器验证 才是正真的购买成功
     kIAPPurchNotArrow = 5,      // 不允许内购
 };
 
@@ -23,10 +23,10 @@ typedef void (^IAPCompletionHandle)(IAPPurchType type,NSData *data);
 /**
  开始购买
  
- @param purchID 产品id
+ @param orderInfo 产品信息  包含 总价 订单号
  @param handle 回调
  */
-- (void)startPurchWithID:(NSString *)purchID completeHandle:(IAPCompletionHandle)handle;
+- (void)startPurchWithID:(NSDictionary *)orderInfo completeHandle:(IAPCompletionHandle)handle;
 
 @end
 

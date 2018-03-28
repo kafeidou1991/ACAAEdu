@@ -14,6 +14,8 @@ static NSString * const kLoginExit = @"loginExit";  //退出登录
 static NSString * const kBindAccountSuccess = @"BindAccountSuccess"; //绑定账号成功
 static NSString * const kreLogin = @"reLogin"; //重新登录
 
+static NSString * const kPayOrderSuccess = @"PayOrderSuccess"; //订单支付成功
+
 
 
 

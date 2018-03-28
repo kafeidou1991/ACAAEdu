@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AEOrderPayVC">
             <connections>
+                <outlet property="orderNoLabel" destination="QvE-JG-2T6" id="tnh-dl-IaD"/>
+                <outlet property="priceLabel" destination="VX4-pf-iDR" id="N5a-Ty-AYP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -67,6 +69,9 @@
                             <integer key="value" value="5"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="payAction:" destination="-1" eventType="touchUpInside" id="lhO-ig-mrg"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.94117647058823528" green="0.94901960784313721" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>

@@ -53,8 +53,10 @@
 #pragma mark ---------------------- 订单----------------------------
 //订单列表
 #define kOrderList @"mobile/shop/orders"
-//生产订单
-#define kCreatOrder @"/mobile/shop/order"
+//生成订单
+#define kCreatOrder @"mobile/shop/order"
+//验证凭据
+#define kValidateReceipt  @"mobile/shop/apple"
 
 #pragma mark ---------------------- 通知消息----------------------------
 #define kMessageList @"mobile/message/index"

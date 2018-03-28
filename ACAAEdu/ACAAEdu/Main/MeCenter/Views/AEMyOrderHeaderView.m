@@ -20,6 +20,7 @@ static const CGFloat labelHeight = 25.f;
 @property (nonatomic, strong) AEOrderLabel * orderTimeLabel;   //订单下单时间
 @property (nonatomic, strong) AEOrderLabel * orderTypeLabel;   //订单支付方式
 @property (nonatomic, strong) UILabel * orderStatusLabel; //订单支付状态
+@property (nonatomic, strong) UIControl * orderStatusControl; //点击付款 或者考试事件
 @property (nonatomic, strong) UIView  * lionView;         //订单分割线
 
 @end
@@ -39,6 +40,7 @@ static const CGFloat labelHeight = 25.f;
 - (void)addSubviews {
     [self addSubview:self.orderNoLabel];
     [self addSubview:self.orderStatusLabel];
+    [self addSubview:self.orderStatusControl];
     [self addSubview:self.orderPriceLabel];
     [self addSubview:self.orderTimeLabel];
     [self addSubview:self.orderTypeLabel];
@@ -48,10 +50,15 @@ static const CGFloat labelHeight = 25.f;
 
 - (void)updateContent:(AEMyOrderList *)item{
     [self.orderNoLabel updateTitle:@"订单编号：" content:item.orders_no];
-    self.orderStatusLabel.text = item.pay_status_txt;
+    self.orderStatusLabel.text = [item.pay_status isEqualToString:@"0"] ? @"立即支付" : @"立即考试";//item.pay_status_txt;
     [self.orderPriceLabel updateTitle:@"订单金额：" content:item.pay_price];
     [self.orderTimeLabel updateTitle:@"订单时间：" content:item.create_date];
     [self.orderTypeLabel updateTitle:@"支付方式：" content:item.pay_type_txt];
+}
+- (void)click {
+    if (_clickBlock) {
+        _clickBlock();
+    }
 }
 
 #pragma mark - initCompents
@@ -64,9 +71,16 @@ static const CGFloat labelHeight = 25.f;
 }
 - (UILabel *)orderStatusLabel {
     if (!_orderStatusLabel) {
-        _orderStatusLabel = [AEBase createLabel:CGRectMake(SCREEN_WIDTH - leftMargin - 50, _orderNoLabel.top, 50, labelHeight) font:[UIFont systemFontOfSize:14] text:@"" defaultSizeTxt:@"" color:AEThemeColor backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentCenter];
+        _orderStatusLabel = [AEBase createLabel:CGRectMake(SCREEN_WIDTH - leftMargin - 70, _orderNoLabel.top, 70, labelHeight) font:[UIFont systemFontOfSize:14] text:@"" defaultSizeTxt:@"" color:AEThemeColor backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentCenter];
     }
     return _orderStatusLabel;
+}
+- (UIControl *)orderStatusControl {
+    if (!_orderStatusControl) {
+        _orderStatusControl = [[UIControl alloc]initWithFrame:_orderStatusLabel.frame];
+        [_orderStatusControl addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _orderStatusControl;
 }
 - (AEOrderLabel *)orderPriceLabel {
     if (!_orderPriceLabel) {

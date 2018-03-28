@@ -9,10 +9,13 @@
 #import "AEMyOrderVC.h"
 #import "AEMyOrderCell.h"
 #import "AEMyOrderHeaderView.h"
+#import "AEOrderPayVC.h"
 
 static const CGFloat headerViewHeight = 110.f;
 
 @interface AEMyOrderVC ()
+
+@property (nonatomic, copy) NSString * lastId;
 
 @end
 
@@ -22,6 +25,10 @@ static const CGFloat headerViewHeight = 110.f;
     [super viewDidLoad];
     self.title = @"我的订单";
     [self initTableView];
+    self.tableView.height -= 44;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refrshLoad) name:kPayOrderSuccess object:nil];
+    
 }
 //初始化tableview
 - (void)initTableView {
@@ -32,8 +39,17 @@ static const CGFloat headerViewHeight = 110.f;
         [weakSelf afterProFun];
     }];
     [self addHeaderRefesh:NO Block:^{
+        [weakSelf refrshLoad];
+    }];
+    [self addFooterRefesh:^{
         [weakSelf afterProFun];
     }];
+}
+//下拉刷新
+- (void)refrshLoad {
+    _lastId = @"";
+    [self.dataSources removeAllObjects];
+    [self afterProFun];
 }
 
 -(void)afterProFun {
@@ -42,11 +58,22 @@ static const CGFloat headerViewHeight = 110.f;
 //    13146482283   5585320
     [self hudShow:self.view msg:STTR_ater_on];
     //    @{@"pay_status":@"1",@"lastid":@"0"} @{@"lastid":@"9"}
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kOrderList query:nil path:nil body:nil success:^(id object) {
+    NSMutableDictionary * dict = @{@"pay_status":(_payType == ExamNoPayType ? @"0" : @"1")}.mutableCopy;
+    if (!STRISEMPTY(_lastId)) {
+        [dict setObject:_lastId forKey:@"lastid"];
+    }
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kOrderList query:dict path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
-        weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEMyOrderList class] json:object].mutableCopy;
+        NSArray * tempArray = [NSArray yy_modelArrayWithClass:[AEMyOrderList class] json:object];
+        [weakSelf.dataSources addObjectsFromArray:tempArray];
+        if (tempArray > 0) {
+            AEMyOrderList * lastItem = [weakSelf.dataSources lastObject];
+            weakSelf.lastId = lastItem.id;
+        }else {
+            [weakSelf noHasMoreData];
+        }
         [weakSelf.tableView reloadData];
 
         
@@ -72,7 +99,6 @@ static const CGFloat headerViewHeight = 110.f;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     AEMyOrderList * good = self.dataSources[indexPath.section];
     [cell updateCell:good.goods[indexPath.row] hiddenTitle:indexPath.row != 0];
-    
     return cell;
 }
 
@@ -90,9 +116,29 @@ static const CGFloat headerViewHeight = 110.f;
     AEMyOrderHeaderView * view = [[AEMyOrderHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerViewHeight)];
     AEMyOrderList * good = self.dataSources[section];
     [view updateContent:good];
+    WS(weakSelf)
+    view.clickBlock = ^{
+        [weakSelf gotoNextStep:good];
+    };
     return view;
 }
+//点击跳转
+- (void)gotoNextStep:(AEMyOrderList *)item {
+    //未支付 跳转支付
+    if ([item.pay_status isEqualToString:@"0"]) {
+        AEOrderPayVC * VC = [AEOrderPayVC new];
+        VC.item = item;
+        VC.totalPrice = item.pay_price.floatValue;
+        VC.comeType =ComeFromMyOrderType;
+        [self.navigationController pushViewController:VC animated:YES];
+    }
+    
+    
+}
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 
 

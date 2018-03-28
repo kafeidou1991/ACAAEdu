@@ -17,6 +17,7 @@ static AEPurchaseManage * manage = nil;
 @property (nonatomic,copy) NSString *purchID;
 @property (nonatomic,copy) IAPCompletionHandle handle;
 @property (nonatomic, strong) SKProductsRequest *request;
+@property (nonatomic, strong) NSDictionary * orderInfoDict; //订单信息
 
 @end
 
@@ -33,14 +34,15 @@ static AEPurchaseManage * manage = nil;
     return self;
 }
 // MARK: 开始内购
-- (void)startPurchWithID:(NSString *)purchID completeHandle:(IAPCompletionHandle)handle{
+- (void)startPurchWithID:(NSDictionary *)orderInfo completeHandle:(IAPCompletionHandle)handle{
     [self showLoading];
-    if (purchID) {
+    if (orderInfo) {
         if ([SKPaymentQueue canMakePayments]) {
             // 开始购买服务
-            self.purchID = purchID;
+            self.orderInfoDict = orderInfo;
+            self.purchID = @"com.acaaedu.1";
             self.handle = handle;
-            [self requestProductID:purchID];
+            [self requestProductID:self.purchID];
         }else{
             UIAlertView *alertError = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                                  message:@"请先开启应用内付费购买功能。"
@@ -194,80 +196,13 @@ static AEPurchaseManage * manage = nil;
         if(self.handle){
             self.handle(type,data);
         }
-        if (type != kIAPPurchSuccess) {
-            [AEBase alertMessage:tipStr cb:nil];
-        }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if (type != kIAPPurchSuccess) {
+                [AEBase alertMessage:tipStr cb:nil];
+            }
+        });
     });
 }
-//MARK: 购买成功验证凭据
-- (void)verifyPurchaseWithPaymentTransaction:(SKPaymentTransaction *)transaction isTestServer:(BOOL)flag{
-    //交易验证
-    NSURL *recepitURL = [[NSBundle mainBundle] appStoreReceiptURL];
-    NSData *receipt = [NSData dataWithContentsOfURL:recepitURL];
-    if(!receipt){
-        // 交易凭证为空验证失败
-        [self handleActionWithType:KIAPPurchVerFailed data:nil];
-        return;
-    }
-    // 购买成功将交易凭证发送给服务端进行再次校验
-    [self handleActionWithType:kIAPPurchSuccess data:receipt];
-    
-    NSError *error;
-    NSDictionary *requestContents = @{
-                                      @"receipt-data": [receipt base64EncodedStringWithOptions:0]
-                                      };
-    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents
-                                                          options:0
-                                                            error:&error];
-    
-    if (!requestData) { // 交易凭证为空验证失败
-        [self handleActionWithType:KIAPPurchVerFailed data:nil];
-        return;
-    }
-    
-    NSString *serverString = @"https://buy.itunes.apple.com/verifyReceipt";
-    if (flag) {
-        serverString = @"https://sandbox.itunes.apple.com/verifyReceipt";
-    }
-    NSURL *storeURL = [NSURL URLWithString:serverString];
-    NSMutableURLRequest *storeRequest = [NSMutableURLRequest requestWithURL:storeURL];
-    [storeRequest setHTTPMethod:@"POST"];
-    [storeRequest setHTTPBody:requestData];
-    WS(weakSelf)
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    [NSURLConnection sendAsynchronousRequest:storeRequest queue:queue
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                               [self closeLoding];
-                               if (connectionError) {
-                                   // 无法连接服务器,购买校验失败
-                                   [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
-                               } else {
-                                   NSError *error;
-                                   NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
-                                   if (!jsonResponse) {
-                                       // 苹果服务器校验数据返回为空校验失败
-                                       [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
-                                   }
-                                   
-                                   // 先验证正式服务器,如果正式服务器返回21007再去苹果测试服务器验证,沙盒测试环境苹果用的是测试服务器
-                                   NSString *status = [NSString stringWithFormat:@"%@",jsonResponse[@"status"]];
-                                   if (status && [status isEqualToString:@"21007"]) {
-                                       [weakSelf showLoading];
-                                       [weakSelf verifyPurchaseWithPaymentTransaction:transaction isTestServer:YES];
-                                   }else if(status && [status isEqualToString:@"0"]){
-                                       [weakSelf handleActionWithType:KIAPPurchVerSuccess data:nil];
-                                   }
-#if DEBUG
-                                   NSLog(@"----验证结果 %@",jsonResponse);
-#endif
-                               }
-                           }];
-    
-    
-    // 验证成功与否都注销交易,否则会出现虚假凭证信息一直验证不通过,每次进程序都得输入苹果账号
-    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-}
-
 //请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
 #if DEBUG
@@ -280,6 +215,92 @@ static AEPurchaseManage * manage = nil;
     NSLog(@"------------反馈信息结束-----------------");
 #endif
 }
+
+//MARK: 购买成功验证凭据
+- (void)verifyPurchaseWithPaymentTransaction:(SKPaymentTransaction *)transaction isTestServer:(BOOL)flag{
+//    [self closeLoding];
+    //交易验证
+    NSURL *recepitURL = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receipt = [NSData dataWithContentsOfURL:recepitURL];
+    if(!receipt){
+        // 交易凭证为空验证失败
+        [self handleActionWithType:KIAPPurchVerFailed data:nil];
+        return;
+    }
+    //验证凭据
+    WS(weakSelf);
+    NSDictionary * prama = @{};
+    if (flag) {
+        prama = @{@"sandbox": @"1",@"orders_no":weakSelf.orderInfoDict[@"orders_no"],@"total_amount":weakSelf.orderInfoDict[@"price"],@"apple_receipt":[receipt base64EncodedStringWithOptions:0]};
+    }else {
+        prama = @{@"orders_no":weakSelf.orderInfoDict[@"orders_no"],@"total_amount":weakSelf.orderInfoDict[@"price"],@"apple_receipt":[receipt base64EncodedStringWithOptions:0]};
+    }
+    //验证凭据，验证成功就代表购买成功
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kValidateReceipt query:nil path:nil body:prama success:^(id object) {
+        [weakSelf closeLoding];
+        [weakSelf handleActionWithType:kIAPPurchSuccess data:receipt];
+    } faile:^(NSInteger code, NSString *error) {
+        [weakSelf closeLoding];
+        // 无法连接服务器,购买校验失败
+        [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
+    }];
+    
+    // 验证成功与否都注销交易,否则会出现虚假凭证信息一直验证不通过,每次进程序都得输入苹果账号
+    [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    
+//    NSError *error;
+//    NSDictionary *requestContents = @{
+//                                      @"receipt-data": [receipt base64EncodedStringWithOptions:0]
+//                                      };
+//    NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents
+//                                                          options:0
+//                                                            error:&error];
+//
+//    if (!requestData) { // 交易凭证为空验证失败
+//        [self handleActionWithType:KIAPPurchVerFailed data:nil];
+//        return;
+//    }
+//
+//    NSString *serverString = @"https://buy.itunes.apple.com/verifyReceipt";
+//    if (flag) {
+//        serverString = @"https://sandbox.itunes.apple.com/verifyReceipt";
+//    }
+//    NSURL *storeURL = [NSURL URLWithString:serverString];
+//    NSMutableURLRequest *storeRequest = [NSMutableURLRequest requestWithURL:storeURL];
+//    [storeRequest setHTTPMethod:@"POST"];
+//    [storeRequest setHTTPBody:requestData];
+//    WS(weakSelf)
+//    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+//    [NSURLConnection sendAsynchronousRequest:storeRequest queue:queue
+//                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+//                               [self closeLoding];
+//                               if (connectionError) {
+//                                   // 无法连接服务器,购买校验失败
+//                                   [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
+//                               } else {
+//                                   NSError *error;
+//                                   NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+//                                   if (!jsonResponse) {
+//                                       // 苹果服务器校验数据返回为空校验失败
+//                                       [weakSelf handleActionWithType:KIAPPurchVerFailed data:nil];
+//                                   }
+//
+//                                   // 先验证正式服务器,如果正式服务器返回21007再去苹果测试服务器验证,沙盒测试环境苹果用的是测试服务器
+//                                   NSString *status = [NSString stringWithFormat:@"%@",jsonResponse[@"status"]];
+//                                   if (status && [status isEqualToString:@"21007"]) {
+//                                       [weakSelf showLoading];
+//                                       [weakSelf verifyPurchaseWithPaymentTransaction:transaction isTestServer:YES];
+//                                   }else if(status && [status isEqualToString:@"0"]){
+//                                       [weakSelf handleActionWithType:KIAPPurchVerSuccess data:nil];
+//                                   }
+//#if DEBUG
+//                                   NSLog(@"----验证结果 %@",jsonResponse);
+//#endif
+//                               }
+//                           }];
+    
+}
+
 // 恢复购买(主要是针对非消耗产品)
 -(void)replyToBuy{
     

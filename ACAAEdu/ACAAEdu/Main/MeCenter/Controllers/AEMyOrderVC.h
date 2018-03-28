@@ -8,6 +8,13 @@
 
 #import "AEBaseTableController.h"
 
+typedef NS_ENUM(NSInteger, ExamPayType) {
+    ExamNoPayType  = 0,   //未支付
+    ExamHasPayType,  //已支付
+};
+
 @interface AEMyOrderVC : AEBaseTableController
+
+@property (nonatomic, assign) ExamPayType payType;  //支付模式
 
 @end

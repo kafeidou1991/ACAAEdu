@@ -126,17 +126,6 @@
 
 @end
 
-//"update_time" : 1521020838,
-//"to_uid" : 121004,
-//"status" : 0,
-//"id" : 115,
-//"message_id" : 18,
-//"title" : "公告1",
-//"to_user_type" : 0,
-//"create_time" : 1521020838,
-//"body" : "111111111111111111",
-//"from_uid" : 1,
-//"delete_time" : null
 @interface AEMessageList :DateCenter
 @property (nonatomic, copy) NSString * create_time; //
 @property (nonatomic, copy) NSString * update_time; //
@@ -145,6 +134,8 @@
 @property (nonatomic, copy) NSString * title; // 标题
 @property (nonatomic, copy) NSString * body; //副标题
 @end
+
+
 
 
 

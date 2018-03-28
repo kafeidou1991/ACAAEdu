@@ -95,7 +95,14 @@ static CGFloat customViewHeight = 180.f;
     if ([title isEqualToString:@"关于我们"]) {
         PUSHCustomViewController([AEAboutMeVC new], self)
     }else if ([title isEqualToString:@"我的订单"]) {
-        PUSHLoginCustomViewController([AEMyOrderVC new], self)
+        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+        customVC.title = @"我的订单";
+        AEMyOrderVC * noPayVC = [[AEMyOrderVC alloc] init];
+        noPayVC.payType = ExamNoPayType;
+        AEMyOrderVC * hasPayVC = [[AEMyOrderVC alloc] init];
+        hasPayVC.payType = ExamHasPayType;
+        [customVC setupPageView:@[@"未支付",@"已支付"] ContentViewControllers:@[noPayVC, hasPayVC]];
+        PUSHLoginCustomViewController(customVC, self)
     }else if ([title isEqualToString:@"设置"]) {
         PUSHCustomViewController([AESettingVC new], self)
     }else if ([title isEqualToString:@"通知"]) {
@@ -118,6 +125,7 @@ static CGFloat customViewHeight = 180.f;
         PUSHLoginCustomViewController(customVC, self)
     }
 }
+
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }

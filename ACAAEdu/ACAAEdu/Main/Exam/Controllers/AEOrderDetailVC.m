@@ -14,6 +14,11 @@
 
 @interface AEOrderDetailVC ()
 @property (nonatomic, strong) AEOrderDetailFooterView * footerView;
+
+@property (nonatomic, strong) AEMyOrderList * item;
+
+@property (nonatomic, assign) CGFloat totalPrice;
+
 @end
 
 @implementation AEOrderDetailVC
@@ -24,18 +29,23 @@
     [self createTableViewStyle:UITableViewStylePlain];
     self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.tableFooterView = self.footerView;
+    WS(weakSelf)
+    [self addHeaderRefesh:NO Block:^{
+        [weakSelf createOrderDetail];
+    }];
     
 }
 -(void)createOrderDetail {
     WS(weakSelf);
-    [self hudShow:self.view msg:STTR_ater_on];
+    [self hudShow:self.view msg:@"生成订单.."];
     NSMutableArray * paramArray = @[].mutableCopy;
     for (AEExamItem * item in self.dataSources) {
         [paramArray addObject:@{@"goods_type":@"subject",@"goods_id":item.id,@"goods_num":@"1"}];
     }
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kCreatOrder query:nil path:nil body:paramArray success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kCreatOrder query:nil path:nil body:@{@"goods" : paramArray} success:^(id object) {
         [weakSelf hudclose];
-        
+        _item = [AEMyOrderList yy_modelWithJSON:object];
+        [weakSelf reloadData];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -45,17 +55,17 @@
 
 - (void)loadData:(NSArray *)data {
     self.dataSources = data.mutableCopy;
-    [self.tableView reloadData];
-    
-    CGFloat  price = 0.00;
-    for (AEExamItem * item in self.dataSources) {
-        price += item.subject_price.floatValue;
-    }
-    self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f",price];
-    
     [self createOrderDetail];
-    
 }
+- (void)reloadData {
+    [self.tableView reloadData];
+    _totalPrice = 0.00;
+    for (AEExamItem * item in self.dataSources) {
+        _totalPrice += item.subject_price.floatValue;
+    }
+    self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f",_totalPrice];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 90.f;
 }
@@ -73,6 +83,8 @@
         _footerView = [[NSBundle mainBundle]loadNibNamed:@"AEOrderDetailFooterView" owner:nil options:nil].firstObject;
         _footerView.buyNowBlock = ^{
             AEOrderPayVC * VC = [AEOrderPayVC new];
+            VC.item = weakSelf.item;
+            VC.totalPrice = weakSelf.totalPrice;
             [weakSelf.navigationController pushViewController:VC animated:YES];
         };
     }

@@ -12,4 +12,6 @@
 
 - (void)updateContent:(AEMyOrderList *)item;
 
+@property (nonatomic, copy) dispatch_block_t clickBlock;
+
 @end
