@@ -137,10 +137,10 @@
 
 @interface AEStartExamItem : DateCenter
 @property (nonatomic, copy) NSString * status; //0=>未开始 1 =>进行中 2=>完成考试
-@property (nonatomic, copy) NSString * id; //
+@property (nonatomic, copy) NSString * id; //  考试id
 @property (nonatomic, copy) NSString * user_id; //用户id
 @property (nonatomic, copy) NSString * subject_id; //‘科目id’,
-@property (nonatomic, copy) NSString * exam_id; //考卷id
+@property (nonatomic, copy) NSString * exam_id; //ACAA的考卷id  客户端不用管
 
 @end
 

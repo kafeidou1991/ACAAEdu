@@ -62,7 +62,7 @@
 //获取部分考试题型
 - (void)getPartExamPaper:(AEStartExamItem *)item{
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kPartExamPaper query:@{@"user_exam_id":item.exam_id}.mutableCopy path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kPartExamPaper query:@{@"user_exam_id":item.id}.mutableCopy path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
 //        AEStartExamItem * item = [AEStartExamItem yy_modelWithJSON:object];
        
