@@ -48,6 +48,12 @@
 #define kVersionList @"mobile/subject_version/index"
 //筛选科目列表
 #define kSubjectList @"mobile/subject/subjectlist"
+//我的模考列表
+#define kMyTestExamList @"mobile/user_exam/index"
+
+#pragma mark ---------------------- 考试部分相关----------------------------
+//开始考试
+#define kStartExamPaper @"mobile/exam/startExam"
 
 
 #pragma mark ---------------------- 订单----------------------------

@@ -131,6 +131,9 @@
 		B9B917492018907F002A63CE /* DateCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B917482018907F002A63CE /* DateCenter.m */; };
 		B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B9174B201891B8002A63CE /* AEUserInfo.m */; };
 		B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C320102046BBFB0022A562 /* LaunchScreen.xib */; };
+		B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */; };
+		B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */; };
+		B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -382,6 +385,12 @@
 		B9B9174A201891B8002A63CE /* AEUserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfo.h; sourceTree = "<group>"; };
 		B9B9174B201891B8002A63CE /* AEUserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfo.m; sourceTree = "<group>"; };
 		B9C320102046BBFB0022A562 /* LaunchScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		B9D2F643206CBFFC00C5A034 /* AEExamPaperInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamPaperInfoVC.h; sourceTree = "<group>"; };
+		B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamPaperInfoVC.m; sourceTree = "<group>"; };
+		B9D2F6A2206CEAA500C5A034 /* JWMenuBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWMenuBarView.h; sourceTree = "<group>"; };
+		B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWMenuBarView.m; sourceTree = "<group>"; };
+		B9D2F6A5206CFA4C00C5A034 /* JWScrollPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWScrollPageView.h; sourceTree = "<group>"; };
+		B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWScrollPageView.m; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -458,6 +467,7 @@
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
 			isa = PBXGroup;
 			children = (
+				B9D2F6A1206CEA5B00C5A034 /* SwitchView */,
 				B949F9A62068DF8D009D0555 /* SegmentControl */,
 				B93C7CE9205A7BED00FC5E6C /* Label */,
 				B9B1CD19202BFCB60017C97D /* CircularProgressBar */,
@@ -665,6 +675,7 @@
 		B96FD8682027FA9A00FE7495 /* Exam(考试) */ = {
 			isa = PBXGroup;
 			children = (
+				B9D2F640206CBF8E00C5A034 /* ExamPaper(试卷部分) */,
 				B96FD8692027FA9A00FE7495 /* Controllers */,
 				B73ED695205408AC00B7C2B3 /* Views */,
 				B7FB06A8202C994700D5642D /* Model */,
@@ -1032,6 +1043,43 @@
 			path = DateCenter;
 			sourceTree = "<group>";
 		};
+		B9D2F640206CBF8E00C5A034 /* ExamPaper(试卷部分) */ = {
+			isa = PBXGroup;
+			children = (
+				B9D2F641206CBFC800C5A034 /* Controller */,
+				B9D2F642206CBFC800C5A034 /* Views */,
+			);
+			name = "ExamPaper(试卷部分)";
+			path = ExamPaper;
+			sourceTree = "<group>";
+		};
+		B9D2F641206CBFC800C5A034 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B9D2F643206CBFFC00C5A034 /* AEExamPaperInfoVC.h */,
+				B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B9D2F642206CBFC800C5A034 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B9D2F6A1206CEA5B00C5A034 /* SwitchView */ = {
+			isa = PBXGroup;
+			children = (
+				B9D2F6A2206CEAA500C5A034 /* JWMenuBarView.h */,
+				B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */,
+				B9D2F6A5206CFA4C00C5A034 /* JWScrollPageView.h */,
+				B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */,
+			);
+			path = SwitchView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1285,6 +1333,7 @@
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
 				B93C7CEF205A9DFB00FC5E6C /* AEMyOrderHeaderView.m in Sources */,
+				B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
 				B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */,
@@ -1303,6 +1352,7 @@
 				B96FD98D2029851500FE7495 /* AEHttpInfo.m in Sources */,
 				B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */,
 				B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */,
+				B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */,
 				B92B9783204400AF0086DBA9 /* AEBindIdCardVC.m in Sources */,
 				B918BBCD202B088700EDB00D /* UITableViewCell+HM.m in Sources */,
 				B949F9B82068DF8D009D0555 /* SGPageContentView.m in Sources */,
@@ -1310,6 +1360,7 @@
 				B918BBC0202B088700EDB00D /* NSNull+safe.m in Sources */,
 				B949F9B92068DF8D009D0555 /* SGPageTitleView.m in Sources */,
 				B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */,
+				B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */,
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,
 				B918BBC8202B088700EDB00D /* NSObject+swizzling.m in Sources */,
 				B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */,

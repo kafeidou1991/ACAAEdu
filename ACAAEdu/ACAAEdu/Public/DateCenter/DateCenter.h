@@ -135,8 +135,14 @@
 @property (nonatomic, copy) NSString * body; //副标题
 @end
 
+@interface AEStartExamItem : DateCenter
+@property (nonatomic, copy) NSString * status; //0=>未开始 1 =>进行中 2=>完成考试
+@property (nonatomic, copy) NSString * id; //
+@property (nonatomic, copy) NSString * user_id; //用户id
+@property (nonatomic, copy) NSString * subject_id; //‘科目id’,
+@property (nonatomic, copy) NSString * exam_id; //考卷id
 
-
+@end
 
 
 

@@ -41,5 +41,7 @@
 @implementation AEMessageList
 @end
 
+@implementation AEStartExamItem
+@end
 
 

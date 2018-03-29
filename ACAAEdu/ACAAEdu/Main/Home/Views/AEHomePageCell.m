@@ -41,11 +41,11 @@
     self.moreBtn.selected = item.isSelect;
 }
 
-- (void)updateMyTestExamCell:(AEExamItem *)item {
+- (void)updateMyTestExamCell:(AEExamItem *)item done:(BOOL)done {
     [self setContentText:item];
     self.buyBtn.hidden = NO;
     self.buyBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-    [self.buyBtn setTitle:@"查看成绩" forState:UIControlStateNormal];
+    [self.buyBtn setTitle:done ? @"查看成绩" : @"开始考试" forState:UIControlStateNormal];
     self.moreBtn.hidden = YES;
     self.priceLabel.hidden = YES;
 }

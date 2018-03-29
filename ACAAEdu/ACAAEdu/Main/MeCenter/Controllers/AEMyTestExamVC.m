@@ -9,6 +9,7 @@
 #import "AEMyTestExamVC.h"
 #import "AEHomePageCell.h"
 #import "AEExamItem.h"
+#import "AEExamPaperInfoVC.h"
 
 
 @interface AEMyTestExamVC ()
@@ -29,13 +30,16 @@
     [self addHeaderRefesh:NO Block:^{
         [weakSelf afterProFun];
     }];
+    [self createEmptyViewBlock:^{
+        [weakSelf afterProFun];
+    }];
 }
 
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:@"mobile/user_exam/index" query:nil path:nil body:@{@"status":(_examType == NoneTestExamType ? @"1" : @"2")} success:^(id object) {
-        weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kMyTestExamList query:nil path:nil body:@{@"status":(_examType == NoneTestExamType ? @"1" : @"2")} success:^(id object) {
+        weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object[@"data"]].mutableCopy;
         [weakSelf endLoadData];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf endLoadData];
@@ -60,9 +64,11 @@
     AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
-    [cell updateMyTestExamCell:self.dataSources[indexPath.section]];
+    [cell updateMyTestExamCell:self.dataSources[indexPath.section] done:_examType];
     cell.buyBlock = ^{
-        
+        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
+        VC.examItem = self.dataSources[indexPath.section];
+        [weakSelf.navigationController pushViewController:VC animated:YES];
     };
     return cell;
 }
