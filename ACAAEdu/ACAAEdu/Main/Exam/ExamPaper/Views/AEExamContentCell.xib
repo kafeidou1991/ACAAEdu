@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AEExamContentCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DfU-NC-bP9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="542"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tableView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="DfU-NC-bP9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="1U7-IQ-vXg"/>
+                <constraint firstItem="DfU-NC-bP9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LYr-GA-hKi"/>
+                <constraint firstAttribute="trailing" secondItem="DfU-NC-bP9" secondAttribute="trailing" id="equ-zc-gP6"/>
+                <constraint firstAttribute="bottom" secondItem="DfU-NC-bP9" secondAttribute="bottom" id="wDK-4X-phl"/>
+            </constraints>
+            <size key="customSize" width="375" height="542"/>
+            <connections>
+                <outlet property="tableView" destination="DfU-NC-bP9" id="qH5-Za-cFg"/>
+            </connections>
+            <point key="canvasLocation" x="99.5" y="153"/>
+        </collectionViewCell>
+    </objects>
+</document>

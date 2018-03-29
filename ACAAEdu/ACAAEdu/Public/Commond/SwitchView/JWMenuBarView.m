@@ -31,9 +31,10 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor whiteColor];
         if (bottomView == nil) {
             bottomView = [[UIView alloc] init];
-            bottomView.backgroundColor = [UIColor yellowColor];
+            bottomView.backgroundColor = AEThemeColor;
         }
         if (_mButtonArray == nil) {
             _mButtonArray = [[NSMutableArray alloc] init];
@@ -64,9 +65,9 @@
         [vButton setBackgroundImage:[UIImage imageNamed:vNormalImageStr] forState:UIControlStateNormal];
         [vButton setBackgroundImage:[UIImage imageNamed:vHeligtImageStr] forState:UIControlStateSelected];
         [vButton setTitle:vTitleStr forState:UIControlStateNormal];
-        [vButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-        [vButton setTitleColor:[UIColor yellowColor] forState:UIControlStateHighlighted];
-        [vButton setTitleColor:[UIColor yellowColor] forState:UIControlStateSelected];
+        [vButton setTitleColor:AEColorLightText forState:UIControlStateNormal];
+        [vButton setTitleColor:AEThemeColor forState:UIControlStateHighlighted];
+        [vButton setTitleColor:AEThemeColor forState:UIControlStateSelected];
         [vButton setTag:i];
         vButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
         [vButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -108,7 +109,7 @@
     
     UIButton *vButton = [_mButtonArray objectAtIndex:aIndex];
     NSDictionary *dict = [mItemInfoArray objectAtIndex:aIndex];
-    CGSize strSize = STR_FONT_SIZE([dict objectForKey:TITLEKEY],[UIFont systemFontOfSize:12.0f]);
+    CGSize strSize = STRING_FONT_SIZE([dict objectForKey:TITLEKEY],[UIFont systemFontOfSize:12.0f]);
     [bottomView removeFromSuperview];
     bottomView.frame = CGRectMake((vButton.width - strSize.width)/2, vButton.height - 1.0f, strSize.width, 1.0f);
     [vButton addSubview:bottomView];

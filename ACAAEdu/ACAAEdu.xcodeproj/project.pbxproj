@@ -25,6 +25,11 @@
 		B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952A203A637B00AB8513 /* AEUserInfoVC.m */; };
 		B7C3952F203A650900AB8513 /* AEModifierInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */; };
 		B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */; };
+		B7C44241206D1DC200D4EA03 /* AEExamContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C44240206D1DC200D4EA03 /* AEExamContentView.m */; };
+		B7C44245206D250400D4EA03 /* AEExamContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C44243206D250400D4EA03 /* AEExamContentCell.m */; };
+		B7C44246206D250400D4EA03 /* AEExamContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C44244206D250400D4EA03 /* AEExamContentCell.xib */; };
+		B7C4424A206D268F00D4EA03 /* AEExamQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C44248206D268F00D4EA03 /* AEExamQuestionCell.m */; };
+		B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */; };
 		B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D6520502761008D6970 /* AESpaceItem.m */; };
 		B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D682050293B008D6970 /* AEExamItem.m */; };
 		B7D86B68205C0630001CAA02 /* AEScreeningFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */; };
@@ -186,6 +191,14 @@
 		B7C3952C203A650900AB8513 /* AEModifierInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoCell.h; sourceTree = "<group>"; };
 		B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEModifierInfoCell.m; sourceTree = "<group>"; };
 		B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEModifierInfoCell.xib; sourceTree = "<group>"; };
+		B7C4423F206D1DC200D4EA03 /* AEExamContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamContentView.h; sourceTree = "<group>"; };
+		B7C44240206D1DC200D4EA03 /* AEExamContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamContentView.m; sourceTree = "<group>"; };
+		B7C44242206D250400D4EA03 /* AEExamContentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamContentCell.h; sourceTree = "<group>"; };
+		B7C44243206D250400D4EA03 /* AEExamContentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamContentCell.m; sourceTree = "<group>"; };
+		B7C44244206D250400D4EA03 /* AEExamContentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamContentCell.xib; sourceTree = "<group>"; };
+		B7C44247206D268F00D4EA03 /* AEExamQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamQuestionCell.h; sourceTree = "<group>"; };
+		B7C44248206D268F00D4EA03 /* AEExamQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamQuestionCell.m; sourceTree = "<group>"; };
+		B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamQuestionCell.xib; sourceTree = "<group>"; };
 		B7CA3D6420502761008D6970 /* AESpaceItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESpaceItem.h; sourceTree = "<group>"; };
 		B7CA3D6520502761008D6970 /* AESpaceItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESpaceItem.m; sourceTree = "<group>"; };
 		B7CA3D672050293B008D6970 /* AEExamItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamItem.h; sourceTree = "<group>"; };
@@ -497,6 +510,21 @@
 				B7CA3D6520502761008D6970 /* AESpaceItem.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B7C4423E206D1D8D00D4EA03 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B7C4423F206D1DC200D4EA03 /* AEExamContentView.h */,
+				B7C44240206D1DC200D4EA03 /* AEExamContentView.m */,
+				B7C44242206D250400D4EA03 /* AEExamContentCell.h */,
+				B7C44243206D250400D4EA03 /* AEExamContentCell.m */,
+				B7C44244206D250400D4EA03 /* AEExamContentCell.xib */,
+				B7C44247206D268F00D4EA03 /* AEExamQuestionCell.h */,
+				B7C44248206D268F00D4EA03 /* AEExamQuestionCell.m */,
+				B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		B7FB06A8202C994700D5642D /* Model */ = {
@@ -1047,7 +1075,7 @@
 			isa = PBXGroup;
 			children = (
 				B9D2F641206CBFC800C5A034 /* Controller */,
-				B9D2F642206CBFC800C5A034 /* Views */,
+				B7C4423E206D1D8D00D4EA03 /* Views */,
 			);
 			name = "ExamPaper(试卷部分)";
 			path = ExamPaper;
@@ -1060,13 +1088,6 @@
 				B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		B9D2F642206CBFC800C5A034 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		B9D2F6A1206CEA5B00C5A034 /* SwitchView */ = {
@@ -1191,6 +1212,7 @@
 			files = (
 				B916E37720591D64007EB40B /* AEScreeningCell.xib in Resources */,
 				B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */,
+				B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
@@ -1199,6 +1221,7 @@
 				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
+				B7C44246206D250400D4EA03 /* AEExamContentCell.xib in Resources */,
 				B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
@@ -1302,6 +1325,7 @@
 			files = (
 				B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */,
 				B94C1CE520401B3F006344F2 /* NSDate+CGXPicker.m in Sources */,
+				B7C4424A206D268F00D4EA03 /* AEExamQuestionCell.m in Sources */,
 				B949F9B72068DF8D009D0555 /* SGPageContentScrollView.m in Sources */,
 				B918BB25202AECD200EDB00D /* AETextField.m in Sources */,
 				B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */,
@@ -1353,6 +1377,7 @@
 				B9B9174C201891B8002A63CE /* AEUserInfo.m in Sources */,
 				B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */,
 				B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */,
+				B7C44241206D1DC200D4EA03 /* AEExamContentView.m in Sources */,
 				B92B9783204400AF0086DBA9 /* AEBindIdCardVC.m in Sources */,
 				B918BBCD202B088700EDB00D /* UITableViewCell+HM.m in Sources */,
 				B949F9B82068DF8D009D0555 /* SGPageContentView.m in Sources */,
@@ -1383,6 +1408,7 @@
 				B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */,
 				B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
+				B7C44245206D250400D4EA03 /* AEExamContentCell.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,
 				B918BB2C202B051600EDB00D /* AEBase.m in Sources */,
 				B949F9BA2068DF8E009D0555 /* SGPageTitleViewConfigure.m in Sources */,

@@ -15,7 +15,7 @@
 #define TITLEWIDTH @"titleWidth"
 #define TOTALWIDTH @"totalWidth"
 
-#define STR_FONT_SIZE(str,font) [str sizeWithAttributes: @{NSFontAttributeName:font}]
+#define STRING_FONT_SIZE(str,font) [str sizeWithAttributes: @{NSFontAttributeName:font}]
 
 @protocol MenuBarViewDelegate <NSObject>
 
