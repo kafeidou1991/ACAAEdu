@@ -68,7 +68,7 @@
 
 #pragma mark 刷新某个页面
 -(void)freshContentTableAtIndex:(NSInteger)aIndex{
-    if (_contentItems.count < aIndex) {
+    if (aIndex > _contentItems.count - 1) {
         return;
     }
 }

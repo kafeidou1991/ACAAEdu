@@ -135,14 +135,62 @@
 @property (nonatomic, copy) NSString * body; //副标题
 @end
 
-@interface AEStartExamItem : DateCenter
-@property (nonatomic, copy) NSString * status; //0=>未开始 1 =>进行中 2=>完成考试
-@property (nonatomic, copy) NSString * id; //  考试id
+
+@interface AEExamQuestionItem :DateCenter
+@property (nonatomic, copy) NSString * status; //1 未考完 2已考完
+@property (nonatomic, copy) NSString * part_num; // 题目数量
+@property (nonatomic, copy) NSString * id; // 用户考卷部分id
+@property (nonatomic, copy) NSString * part_type; //考题类型，1-基础题，2-操作题
+@property (nonatomic, copy) NSString * start_time; //开始考试时间
+@property (nonatomic, copy) NSString * part_name; //考题类型名称
+@property (nonatomic, copy) NSString * subject_id; //科目id’,
 @property (nonatomic, copy) NSString * user_id; //用户id
-@property (nonatomic, copy) NSString * subject_id; //‘科目id’,
-@property (nonatomic, copy) NSString * exam_id; //ACAA的考卷id  客户端不用管
+@property (nonatomic, copy) NSString * exam_id; //用户考卷id 客户端不用管
+@property (nonatomic, copy) NSString * part_time; // 考试限制时长 单位秒
+@property (nonatomic, copy) NSString * count_down_time; //剩余考试时间 单位秒
+
+@property (nonatomic, strong) NSArray * question; //试题数组
 
 @end
+/*
+ "id" : "2048",
+ "category" : "React.js",
+ "sheet_id" : "281",
+ "answer" : "",
+ "exam_id" : "263",
+ "user_id" : "578038",
+ "type" : "3",
+ "part_id" : "36",
+ "subject_id" : "138",
+ "attachment" : "",
+ "point" : "1",
+ "question" : "关于JSX文件解释正确的是",
+ "result" : [
+ "基于ECMAScript的一种新特性（并不是一种新语言）",
+ "一种定义带属性树结构（DOM结构）的语法",
+ "在JavaScript中编写XML代码",
+ "HTML"
+ ]
+ */
+@interface AEQuestionRresult :DateCenter
+
+@property (nonatomic, copy) NSString * id; //试题id
+@property (nonatomic, copy) NSString * category; //类别
+@property (nonatomic, copy) NSString * sheet_id; //题目id
+@property (nonatomic, copy) NSString * answer; // 答案 多个逗号分隔
+@property (nonatomic, copy) NSString * exam_id; //考卷id客户端不用管
+@property (nonatomic, copy) NSString * user_id; //用户id
+@property (nonatomic, copy) NSString * type; //考题类型：1-判断题2-单选题3-复选题4-匹配题11-操作题【4暂无】
+@property (nonatomic, copy) NSString * part_id; //部分id
+@property (nonatomic, copy) NSString * subject_id; //科目id
+@property (nonatomic, copy) NSString * attachment; //如果有附件，附件路径
+@property (nonatomic, copy) NSString * point; //本题分数
+@property (nonatomic, copy) NSString * question; //题目内容
+
+@property (nonatomic, strong) NSArray * result; //选项内容
+
+@end
+
 
 
 

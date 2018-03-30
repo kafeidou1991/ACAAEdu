@@ -41,7 +41,20 @@
 @implementation AEMessageList
 @end
 
-@implementation AEStartExamItem
+@implementation AEExamQuestionItem
+
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"question":[AEQuestionRresult class]};
+}
+
+@end
+
+@implementation AEQuestionRresult
+
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"result":[NSString class]};
+}
+
 @end
 
 

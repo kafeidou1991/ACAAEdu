@@ -11,14 +11,31 @@
 
 
 @interface AEExamContentView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+/**
+ 试题数据源
+ */
+@property (nonatomic, strong)AEExamQuestionItem * data;
 
 @end
 
 
 @implementation AEExamContentView
 
+//刷新数据源
+-(void)refreshData:(AEExamQuestionItem *)data {
+    self.data = data;
+    
+    [self reloadData];
+}
+
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
-    if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
+    UICollectionViewFlowLayout * vlf = [[UICollectionViewFlowLayout alloc]init];
+    vlf.minimumLineSpacing = 0;
+    vlf.minimumInteritemSpacing = 0;
+    vlf.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+    vlf.itemSize = CGSizeMake(self.width, self.height);
+    vlf.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    if (self = [super initWithFrame:frame collectionViewLayout:vlf]) {
         [self registerNib:[UINib nibWithNibName:@"AEExamContentCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AEExamContentCell class])];
         self.backgroundColor = [UIColor clearColor];
         self.dataSource = self;
@@ -28,12 +45,8 @@
     }
     return self;
 }
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return self.data.question.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -41,7 +54,7 @@
     
 //    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     
-    
+    [cell updateCell:self.data.question[indexPath.item]];
     
     return cell;
 }

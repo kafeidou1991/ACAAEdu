@@ -56,6 +56,8 @@
 #define kStartExamPaper @"mobile/exam/startExam"
 //获取部分考试（题型）
 #define kPartExamPaper @"mobile/exam/getExamPart"
+//获取部分考试试题
+#define kPartExamQuestion @"mobile/exam/getExamQuestion"
 
 
 #pragma mark ---------------------- 订单----------------------------

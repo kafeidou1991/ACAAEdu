@@ -10,4 +10,12 @@
 
 @interface AEExamContentView : UICollectionView
 
+
+/**
+ 刷新数据源  同步会刷新视图
+
+ @param data 数据
+ */
+- (void)refreshData:(AEExamQuestionItem *)data;
+
 @end

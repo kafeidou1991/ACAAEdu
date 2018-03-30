@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.questionLabel.preferredMaxLayoutWidth = SCREEN_WIDTH - 45 - 5;
     
 }
 

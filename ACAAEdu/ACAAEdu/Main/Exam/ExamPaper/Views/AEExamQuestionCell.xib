@@ -12,23 +12,27 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AEExamQuestionCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmS-gg-QSW">
-                        <rect key="frame" x="8" y="13.5" width="13.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmS-gg-QSW">
+                        <rect key="frame" x="8" y="10" width="9.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testpaper_select" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-nz-9Ds">
-                        <rect key="frame" x="31.5" y="14.5" width="15" height="15"/>
+                        <rect key="frame" x="22.5" y="11" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="64B-jR-w2L"/>
+                            <constraint firstAttribute="height" constant="15" id="RG2-YY-myw"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择题选择题选择题选择题" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-LC-BcK">
-                        <rect key="frame" x="51.5" y="14" width="171.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="选择题选择题选择题选择题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-LC-BcK">
+                        <rect key="frame" x="45" y="10" width="270" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -36,15 +40,22 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="b1g-nz-9Ds" firstAttribute="leading" secondItem="gmS-gg-QSW" secondAttribute="trailing" constant="10" id="9yc-iH-wld"/>
+                    <constraint firstItem="b1g-nz-9Ds" firstAttribute="leading" secondItem="gmS-gg-QSW" secondAttribute="trailing" constant="5" id="9yc-iH-wld"/>
+                    <constraint firstItem="f4e-LC-BcK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="Ah5-ba-ncb"/>
+                    <constraint firstItem="f4e-LC-BcK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GWG-Z5-zI4"/>
                     <constraint firstItem="gmS-gg-QSW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Npm-KM-fJ2"/>
-                    <constraint firstItem="gmS-gg-QSW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Q9J-F6-8dm"/>
+                    <constraint firstAttribute="trailing" secondItem="f4e-LC-BcK" secondAttribute="trailing" constant="5" id="XdP-2f-13E"/>
+                    <constraint firstAttribute="bottom" secondItem="f4e-LC-BcK" secondAttribute="bottom" constant="12.5" id="e0Q-je-SJD"/>
                     <constraint firstItem="b1g-nz-9Ds" firstAttribute="centerY" secondItem="gmS-gg-QSW" secondAttribute="centerY" id="jyp-vV-cuB"/>
-                    <constraint firstItem="f4e-LC-BcK" firstAttribute="leading" secondItem="b1g-nz-9Ds" secondAttribute="trailing" constant="5" id="uWq-Gc-SDj"/>
-                    <constraint firstItem="f4e-LC-BcK" firstAttribute="centerY" secondItem="b1g-nz-9Ds" secondAttribute="centerY" id="xNc-N1-X1T"/>
+                    <constraint firstItem="gmS-gg-QSW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wlH-8O-c7q"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="optionLabel" destination="gmS-gg-QSW" id="FEr-LQ-QyB"/>
+                <outlet property="questionLabel" destination="f4e-LC-BcK" id="7WC-MB-sf4"/>
+                <outlet property="selectImageView" destination="b1g-nz-9Ds" id="MNU-Sq-wQY"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

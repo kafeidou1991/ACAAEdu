@@ -10,4 +10,7 @@
 
 @interface AEExamContentCell : UICollectionViewCell
 
+- (void)updateCell:(AEQuestionRresult *)data;
+
+
 @end
