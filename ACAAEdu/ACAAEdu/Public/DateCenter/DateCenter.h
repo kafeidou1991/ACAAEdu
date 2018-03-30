@@ -152,26 +152,7 @@
 @property (nonatomic, strong) NSArray * question; //试题数组
 
 @end
-/*
- "id" : "2048",
- "category" : "React.js",
- "sheet_id" : "281",
- "answer" : "",
- "exam_id" : "263",
- "user_id" : "578038",
- "type" : "3",
- "part_id" : "36",
- "subject_id" : "138",
- "attachment" : "",
- "point" : "1",
- "question" : "关于JSX文件解释正确的是",
- "result" : [
- "基于ECMAScript的一种新特性（并不是一种新语言）",
- "一种定义带属性树结构（DOM结构）的语法",
- "在JavaScript中编写XML代码",
- "HTML"
- ]
- */
+
 @interface AEQuestionRresult :DateCenter
 
 @property (nonatomic, copy) NSString * id; //试题id

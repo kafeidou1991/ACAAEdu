@@ -15,5 +15,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageView;//选择
 @property (weak, nonatomic) IBOutlet UILabel *questionLabel; //题干
 
+- (void)updateCell:(AEQuestionRresult *)result index:(NSInteger)index;
+/**
+ 是否选择了题
+
+ @param isSelect 选择
+ */
+- (void)select:(BOOL)isSelect;
 
 @end

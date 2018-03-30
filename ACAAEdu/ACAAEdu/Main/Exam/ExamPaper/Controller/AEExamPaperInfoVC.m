@@ -35,6 +35,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.examItem.subject_full_name;//@"试卷信息";
+//       UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        btn.backgroundColor = [UIColor redColor];
+//        [[UIApplication sharedApplication].delegate.window addSubview:btn];
+//        btn.frame = CGRectMake(100, 100, 100, 100);
+//        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+}
+- (void)buy {
+    NSLog(@"%@",self.dataSourceArr);
 }
 //MARK: 请求数据
 /**
