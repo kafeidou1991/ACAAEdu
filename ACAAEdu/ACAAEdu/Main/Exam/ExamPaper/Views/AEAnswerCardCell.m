@@ -27,14 +27,8 @@
     return self;
 }
 
-- (void)setBackgroundColorWithStatus:(TestResultStatus)status
-{
-    if (status == TestResultStatusMark) {
-        _numLabel.backgroundColor = UIColorFromRGB(0xfff2d1);
-        _numLabel.layer.borderColor = UIColorFromRGB(0xFDB901).CGColor;
-        _numLabel.layer.borderWidth = 0.5;
-        _numLabel.textColor = UIColorFromRGB(0xFDB901);
-    }else if (status == TestResultStatusFinished){
+- (void)setBackgroundColorWithStatus:(TestResultStatus)status{
+    if (status == TestResultStatusFinished){
         _numLabel.backgroundColor = UIColorFromRGB(0xe2f0fd);
         _numLabel.layer.borderColor = UIColorFromRGB(0x58AEF5).CGColor;
         _numLabel.layer.borderWidth = 0.5;

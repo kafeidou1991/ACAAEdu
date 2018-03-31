@@ -58,17 +58,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.examItem.subject_full_name;//@"试卷信息";
+    self.title = @"ACAA考试";//self.examItem.subject_full_name;//@"试卷信息";
     self.navigationItem.rightBarButtonItems = [self createCustomBarButtons];
-//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        btn.backgroundColor = [UIColor redColor];
-//        [[UIApplication sharedApplication].delegate.window addSubview:btn];
-//        btn.frame = CGRectMake(100, 100, 100, 100);
-//        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.backgroundColor = [UIColor redColor];
+        [[UIApplication sharedApplication].delegate.window addSubview:btn];
+        btn.frame = CGRectMake(100, 100, 100, 100);
+        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)buy {
 //    NSLog(@"%@",self.dataSourceArr);
-    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
+//    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
+//    mobile/exam/evaluate  kSubmitExam
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kExamEvaluate query:nil path:nil body:@{@"exam_id":@"138"} success:^(id object) {
+//        [weakSelf hudclose];
+        //            for (UIViewController *viewController in self.navigationController.viewControllers) {
+        //                if ([viewController isKindOfClass:[NewCourseViewController class]] ||[viewController isKindOfClass:[CourseTestViewController class]] ||[viewController isKindOfClass:[MytestViewController class]]) {
+        //                    [self.navigationController popToViewController:viewController animated:YES];
+        //                }
+        //            }
+        
+    } faile:^(NSInteger code, NSString *error) {
+//        [weakSelf hudclose];
+        [AEBase alertMessage:error cb:nil];
+    }];
+    
 }
 //MARK: 请求数据
 /**
@@ -240,20 +254,17 @@
     return _timer;
 }
 - (NSArray <UIBarButtonItem *>*)createCustomBarButtons{
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    button.titleLabel.font = [UIFont systemFontOfSize:14.f];
-//    CGSize size = STR_FONT_SIZE(title,200, button.titleLabel.font);
-//    button.frame=CGRectMake(0, 0, size.width, size.height+10.f);
-//
-//    [button setTitle:title forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-//    [button setTitleColor:AEColorLightText forState:UIControlStateDisabled];
-
     return @[[[UIBarButtonItem alloc]initWithCustomView:self.timerLabel],[AEBase createCustomBarButtonItem:self action:@selector(gotoAnswerCard) image:@"answerCard"]];
 }
 - (void)gotoAnswerCard {
-    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
+    if (self.dataSourceArr.count <= 0) {
+        [AEBase alertMessage:@"没有考题内容，请返回刷新考题" cb:nil];
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
+    AEAnswerCardVC * answerCardVC = [AEAnswerCardVC new];
+    answerCardVC.paperData = self.dataSourceArr;
+    [self.navigationController pushViewController:answerCardVC animated:YES];
 }
 - (UILabel *)timerLabel {
     if (!_timerLabel) {
@@ -265,9 +276,9 @@
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"退出考试?" message:@"退出考试会保存您已答题目的记录" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"退出考试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popViewControllerAnimated:YES];
         //应该摧毁定时器 避免浪费资源
         [self.timer destoryTimer];
-        [self.navigationController popViewControllerAnimated:YES];
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
 }

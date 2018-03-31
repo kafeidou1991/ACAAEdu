@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B7060059206FDC33003A4A35 /* AEExamResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7060057206FDC33003A4A35 /* AEExamResultVC.m */; };
+		B706005A206FDC33003A4A35 /* AEExamResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7060058206FDC33003A4A35 /* AEExamResultVC.xib */; };
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AERegistVC.m */; };
 		B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AERegistVC.xib */; };
@@ -143,7 +145,6 @@
 		B9DFA1DA206F6F8400AFAD27 /* AEAnswerCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */; };
 		B9DFA1E0206F6FF700AFAD27 /* AnswerCardReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1DE206F6FF700AFAD27 /* AnswerCardReusableView.m */; };
 		B9DFA1E3206F70B400AFAD27 /* UIView+RectCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */; };
-		B9DFA1E6206F832700AFAD27 /* AEAnswerCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E5206F832700AFAD27 /* AEAnswerCardView.m */; };
 		B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
@@ -168,6 +169,9 @@
 /* Begin PBXFileReference section */
 		056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACAAEdu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
+		B7060056206FDC33003A4A35 /* AEExamResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamResultVC.h; sourceTree = "<group>"; };
+		B7060057206FDC33003A4A35 /* AEExamResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamResultVC.m; sourceTree = "<group>"; };
+		B7060058206FDC33003A4A35 /* AEExamResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamResultVC.xib; sourceTree = "<group>"; };
 		B7129A662031AF460081472E /* AESettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESettingVC.h; sourceTree = "<group>"; };
 		B7129A672031AF460081472E /* AESettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESettingVC.m; sourceTree = "<group>"; };
 		B713101C202B55C6001CBAE8 /* AERegistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistVC.h; sourceTree = "<group>"; };
@@ -419,8 +423,6 @@
 		B9DFA1DE206F6FF700AFAD27 /* AnswerCardReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerCardReusableView.m; sourceTree = "<group>"; };
 		B9DFA1E1206F70B400AFAD27 /* UIView+RectCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RectCorner.h"; sourceTree = "<group>"; };
 		B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RectCorner.m"; sourceTree = "<group>"; };
-		B9DFA1E4206F832700AFAD27 /* AEAnswerCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardView.h; sourceTree = "<group>"; };
-		B9DFA1E5206F832700AFAD27 /* AEAnswerCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardView.m; sourceTree = "<group>"; };
 		B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardCell.m; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -534,8 +536,6 @@
 		B7C4423E206D1D8D00D4EA03 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B9DFA1E4206F832700AFAD27 /* AEAnswerCardView.h */,
-				B9DFA1E5206F832700AFAD27 /* AEAnswerCardView.m */,
 				B9DFA1DD206F6FF600AFAD27 /* AEAnswerCardCell.h */,
 				B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */,
 				B9DFA1DC206F6FF600AFAD27 /* AnswerCardReusableView.h */,
@@ -1115,6 +1115,9 @@
 				B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */,
 				B9DFA1D8206F6F8400AFAD27 /* AEAnswerCardVC.h */,
 				B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */,
+				B7060056206FDC33003A4A35 /* AEExamResultVC.h */,
+				B7060057206FDC33003A4A35 /* AEExamResultVC.m */,
+				B7060058206FDC33003A4A35 /* AEExamResultVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1260,6 +1263,7 @@
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B7C44246206D250400D4EA03 /* AEExamContentCell.xib in Resources */,
+				B706005A206FDC33003A4A35 /* AEExamResultVC.xib in Resources */,
 				B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
@@ -1369,7 +1373,6 @@
 				B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */,
 				B949F9B62068DF8D009D0555 /* UIView+SGPagingView.m in Sources */,
 				B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */,
-				B9DFA1E6206F832700AFAD27 /* AEAnswerCardView.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
 				B949F9BD2068E2E1009D0555 /* AECustomSegmentVC.m in Sources */,
@@ -1446,6 +1449,7 @@
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
 				B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */,
+				B7060059206FDC33003A4A35 /* AEExamResultVC.m in Sources */,
 				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,
 				B918BBCC202B088700EDB00D /* UIFont+wl.m in Sources */,
 				B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */,

@@ -97,9 +97,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSArray *btnTitels = @[@"未答",@"完成",@"标记"];
-        NSArray *btnImages = @[[UIImage imageNamed:@"TestStatusNo"],[UIImage imageNamed:@"TestStatusFinished"],[UIImage imageNamed:@"TestStatusTag"]];
-        NSArray *btnTitleColor = @[UIColorFromRGB(0x969696),UIColorFromRGB(0x5BAEF5),UIColorFromRGB(0xFDB901)];
+        NSArray *btnTitels = @[@"未答",@"已答"];
+        NSArray *btnImages = @[[UIImage imageNamed:@"TestStatusNo"],[UIImage imageNamed:@"TestStatusFinished"]];
+        NSArray *btnTitleColor = @[UIColorFromRGB(0x969696),UIColorFromRGB(0x5BAEF5)];
         CGFloat viewWidth = 50.0f, viewHeight = 15.0f;
         for (int i=0; i<btnTitels.count; i++) {
             StatusView *statusView = [[StatusView alloc] initWithFrame:CGRectMake(self.width - (viewWidth+5.0f)*(btnTitels.count - i), (self.height - viewHeight)/2, viewWidth, viewHeight)];

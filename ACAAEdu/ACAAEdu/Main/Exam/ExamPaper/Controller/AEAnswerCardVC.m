@@ -9,6 +9,7 @@
 #import "AEAnswerCardVC.h"
 #import "AEAnswerCardCell.h"
 #import "AnswerCardReusableView.h"
+#import "AEExamResultVC.h"
 
 @interface AEAnswerCardVC ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>{
     UICollectionView *_contentCollectionView;
@@ -29,7 +30,6 @@
     testPaperStatusHeight = 40.0f;
     self.title = @"答题卡";
     self.view.backgroundColor = UIColorFromRGB(0xF0F2F6);
-    self.paperData = @[@{@"items":@[@"1",@"2",@"3",@"4",@"1",@"2",@"3"]},@{@"items":@[@"1",@"2",@"3",@"4",@"1",@"2",@"3",@"4",@"1",@"2",@"3",@"4"]},@{@"items":@[@"1",@"2",@"3",@"4"]}];
     _submitStr = @"提交";
     [self createCollectionView];
     [self createFinishTest];
@@ -67,18 +67,26 @@
     [self.view addSubview:_statusTagView];
 }
 
-- (void)submitTest:(UIButton *)sender
-{
-//    [_alertMessage showAlarm:@"提醒" msg:[NSString stringWithFormat:@"%@%@",@"是否确认",_submitStr] cancelButtonTitle:@"取消" otherButtonTitle:_submitStr callBack:^(int buttonIndex) {
-//        if (buttonIndex == 1) {
-//            [weakSelf hudShow:weakSelf.view msg:NET_LOADING];
-//            if (self.isServiceTest) {
-//                [weakMethodHttp putServiceTestFinishWithPath:self.testpaperResultId];
-//            }else{
-//                [weakMethodHttp putTestFinishWithPath:self.testpaperResultId];
-//            }
-//        }
-//    }];
+- (void)submitTest:(UIButton *)sender{
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"确认交卷?" message:@"请确认提交本次考试" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WS(weakSelf);
+        [self hudShow:self.view msg:@"正在提交答案..."];
+        //每个部分的考试id的一致的，所以取出来一个就可以
+        AEExamQuestionItem * item = self.paperData[0];
+        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.id} success:^(id object) {
+            [weakSelf hudclose];
+            AEExamResultVC * VC = [AEExamResultVC new];
+            VC.examId = item.id;
+            [weakSelf.navigationController pushViewController:VC animated:YES];
+            
+        } faile:^(NSInteger code, NSString *error) {
+            [weakSelf hudclose];
+            [AEBase alertMessage:error cb:nil];
+        }];
+    }]];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (void)createCollectionView
@@ -105,45 +113,38 @@
 
 
 #pragma mark - UICollectionViewDataSource
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return self.paperData.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
-    NSDictionary *secDic = self.paperData[section];
-    NSArray *secArr = secDic[@"items"];
-    return secArr.count;
+    AEExamQuestionItem * item = self.paperData[section];
+    return item.question.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identify = @"CollectionCellIdentifier";
     AEAnswerCardCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+    //序号显示
     cell.numLabel.text = [NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
-    NSDictionary *secDic = self.paperData[indexPath.section];
-//    NSArray *secArr = secDic[@"items"];
-     [cell setBackgroundColorWithStatus:TestResultStatusFinished];
-//    TestQuestionItem *item = secArr[indexPath.row];
-//    if (item.isMarkStatus){
-//        [cell setBackgroundColorWithStatus:TestResultStatusMark];
-//    }else if (item.isFinishStatus) {
-//        [cell setBackgroundColorWithStatus:TestResultStatusFinished];
-//    }else{
-//        [cell setBackgroundColorWithStatus:TestResultStatusUnfinished];
-//    }
+    AEExamQuestionItem * item = self.paperData[indexPath.section];
+    AEQuestionRresult * result = item.question[indexPath.row];
+    //只有两个状态 一个未答 一个已答 //空值是未答
+    if (STRISEMPTY(result.answer)) {
+        [cell setBackgroundColorWithStatus:TestResultStatusUnfinished];
+    }else {
+        [cell setBackgroundColorWithStatus:TestResultStatusFinished];
+    }
     return cell;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     UICollectionReusableView *reusableView;
     if (kind == UICollectionElementKindSectionHeader) {
         AnswerCardReusableView *reusableHeaderView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionHeaderIdentifier" forIndexPath:indexPath];
-        NSDictionary *secDic = self.paperData[indexPath.section];
-//        [reusableHeaderView setLabelText:secDic[@"type"]];
-        [reusableHeaderView setLabelText:@"操作题"];
+        AEExamQuestionItem * item = self.paperData[indexPath.section];
+        [reusableHeaderView setLabelText:item.part_name];
         reusableView = reusableHeaderView;
     }
     return reusableView;

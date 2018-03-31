@@ -60,7 +60,10 @@
 #define kPartExamQuestion @"mobile/exam/getExamQuestion"
 //提交单个题目答案
 #define kSubmitQuestion @"mobile/exam/submitQuestion"
-
+//提交整个考卷
+#define kSubmitExam     @"mobile/exam/submitExam"
+//获取考试成绩评价
+#define kExamEvaluate   @"mobile/exam/evaluate"
 
 #pragma mark ---------------------- 订单----------------------------
 //订单列表

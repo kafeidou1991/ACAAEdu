@@ -12,7 +12,9 @@
 #import "AEOrderDetailVC.h"
 #import "AEExamItem.h"
 
+//Temp
 #import "AEPurchaseManage.h"
+#import "AEExamResultVC.h"
 
 @interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
@@ -35,11 +37,11 @@
 //        NSArray * array = @[url,url1,url2];
 //        [self.headerView updateBanner:array];
 //    });
-//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btn.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:btn];
-//    btn.frame = CGRectMake(100, 100, 100, 100);
-//    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:btn];
+    btn.frame = CGRectMake(100, 100, 100, 100);
+    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)buy {
 //    _mange = [AEPurchaseManage new];
@@ -47,6 +49,7 @@
 //        NSLog(@"回调");
 //
 //    }];
+    [self.navigationController pushViewController:[AEExamResultVC new] animated:YES];
 }
 
 - (void)initTableView {

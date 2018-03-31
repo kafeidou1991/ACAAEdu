@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, TestResultStatus) {
-    TestResultStatusMark,
+    TestResultStatusUnfinished = 0,
     TestResultStatusFinished,
-    TestResultStatusUnfinished,
 };
 
 @interface AEAnswerCardCell : UICollectionViewCell

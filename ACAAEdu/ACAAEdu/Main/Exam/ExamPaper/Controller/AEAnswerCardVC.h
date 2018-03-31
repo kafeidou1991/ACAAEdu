@@ -15,6 +15,8 @@ typedef void(^SelectedItemBlock)(NSIndexPath *indexPath);
 
 @property (nonatomic, assign) BOOL isTimeOut;
 @property (nonatomic, copy) SelectedItemBlock selectedBlock;
-@property (nonatomic, copy) NSArray *paperData; // 试卷数据
+//@property (nonatomic, copy) NSArray *paperData; // 试卷数据
+
+@property (nonatomic, copy) NSMutableArray * paperData;
 
 @end
