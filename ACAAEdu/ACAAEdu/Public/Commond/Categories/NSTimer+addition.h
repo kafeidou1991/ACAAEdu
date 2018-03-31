@@ -13,7 +13,7 @@
 - (void)resume;
 - (void)resumeWithTimeInterval:(NSTimeInterval)time;
 
-+ (NSTimer *)wlscheduledTimerWithTimeInterval:(NSTimeInterval)ti
++ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti
                                         block:(void(^)(NSTimer *timer))block
                                       repeats:(BOOL)repeats;
 

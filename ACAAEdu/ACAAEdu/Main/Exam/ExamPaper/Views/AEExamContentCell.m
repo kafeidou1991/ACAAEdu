@@ -26,6 +26,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"AEExamQuestionCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([AEExamQuestionCell class])];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
 }
 -(void)updateCell:(AEQuestionRresult *)data {
     self.result = data;
@@ -51,6 +52,12 @@
     [cell select:YES];
     //索引从0开始的 答案需要加1
     self.result.answer = [NSString stringWithFormat:@"%ld",(long)indexPath.row + 1];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":self.result.part_id,@"sheet_id":self.result.sheet_id,@"answer":self.result.answer} success:^(id object) {
+        NSLog(@"提交答案成功");
+    } faile:^(NSInteger code, NSString *error) {
+        
+        [AEBase alertMessage:error cb:nil];
+    }];
     
 }
 - (AEExamQuestionCell *)getLastAnswerCell {
@@ -75,6 +82,7 @@
     //动态计算行高
     CGFloat leftMargin = 8;
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+//    view.backgroundColor = AEColorBgVC;
     UILabel * titleLabel = [AEBase createLabel:CGRectMake(leftMargin, leftMargin, view.width - 2 * leftMargin, view.height) font:[UIFont systemFontOfSize:15] text:self.result.question defaultSizeTxt:nil color:AEThemeColor backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
     titleLabel.numberOfLines = 0;
     [titleLabel sizeToFit];

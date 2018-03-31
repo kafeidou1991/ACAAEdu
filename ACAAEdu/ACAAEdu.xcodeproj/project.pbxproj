@@ -139,6 +139,12 @@
 		B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */; };
 		B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */; };
 		B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */; };
+		B9DFA1CA206F30A900AFAD27 /* AETimerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1C9206F30A900AFAD27 /* AETimerHelper.m */; };
+		B9DFA1DA206F6F8400AFAD27 /* AEAnswerCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */; };
+		B9DFA1E0206F6FF700AFAD27 /* AnswerCardReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1DE206F6FF700AFAD27 /* AnswerCardReusableView.m */; };
+		B9DFA1E3206F70B400AFAD27 /* UIView+RectCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */; };
+		B9DFA1E6206F832700AFAD27 /* AEAnswerCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E5206F832700AFAD27 /* AEAnswerCardView.m */; };
+		B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -404,6 +410,18 @@
 		B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWMenuBarView.m; sourceTree = "<group>"; };
 		B9D2F6A5206CFA4C00C5A034 /* JWScrollPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWScrollPageView.h; sourceTree = "<group>"; };
 		B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWScrollPageView.m; sourceTree = "<group>"; };
+		B9DFA1C8206F30A900AFAD27 /* AETimerHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AETimerHelper.h; sourceTree = "<group>"; };
+		B9DFA1C9206F30A900AFAD27 /* AETimerHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AETimerHelper.m; sourceTree = "<group>"; };
+		B9DFA1D8206F6F8400AFAD27 /* AEAnswerCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardVC.h; sourceTree = "<group>"; };
+		B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardVC.m; sourceTree = "<group>"; };
+		B9DFA1DC206F6FF600AFAD27 /* AnswerCardReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerCardReusableView.h; sourceTree = "<group>"; };
+		B9DFA1DD206F6FF600AFAD27 /* AEAnswerCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardCell.h; sourceTree = "<group>"; };
+		B9DFA1DE206F6FF700AFAD27 /* AnswerCardReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerCardReusableView.m; sourceTree = "<group>"; };
+		B9DFA1E1206F70B400AFAD27 /* UIView+RectCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RectCorner.h"; sourceTree = "<group>"; };
+		B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RectCorner.m"; sourceTree = "<group>"; };
+		B9DFA1E4206F832700AFAD27 /* AEAnswerCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardView.h; sourceTree = "<group>"; };
+		B9DFA1E5206F832700AFAD27 /* AEAnswerCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardView.m; sourceTree = "<group>"; };
+		B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardCell.m; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +498,7 @@
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
 			isa = PBXGroup;
 			children = (
+				B9DFA1C7206F309200AFAD27 /* Timer */,
 				B9D2F6A1206CEA5B00C5A034 /* SwitchView */,
 				B949F9A62068DF8D009D0555 /* SegmentControl */,
 				B93C7CE9205A7BED00FC5E6C /* Label */,
@@ -515,6 +534,12 @@
 		B7C4423E206D1D8D00D4EA03 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B9DFA1E4206F832700AFAD27 /* AEAnswerCardView.h */,
+				B9DFA1E5206F832700AFAD27 /* AEAnswerCardView.m */,
+				B9DFA1DD206F6FF600AFAD27 /* AEAnswerCardCell.h */,
+				B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */,
+				B9DFA1DC206F6FF600AFAD27 /* AnswerCardReusableView.h */,
+				B9DFA1DE206F6FF700AFAD27 /* AnswerCardReusableView.m */,
 				B7C4423F206D1DC200D4EA03 /* AEExamContentView.h */,
 				B7C44240206D1DC200D4EA03 /* AEExamContentView.m */,
 				B7C44242206D250400D4EA03 /* AEExamContentCell.h */,
@@ -557,6 +582,8 @@
 		B918BB64202B081C00EDB00D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				B9DFA1E1206F70B400AFAD27 /* UIView+RectCorner.h */,
+				B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */,
 				B7D86B73205C2084001CAA02 /* NSDate+Extension.h */,
 				B7D86B74205C2085001CAA02 /* NSDate+Extension.m */,
 				B93C7CE6205A79F000FC5E6C /* UIView+category.h */,
@@ -1086,6 +1113,8 @@
 			children = (
 				B9D2F643206CBFFC00C5A034 /* AEExamPaperInfoVC.h */,
 				B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */,
+				B9DFA1D8206F6F8400AFAD27 /* AEAnswerCardVC.h */,
+				B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1099,6 +1128,15 @@
 				B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */,
 			);
 			path = SwitchView;
+			sourceTree = "<group>";
+		};
+		B9DFA1C7206F309200AFAD27 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				B9DFA1C8206F30A900AFAD27 /* AETimerHelper.h */,
+				B9DFA1C9206F30A900AFAD27 /* AETimerHelper.m */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1331,6 +1369,7 @@
 				B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */,
 				B949F9B62068DF8D009D0555 /* UIView+SGPagingView.m in Sources */,
 				B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */,
+				B9DFA1E6206F832700AFAD27 /* AEAnswerCardView.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
 				B949F9BD2068E2E1009D0555 /* AECustomSegmentVC.m in Sources */,
@@ -1349,12 +1388,15 @@
 				B94C1CEC20401B3F006344F2 /* CGXPickerView.m in Sources */,
 				B94C1CE920401B3F006344F2 /* CGXAddressModel.m in Sources */,
 				B94C1CEB20401B3F006344F2 /* CGXStringPickerView.m in Sources */,
+				B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */,
 				B918BBC6202B088700EDB00D /* WLScaleLayoutConstrain.m in Sources */,
 				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,
 				B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */,
 				B916E37620591D64007EB40B /* AEScreeningCell.m in Sources */,
 				B918BBCB202B088700EDB00D /* NSString+category.m in Sources */,
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
+				B9DFA1E3206F70B400AFAD27 /* UIView+RectCorner.m in Sources */,
+				B9DFA1DA206F6F8400AFAD27 /* AEAnswerCardVC.m in Sources */,
 				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
 				B93C7CEF205A9DFB00FC5E6C /* AEMyOrderHeaderView.m in Sources */,
 				B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */,
@@ -1368,6 +1410,7 @@
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
 				B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */,
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
+				B9DFA1CA206F30A900AFAD27 /* AETimerHelper.m in Sources */,
 				B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */,
 				B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */,
 				B918BBC5202B088700EDB00D /* NSMutableArray+safe.m in Sources */,
@@ -1407,6 +1450,7 @@
 				B918BBCC202B088700EDB00D /* UIFont+wl.m in Sources */,
 				B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */,
 				B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */,
+				B9DFA1E0206F6FF700AFAD27 /* AnswerCardReusableView.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,
 				B7C44245206D250400D4EA03 /* AEExamContentCell.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,

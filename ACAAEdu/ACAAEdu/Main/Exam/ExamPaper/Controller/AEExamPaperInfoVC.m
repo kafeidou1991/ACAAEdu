@@ -11,6 +11,7 @@
 #import "JWMenuBarView.h"
 #import "JWScrollPageView.h"
 #import "AEExamContentView.h"
+#import "AEAnswerCardVC.h"
 
 #define MENUHEIHT 41
 
@@ -27,22 +28,47 @@
  滚动区域视图
  */
 @property (nonatomic, strong) JWScrollPageView * scrollPageView;
+/**
+ 定时器
+ */
+@property (nonatomic, strong) AETimerHelper * timer;
+/**
+ 显示倒计时
+ */
+@property (nonatomic, strong) UILabel * timerLabel;
 
 @end
 
 @implementation AEExamPaperInfoVC
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (_timer) {
+        [_timer resumeTimer];
+    }
+    
+}
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    //暂停定时器
+    if (_timer) {
+        [_timer pauseTimer];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = self.examItem.subject_full_name;//@"试卷信息";
-//       UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.navigationItem.rightBarButtonItems = [self createCustomBarButtons];
+//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //        btn.backgroundColor = [UIColor redColor];
 //        [[UIApplication sharedApplication].delegate.window addSubview:btn];
 //        btn.frame = CGRectMake(100, 100, 100, 100);
 //        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)buy {
-    NSLog(@"%@",self.dataSourceArr);
+//    NSLog(@"%@",self.dataSourceArr);
+    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
 }
 //MARK: 请求数据
 /**
@@ -114,6 +140,8 @@
         weakSelf.dataSourceArr[index] = item;
         //刷新试题页面
         [weakSelf refreshExamView:index];
+        //开启定时器
+        [weakSelf openTimer:item.count_down_time.integerValue];
         
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -125,7 +153,18 @@
     AEExamContentView * view = _scrollPageView.contentItems[aIndex];
     [view refreshData:self.dataSourceArr[aIndex]];
 }
-
+//MARK: 定时器
+- (void)openTimer:(NSTimeInterval)countdown {
+    WS(weakSelf)
+    [self.timer countDownTimeInterval:countdown completeBlock:^(NSString *timeString, BOOL finish) {
+        if (!finish) {
+//            weakSelf.navigationItem.rightBarButtonItem = [weakSelf createCustomBarButtonTitle:timeString];
+            weakSelf.timerLabel.text = timeString;
+        }else {
+            //考试结束 应该交卷
+        }
+    }];
+}
 
 //MARK: MenuHrizontalDelegate
 - (void)didMenuHrizontalClickedButtonAtIndex:(NSInteger)aIndex{
@@ -194,6 +233,43 @@
     }
     return _dataSourceArr;
 }
+-(AETimerHelper *)timer {
+    if (!_timer) {
+        _timer = [AETimerHelper new];
+    }
+    return _timer;
+}
+- (NSArray <UIBarButtonItem *>*)createCustomBarButtons{
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.titleLabel.font = [UIFont systemFontOfSize:14.f];
+//    CGSize size = STR_FONT_SIZE(title,200, button.titleLabel.font);
+//    button.frame=CGRectMake(0, 0, size.width, size.height+10.f);
+//
+//    [button setTitle:title forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+//    [button setTitleColor:AEColorLightText forState:UIControlStateDisabled];
 
+    return @[[[UIBarButtonItem alloc]initWithCustomView:self.timerLabel],[AEBase createCustomBarButtonItem:self action:@selector(gotoAnswerCard) image:@"answerCard"]];
+}
+- (void)gotoAnswerCard {
+    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
+}
+- (UILabel *)timerLabel {
+    if (!_timerLabel) {
+        _timerLabel = [AEBase createLabel:CGRectMake(0, 0, 60, 25) font:[UIFont systemFontOfSize:14.f] text:@"" defaultSizeTxt:nil color:[UIColor whiteColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentCenter];
+    }
+    return _timerLabel;
+}
+-(void)backAction:(UIBarButtonItem *)sender {
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"退出考试?" message:@"退出考试会保存您已答题目的记录" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"退出考试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //应该摧毁定时器 避免浪费资源
+        [self.timer destoryTimer];
+        [self.navigationController popViewControllerAnimated:YES];
+    }]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 
 @end

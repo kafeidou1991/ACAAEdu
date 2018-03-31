@@ -34,6 +34,7 @@
 #import "AEUserInfo.h"
 #import "AETextField.h"
 #import "AEBase.h"
+#import "AETimerHelper.h"
 //#import "WLStaticConstant.h"
 //#import "WLSeverEnvironment.h"
 //
@@ -82,5 +83,6 @@
 #import "UIView+Animation.h"
 #import "UIView+category.h"
 #import "NSDate+Extension.h"
+#import "UIView+RectCorner.h"
 
 #endif /* PrefixHeader_pch */

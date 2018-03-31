@@ -25,7 +25,7 @@
     [self setFireDate:[NSDate dateWithTimeIntervalSinceNow:time]];
 }
 
-+ (NSTimer *)wlscheduledTimerWithTimeInterval:(NSTimeInterval)ti
++ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti
                                          block:(void(^)(NSTimer *timer))block
                                        repeats:(BOOL)repeats{
     
