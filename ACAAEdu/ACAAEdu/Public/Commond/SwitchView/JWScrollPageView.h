@@ -26,10 +26,7 @@
 @property (nonatomic,strong) UIScrollView *scrollView;
 @property (nonatomic,strong) NSMutableArray *contentItems;
 @property (nonatomic,assign) id<ScrollPageViewDelegate> delegate;
-/**
- 是否是单向滚动
- */
-@property (nonatomic, assign) BOOL isSingleDirection;
+
 /**
  添加ScrollowViewd的ContentView
 

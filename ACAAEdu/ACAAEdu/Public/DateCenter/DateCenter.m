@@ -47,6 +47,11 @@
     return @{@"question":[AEQuestionRresult class]};
 }
 
+- (nonnull id)copyWithZone:(nullable NSZone *)zone {
+    return [self yy_modelCopy];
+}
+
+
 @end
 
 @implementation AEQuestionRresult
@@ -56,5 +61,10 @@
 }
 
 @end
+
+@implementation AEResultItem
+
+@end
+
 
 

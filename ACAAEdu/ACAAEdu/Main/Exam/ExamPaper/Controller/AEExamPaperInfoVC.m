@@ -36,6 +36,11 @@
  显示倒计时
  */
 @property (nonatomic, strong) UILabel * timerLabel;
+/**
+ 答题卡
+ */
+@property (nonatomic, strong) AEAnswerCardVC * answerCardVC;
+@property (nonatomic, strong) NSArray * questionTypeArray;
 
 @end
 
@@ -87,7 +92,7 @@
 //MARK: 请求数据
 /**
  考试的逻辑是 ：
- 先进行开始考试接口，然后返回来 考试id --》 用考试id来请求对应的题型接口也就是部分考题接口 --》然后用题型id 去请求对用的考题展示。。各个部分的考题是区分开的 也是分别计时的，比如单选题跟
+ 先进行开始考试接口，然后返回来 考试id --》 用考试id来请求对应的题型接口也就是部分考题接口 值选择part_type== 1的基础题  然后根据type区分多选单选-- 去请求对用的考题展示。。比如单选题跟
  操作题 答题时间独立  时间到 进行交卷
  ***/
 
@@ -101,7 +106,6 @@
 - (void)startExamPaper:(void(^)(AEExamQuestionItem *))success {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-//    137 138
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kStartExamPaper query:nil path:nil body:@{@"subject_id":self.examItem.id} success:^(id object) {
         AEExamQuestionItem * item = [AEExamQuestionItem yy_modelWithJSON:object];
         if (success) {
@@ -112,24 +116,20 @@
         [AEBase alertMessage:error cb:nil];
     }];
 }
-//获取部分考试题型
+//获取基础题部分试卷
 - (void)getPartExamPaper:(AEExamQuestionItem *)item{
     WS(weakSelf);
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kPartExamPaper query:@{@"user_exam_id":item.id}.mutableCopy path:nil body:nil success:^(id object) {
         NSMutableArray * tempArr = @[].mutableCopy;
-        //剔除status == 2 已考完的考题
+        //剔除status == 2 已考完的考题  "part_type" : "1", 基础题类型的题目
         for (AEExamQuestionItem * item in [NSArray yy_modelArrayWithClass:[AEExamQuestionItem class] json:object]) {
-            if ([item.status isEqualToString:@"1"]) {
+            if ([item.status isEqualToString:@"1"] && [item.part_type isEqualToString:@"1"]) {
                 [tempArr addObject:item];
             }
         }
         if (tempArr.count > 0) {
-            //先进行第一部分考试  此时的dataSourceArr 虽然并没有获取到全部试题，但是题型个数已经固定
-            weakSelf.dataSourceArr = tempArr.mutableCopy;
-            [weakSelf getPartExamQuestionIndex:0];
-            //添加视图
-            [weakSelf createScrollerMenuView];
-            
+            //获取第一部分 基础题试题
+            [weakSelf getPartExamQuestionIndex:tempArr[0]];
         }else {
             [AEBase alertMessage:@"暂无试题，请稍后重试" cb:nil];
         }
@@ -138,23 +138,20 @@
         [AEBase alertMessage:error cb:nil];
     }];
 }
-//根据部分题型id  获取试题  index  表示获取试题的是第几个部分
-- (void)getPartExamQuestionIndex:(NSInteger)index{
-    if (self.dataSourceArr.count <= 0 || index > self.dataSourceArr.count - 1) {
-        return;
-    }
-    AEExamQuestionItem * item = self.dataSourceArr[index];
+//根据部分题型  type 1-判断题2-单选题3-复选题
+- (void)getPartExamQuestionIndex:(AEExamQuestionItem *)item{
     WS(weakSelf);
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kPartExamQuestion query:@{@"exam_part_id":item.id}.mutableCopy path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
-        
+        //已经获取到全部试题  替换数据源
         AEExamQuestionItem * item = [AEExamQuestionItem yy_modelWithJSON:object];
-        //temp
-        item.question = @[item.question[0],item.question[2]];
-        //已经获取到全部试题  可替换数据源
-        weakSelf.dataSourceArr[index] = item;
-        //刷新试题页面
-        [weakSelf refreshExamView:index];
+        //组装数据
+        [self sortData:item];
+//        刷新试题页面
+//        [weakSelf refreshExamView:index];
+        //添加视图
+        [weakSelf createScrollerMenuView];
+        
         //开启定时器
         [weakSelf openTimer:item.count_down_time.integerValue];
         
@@ -162,6 +159,42 @@
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
+}
+//type 1-判断题2-单选题 3-复选题
+- (void)sortData:(AEExamQuestionItem *)item {
+    NSMutableArray * signleArray = @[].mutableCopy;
+    NSMutableArray * doubleArray = @[].mutableCopy;
+    NSMutableArray* judgeArray   = @[].mutableCopy;
+    //筛选出来题型然后展示界面
+    for (AEQuestionRresult * resutItem in item.question) {
+        if ([resutItem.type isEqualToString:@"2"]) {
+            [signleArray addObject:resutItem];
+        }else if ([resutItem.type isEqualToString:@"3"]) {
+            [doubleArray addObject:resutItem];
+        }else {
+            [judgeArray addObject:resutItem];
+        }
+    }
+    if (signleArray.count > 0) {
+        AEExamQuestionItem * signleItem = item.copy;
+        signleItem.question = signleArray.copy;
+        signleItem.questionName = self.questionTypeArray[0];
+        [self.dataSourceArr addObject:signleItem];
+    }
+    if (doubleArray.count > 0) {
+        AEExamQuestionItem * doubleItem = item.copy;
+        doubleItem.question = doubleArray.copy;
+        doubleItem.questionName = self.questionTypeArray[1];
+        [self.dataSourceArr addObject:doubleItem];
+    }
+    if (judgeArray.count > 0) {
+        AEExamQuestionItem * judgeItem = item.copy;
+        judgeItem.questionName = self.questionTypeArray[2];
+        judgeItem.question = judgeArray.copy;
+        [self.dataSourceArr addObject:judgeItem];
+    }
+    
+    
 }
 //MARK: Private Method
 - (void)refreshExamView:(NSInteger)aIndex {
@@ -182,16 +215,10 @@
 
 //MARK: MenuHrizontalDelegate
 - (void)clickMenuBarViewButtonAtIndex:(NSInteger)aIndex{
-    [self hudShow:self.view msg:STTR_ater_on];
-    [self getPartExamQuestionIndex:aIndex];
-    
     [_scrollPageView moveScrollowViewAthIndex:aIndex];
 }
 
 -(void)didScrollPageViewChangedPage:(NSInteger)aPage {
-    //获取下一部分的考卷
-    [self hudShow:self.view msg:STTR_ater_on];
-    [self getPartExamQuestionIndex:aPage];
     [_menuBarView changeMenuStateAtIndex:aPage];
     
 }
@@ -207,16 +234,23 @@
 }
 
 - (void)setContentTableViews {
+    if (self.dataSourceArr.count == 0) {
+        return;
+    }
     _scrollPageView.scrollView.showsHorizontalScrollIndicator = NO;
-//    _scrollPageView.scrollView.directionalLockEnabled = YES;
     for (NSInteger i = 0 ; i<self.dataSourceArr.count; i++) {
+        AEExamQuestionItem * item = self.dataSourceArr[i];
         AEExamContentView * view = [[AEExamContentView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * i,0, _scrollPageView.width, _scrollPageView.frame.size.height)];
+        view.questionType = [self.questionTypeArray indexOfObject:item.questionName];
         [_scrollPageView.scrollView addSubview:view];
         [_scrollPageView.contentItems addObject:view];
+        [view refreshData:item];
     }
+    
     [_scrollPageView.scrollView setContentSize:CGSizeMake(SCREEN_WIDTH * self.dataSourceArr.count, _scrollPageView.frame.size.height)];
 }
 - (NSArray *)loadExamData {
+    //type 1-判断题2-单选题 3-复选题
 //    self.dataSourceArr = @[@{@"type":@"单选题"},@{@"type":@"多选题"},@{@"type":@"判断题"}];
     //组装数据（后期再进行优化）
     NSMutableArray *buttonArray = [NSMutableArray arrayWithCapacity:0];
@@ -224,7 +258,7 @@
         NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
         [dict setValue:@"normal.png" forKey:NOMALKEY];
         [dict setValue:@"helight.png" forKey:HEIGHTKEY];
-        [dict setValue:item.part_name forKey:TITLEKEY];
+        [dict setValue:item.questionName forKey:TITLEKEY];
 //        [dict setValue:[NSNumber numberWithFloat:[dic[@"type"] boundingRectWithSize:CGSizeMake(MAXFLOAT, 30.f) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12.0f]} context:nil].size.width+20] forKey:TITLEWIDTH];
         //三等分
         [dict setValue:[NSNumber numberWithFloat:SCREEN_WIDTH/self.dataSourceArr.count] forKey:TITLEWIDTH];
@@ -243,7 +277,6 @@
     if (!_scrollPageView) {
         _scrollPageView = [[JWScrollPageView alloc] initWithFrame:CGRectMake(0, MENUHEIHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - MENUHEIHT)];
         _scrollPageView.delegate = self;
-        _scrollPageView.isSingleDirection = YES;
         //添加数据
         [self setContentTableViews];
     }
@@ -261,6 +294,12 @@
     }
     return _timer;
 }
+-(NSArray *)questionTypeArray {
+    if (!_questionTypeArray) {
+        _questionTypeArray = @[@"单选题",@"多选题",@"判断题"];
+    }
+    return _questionTypeArray;
+}
 - (NSArray <UIBarButtonItem *>*)createCustomBarButtons{
     return @[[[UIBarButtonItem alloc]initWithCustomView:self.timerLabel],[AEBase createCustomBarButtonItem:self action:@selector(gotoAnswerCard) image:@"answerCard"]];
 }
@@ -270,10 +309,18 @@
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
-    AEAnswerCardVC * answerCardVC = [AEAnswerCardVC new];
-    answerCardVC.paperData = self.dataSourceArr;
-    [self.navigationController pushViewController:answerCardVC animated:YES];
+//    AEAnswerCardVC * answerCardVC = [AEAnswerCardVC new];
+//    answerCardVC.paperData = self.dataSourceArr;
+    [self.navigationController pushViewController:self.answerCardVC animated:YES];
 }
+-(AEAnswerCardVC *)answerCardVC {
+    if (!_answerCardVC) {
+        _answerCardVC = [AEAnswerCardVC new];
+    }
+    _answerCardVC.paperData = self.dataSourceArr;
+    return _answerCardVC;
+}
+
 - (UILabel *)timerLabel {
     if (!_timerLabel) {
         _timerLabel = [AEBase createLabel:CGRectMake(0, 0, 60, 25) font:[UIFont systemFontOfSize:14.f] text:@"" defaultSizeTxt:nil color:[UIColor whiteColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentCenter];

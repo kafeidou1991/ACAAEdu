@@ -28,7 +28,6 @@
     
     [self reloadData];
 }
-
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
     UICollectionViewFlowLayout * vlf = [[UICollectionViewFlowLayout alloc]init];
     vlf.minimumLineSpacing = 0;
@@ -43,8 +42,6 @@
         self.delegate = self;
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
-        self.alwaysBounceHorizontal = NO;
-        self.alwaysBounceVertical = NO;
     }
     return self;
 }
@@ -54,8 +51,6 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     AEExamContentCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AEExamContentCell class]) forIndexPath:indexPath];
-    
-//    cell.backgroundColor = [UIColor colorWithRed:arc4random()%255/255.0 green:arc4random()%255/255.0 blue:arc4random()%255/255.0 alpha:1];
     
     [cell updateCell:self.data.question[indexPath.item]];
     

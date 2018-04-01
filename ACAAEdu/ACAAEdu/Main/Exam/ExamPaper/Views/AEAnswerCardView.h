@@ -10,4 +10,7 @@
 
 @interface AEAnswerCardView : UICollectionView
 
+
+@property (nonatomic, copy) NSMutableArray * paperData;
+
 @end

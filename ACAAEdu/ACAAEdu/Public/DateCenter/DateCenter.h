@@ -136,7 +136,7 @@
 @end
 
 
-@interface AEExamQuestionItem :DateCenter
+@interface AEExamQuestionItem :DateCenter <NSCopying>
 @property (nonatomic, copy) NSString * status; //1 未考完 2已考完
 @property (nonatomic, copy) NSString * part_num; // 题目数量
 @property (nonatomic, copy) NSString * id; // 用户考卷部分id
@@ -150,6 +150,9 @@
 @property (nonatomic, copy) NSString * count_down_time; //剩余考试时间 单位秒
 
 @property (nonatomic, strong) NSArray * question; //试题数组
+
+//本地使用
+@property (nonatomic, copy) NSString * questionName; // 题干类型 1-判断题2-单选题3-复选题4-匹配题11-操作题【4暂无】
 
 @end
 
@@ -172,6 +175,13 @@
 
 @end
 
+
+//本地记录答案使用
+@interface AEResultItem :DateCenter
+@property (nonatomic, copy) NSString * answer; //选项内容
+@property (nonatomic, assign) BOOL isSelect ; //是否选择 本地使用
+@property (nonatomic, assign) NSInteger opation;
+@end
 
 
 

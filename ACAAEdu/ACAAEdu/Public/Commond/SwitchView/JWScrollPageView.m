@@ -45,13 +45,6 @@
     }
     [self addSubview:_scrollView];
 }
--(void)setIsSingleDirection:(BOOL)isSingleDirection {
-    _isSingleDirection = isSingleDirection;
-    if (_isSingleDirection) {
-        //单向滑动需要关闭 弹簧效果，否则会有bug
-        _scrollView.bounces = NO;
-    }
-}
 -(void)dealloc{
     [_contentItems removeAllObjects];
 }
@@ -94,24 +87,9 @@
     //代码顺序勿动
     int page = (_scrollView.contentOffset.x+SCREEN_WIDTH/2.0) / SCREEN_WIDTH;
     if (mCurrentPage == page) {
-        //换页的时候防止显示一半之前的考卷
-        if (SCREEN_WIDTH * mCurrentPage > scrollView.contentOffset.x) {
-            scrollView.contentOffset = CGPointMake(SCREEN_WIDTH * mCurrentPage, 0);
-        }
         return;
     }
     mCurrentPage= page;
-    
-    if (_isSingleDirection) {
-        //此代码是控制滚动只能单向不能反向滚动 因为考试完一部分之后不能返回
-        if (_currentOffsetX > scrollView.contentOffset.x) {
-            scrollView.contentOffset = CGPointMake(_currentOffsetX, 0);
-            return;
-        }else{
-            _currentOffsetX = scrollView.contentOffset.x;
-        }
-    }
-
     if ([_delegate respondsToSelector:@selector(didScrollPageViewChangedPage:)] && mNeedUseDelegate) {
         [_delegate didScrollPageViewChangedPage:mCurrentPage];
     }

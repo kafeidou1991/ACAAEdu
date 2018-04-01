@@ -24,13 +24,19 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testpaper" translatesAutoresizingMaskIntoConstraints="NO" id="b1g-nz-9Ds">
-                        <rect key="frame" x="22.5" y="11" width="15" height="15"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2a-DV-lcL">
+                        <rect key="frame" x="22.5" y="11.5" width="15" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="15" id="64B-jR-w2L"/>
-                            <constraint firstAttribute="height" constant="15" id="RG2-YY-myw"/>
+                            <constraint firstAttribute="height" constant="15" id="TNj-q9-rcy"/>
+                            <constraint firstAttribute="width" constant="15" id="ykx-P3-X5m"/>
                         </constraints>
-                    </imageView>
+                        <state key="normal" image="testpaper"/>
+                        <state key="selected" image="testpaper_select"/>
+                        <state key="highlighted" image="testpaper_select"/>
+                        <connections>
+                            <action selector="selectAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kSE-CQ-pVX"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="选择题选择题选择题选择题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-LC-BcK">
                         <rect key="frame" x="45" y="10" width="270" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -40,13 +46,13 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="b1g-nz-9Ds" firstAttribute="leading" secondItem="gmS-gg-QSW" secondAttribute="trailing" constant="5" id="9yc-iH-wld"/>
                     <constraint firstItem="f4e-LC-BcK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="Ah5-ba-ncb"/>
                     <constraint firstItem="f4e-LC-BcK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GWG-Z5-zI4"/>
                     <constraint firstItem="gmS-gg-QSW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Npm-KM-fJ2"/>
                     <constraint firstAttribute="trailing" secondItem="f4e-LC-BcK" secondAttribute="trailing" constant="5" id="XdP-2f-13E"/>
+                    <constraint firstItem="l2a-DV-lcL" firstAttribute="centerY" secondItem="gmS-gg-QSW" secondAttribute="centerY" id="cmT-nO-EZx"/>
                     <constraint firstAttribute="bottom" secondItem="f4e-LC-BcK" secondAttribute="bottom" constant="12.5" id="e0Q-je-SJD"/>
-                    <constraint firstItem="b1g-nz-9Ds" firstAttribute="centerY" secondItem="gmS-gg-QSW" secondAttribute="centerY" id="jyp-vV-cuB"/>
+                    <constraint firstItem="l2a-DV-lcL" firstAttribute="leading" secondItem="gmS-gg-QSW" secondAttribute="trailing" constant="5" id="gs6-yl-KSs"/>
                     <constraint firstItem="gmS-gg-QSW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wlH-8O-c7q"/>
                 </constraints>
             </tableViewCellContentView>
@@ -54,11 +60,12 @@
             <connections>
                 <outlet property="optionLabel" destination="gmS-gg-QSW" id="FEr-LQ-QyB"/>
                 <outlet property="questionLabel" destination="f4e-LC-BcK" id="7WC-MB-sf4"/>
-                <outlet property="selectImageView" destination="b1g-nz-9Ds" id="MNU-Sq-wQY"/>
+                <outlet property="selectBtn" destination="l2a-DV-lcL" id="cRd-wn-nhJ"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
         <image name="testpaper" width="15" height="15"/>
+        <image name="testpaper_select" width="15" height="15"/>
     </resources>
 </document>

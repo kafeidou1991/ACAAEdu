@@ -71,7 +71,7 @@
         [vButton setTag:i];
         vButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
         //关闭顶部点击事件
-//        [vButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [vButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [vButton setFrame:CGRectMake(menuWidth, 0, vButtonWidth, self.frame.size.height)];
         [mScrollView addSubview:vButton];
         [_mButtonArray addObject:vButton];

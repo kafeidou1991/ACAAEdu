@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, QuestionType) {
+    SignleQuestionType = 0, //单选题
+    DoubleQuestionType,   //多选题
+    JudgeQuestionType,    //判断题
+};
+
 @interface AEExamContentView : UICollectionView
 
+@property (nonatomic, assign) QuestionType questionType;
 
 /**
  刷新数据源  同步会刷新视图
