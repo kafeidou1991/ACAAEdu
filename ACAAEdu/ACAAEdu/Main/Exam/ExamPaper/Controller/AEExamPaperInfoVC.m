@@ -131,6 +131,7 @@
             //获取第一部分 基础题试题
             [weakSelf getPartExamQuestionIndex:tempArr[0]];
         }else {
+            [weakSelf hudclose];
             [AEBase alertMessage:@"暂无试题，请稍后重试" cb:nil];
         }
     } faile:^(NSInteger code, NSString *error) {

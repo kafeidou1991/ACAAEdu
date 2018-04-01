@@ -51,23 +51,26 @@
             AEResultItem * item = self.dataSources[self.result.answer.integerValue - 1];
             item.isSelect = YES;
         }
-    }else {
-        
+    }else{
+        //多选
+        if (!STRISEMPTY(self.result.answer)) {
+            NSArray * array = [self.result.answer componentsSeparatedByString:@","];
+            for (NSString * s in array) {
+                AEResultItem * item = self.dataSources[s.integerValue - 1];
+                item.isSelect = YES;
+            }
+        }
     }
     [self.tableView reloadData];
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSources.count;
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEExamQuestionCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AEExamQuestionCell class]) forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if ([self.result.type isEqualToString:@"2"] || [self.result.type isEqualToString:@"1"]) {
-//        [cell updateCell:self.result index:indexPath.row];
-        [cell updateCell:self.dataSources[indexPath.row]];
-    }else {
-        [cell updateMoreCell:self.result index:indexPath.row];
-    }
+    [cell updateCell:self.dataSources[indexPath.row]];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,22 +94,34 @@
     }else {
         //多选题
         AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:indexPath];
-        cell.selectBtn.selected = !cell.selectBtn.selected;
+        cell.selectBtn.selected = !cell.selectBtn.isSelected;
+        AEResultItem * temp = self.dataSources[indexPath.row];
+        temp.isSelect = cell.selectBtn.isSelected;
         
+        //统计全部已选的cell
+        NSMutableString * answerString = @"".mutableCopy;
+        NSInteger i = 0;
+        for (AEResultItem * item in self.dataSources) {
+//            AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
+            if (item.isSelect) {
+                [answerString appendFormat:@"%ld,",i + 1];
+            }
+            i++;
+        }
+        if ([answerString hasSuffix:@","]) {
+            answerString = [answerString substringToIndex:answerString.length - 1].mutableCopy;
+        }
         
+        NSLog(@"------%@-----",answerString);
+        self.result.answer = answerString;
         
     }
-    
-    NSLog(@"--------%@------",self.result.answer);
-    
-    
-//    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":self.result.part_id,@"sheet_id":self.result.sheet_id,@"answer":self.result.answer} success:^(id object) {
-//        NSLog(@"提交答案成功");
-//    } faile:^(NSInteger code, NSString *error) {
-//
-//        [AEBase alertMessage:error cb:nil];
-//    }];
-    
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":self.result.part_id,@"sheet_id":self.result.sheet_id,@"answer":self.result.answer} success:^(id object) {
+        NSLog(@"提交答案成功");
+    } faile:^(NSInteger code, NSString *error) {
+        
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 //获取已经选择的
 - (AEExamQuestionCell *)getSignleLastAnswerCell {
