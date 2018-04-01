@@ -66,11 +66,12 @@
         [vButton setBackgroundImage:[UIImage imageNamed:vHeligtImageStr] forState:UIControlStateSelected];
         [vButton setTitle:vTitleStr forState:UIControlStateNormal];
         [vButton setTitleColor:AEColorLightText forState:UIControlStateNormal];
-        [vButton setTitleColor:AEThemeColor forState:UIControlStateHighlighted];
+        [vButton setTitleColor:AEColorLightText forState:UIControlStateHighlighted];
         [vButton setTitleColor:AEThemeColor forState:UIControlStateSelected];
         [vButton setTag:i];
         vButton.titleLabel.font = [UIFont systemFontOfSize:15.0f];
-        [vButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        //关闭顶部点击事件
+//        [vButton addTarget:self action:@selector(menuButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [vButton setFrame:CGRectMake(menuWidth, 0, vButtonWidth, self.frame.size.height)];
         [mScrollView addSubview:vButton];
         [_mButtonArray addObject:vButton];

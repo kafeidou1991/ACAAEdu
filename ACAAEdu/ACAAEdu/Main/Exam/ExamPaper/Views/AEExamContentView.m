@@ -43,6 +43,8 @@
         self.delegate = self;
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
+        self.alwaysBounceHorizontal = NO;
+        self.alwaysBounceVertical = NO;
     }
     return self;
 }

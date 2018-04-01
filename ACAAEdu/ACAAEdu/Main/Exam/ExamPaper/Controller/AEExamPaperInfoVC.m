@@ -15,7 +15,7 @@
 
 #define MENUHEIHT 41
 
-@interface AEExamPaperInfoVC ()<MenuBarViewDelegate,ScrollPageViewDelegate>
+@interface AEExamPaperInfoVC ()<MenuBarViewDelegate,ScrollPageViewDelegate,UIScrollViewDelegate>
 /**
  题型数组 试题全部数据  因为获取试题接口返回 全部数据，可覆盖部分试题接口返回的数据
  */
@@ -60,11 +60,11 @@
     [super viewDidLoad];
     self.title = @"ACAA考试";//self.examItem.subject_full_name;//@"试卷信息";
     self.navigationItem.rightBarButtonItems = [self createCustomBarButtons];
-        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor redColor];
-        [[UIApplication sharedApplication].delegate.window addSubview:btn];
-        btn.frame = CGRectMake(100, 100, 100, 100);
-        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        btn.backgroundColor = [UIColor redColor];
+//        [[UIApplication sharedApplication].delegate.window addSubview:btn];
+//        btn.frame = CGRectMake(100, 100, 100, 100);
+//        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)buy {
 //    NSLog(@"%@",self.dataSourceArr);
@@ -101,8 +101,8 @@
 - (void)startExamPaper:(void(^)(AEExamQuestionItem *))success {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-//    137 138 self.examItem.id
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kStartExamPaper query:nil path:nil body:@{@"subject_id":@"138"} success:^(id object) {
+//    137 138
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kStartExamPaper query:nil path:nil body:@{@"subject_id":self.examItem.id} success:^(id object) {
         AEExamQuestionItem * item = [AEExamQuestionItem yy_modelWithJSON:object];
         if (success) {
             success(item);
@@ -116,7 +116,6 @@
 - (void)getPartExamPaper:(AEExamQuestionItem *)item{
     WS(weakSelf);
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kPartExamPaper query:@{@"user_exam_id":item.id}.mutableCopy path:nil body:nil success:^(id object) {
-        [weakSelf hudclose];
         NSMutableArray * tempArr = @[].mutableCopy;
         //剔除status == 2 已考完的考题
         for (AEExamQuestionItem * item in [NSArray yy_modelArrayWithClass:[AEExamQuestionItem class] json:object]) {
@@ -150,6 +149,8 @@
         [weakSelf hudclose];
         
         AEExamQuestionItem * item = [AEExamQuestionItem yy_modelWithJSON:object];
+        //temp
+        item.question = @[item.question[0],item.question[2]];
         //已经获取到全部试题  可替换数据源
         weakSelf.dataSourceArr[index] = item;
         //刷新试题页面
@@ -172,7 +173,6 @@
     WS(weakSelf)
     [self.timer countDownTimeInterval:countdown completeBlock:^(NSString *timeString, BOOL finish) {
         if (!finish) {
-//            weakSelf.navigationItem.rightBarButtonItem = [weakSelf createCustomBarButtonTitle:timeString];
             weakSelf.timerLabel.text = timeString;
         }else {
             //考试结束 应该交卷
@@ -181,13 +181,19 @@
 }
 
 //MARK: MenuHrizontalDelegate
-- (void)didMenuHrizontalClickedButtonAtIndex:(NSInteger)aIndex{
+- (void)clickMenuBarViewButtonAtIndex:(NSInteger)aIndex{
+    [self hudShow:self.view msg:STTR_ater_on];
+    [self getPartExamQuestionIndex:aIndex];
+    
     [_scrollPageView moveScrollowViewAthIndex:aIndex];
 }
+
 -(void)didScrollPageViewChangedPage:(NSInteger)aPage {
+    //获取下一部分的考卷
+    [self hudShow:self.view msg:STTR_ater_on];
+    [self getPartExamQuestionIndex:aPage];
     [_menuBarView changeMenuStateAtIndex:aPage];
     
-    [_scrollPageView freshContentTableAtIndex:aPage];
 }
 -(void)scrollViewWillBeginPage:(NSInteger)aPage {
     
@@ -202,6 +208,7 @@
 
 - (void)setContentTableViews {
     _scrollPageView.scrollView.showsHorizontalScrollIndicator = NO;
+//    _scrollPageView.scrollView.directionalLockEnabled = YES;
     for (NSInteger i = 0 ; i<self.dataSourceArr.count; i++) {
         AEExamContentView * view = [[AEExamContentView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH * i,0, _scrollPageView.width, _scrollPageView.frame.size.height)];
         [_scrollPageView.scrollView addSubview:view];
@@ -236,6 +243,7 @@
     if (!_scrollPageView) {
         _scrollPageView = [[JWScrollPageView alloc] initWithFrame:CGRectMake(0, MENUHEIHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - MENUHEIHT)];
         _scrollPageView.delegate = self;
+        _scrollPageView.isSingleDirection = YES;
         //添加数据
         [self setContentTableViews];
     }
@@ -273,6 +281,10 @@
     return _timerLabel;
 }
 -(void)backAction:(UIBarButtonItem *)sender {
+    if (self.dataSourceArr.count == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"退出考试?" message:@"退出考试会保存您已答题目的记录" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"退出考试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -39,6 +39,7 @@
 		B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6F205C1AAC001CAA02 /* AEMessageListCell.m */; };
 		B7D86B72205C1AAC001CAA02 /* AEMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */; };
 		B7D86B75205C2086001CAA02 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B74205C2085001CAA02 /* NSDate+Extension.m */; };
+		B7ECFF642070C002002E9DF5 /* AEAnswerCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
 		B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B90615752057EC2600801D38 /* AEOrderDetailCell.m */; };
@@ -222,6 +223,8 @@
 		B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEMessageListCell.xib; sourceTree = "<group>"; };
 		B7D86B73205C2084001CAA02 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		B7D86B74205C2085001CAA02 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		B7ECFF622070C002002E9DF5 /* AEAnswerCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardView.h; sourceTree = "<group>"; };
+		B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardView.m; sourceTree = "<group>"; };
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
@@ -548,6 +551,8 @@
 				B7C44247206D268F00D4EA03 /* AEExamQuestionCell.h */,
 				B7C44248206D268F00D4EA03 /* AEExamQuestionCell.m */,
 				B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */,
+				B7ECFF622070C002002E9DF5 /* AEAnswerCardView.h */,
+				B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1383,6 +1388,7 @@
 				B94C1CE620401B3F006344F2 /* CGXAddressPcikerView.m in Sources */,
 				B94C1CE420401B3F006344F2 /* CGXPickerViewManager.m in Sources */,
 				B79C927B202A0277002D0B66 /* AEHomePageCell.m in Sources */,
+				B7ECFF642070C002002E9DF5 /* AEAnswerCardView.m in Sources */,
 				B7D86B68205C0630001CAA02 /* AEScreeningFooterView.m in Sources */,
 				B9B916F0201874F9002A63CE /* AETabBarController.m in Sources */,
 				B9B9173A20187F30002A63CE /* AEBaseTableController.m in Sources */,
