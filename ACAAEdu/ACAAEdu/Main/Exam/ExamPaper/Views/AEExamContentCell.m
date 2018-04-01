@@ -102,7 +102,6 @@
         NSMutableString * answerString = @"".mutableCopy;
         NSInteger i = 0;
         for (AEResultItem * item in self.dataSources) {
-//            AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
             if (item.isSelect) {
                 [answerString appendFormat:@"%ld,",i + 1];
             }
@@ -111,15 +110,12 @@
         if ([answerString hasSuffix:@","]) {
             answerString = [answerString substringToIndex:answerString.length - 1].mutableCopy;
         }
-        
-        NSLog(@"------%@-----",answerString);
         self.result.answer = answerString;
         
     }
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":self.result.part_id,@"sheet_id":self.result.sheet_id,@"answer":self.result.answer} success:^(id object) {
         NSLog(@"提交答案成功");
     } faile:^(NSInteger code, NSString *error) {
-        
         [AEBase alertMessage:error cb:nil];
     }];
 }
