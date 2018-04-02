@@ -38,9 +38,33 @@
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kMyTestExamList query:nil path:nil body:@{@"status":(_examType == NoneTestExamType ? @"1" : @"2")} success:^(id object) {
-        weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object[@"data"]].mutableCopy;
-        [weakSelf endLoadData];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kMyTestExamList query:nil path:nil body:@{@"status":(_examType == NoneTestExamType ? @"1" : @"2"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]} success:^(id object) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([object[@"data"]count] > 0) {
+                if (weakSelf.currPage == 1) {
+                    [weakSelf.dataSources removeAllObjects];
+                }
+                [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEMyExamItem class] json:object[@"data"]]];
+                [weakSelf endLoadData];
+                NSInteger total = [object[@"total"] integerValue];
+                if (total > 1) {
+                    if (weakSelf.currPage < total) {
+                        [weakSelf addFooterRefesh:^{
+                            [weakSelf afterProFun];
+                        }];
+                    }else{
+                        [weakSelf noHasMoreData];
+                    }
+                }
+            }else{
+                [weakSelf hudclose];
+                //超过一页 服务器没返回数据
+                if (weakSelf.currPage > 1) {
+                    weakSelf.currPage = 1;
+                    [weakSelf noHasMoreData];
+                }
+            }
+        });
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf endLoadData];
         [AEBase alertMessage:error cb:nil];
@@ -49,6 +73,7 @@
 - (void)endLoadData {
     [self hudclose];
     [self endRefesh:YES];
+    [self endRefesh:NO];
     [self.tableView reloadData];
 }
 

@@ -33,11 +33,6 @@
     return (index > (optionArray.count - 1)) ? @"A" : optionArray[index];
 }
 
-- (IBAction)selectAction:(UIButton *)sender {
-//    sender.selected = !sender.selected;
-}
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

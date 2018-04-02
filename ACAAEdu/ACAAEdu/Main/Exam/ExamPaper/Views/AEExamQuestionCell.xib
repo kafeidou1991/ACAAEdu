@@ -33,9 +33,6 @@
                         <state key="normal" image="testpaper"/>
                         <state key="selected" image="testpaper_select"/>
                         <state key="highlighted" image="testpaper_select"/>
-                        <connections>
-                            <action selector="selectAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kSE-CQ-pVX"/>
-                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="选择题选择题选择题选择题" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4e-LC-BcK">
                         <rect key="frame" x="45" y="10" width="270" height="17"/>

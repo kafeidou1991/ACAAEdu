@@ -99,12 +99,10 @@
 }
 
 #pragma mark - UICollectionViewDelegate
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-//    if (self.selectedBlock && !self.isTimeOut) {
-//        self.selectedBlock(indexPath);
-//        [self.navigationController popViewControllerAnimated:YES];
-//    }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.selectblock) {
+        self.selectblock(indexPath);
+    }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath

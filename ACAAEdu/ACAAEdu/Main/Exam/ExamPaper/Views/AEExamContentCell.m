@@ -113,11 +113,6 @@
         self.result.answer = answerString;
         
     }
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":self.result.part_id,@"sheet_id":self.result.sheet_id,@"answer":self.result.answer} success:^(id object) {
-        NSLog(@"提交答案成功");
-    } faile:^(NSInteger code, NSString *error) {
-        [AEBase alertMessage:error cb:nil];
-    }];
 }
 //获取已经选择的
 - (AEExamQuestionCell *)getSignleLastAnswerCell {

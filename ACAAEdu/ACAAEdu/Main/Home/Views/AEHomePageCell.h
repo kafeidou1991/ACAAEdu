@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class AEExamItem;
+@class AEMyExamItem,AEExamItem;
 typedef void(^BuyMoreBlock)(UIButton *);
 static const CGFloat cellHeight = 80.f;
 
@@ -30,7 +30,7 @@ static const CGFloat cellHeight = 80.f;
  @param item 数据
  @param done 标识是未考还是已考
  */
-- (void)updateMyTestExamCell:(AEExamItem *)item done:(BOOL)done;
+- (void)updateMyTestExamCell:(AEMyExamItem *)item done:(BOOL)done;
 /**
  购买回调
  */

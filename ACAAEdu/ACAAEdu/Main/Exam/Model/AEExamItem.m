@@ -11,3 +11,11 @@
 @implementation AEExamItem
 
 @end
+
+@implementation AEExamSubjectItem
+
+@end
+@implementation AEMyExamItem
+
+@end
+

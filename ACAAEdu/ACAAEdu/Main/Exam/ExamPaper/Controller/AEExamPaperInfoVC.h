@@ -8,10 +8,10 @@
 
 #import "AEBaseController.h"
 
-@class AEExamItem;
+@class AEMyExamItem;
 
 @interface AEExamPaperInfoVC : AEBaseController
 
-@property (nonatomic, strong) AEExamItem * examItem;
+@property (nonatomic, strong) AEMyExamItem * examItem;
 
 @end

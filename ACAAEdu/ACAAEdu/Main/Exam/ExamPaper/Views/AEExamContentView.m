@@ -57,6 +57,22 @@
     return cell;
 }
 
+//上传答案
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    int page = scrollView.contentOffset.x/scrollView.frame.size.width;
+    AEQuestionRresult * result = self.data.question[page];
+    NSLog(@"--已选答案>%@",result.answer);
+    //上报答案
+    if (STRISEMPTY(result.answer)) {
+        return;
+    }
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":result.part_id,@"sheet_id":result.sheet_id,@"answer":result.answer} success:^(id object) {
+        NSLog(@"提交答案成功");
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return self.frame.size;

@@ -13,7 +13,6 @@ typedef void(^SelectedItemBlock)(NSIndexPath *indexPath);
 
 @interface AEAnswerCardVC : AEBaseController
 
-@property (nonatomic, assign) BOOL isTimeOut;
 @property (nonatomic, copy) SelectedItemBlock selectedBlock;
 //@property (nonatomic, copy) NSArray *paperData; // 试卷数据
 

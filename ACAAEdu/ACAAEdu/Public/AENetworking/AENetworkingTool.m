@@ -88,7 +88,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
                                             progress:^(NSProgress * _Nonnull downloadProgress) {
                                                 NSLog(@"GET:completedUnitCount:%lld,totalUnitCount:%lld",downloadProgress.completedUnitCount,downloadProgress.totalUnitCount);
                                             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                                                [self requestSuccess:task responseObject:responseObject methodName:methodName];
+                                                [self requestSuccess:task responseObject:responseObject url:url];
                                                 dispatch_group_leave(self.dispathGroup);
                                             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                                 [self requestFailure:task error:error methodName:methodName];
@@ -113,7 +113,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
                               completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
                                   dispatch_group_leave(self.dispathGroup);
                                   if (!error) {
-                                      [self requestSuccess:postDataTask responseObject:responseObject methodName:methodName];
+                                      [self requestSuccess:postDataTask responseObject:responseObject url:url];
                                   }else{
                                       [self requestFailure:postDataTask error:error methodName:methodName];
                                   }
@@ -136,7 +136,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     }
 }
 #pragma mark - 请求成功/失败
-- (void)requestSuccess:(NSURLSessionDataTask *)dataTask responseObject:(id)responseObject methodName:(NSString *)methodName{
+- (void)requestSuccess:(NSURLSessionDataTask *)dataTask responseObject:(id)responseObject url:(NSString *)url{
 #ifdef DEBUG
 #if TARGET_IPHONE_SIMULATOR
     if ([dataTask.response isKindOfClass:[NSHTTPURLResponse class]]){
@@ -166,7 +166,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
             [[NSNotificationCenter defaultCenter]postNotificationName:kreLogin object:nil];
         }
     }
-    NSLog(@"接收消息[%@]---json = \n%@",[NSString stringWithFormat:@"%@%@",_info.networkDomain,methodName],[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
+    NSLog(@"接收消息[%@]---json = \n%@",[NSString stringWithFormat:@"%@",url],[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
 }
 //检查是否有是正确参数返回
 -(id) checkIsSuccess:(id)responseObject
@@ -332,6 +332,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 }
 #pragma 储存token
 -(void) saveCacheApiToken:(NSString *)apitoken {
+//    NSLog(@"------------>apiToken%@",apitoken);
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     [defaults setObject: apitoken forKey:@"token"];
     [defaults synchronize];

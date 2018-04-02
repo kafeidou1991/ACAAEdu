@@ -12,6 +12,7 @@
 #import "JWScrollPageView.h"
 #import "AEExamContentView.h"
 #import "AEAnswerCardVC.h"
+#import "AEExamResultVC.h"
 
 #define MENUHEIHT 41
 
@@ -40,6 +41,9 @@
  答题卡
  */
 @property (nonatomic, strong) AEAnswerCardVC * answerCardVC;
+/**
+ 题型
+ */
 @property (nonatomic, strong) NSArray * questionTypeArray;
 
 @end
@@ -65,17 +69,32 @@
     [super viewDidLoad];
     self.title = @"ACAA考试";//self.examItem.subject_full_name;//@"试卷信息";
     self.navigationItem.rightBarButtonItems = [self createCustomBarButtons];
-//        UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        btn.backgroundColor = [UIColor redColor];
-//        [[UIApplication sharedApplication].delegate.window addSubview:btn];
-//        btn.frame = CGRectMake(100, 100, 100, 100);
-//        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+    WS(weakSelf)
+    self.answerCardVC.selectedBlock = ^(NSIndexPath *indexPath) {
+        [weakSelf clickMenuBarViewButtonAtIndex:indexPath.section];
+        AEExamContentView * view = weakSelf.scrollPageView.contentItems[indexPath.section];
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [view scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.row inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+        });
+        NSLog(@"%@",indexPath);
+    };
+    
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.backgroundColor = [UIColor redColor];
+        [self.view addSubview:btn];
+        btn.frame = CGRectMake(100, 100, 100, 100);
+        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+    
+    
 }
 - (void)buy {
+//    AEExamResultVC * VC = [AEExamResultVC new];
+//    VC.examId = item.id;
+//    [weakSelf.navigationController pushViewController:VC animated:YES];
 //    NSLog(@"%@",self.dataSourceArr);
 //    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
 //    mobile/exam/evaluate  kSubmitExam
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kExamEvaluate query:nil path:nil body:@{@"exam_id":@"138"} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kExamEvaluate query:nil path:nil body:@{@"exam_id":@"55"} success:^(id object) {
 //        [weakSelf hudclose];
         //            for (UIViewController *viewController in self.navigationController.viewControllers) {
         //                if ([viewController isKindOfClass:[NewCourseViewController class]] ||[viewController isKindOfClass:[CourseTestViewController class]] ||[viewController isKindOfClass:[MytestViewController class]]) {
@@ -106,7 +125,7 @@
 - (void)startExamPaper:(void(^)(AEExamQuestionItem *))success {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kStartExamPaper query:nil path:nil body:@{@"subject_id":self.examItem.id} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kStartExamPaper query:nil path:nil body:@{@"exam_id":self.examItem.id} success:^(id object) {
         AEExamQuestionItem * item = [AEExamQuestionItem yy_modelWithJSON:object];
         if (success) {
             success(item);
@@ -132,7 +151,7 @@
             [weakSelf getPartExamQuestionIndex:tempArr[0]];
         }else {
             [weakSelf hudclose];
-            [AEBase alertMessage:@"暂无试题，请稍后重试" cb:nil];
+            [AEBase alertMessage:@"该考卷已经考完，请选择其他考卷" cb:nil];
         }
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -213,7 +232,26 @@
         }
     }];
 }
-
+- (void)timeOutAction {
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"交卷" message:@"考试时间已到，请交卷" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WS(weakSelf);
+        [self hudShow:self.view msg:@"正在提交答案..."];
+        //每个部分的考试id的一致的，所以取出来一个就可以
+        AEExamQuestionItem * item = self.dataSourceArr[0];
+        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.id} success:^(id object) {
+            [weakSelf hudclose];
+            AEExamResultVC * VC = [AEExamResultVC new];
+            VC.examId = item.id;
+            [weakSelf.navigationController pushViewController:VC animated:YES];
+            
+        } faile:^(NSInteger code, NSString *error) {
+            [weakSelf hudclose];
+            [AEBase alertMessage:error cb:nil];
+        }];
+    }]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 //MARK: MenuHrizontalDelegate
 - (void)clickMenuBarViewButtonAtIndex:(NSInteger)aIndex{
     [_scrollPageView moveScrollowViewAthIndex:aIndex];

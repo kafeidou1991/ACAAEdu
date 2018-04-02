@@ -34,11 +34,13 @@
     self.answerCardView.paperData = self.paperData;
     [self createFinishTest];
     [self createTestPaperStatusTag];
-    if (self.isTimeOut) {
-        self.navigationItem.leftBarButtonItem = nil;
-        self.navigationItem.hidesBackButton = YES;
-        self.navigationItem.rightBarButtonItem = nil;
-    }
+    WS(weakSelf)
+    self.answerCardView.selectblock = ^(NSIndexPath *indexPath) {
+        if (weakSelf.selectedBlock) {
+            weakSelf.selectedBlock(indexPath);
+        }
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    };
 }
 
 - (void)createFinishTest

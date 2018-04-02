@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SelectBlock)(NSIndexPath * indexPath);
+
 @interface AEAnswerCardView : UICollectionView
 
 
 @property (nonatomic, copy) NSMutableArray * paperData;
+
+@property (nonatomic, copy) SelectBlock selectblock;
 
 @end

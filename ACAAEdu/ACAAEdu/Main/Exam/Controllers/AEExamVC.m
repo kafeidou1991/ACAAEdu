@@ -38,7 +38,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"];
+//    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"];
     [self initComponent];
 }
 #pragma mark - 更多
