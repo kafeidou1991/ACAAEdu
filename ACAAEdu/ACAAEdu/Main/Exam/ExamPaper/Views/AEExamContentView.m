@@ -61,7 +61,6 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     int page = scrollView.contentOffset.x/scrollView.frame.size.width;
     AEQuestionRresult * result = self.data.question[page];
-    NSLog(@"--已选答案>%@",result.answer);
     //上报答案
     if (STRISEMPTY(result.answer)) {
         return;

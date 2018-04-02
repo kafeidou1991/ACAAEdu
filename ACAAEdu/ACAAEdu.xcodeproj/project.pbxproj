@@ -16,6 +16,8 @@
 		B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */; };
 		B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */; };
 		B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */; };
+		B7897CF6207265C900F53E36 /* NSString+AEMatchTextMix.m in Sources */ = {isa = PBXBuildFile; fileRef = B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */; };
+		B7897CF92072753F00F53E36 /* AEQuestionHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B7897CF82072753F00F53E36 /* AEQuestionHeaderVIew.m */; };
 		B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92542029DCC9002D0B66 /* CExpandHeader.m */; };
 		B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92572029DFB9002D0B66 /* MeCenterHeaderView.m */; };
 		B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C92592029DFC2002D0B66 /* MeCenterHeaderView.xib */; };
@@ -184,6 +186,10 @@
 		B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailVC.h; sourceTree = "<group>"; };
 		B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailVC.m; sourceTree = "<group>"; };
 		B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailVC.xib; sourceTree = "<group>"; };
+		B7897CF4207265C900F53E36 /* NSString+AEMatchTextMix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AEMatchTextMix.h"; sourceTree = "<group>"; };
+		B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AEMatchTextMix.m"; sourceTree = "<group>"; };
+		B7897CF72072753F00F53E36 /* AEQuestionHeaderVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEQuestionHeaderVIew.h; sourceTree = "<group>"; };
+		B7897CF82072753F00F53E36 /* AEQuestionHeaderVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEQuestionHeaderVIew.m; sourceTree = "<group>"; };
 		B79C92532029DCC9002D0B66 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		B79C92542029DCC9002D0B66 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		B79C92562029DFB9002D0B66 /* MeCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeCenterHeaderView.h; sourceTree = "<group>"; };
@@ -553,6 +559,8 @@
 				B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */,
 				B7ECFF622070C002002E9DF5 /* AEAnswerCardView.h */,
 				B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */,
+				B7897CF72072753F00F53E36 /* AEQuestionHeaderVIew.h */,
+				B7897CF82072753F00F53E36 /* AEQuestionHeaderVIew.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -631,6 +639,8 @@
 				B918BBAB202B088500EDB00D /* WLScaleLayoutConstrain.m */,
 				B918BBA4202B088400EDB00D /* WLSpecScaleLayoutConstrain.h */,
 				B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */,
+				B7897CF4207265C900F53E36 /* NSString+AEMatchTextMix.h */,
+				B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1395,6 +1405,7 @@
 				B949F9A22068C790009D0555 /* AEMyTestExamVC.m in Sources */,
 				B9B916F32018770E002A63CE /* AENavigationController.m in Sources */,
 				B94C1CEC20401B3F006344F2 /* CGXPickerView.m in Sources */,
+				B7897CF92072753F00F53E36 /* AEQuestionHeaderVIew.m in Sources */,
 				B94C1CE920401B3F006344F2 /* CGXAddressModel.m in Sources */,
 				B94C1CEB20401B3F006344F2 /* CGXStringPickerView.m in Sources */,
 				B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */,
@@ -1465,6 +1476,7 @@
 				B7C44245206D250400D4EA03 /* AEExamContentCell.m in Sources */,
 				B918BBCE202B088700EDB00D /* NSObject+entend.m in Sources */,
 				B918BB2C202B051600EDB00D /* AEBase.m in Sources */,
+				B7897CF6207265C900F53E36 /* NSString+AEMatchTextMix.m in Sources */,
 				B949F9BA2068DF8E009D0555 /* SGPageTitleViewConfigure.m in Sources */,
 				B9B1CD45202C54360017C97D /* AEAboutMeVC.m in Sources */,
 				B93C7CE8205A79F000FC5E6C /* UIView+category.m in Sources */,

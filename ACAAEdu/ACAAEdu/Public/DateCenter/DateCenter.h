@@ -169,11 +169,18 @@
 @property (nonatomic, copy) NSString * subject_id; //科目id
 @property (nonatomic, copy) NSString * attachment; //如果有附件，附件路径
 @property (nonatomic, copy) NSString * point; //本题分数
-@property (nonatomic, copy) NSString * question; //题目内容
+@property (nonatomic, copy) NSArray * question; //题目内容
 
 @property (nonatomic, strong) NSArray * result; //选项内容
 
 @end
+
+@interface AEQuestionSubItem : DateCenter
+
+@property (nonatomic, copy) NSString * type; //类型  text img
+@property (nonatomic, copy) NSString * content; //内容
+
+@end;
 
 
 //本地记录答案使用

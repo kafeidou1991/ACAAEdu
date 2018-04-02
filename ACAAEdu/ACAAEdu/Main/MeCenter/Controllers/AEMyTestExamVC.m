@@ -57,7 +57,7 @@
                     }
                 }
             }else{
-                [weakSelf hudclose];
+                [weakSelf endLoadData];
                 //超过一页 服务器没返回数据
                 if (weakSelf.currPage > 1) {
                     weakSelf.currPage = 1;

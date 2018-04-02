@@ -8,6 +8,7 @@
 
 #import "AEExamContentCell.h"
 #import "AEExamQuestionCell.h"
+#import "AEQuestionHeaderVIew.h"
 
 @interface AEExamContentCell () <UITableViewDelegate,UITableViewDataSource>
 
@@ -16,6 +17,8 @@
 @property (nonatomic, strong) AEQuestionRresult * result;
 
 @property (nonatomic, strong) NSMutableArray * dataSources;
+
+@property (nonatomic, strong)AEQuestionHeaderVIew * headQuestionView;
 
 
 @end
@@ -30,11 +33,14 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = AEColorBgVC;
-    
+    self.tableView.tableHeaderView =  self.headQuestionView;
 }
 -(void)updateCell:(AEQuestionRresult *)data {
     self.result = data;
+    //更新头部题干
     [self.dataSources removeAllObjects];
+    //更新题干数据
+    self.headQuestionView.questionData = self.result.question;
     //因为服务端返回的数据有点问题，自行本地组装数据
     NSInteger i = 0;
     for (NSString * s in self.result.result) {
@@ -149,22 +155,34 @@
     CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return 1  + size.height;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    //动态计算行高
-    CGFloat leftMargin = 8;
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-//    view.backgroundColor = AEColorBgVC;
-    UILabel * titleLabel = [AEBase createLabel:CGRectMake(leftMargin, leftMargin, view.width - 2 * leftMargin, view.height) font:[UIFont systemFontOfSize:15] text:self.result.question defaultSizeTxt:nil color:AEThemeColor backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
-    titleLabel.numberOfLines = 0;
-    [titleLabel sizeToFit];
-    [view addSubview:titleLabel];
-    return view;
+
+-(AEQuestionHeaderVIew *)headQuestionView {
+    if (!_headQuestionView) {
+        _headQuestionView = [AEQuestionHeaderVIew new];
+        _headQuestionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0);
+    }
+    return _headQuestionView;
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    CGFloat leftMargin = 8;
-    CGSize size = STR_FONT_SIZE(self.result.question, SCREEN_WIDTH - 2 * leftMargin, [UIFont systemFontOfSize:15]);
-    return size.height + 2 * leftMargin;
-}
+
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+////    NSArray * array = [self.result.question matchTextImageMix];
+////    NSLog(@"-----------%@",array);
+//    //动态计算行高
+//    CGFloat leftMargin = 8;
+//    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+//    UILabel * titleLabel = [AEBase createLabel:CGRectMake(leftMargin, leftMargin, view.width - 2 * leftMargin, view.height) font:[UIFont systemFontOfSize:15] text:self.result.question defaultSizeTxt:nil color:AEThemeColor backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
+//    titleLabel.numberOfLines = 0;
+//    [titleLabel sizeToFit];
+//    [view addSubview:titleLabel];
+//    return view;
+//}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    CGFloat leftMargin = 8;
+//    CGSize size = STR_FONT_SIZE(self.result.question, SCREEN_WIDTH - 2 * leftMargin, [UIFont systemFontOfSize:15]);
+//    return size.height + 2 * leftMargin;
+//}
 
 
 

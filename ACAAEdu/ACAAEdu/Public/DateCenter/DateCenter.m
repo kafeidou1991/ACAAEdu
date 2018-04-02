@@ -57,8 +57,12 @@
 @implementation AEQuestionRresult
 
 + (NSDictionary *)modelContainerPropertyGenericClass{
-    return @{@"result":[NSString class]};
+    return @{@"result":[NSString class],@"question":[AEQuestionSubItem class]};
 }
+
+@end
+
+@implementation AEQuestionSubItem
 
 @end
 

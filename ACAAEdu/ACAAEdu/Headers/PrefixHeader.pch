@@ -10,6 +10,8 @@
 #define PrefixHeader_pch
 
 // MARK: --------Library---------
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <Masonry.h>
 #import <MJRefresh.h>
 #import <YYModel.h>
@@ -21,8 +23,7 @@
 #import <WKWebViewJavascriptBridge.h>
 #import <RSAEncryptor.h>
 
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
+
 
 // MARK: --------Headers---------
 #import "API_Parameter.h"
@@ -84,5 +85,6 @@
 #import "UIView+category.h"
 #import "NSDate+Extension.h"
 #import "UIView+RectCorner.h"
+#import "NSString+AEMatchTextMix.h"
 
 #endif /* PrefixHeader_pch */

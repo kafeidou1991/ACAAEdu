@@ -77,7 +77,7 @@
         [self hudShow:self.view msg:@"正在提交答案..."];
         //每个部分的考试id的一致的，所以取出来一个就可以
         AEExamQuestionItem * item = self.paperData[0];
-        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.id} success:^(id object) {
+        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.exam_id} success:^(id object) {
             [weakSelf hudclose];
             AEExamResultVC * VC = [AEExamResultVC new];
             VC.examId = item.id;
