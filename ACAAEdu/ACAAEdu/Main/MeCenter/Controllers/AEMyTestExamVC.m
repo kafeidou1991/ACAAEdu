@@ -10,6 +10,7 @@
 #import "AEHomePageCell.h"
 #import "AEExamItem.h"
 #import "AEExamPaperInfoVC.h"
+#import "AEExamResultVC.h"
 
 
 @interface AEMyTestExamVC ()
@@ -22,6 +23,7 @@
     [super viewDidLoad];
     [self initTableView];
     self.tableView.height -= 44;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:@"kExamResultBack" object:nil];
 }
 
 - (void)initTableView {
@@ -91,12 +93,23 @@
     WS(weakSelf)
     [cell updateMyTestExamCell:self.dataSources[indexPath.section] done:_examType];
     cell.buyBlock = ^{
-        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
-        VC.examItem = self.dataSources[indexPath.section];
-        [weakSelf.navigationController pushViewController:VC animated:YES];
+        [weakSelf pushExamVC:indexPath];
     };
     return cell;
 }
+- (void) pushExamVC:(NSIndexPath * )indexPath {
+    if (_examType == NoneTestExamType) {
+        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
+        VC.examItem = self.dataSources[indexPath.section];
+        [self.navigationController pushViewController:VC animated:YES];
+    }else {
+        AEExamResultVC * VC = [AEExamResultVC new];
+        AEMyExamItem * item = self.dataSources[indexPath.section];
+        VC.examId = item.id;
+        [self.navigationController pushViewController:VC animated:YES];
+    }
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return cellHeight;
 }
@@ -113,6 +126,9 @@
     
 }
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 
 

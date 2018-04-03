@@ -70,5 +70,17 @@
 
 @end
 
+@implementation AEExamEvaluateSubItem
+
+@end
+
+@implementation AEExamEvaluateItem
+
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"part_info":[AEExamEvaluateSubItem class]};
+}
+
+@end
+
 
 

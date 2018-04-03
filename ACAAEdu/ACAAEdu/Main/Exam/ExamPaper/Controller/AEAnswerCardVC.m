@@ -80,7 +80,7 @@
         [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.exam_id} success:^(id object) {
             [weakSelf hudclose];
             AEExamResultVC * VC = [AEExamResultVC new];
-            VC.examId = item.id;
+            VC.examId = item.exam_id;
             [weakSelf.navigationController pushViewController:VC animated:YES];
             
         } faile:^(NSInteger code, NSString *error) {

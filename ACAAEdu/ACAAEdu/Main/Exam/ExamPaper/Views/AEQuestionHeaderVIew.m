@@ -29,12 +29,13 @@
             [self addSubview:label];
         }else if ([item.type isEqualToString:@"img"]) {
 //            (self.width - 2 * leftMargin) * 9 / 16
-            UIImageView * imageV = [[UIImageView alloc]initWithFrame:CGRectMake(leftMargin, viewHeight, self.width - 2 * leftMargin, 0)];
+            UIImageView * imageV = [[UIImageView alloc]initWithFrame:CGRectMake(leftMargin, viewHeight, self.width - 2 * leftMargin, (self.width - 2 * leftMargin) * 9 / 16)];
 //            imageV.backgroundColor = [UIColor redColor];
             imageV.contentMode = UIViewContentModeScaleAspectFit;
             [imageV sd_setImageWithURL:[NSURL URLWithString:item.content]completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                imageV.size = image.size;
+//                imageV.size = image.size;
             }];
+            viewHeight += imageV.size.height;
             [self addSubview:imageV];
         }
     }

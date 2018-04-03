@@ -190,6 +190,63 @@
 @property (nonatomic, assign) NSInteger opation;
 @end
 
+//{
+//    "message" : "ok",
+//    "data" : {
+//        "total_question" : "60",
+//        "part_info" : [
+//                       {
+//                           "part_num" : "60",
+//                           "part_type" : "1",
+//                           "part_passrate" : "0.60",
+//                           "part_name" : "基础题",
+//                           "part_correct" : 0,
+//                           "part_score" : "0",
+//                           "part_time" : 90
+//                       }
+//                       ],
+
+//        "exam_time" : "1522678140",
+//        "pass" : "0",
+//        "year" : "2018",
+//        "idcard" : "410527199103053418",
+//        "subject_name" : "ACAA Web全栈工程师",
+//        "id" : "7",
+//        "subject_id" : "138",
+//        "paper_score" : "60",
+//        "total_score" : "0",
+//        "total_correct" : "0",
+//        "evaluate" : "需要加强 Photoshop 数字图像专业知识，成绩非常差。建议课程《ACAA 数字图像工程师试题解析》 和《ACAA 数字图像工程师》视频课程相关章节，观看电子书《Photoshop 案例经典进 阶》图文教程。",
+//        "exam_id" : "296",
+//        "subject_short_name" : "FS",
+//        "categories" : "7",
+//        "user_name" : ""
+//    },
+//    "code" : 200
+//} >
+//@class AEExamEvaluateSubItem;
+
+@interface AEExamEvaluateSubItem :DateCenter
+@property (nonatomic, copy) NSString * part_num; //数量
+@property (nonatomic, copy) NSString * part_type; //题目类型
+@property (nonatomic, copy) NSString * part_passrate; //
+@property (nonatomic, copy) NSString * part_name; //名称
+@property (nonatomic, copy) NSString * part_correct; //正确
+@property (nonatomic, copy) NSString * part_score; //得分
+@property (nonatomic, copy) NSString * part_time; //限时
+@end;
+
+@interface AEExamEvaluateItem : DateCenter
+@property (nonatomic, copy) NSString * total_question; //总共题目数
+@property (nonatomic, copy) NSString * exam_time; // 考试时间
+@property (nonatomic, copy) NSString * idcard; // 准考证号
+@property (nonatomic, copy) NSString * subject_name; // 考卷名称
+@property (nonatomic, copy) NSString * total_score; //得分
+@property (nonatomic, copy) NSString * paper_score; //总分
+@property (nonatomic, copy) NSString * evaluate; //评价
+@property (nonatomic, strong) NSArray * part_info;
+@property (nonatomic, copy) NSString * pass; //通过状态
+@end
 
 
 
