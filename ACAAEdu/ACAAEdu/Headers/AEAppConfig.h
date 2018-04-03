@@ -11,8 +11,8 @@
 
 
 // MARK: Bugly
-#define BuglyAppID  @"c0e2cffc4c"
-#define BuglyAppKey @"bc1824b7-6352-47a9-bb96-ba0ef0da44ab"
+#define BuglyAppID  @"126c2b3f73"
+#define BuglyAppKey @"70e2ddcc-86ed-4d7a-91e0-2f1612a75473"
 
 // MARK: QQ & 微信
 #define WXAppId       @"wxeeaf0763e1659547"

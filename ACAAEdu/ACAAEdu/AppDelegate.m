@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AETabBarController.h"
+#import <Bugly/Bugly.h>
 
 @interface AppDelegate ()
 
@@ -36,6 +37,9 @@
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager];
     keyboardManager.enableAutoToolbar= NO;
     keyboardManager.shouldResignOnTouchOutside = YES;
+}
+- (void)setupBugly {
+    [Bugly startWithAppId:BuglyAppID];
 }
 
 
