@@ -34,10 +34,12 @@
 //                    int hours = (int)((timeout-days*24*3600)/3600);
 //                    int minute = (int)(timeout-days*24*3600-hours*3600)/60;
 //                    int second = timeout-days*24*3600-hours*3600-minute*60;
-                    int minute = (int)timeout/60;
-                    int second = (int)(timeout - minute*60);
+                    
+                    int hours = (int)(timeout/3600);
+                    int minute = (int)(timeout - hours*3600)/60;
+                    int second = (int)(timeout -hours*3600 - minute*60);
                     dispatch_async(dispatch_get_main_queue(), ^{
-                        completeBlock([NSString stringWithFormat:@"%02d:%02d",minute,second],NO);
+                        completeBlock([NSString stringWithFormat:@"%d:%02d:%02d",hours,minute,second],NO);
                     });
                     timeout--;
                 }

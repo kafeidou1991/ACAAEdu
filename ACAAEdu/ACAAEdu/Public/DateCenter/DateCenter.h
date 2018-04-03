@@ -180,6 +180,11 @@
 @property (nonatomic, copy) NSString * type; //类型  text img
 @property (nonatomic, copy) NSString * content; //内容
 
+/**
+ 性能优化 本地使用储存进行下载避免多次加载
+ */
+@property (nonatomic, copy) UIImage * image;
+
 @end;
 
 
@@ -189,42 +194,6 @@
 @property (nonatomic, assign) BOOL isSelect ; //是否选择 本地使用
 @property (nonatomic, assign) NSInteger opation;
 @end
-
-//{
-//    "message" : "ok",
-//    "data" : {
-//        "total_question" : "60",
-//        "part_info" : [
-//                       {
-//                           "part_num" : "60",
-//                           "part_type" : "1",
-//                           "part_passrate" : "0.60",
-//                           "part_name" : "基础题",
-//                           "part_correct" : 0,
-//                           "part_score" : "0",
-//                           "part_time" : 90
-//                       }
-//                       ],
-
-//        "exam_time" : "1522678140",
-//        "pass" : "0",
-//        "year" : "2018",
-//        "idcard" : "410527199103053418",
-//        "subject_name" : "ACAA Web全栈工程师",
-//        "id" : "7",
-//        "subject_id" : "138",
-//        "paper_score" : "60",
-//        "total_score" : "0",
-//        "total_correct" : "0",
-//        "evaluate" : "需要加强 Photoshop 数字图像专业知识，成绩非常差。建议课程《ACAA 数字图像工程师试题解析》 和《ACAA 数字图像工程师》视频课程相关章节，观看电子书《Photoshop 案例经典进 阶》图文教程。",
-//        "exam_id" : "296",
-//        "subject_short_name" : "FS",
-//        "categories" : "7",
-//        "user_name" : ""
-//    },
-//    "code" : 200
-//} >
-//@class AEExamEvaluateSubItem;
 
 @interface AEExamEvaluateSubItem :DateCenter
 @property (nonatomic, copy) NSString * part_num; //数量

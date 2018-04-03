@@ -119,6 +119,14 @@
 		B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B96FD9B22029B98A00FE7495 /* MeCenterCell.m */; };
 		B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */; };
 		B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B97447662019E04C00A6A538 /* AELoginVC.xib */; };
+		B992CEEA207371E7007F3EF2 /* UIImageView+XHURLDownload.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEDA207371E7007F3EF2 /* UIImageView+XHURLDownload.m */; };
+		B992CEEB207371E7007F3EF2 /* NSString+XHMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEDB207371E7007F3EF2 /* NSString+XHMD5.m */; };
+		B992CEEC207371E7007F3EF2 /* XHZoomingImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEDC207371E7007F3EF2 /* XHZoomingImageView.m */; };
+		B992CEED207371E7007F3EF2 /* XHViewState.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEDD207371E7007F3EF2 /* XHViewState.m */; };
+		B992CEEE207371E7007F3EF2 /* XHImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEDE207371E7007F3EF2 /* XHImageViewer.m */; };
+		B992CEEF207371E7007F3EF2 /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEE0207371E7007F3EF2 /* UIImage+Utility.m */; };
+		B992CEF0207371E7007F3EF2 /* XHCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEE1207371E7007F3EF2 /* XHCacheManager.m */; };
+		B992CEF1207371E7007F3EF2 /* XHFileAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEE6207371E7007F3EF2 /* XHFileAttribute.m */; };
 		B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A60440205BA9A100278568 /* AEScreenHeaderView.m */; };
 		B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */; };
 		B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F01201826C200BA38BE /* AppDelegate.m */; };
@@ -372,6 +380,22 @@
 		B96FD9B32029B98A00FE7495 /* MeCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeCenterCell.xib; sourceTree = "<group>"; };
 		B97447642019E04C00A6A538 /* AELoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AELoginVC.h; sourceTree = "<group>"; };
 		B97447662019E04C00A6A538 /* AELoginVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AELoginVC.xib; sourceTree = "<group>"; };
+		B992CEDA207371E7007F3EF2 /* UIImageView+XHURLDownload.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+XHURLDownload.m"; sourceTree = "<group>"; };
+		B992CEDB207371E7007F3EF2 /* NSString+XHMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XHMD5.m"; sourceTree = "<group>"; };
+		B992CEDC207371E7007F3EF2 /* XHZoomingImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHZoomingImageView.m; sourceTree = "<group>"; };
+		B992CEDD207371E7007F3EF2 /* XHViewState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHViewState.m; sourceTree = "<group>"; };
+		B992CEDE207371E7007F3EF2 /* XHImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHImageViewer.m; sourceTree = "<group>"; };
+		B992CEDF207371E7007F3EF2 /* XHFileAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFileAttribute.h; sourceTree = "<group>"; };
+		B992CEE0207371E7007F3EF2 /* UIImage+Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Utility.m"; sourceTree = "<group>"; };
+		B992CEE1207371E7007F3EF2 /* XHCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCacheManager.m; sourceTree = "<group>"; };
+		B992CEE2207371E7007F3EF2 /* XHZoomingImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHZoomingImageView.h; sourceTree = "<group>"; };
+		B992CEE3207371E7007F3EF2 /* NSString+XHMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XHMD5.h"; sourceTree = "<group>"; };
+		B992CEE4207371E7007F3EF2 /* UIImageView+XHURLDownload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+XHURLDownload.h"; sourceTree = "<group>"; };
+		B992CEE5207371E7007F3EF2 /* UIImage+Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Utility.h"; sourceTree = "<group>"; };
+		B992CEE6207371E7007F3EF2 /* XHFileAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFileAttribute.m; sourceTree = "<group>"; };
+		B992CEE7207371E7007F3EF2 /* XHImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHImageViewer.h; sourceTree = "<group>"; };
+		B992CEE8207371E7007F3EF2 /* XHViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHViewState.h; sourceTree = "<group>"; };
+		B992CEE9207371E7007F3EF2 /* XHCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCacheManager.h; sourceTree = "<group>"; };
 		B9A6043F205BA9A100278568 /* AEScreenHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreenHeaderView.h; sourceTree = "<group>"; };
 		B9A60440205BA9A100278568 /* AEScreenHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreenHeaderView.m; sourceTree = "<group>"; };
 		B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEScreenHeaderView.xib; sourceTree = "<group>"; };
@@ -509,6 +533,7 @@
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
 			isa = PBXGroup;
 			children = (
+				B992CED9207371E7007F3EF2 /* XHImageViewer */,
 				B9DFA1C7206F309200AFAD27 /* Timer */,
 				B9D2F6A1206CEA5B00C5A034 /* SwitchView */,
 				B949F9A62068DF8D009D0555 /* SegmentControl */,
@@ -849,6 +874,29 @@
 			children = (
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		B992CED9207371E7007F3EF2 /* XHImageViewer */ = {
+			isa = PBXGroup;
+			children = (
+				B992CEDA207371E7007F3EF2 /* UIImageView+XHURLDownload.m */,
+				B992CEDB207371E7007F3EF2 /* NSString+XHMD5.m */,
+				B992CEDC207371E7007F3EF2 /* XHZoomingImageView.m */,
+				B992CEDD207371E7007F3EF2 /* XHViewState.m */,
+				B992CEDE207371E7007F3EF2 /* XHImageViewer.m */,
+				B992CEDF207371E7007F3EF2 /* XHFileAttribute.h */,
+				B992CEE0207371E7007F3EF2 /* UIImage+Utility.m */,
+				B992CEE1207371E7007F3EF2 /* XHCacheManager.m */,
+				B992CEE2207371E7007F3EF2 /* XHZoomingImageView.h */,
+				B992CEE3207371E7007F3EF2 /* NSString+XHMD5.h */,
+				B992CEE4207371E7007F3EF2 /* UIImageView+XHURLDownload.h */,
+				B992CEE5207371E7007F3EF2 /* UIImage+Utility.h */,
+				B992CEE6207371E7007F3EF2 /* XHFileAttribute.m */,
+				B992CEE7207371E7007F3EF2 /* XHImageViewer.h */,
+				B992CEE8207371E7007F3EF2 /* XHViewState.h */,
+				B992CEE9207371E7007F3EF2 /* XHCacheManager.h */,
+			);
+			path = XHImageViewer;
 			sourceTree = "<group>";
 		};
 		B9B18EF4201826C200BA38BE = {
@@ -1389,8 +1437,10 @@
 				B949F9B62068DF8D009D0555 /* UIView+SGPagingView.m in Sources */,
 				B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,
+				B992CEEF207371E7007F3EF2 /* UIImage+Utility.m in Sources */,
 				B918BBCF202B088700EDB00D /* UIView+Extend.m in Sources */,
 				B949F9BD2068E2E1009D0555 /* AECustomSegmentVC.m in Sources */,
+				B992CEF1207371E7007F3EF2 /* XHFileAttribute.m in Sources */,
 				B7129A682031AF460081472E /* AESettingVC.m in Sources */,
 				B94C1CE720401B3F006344F2 /* CGXDatePickerView.m in Sources */,
 				B916E37220591D1D007EB40B /* AEScreeningVC.m in Sources */,
@@ -1400,6 +1450,7 @@
 				B79C927B202A0277002D0B66 /* AEHomePageCell.m in Sources */,
 				B7ECFF642070C002002E9DF5 /* AEAnswerCardView.m in Sources */,
 				B7D86B68205C0630001CAA02 /* AEScreeningFooterView.m in Sources */,
+				B992CEEB207371E7007F3EF2 /* NSString+XHMD5.m in Sources */,
 				B9B916F0201874F9002A63CE /* AETabBarController.m in Sources */,
 				B9B9173A20187F30002A63CE /* AEBaseTableController.m in Sources */,
 				B949F9A22068C790009D0555 /* AEMyTestExamVC.m in Sources */,
@@ -1410,6 +1461,7 @@
 				B94C1CEB20401B3F006344F2 /* CGXStringPickerView.m in Sources */,
 				B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */,
 				B918BBC6202B088700EDB00D /* WLScaleLayoutConstrain.m in Sources */,
+				B992CEEE207371E7007F3EF2 /* XHImageViewer.m in Sources */,
 				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,
 				B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */,
 				B916E37620591D64007EB40B /* AEScreeningCell.m in Sources */,
@@ -1441,12 +1493,15 @@
 				B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */,
 				B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */,
 				B7C44241206D1DC200D4EA03 /* AEExamContentView.m in Sources */,
+				B992CEED207371E7007F3EF2 /* XHViewState.m in Sources */,
 				B92B9783204400AF0086DBA9 /* AEBindIdCardVC.m in Sources */,
 				B918BBCD202B088700EDB00D /* UITableViewCell+HM.m in Sources */,
 				B949F9B82068DF8D009D0555 /* SGPageContentView.m in Sources */,
+				B992CEF0207371E7007F3EF2 /* XHCacheManager.m in Sources */,
 				B7D86B6D205C0DC2001CAA02 /* AEMessageListVC.m in Sources */,
 				B918BBC0202B088700EDB00D /* NSNull+safe.m in Sources */,
 				B949F9B92068DF8D009D0555 /* SGPageTitleView.m in Sources */,
+				B992CEEC207371E7007F3EF2 /* XHZoomingImageView.m in Sources */,
 				B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */,
 				B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */,
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,
@@ -1484,6 +1539,7 @@
 				B79C925D2029EBFA002D0B66 /* HMBannerView.m in Sources */,
 				B918BBC4202B088700EDB00D /* NSTimer+addition.m in Sources */,
 				B9B1CD1C202BFCB60017C97D /* CircularProgressBar.m in Sources */,
+				B992CEEA207371E7007F3EF2 /* UIImageView+XHURLDownload.m in Sources */,
 				B918BBD0202B088700EDB00D /* WLSpecScaleLayoutConstrain.m in Sources */,
 				B918BBC7202B088700EDB00D /* UIColor+hexcolor.m in Sources */,
 				B7C3952F203A650900AB8513 /* AEModifierInfoCell.m in Sources */,

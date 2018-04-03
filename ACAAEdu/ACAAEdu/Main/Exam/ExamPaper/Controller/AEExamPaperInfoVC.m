@@ -67,7 +67,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"ACAA考试";//self.examItem.subject_full_name;//@"试卷信息";
+    self.title = @"ACAA考试";
     self.navigationItem.rightBarButtonItems = [self createCustomBarButtons];
     WS(weakSelf)
     self.answerCardVC.selectedBlock = ^(NSIndexPath *indexPath) {
@@ -76,38 +76,9 @@
         dispatch_async(dispatch_get_main_queue(), ^{
            [view scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.row inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         });
-        NSLog(@"%@",indexPath);
     };
-    
-//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        btn.backgroundColor = [UIColor redColor];
-//        [self.view addSubview:btn];
-//        btn.frame = CGRectMake(100, 100, 100, 100);
-//        [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
-    
-    
 }
-- (void)buy {
-//    AEExamResultVC * VC = [AEExamResultVC new];
-//    VC.examId = item.id;
-//    [weakSelf.navigationController pushViewController:VC animated:YES];
-//    NSLog(@"%@",self.dataSourceArr);
-//    [self.navigationController pushViewController:[AEAnswerCardVC new] animated:YES];
-//    mobile/exam/evaluate  kSubmitExam
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kExamEvaluate query:nil path:nil body:@{@"exam_id":@"55"} success:^(id object) {
-//        [weakSelf hudclose];
-        //            for (UIViewController *viewController in self.navigationController.viewControllers) {
-        //                if ([viewController isKindOfClass:[NewCourseViewController class]] ||[viewController isKindOfClass:[CourseTestViewController class]] ||[viewController isKindOfClass:[MytestViewController class]]) {
-        //                    [self.navigationController popToViewController:viewController animated:YES];
-        //                }
-        //            }
-        
-    } faile:^(NSInteger code, NSString *error) {
-//        [weakSelf hudclose];
-        [AEBase alertMessage:error cb:nil];
-    }];
-    
-}
+
 //MARK: 请求数据
 /**
  考试的逻辑是 ：
@@ -348,8 +319,6 @@
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
-//    AEAnswerCardVC * answerCardVC = [AEAnswerCardVC new];
-//    answerCardVC.paperData = self.dataSourceArr;
     [self.navigationController pushViewController:self.answerCardVC animated:YES];
 }
 -(AEAnswerCardVC *)answerCardVC {

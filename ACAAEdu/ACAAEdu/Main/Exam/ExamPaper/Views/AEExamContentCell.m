@@ -33,14 +33,37 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = AEColorBgVC;
-    self.tableView.tableHeaderView =  self.headQuestionView;
 }
 -(void)updateCell:(AEQuestionRresult *)data {
     self.result = data;
     //更新头部题干
     [self.dataSources removeAllObjects];
     //更新题干数据
-    self.headQuestionView.questionData = self.result.question;
+    NSMutableArray * titleArray = @[].mutableCopy; NSMutableArray * imageArray = @[].mutableCopy;
+    [self.result.question enumerateObjectsUsingBlock:^(AEQuestionSubItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj.type isEqualToString:@"img"]) {
+            [imageArray addObject:obj];
+        }else {
+            [titleArray addObject:obj];
+        }
+    }];
+    //存在图片 启动图片下载
+    if (imageArray.count > 0) {
+        [imageArray enumerateObjectsUsingBlock:^(AEQuestionSubItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self downQuestion:obj.content completed:^(UIImage * image) {
+                obj.image = image;
+                self.headQuestionView.questionData = self.result.question;
+                self.tableView.tableHeaderView =  self.headQuestionView;
+            }];
+        }];
+    }else {
+        //没有图片直接加载
+        self.headQuestionView.questionData = self.result.question;
+        self.tableView.tableHeaderView =  self.headQuestionView;
+    }
+    
+    
+    
     //因为服务端返回的数据有点问题，自行本地组装数据
     NSInteger i = 0;
     for (NSString * s in self.result.result) {
@@ -163,7 +186,11 @@
     }
     return _headQuestionView;
 }
-
+-  (void)downQuestion:(NSString *)url completed:(void(^)(UIImage *))hander{
+    [[SDWebImageDownloader sharedDownloader]downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        hander(image);
+    }];
+}
 
 
 //- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {

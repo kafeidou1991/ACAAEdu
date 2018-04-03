@@ -59,13 +59,11 @@
         AEExamEvaluateSubItem * subItem = self.item.part_info[0];
         self.totalQuesLabel.text = subItem.part_num;
         self.getScoreLabel.text = subItem.part_correct;
-        self.rateLabel.text = subItem.part_correct.integerValue == 1 ? @"100%" : [NSString stringWithFormat:@"%.2g%%",subItem.part_correct.floatValue * 100.f];
+        self.rateLabel.text = subItem.part_passrate.integerValue == 1 ? @"100%" : [NSString stringWithFormat:@"%.2g%%",subItem.part_passrate.floatValue * 100.f];
     }
-    self.evaluateLabel.text = @"需要加强 Photoshop 数字图像专业知识，成绩非常差。建议课程《ACAA 数字图像工程师试题解析》 和《ACAA 数字图像工程师》视频课程相关章节，观看电子书《Photoshop 案例经典进 阶》图文教程。需要加强 Photoshop 数字图像专业知识，成绩非常差。建议课程《ACAA 数字图像工程师试题解析》 和《ACAA 数字图像工程师》视频课程相关章节，观看电子书《Photoshop 案例经典进 阶》图文教程。需要加强 Photoshop 数字图像专业知识，成绩非常差。建议课程《ACAA 数字图像工程师试题解析》 和《ACAA 数字图像工程师》视频课程相关章节，观看电子书《Photoshop 案例经典进 阶》图文教程。";//self.item.evaluate;
-    
-//    self.bgViewHeightContrain.constant = self.evaluateLabel.bottom + 15.f;
-//    [self.bgView updateConstraintsIfNeeded];
-    self.bgView.height = self.evaluateLabel.bottom + 15.f;
+    self.evaluateLabel.text = self.item.evaluate;
+    [self.evaluateLabel sizeToFit];
+    self.bgViewHeightContrain.constant = self.evaluateLabel.bottom + 15.f;
     
 }
 -(void)backAction:(UIBarButtonItem *)sender {
