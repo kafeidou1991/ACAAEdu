@@ -76,8 +76,11 @@ typedef NS_ENUM(NSInteger, LoginType) {
     //登录成功
     WS(weakSelf);
 //    18511032576  123456
+    NSDictionary * paramsDic = @{(self.loginType == AccountLoginType ? @"username" : @"id_card"):account,
+                                 (self.loginType == AccountLoginType ? @"password" : @"user_name"):password,
+                                 @"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")};
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:nil path:nil body:@{@"username":account,@"password":password,@"scene":(self.loginType == AccountLoginType ? @"acount" : @"idCard")} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:nil path:nil body:paramsDic success:^(id object) {
         [weakSelf hudclose];
         if (object) {
            [AEUserInfo yy_modelWithDictionary:object];
@@ -132,7 +135,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     self.accountTextField.text =@"";
     self.passwordTextField.secureTextEntry = !b;
     self.passwordTextField.lengthLimit = 30;
-    self.passwordTextField.keyboardType = b ? UIKeyboardTypeDefault : UIKeyboardTypeNumberPad;
+    self.passwordTextField.keyboardType =  UIKeyboardTypeDefault;
     self.passwordTextField.placeholder = b ? @"请输入姓名" : @"请输入密码";
     self.passwordTextField.text =@"";
     if ([self.accountTextField canBecomeFirstResponder]) {

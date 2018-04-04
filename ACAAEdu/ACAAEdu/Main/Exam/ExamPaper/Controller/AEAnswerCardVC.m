@@ -31,7 +31,6 @@
     self.title = @"答题卡";
     self.view.backgroundColor = UIColorFromRGB(0xF0F2F6);
     _submitStr = @"提交";
-    self.answerCardView.paperData = self.paperData;
     [self createFinishTest];
     [self createTestPaperStatusTag];
     WS(weakSelf)
@@ -42,7 +41,10 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
 }
-
+- (void)setPaperData:(NSMutableArray *)paperData {
+    _paperData = paperData;
+    self.answerCardView.paperData = _paperData;
+}
 - (void)createFinishTest
 {
     if (_finishButton == nil) {

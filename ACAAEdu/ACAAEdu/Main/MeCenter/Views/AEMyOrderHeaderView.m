@@ -39,8 +39,8 @@ static const CGFloat labelHeight = 25.f;
 
 - (void)addSubviews {
     [self addSubview:self.orderNoLabel];
-    [self addSubview:self.orderStatusLabel];
-    [self addSubview:self.orderStatusControl];
+//    [self addSubview:self.orderStatusLabel];
+//    [self addSubview:self.orderStatusControl];
     [self addSubview:self.orderPriceLabel];
     [self addSubview:self.orderTimeLabel];
     [self addSubview:self.orderTypeLabel];

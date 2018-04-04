@@ -14,7 +14,7 @@
 /**
  试题数据源
  */
-@property (nonatomic, strong)AEExamQuestionItem * data;
+@property (nonatomic, strong) AEExamQuestionItem * data;
 
 
 @end
@@ -42,6 +42,7 @@
         self.delegate = self;
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
+        self.scrollEnabled = NO;
     }
     return self;
 }
@@ -56,10 +57,28 @@
     
     return cell;
 }
-
+-(void)scrollQuestion:(BOOL)isNext {
+    int page = self.contentOffset.x / self.width;
+    if (isNext) {
+        [self updateAnswer:page];
+        if (page != self.data.question.count - 1) {
+            [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
+        }else {
+            if (_submitExamBlock) {
+                _submitExamBlock();
+            }
+        }
+    }else {
+        if (page != 0) {
+            [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
+        }else {
+            [AEBase alertMessage:@"没有上一题了" cb:nil];
+        }
+    }
+    
+}
 //上传答案
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    int page = scrollView.contentOffset.x/scrollView.frame.size.width;
+- (void)updateAnswer:(int)page {
     AEQuestionRresult * result = self.data.question[page];
     //上报答案
     if (STRISEMPTY(result.answer)) {
@@ -71,6 +90,19 @@
         [AEBase alertMessage:error cb:nil];
     }];
 }
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+//    int page = scrollView.contentOffset.x/scrollView.frame.size.width;
+//    AEQuestionRresult * result = self.data.question[page];
+//    //上报答案
+//    if (STRISEMPTY(result.answer)) {
+//        return;
+//    }
+//    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitQuestion query:nil path:nil body:@{@"part_id":result.part_id,@"sheet_id":result.sheet_id,@"answer":result.answer} success:^(id object) {
+//        NSLog(@"提交答案成功");
+//    } faile:^(NSInteger code, NSString *error) {
+//        [AEBase alertMessage:error cb:nil];
+//    }];
+//}
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

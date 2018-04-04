@@ -11,6 +11,7 @@
 #import "AEExamItem.h"
 #import "AEExamPaperInfoVC.h"
 #import "AEExamResultVC.h"
+#import "AETestPaperVC.h"
 
 
 @interface AEMyTestExamVC ()
@@ -99,7 +100,8 @@
 }
 - (void) pushExamVC:(NSIndexPath * )indexPath {
     if (_examType == NoneTestExamType) {
-        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
+//        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
+        AETestPaperVC * VC = [AETestPaperVC new];
         VC.examItem = self.dataSources[indexPath.section];
         [self.navigationController pushViewController:VC animated:YES];
     }else {

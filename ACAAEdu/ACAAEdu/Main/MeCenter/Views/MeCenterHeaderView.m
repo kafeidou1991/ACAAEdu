@@ -41,7 +41,7 @@
 
 -(void)updateheaderInfo {
     if (User.isLogin) {
-        self.nameLabel.text =User.username;
+        self.nameLabel.text = STRISEMPTY(User.user_profile.user_name) ? User.username : User.user_profile.user_name;
     }else {
         self.nameLabel.text = @"登录";
     }

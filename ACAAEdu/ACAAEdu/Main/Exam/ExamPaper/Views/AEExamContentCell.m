@@ -39,6 +39,12 @@
     //更新头部题干
     [self.dataSources removeAllObjects];
     //更新题干数据
+    [self updateHeadView];
+    //组装数据
+    [self sortData];
+    [self.tableView reloadData];
+}
+- (void)updateHeadView {
     NSMutableArray * titleArray = @[].mutableCopy; NSMutableArray * imageArray = @[].mutableCopy;
     [self.result.question enumerateObjectsUsingBlock:^(AEQuestionSubItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj.type isEqualToString:@"img"]) {
@@ -61,9 +67,8 @@
         self.headQuestionView.questionData = self.result.question;
         self.tableView.tableHeaderView =  self.headQuestionView;
     }
-    
-    
-    
+}
+- (void)sortData {
     //因为服务端返回的数据有点问题，自行本地组装数据
     NSInteger i = 0;
     for (NSString * s in self.result.result) {
@@ -90,8 +95,8 @@
             }
         }
     }
-    [self.tableView reloadData];
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSources.count;
 }
@@ -103,6 +108,27 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    //第三方要求不需要显示是否单选还是多选，去除单选的限制
+    //多选题
+    AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:indexPath];
+    cell.selectBtn.selected = !cell.selectBtn.isSelected;
+    AEResultItem * temp = self.dataSources[indexPath.row];
+    temp.isSelect = cell.selectBtn.isSelected;
+    
+    //统计全部已选的cell
+    NSMutableString * answerString = @"".mutableCopy;
+    NSInteger i = 0;
+    for (AEResultItem * item in self.dataSources) {
+        if (item.isSelect) {
+            [answerString appendFormat:@"%ld,",i + 1];
+        }
+        i++;
+    }
+    if ([answerString hasSuffix:@","]) {
+        answerString = [answerString substringToIndex:answerString.length - 1].mutableCopy;
+    }
+    self.result.answer = answerString;
+    /*
 //    1-判断题 2-单选题 3-复选题 4-匹配题 11-操作题【4暂无】
     if ([self.result.type isEqualToString:@"2"] || [self.result.type isEqualToString:@"1"]) {
         //单选题  单选直接覆盖答案 答案的逻辑是 如果选择A B C D 对应服务器需要传1 2 3 4
@@ -140,8 +166,8 @@
             answerString = [answerString substringToIndex:answerString.length - 1].mutableCopy;
         }
         self.result.answer = answerString;
-        
     }
+     */
 }
 //获取已经选择的
 - (AEExamQuestionCell *)getSignleLastAnswerCell {

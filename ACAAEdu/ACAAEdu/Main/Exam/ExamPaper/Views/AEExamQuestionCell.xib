@@ -26,6 +26,9 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l2a-DV-lcL">
                         <rect key="frame" x="22.5" y="11.5" width="15" height="15"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="TNj-q9-rcy"/>
                             <constraint firstAttribute="width" constant="15" id="ykx-P3-X5m"/>

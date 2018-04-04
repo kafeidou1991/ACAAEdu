@@ -29,6 +29,10 @@
 //用户资料
 @interface AEUserProfile :DateCenter
 /**
+ 姓名
+ */
+@property (nonatomic, copy) NSString * user_name;
+/**
  英文名
  */
 @property (nonatomic, copy) NSString * user_name_en;
