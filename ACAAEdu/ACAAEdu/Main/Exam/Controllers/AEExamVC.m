@@ -12,6 +12,7 @@
 #import "AEExamItem.h"
 #import "AEGoodsBasketView.h"
 #import "AEScreeningVC.h"
+#import "AESearchExamVC.h"
 typedef NS_ENUM(NSInteger, BuyExamType) {
     BuySigleExamType = 0,  //单选购买考试
     BuyMoreExamType        //多选购买考试
@@ -38,7 +39,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = nil;//[AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"];
+    self.navigationItem.rightBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"],[AEBase createCustomBarButtonItem:self action:@selector(searchExam) image:@"exam_search"]];
     [self initComponent];
 }
 #pragma mark - 更多
@@ -49,6 +50,9 @@ static CGFloat const GoodsViewHeight = 50.f;
     [self.tableView reloadData];
     [self showOrHiddenGoodsView:_buyType];
     [self.goodsView updateGoods:[self matchSelectItem]];
+}
+- (void)searchExam {
+    PUSHCustomViewController([AESearchExamVC new], self);
 }
 #pragma mark - 筛选
 - (void)matchItem {
@@ -87,10 +91,10 @@ static CGFloat const GoodsViewHeight = 50.f;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.currPage == 1) {
+                [weakSelf.dataSources removeAllObjects];
+            }
             if ([object[@"data"]count] > 0) {
-                if (weakSelf.currPage == 1) {
-                    [weakSelf.dataSources removeAllObjects];
-                }
                 [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEExamItem class] json:object[@"data"]]];
                 [weakSelf.tableView reloadData];
                 NSInteger total = [object[@"total"] integerValue];
@@ -104,6 +108,7 @@ static CGFloat const GoodsViewHeight = 50.f;
                     }
                 }
             }else{
+                [weakSelf.tableView reloadData];
                 //超过一页 服务器没返回数据
                 if (weakSelf.currPage > 1) {
                     weakSelf.currPage = 1;

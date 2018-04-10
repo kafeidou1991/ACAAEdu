@@ -36,6 +36,7 @@
 		B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */; };
 		B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D6520502761008D6970 /* AESpaceItem.m */; };
 		B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D682050293B008D6970 /* AEExamItem.m */; };
+		B7D5C46B207D0AE400EDD72B /* AESearchExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D5C46A207D0AE400EDD72B /* AESearchExamVC.m */; };
 		B7D86B68205C0630001CAA02 /* AEScreeningFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */; };
 		B7D86B6D205C0DC2001CAA02 /* AEMessageListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6C205C0DC2001CAA02 /* AEMessageListVC.m */; };
 		B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6F205C1AAC001CAA02 /* AEMessageListCell.m */; };
@@ -232,6 +233,8 @@
 		B7CA3D6520502761008D6970 /* AESpaceItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESpaceItem.m; sourceTree = "<group>"; };
 		B7CA3D672050293B008D6970 /* AEExamItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamItem.h; sourceTree = "<group>"; };
 		B7CA3D682050293B008D6970 /* AEExamItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamItem.m; sourceTree = "<group>"; };
+		B7D5C469207D0AE400EDD72B /* AESearchExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESearchExamVC.h; sourceTree = "<group>"; };
+		B7D5C46A207D0AE400EDD72B /* AESearchExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESearchExamVC.m; sourceTree = "<group>"; };
 		B7D86B66205C0630001CAA02 /* AEScreeningFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreeningFooterView.h; sourceTree = "<group>"; };
 		B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreeningFooterView.m; sourceTree = "<group>"; };
 		B7D86B6B205C0DC2001CAA02 /* AEMessageListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMessageListVC.h; sourceTree = "<group>"; };
@@ -809,6 +812,8 @@
 				B90615802058018D00801D38 /* AEOrderPayVC.xib */,
 				B916E37020591D1D007EB40B /* AEScreeningVC.h */,
 				B916E37120591D1D007EB40B /* AEScreeningVC.m */,
+				B7D5C469207D0AE400EDD72B /* AESearchExamVC.h */,
+				B7D5C46A207D0AE400EDD72B /* AESearchExamVC.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1529,6 +1534,7 @@
 				B94C1CC6203FC155006344F2 /* AEModifierInfoVC.m in Sources */,
 				B93C7CEC205A7C0200FC5E6C /* AEOrderLabel.m in Sources */,
 				B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */,
+				B7D5C46B207D0AE400EDD72B /* AESearchExamVC.m in Sources */,
 				B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */,
 				B918BBC2202B088700EDB00D /* UIView+Frame.m in Sources */,
 				B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */,
