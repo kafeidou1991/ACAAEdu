@@ -32,6 +32,6 @@ typedef NS_ENUM(NSInteger, QuestionType) {
 
  @param isNext 是否是下一题 上一题
  */
-- (void)scrollQuestion:(BOOL)isNext;
+- (void)scrollQuestion:(BOOL)isNext lastHandle:(void(^)(BOOL))lastBlock;
 
 @end

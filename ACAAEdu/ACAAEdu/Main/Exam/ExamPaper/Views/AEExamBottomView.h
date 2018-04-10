@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^HandleBlock)(BOOL isNext);
+typedef void(^HandleBlock)(BOOL isNext, UIButton * nextBtn);
 
 @interface AEExamBottomView : UIView
 
-@property (nonatomic, copy)HandleBlock block;
+@property (nonatomic, copy) HandleBlock block;
 @property (weak, nonatomic) IBOutlet UIButton *lastBtn;
 @property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 

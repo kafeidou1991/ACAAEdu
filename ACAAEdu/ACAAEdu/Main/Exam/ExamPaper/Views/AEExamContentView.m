@@ -10,7 +10,9 @@
 #import "AEExamContentCell.h"
 
 
-@interface AEExamContentView ()<UICollectionViewDelegate, UICollectionViewDataSource>
+@interface AEExamContentView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
+    int questionCount;
+}
 /**
  试题数据源
  */
@@ -25,7 +27,7 @@
 //刷新数据源
 -(void)refreshData:(AEExamQuestionItem *)data {
     self.data = data;
-    
+    questionCount = (int)self.data.question.count;
     [self reloadData];
 }
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
@@ -57,11 +59,22 @@
     
     return cell;
 }
--(void)scrollQuestion:(BOOL)isNext {
+-(void)scrollQuestion:(BOOL)isNext  lastHandle:(void (^)(BOOL))lastBlock {
     int page = self.contentOffset.x / self.width;
+    //即将显示最后一页   //试卷就一道题
+    if (isNext && (questionCount == 1 || page == questionCount - 2 || page == questionCount - 1)) {
+        if (lastBlock) {
+            lastBlock(YES);
+        }
+    }else {
+        if (lastBlock) {
+            lastBlock(NO);
+        }
+    }
+    //上一题 下一题
     if (isNext) {
         [self updateAnswer:page];
-        if (page != self.data.question.count - 1) {
+        if (page != questionCount - 1) {
             [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
         }else {
             if (_submitExamBlock) {
@@ -75,7 +88,6 @@
             [AEBase alertMessage:@"没有上一题了" cb:nil];
         }
     }
-    
 }
 //上传答案
 - (void)updateAnswer:(int)page {

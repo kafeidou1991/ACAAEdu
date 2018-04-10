@@ -43,10 +43,10 @@
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kMyTestExamList query:nil path:nil body:@{@"status":(_examType == NoneTestExamType ? @"1" : @"2"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]} success:^(id object) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.currPage == 1) {
+                [weakSelf.dataSources removeAllObjects];
+            }
             if ([object[@"data"]count] > 0) {
-                if (weakSelf.currPage == 1) {
-                    [weakSelf.dataSources removeAllObjects];
-                }
                 [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEMyExamItem class] json:object[@"data"]]];
                 [weakSelf endLoadData];
                 NSInteger total = [object[@"total"] integerValue];

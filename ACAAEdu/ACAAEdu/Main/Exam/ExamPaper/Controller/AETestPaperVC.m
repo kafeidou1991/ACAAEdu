@@ -68,6 +68,9 @@ static CGFloat const bottomViewHeight = 50.f;
             [weakSelf.contentView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.row inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
         });
     };
+    
+    
+    
 }
 //MARK: 请求数据
 /**
@@ -185,10 +188,12 @@ static CGFloat const bottomViewHeight = 50.f;
     [self.view addSubview:self.bottomView];
     [_contentView refreshData:self.dataSourceArr[0]];
     WS(weakSelf)
-    self.bottomView.block = ^(BOOL isNext) {
+    self.bottomView.block = ^(BOOL isNext,UIButton * nextBtn) {
         //下一题 上一题
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.contentView scrollQuestion:isNext];
+            [weakSelf.contentView scrollQuestion:isNext lastHandle:^(BOOL last) {
+                [nextBtn setTitle:last ? @"交卷" : @"下一题" forState:UIControlStateNormal];
+            }];
         });
     };
     _contentView.submitExamBlock = ^{
@@ -214,6 +219,7 @@ static CGFloat const bottomViewHeight = 50.f;
     return _timer;
 }
 - (NSArray <UIBarButtonItem *>*)createCustomBarButtons{
+    //隐藏答题卡
 //    ,[AEBase createCustomBarButtonItem:self action:@selector(gotoAnswerCard) image:@"answerCard"]
     return @[[[UIBarButtonItem alloc]initWithCustomView:self.timerLabel]];
 }

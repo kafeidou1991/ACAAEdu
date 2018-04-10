@@ -14,7 +14,7 @@
 
 - (IBAction)doAction:(UIButton *)sender {
     if (_block) {
-        _block((int)sender.tag);
+        _block((int)sender.tag,self.nextBtn);
     }
 }
 
