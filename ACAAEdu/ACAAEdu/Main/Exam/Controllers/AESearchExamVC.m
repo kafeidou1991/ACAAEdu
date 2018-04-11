@@ -28,17 +28,13 @@
     [self setupTitleView];
     self.pararsDict = @{@"page" : @(self.currPage)}.mutableCopy;
     [self createTableViewStyle:UITableViewStyleGrouped];
-    WS(weakSelf)
-    [self createEmptyViewBlock:^{
-        [weakSelf loadData:YES];
-    }];
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (STRISEMPTY(textField.text.trimString)) {
         [AEBase alertMessage:@"请输入您要搜索的关键词" cb:nil];
         return NO;
     }
-    [self.pararsDict setObject:textField.text.trimString forKey:@"keyWord"];
+    [self.pararsDict setObject:textField.text forKey:@"keyWord"];
     [self loadData:YES];
     return YES;
 }
@@ -73,6 +69,7 @@
                     }
                 }
             }else{
+                [AEBase alertMessage:@"没有搜索数据" cb:nil];
                 //超过一页 服务器没返回数据
                 if (weakSelf.currPage > 1) {
                     weakSelf.currPage = 1;
