@@ -47,7 +47,7 @@
         [self hudShow:self.view msg:STTR_ater_on];
     }
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIndexList query:nil path:nil body:self.pararsDict.copy success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kIndexList query:self.pararsDict path:nil body:nil success:^(id object) {
         isLoad ? [weakSelf hudclose] : nil;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
@@ -118,7 +118,7 @@
 - (void)pushOrderDetailVC:(NSArray *)data {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     [VC loadData:data];
-    [self.navigationController pushViewController:VC animated:YES];
+    PUSHLoginCustomViewController(VC, self);
 }
 //MARK: 初始化titleView
 - (void)setupTitleView{

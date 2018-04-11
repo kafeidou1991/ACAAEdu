@@ -332,7 +332,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 }
 #pragma 储存token
 -(void) saveCacheApiToken:(NSString *)apitoken {
-//    NSLog(@"------------>apiToken%@",apitoken);
+    NSLog(@"------------>apiToken<%@>",apitoken);
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     [defaults setObject: apitoken forKey:@"token"];
     [defaults synchronize];

@@ -132,7 +132,7 @@
 - (void)pushOrderDetailVC:(NSArray *)data {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     [VC loadData:data];
-    [self.navigationController pushViewController:VC animated:YES];
+    PUSHLoginCustomViewController(VC, self);
 }
 
 #pragma mark - 懒加载

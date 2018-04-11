@@ -86,7 +86,7 @@ static CGFloat const GoodsViewHeight = 50.f;
         [self hudShow:self.view msg:STTR_ater_on];
     }
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIndexList query:nil path:nil body:self.pararsDict.copy success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kIndexList query:self.pararsDict path:nil body:nil success:^(id object) {
         isLoad ? [weakSelf hudclose] : nil;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
@@ -178,7 +178,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 - (void)pushOrderDetailVC:(NSArray *)data {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     [VC loadData:data];
-    [self.navigationController pushViewController:VC animated:YES];
+    PUSHLoginCustomViewController(VC, self);
 }
 #pragma mark - UI懒加载
 -(AEGoodsBasketView *)goodsView {
