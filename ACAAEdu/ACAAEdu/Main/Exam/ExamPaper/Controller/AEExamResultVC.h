@@ -6,9 +6,9 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseController.h"
+#import "AEBaseTableController.h"
 
-@interface AEExamResultVC : AEBaseController
+@interface AEExamResultVC : AEBaseTableController
 
 @property (nonatomic, copy) NSString * examId;
 
