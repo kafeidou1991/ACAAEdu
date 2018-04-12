@@ -103,8 +103,9 @@ static CGFloat const bottomViewHeight = 50.f;
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kPartExamPaper query:@{@"user_exam_id":item.id}.mutableCopy path:nil body:nil success:^(id object) {
         NSMutableArray * tempArr = @[].mutableCopy;
         //剔除status == 2 已考完的考题  "part_type" : "1", 基础题类型的题目
-        for (AEExamQuestionItem * item in [NSArray yy_modelArrayWithClass:[AEExamQuestionItem class] json:object]) {
-            if ([item.status isEqualToString:@"1"] && [item.part_type isEqualToString:@"1"]) {
+        NSArray * dataArray = [NSArray yy_modelArrayWithClass:[AEExamQuestionItem class] json:object];
+        for (AEExamQuestionItem * item in dataArray) {
+            if ([item.status isEqualToString:@"1"] && [item.part_type isEqualToString:@"1"] && item) {
                 [tempArr addObject:item];
             }
         }
@@ -113,7 +114,12 @@ static CGFloat const bottomViewHeight = 50.f;
             [weakSelf getPartExamQuestionIndex:tempArr[0]];
         }else {
             [weakSelf hudclose];
-            [AEBase alertMessage:@"该考卷已经考完，请选择其他考卷" cb:nil];
+//            [AEBase alertMessage:@"该考卷已经考完，请选择其他考卷" cb:nil];
+            if (dataArray.count > 0) {
+                AEExamQuestionItem * timeoutItem = dataArray[0];
+                [weakSelf timeOutAction:timeoutItem.exam_id];
+                
+            }
         }
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -147,34 +153,51 @@ static CGFloat const bottomViewHeight = 50.f;
             weakSelf.timerLabel.text = timeString;
         }else {
             //考试结束 应该交卷
-            [weakSelf timeOutAction];
+            [weakSelf timeCountDownAction];
         }
     }];
 }
+//主动提交
 - (void)submitTest{
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"确认交卷?" message:@"请确认提交本次考试" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-       [self submit];
+       [self submit:@""];
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
-- (void)timeOutAction {
+//倒计时结束
+- (void)timeCountDownAction {
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"交卷" message:@"考试时间已到，请交卷" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self submit];
+        [self submit:@""];
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
-- (void)submit {
+//考卷超时
+- (void)timeOutAction:(NSString *)exam_id {
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"交卷" message:@"考试时间已经结束，请交卷" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self submit:exam_id];
+    }]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+- (void)submit:(NSString *)exam_id {
     WS(weakSelf);
     [self hudShow:self.view msg:@"正在提交答案..."];
     //每个部分的考试id的一致的，所以取出来一个就可以
-    AEExamQuestionItem * item = self.dataSourceArr[0];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.exam_id} success:^(id object) {
+    if (self.dataSourceArr.count > 0) {
+       AEExamQuestionItem * item = self.dataSourceArr[0];
+        exam_id = item.exam_id;
+    }
+    if (STRISEMPTY(exam_id)) {
+        [AEBase alertMessage:@"暂无考试id，请返回重新刷新" cb:nil];
+        return;
+    }
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":exam_id} success:^(id object) {
         [weakSelf hudclose];
         AEExamResultVC * VC = [AEExamResultVC new];
-        VC.examId = item.exam_id;
+        VC.examId = exam_id;
         [weakSelf.navigationController pushViewController:VC animated:YES];
         
     } faile:^(NSInteger code, NSString *error) {
