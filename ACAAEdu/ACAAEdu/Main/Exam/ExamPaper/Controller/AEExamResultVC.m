@@ -9,22 +9,19 @@
 #import "AEExamResultVC.h"
 #import "AECustomSegmentVC.h"
 #import "AEExamResultCell.h"
-#import "AEExamResultSecondCell.h"
+
+static NSString * const firstSectionReuseIdentifier = @"firstSectionReuseIdentifier";
+static NSString * const secondSectionReuseIdentifier = @"secondSectionReuseIdentifier";
+static NSString * const thirdSectionReuseIdentifier = @"thirdSectionReuseIdentifier";
+static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifier";
 
 @interface AEExamResultVC ()
 
-@property (weak, nonatomic) IBOutlet UILabel *examNameLabel; //考试名称
-@property (weak, nonatomic) IBOutlet UILabel *examTimeLabel; //考试时间
-@property (weak, nonatomic) IBOutlet UILabel *idcardLabel;//准考证号
-@property (weak, nonatomic) IBOutlet UILabel *statusLabel;//状态
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;//得分
-@property (weak, nonatomic) IBOutlet UILabel *totalQuesLabel;//总题目数
-@property (weak, nonatomic) IBOutlet UILabel *getScoreLabel;//获得分数
-@property (weak, nonatomic) IBOutlet UILabel *rateLabel;//合格率
-@property (weak, nonatomic) IBOutlet UILabel *evaluateLabel;//评价
+@property (nonatomic, strong) AEExamResultCell *prototypeCell; //错题分析
 
-@property (weak, nonatomic) IBOutlet UIView *bgView; //背景view
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bgViewHeightContrain;
+@property (nonatomic, strong) AEExamResultCell *knowPointCell; //知识点分析
+
+
 
 @end
 
@@ -44,30 +41,10 @@
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kExamEvaluate query:nil path:nil body:@{@"exam_id":self.examId} success:^(id object) {
         [weakSelf hudclose];
         [weakSelf updateData:[AEExamEvaluateItem yy_modelWithJSON:object]];
-//        [weakSelf updateViewData];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
-}
-- (void)updateViewData {
-    //    self.examNameLabel.text = self.item.subject_name;
-    //    self.examTimeLabel.text = [NSString dateToStringFormatter:@"yyyy-MM-dd HH:mm" date:[NSDate dateWithTimeIntervalSinceNow:self.item.exam_time.integerValue]];
-    //    self.idcardLabel.text = self.item.idcard;
-    //    self.statusLabel.text = self.item.pass.integerValue == 1 ? @"通过" : @"未通过";
-    //    self.scoreLabel.text = [NSString stringWithFormat:@"%@/%@",self.item.total_score,self.item.paper_score];
-    //    if (self.item.part_info.count > 0) {
-    //        AEExamEvaluateSubItem * subItem = self.item.part_info[0];
-    //        self.totalQuesLabel.text = subItem.part_num;
-    //        self.getScoreLabel.text = subItem.part_correct;
-    //        self.rateLabel.text = subItem.part_passrate.integerValue == 1 ? @"100%" : [NSString stringWithFormat:@"%.2g%%",subItem.part_passrate.floatValue * 100.f];
-    //    }
-    //    self.evaluateLabel.text = self.item.evaluate;
-    //    [self.evaluateLabel sizeToFit];
-    //    //不要超出屏幕
-    //    self.bgViewHeightContrain.constant = MIN(SCREEN_HEIGHT - NAVIGATION_HEIGHT - 20 * 2, self.evaluateLabel.bottom + 15.f);
-    
-    
 }
 //MARK: 组装数据
 - (void)updateData:(AEExamEvaluateItem *)item {
@@ -90,10 +67,15 @@
     }else {
         [self.dataSources addObject:@[]];
     }
-    //第三分区
+    //第三分区 错题分析
     [self.dataSources addObject:@[@{@"title":@"错题分析:",@"content":item.evaluate}]];
     
-    //第四分区
+    //第四分区 知识点分析
+    if (item.category_info.count > 0) {
+        [self.dataSources addObject:item.category_info];
+    }else {
+        [self.dataSources addObject:@[]];
+    }
     
     [self.tableView reloadData];
 }
@@ -117,46 +99,80 @@
     }else if (indexPath.section == 2){
         NSDictionary * dict = self.dataSources[indexPath.section][indexPath.row];
         //自动计算高度
-//        [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([AEExamResultCell class]) owner:nil options:nil] firstObject];
-        AEExamResultCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AEExamResultCell class])];
-        cell.contentLabel.text = dict[@"content"];
-        CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        self.prototypeCell.contentLabel.text = dict[@"content"];
+        CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+        return 1  + size.height;
+    }else if (indexPath.section == 3){
+        AEExamKnowPointItem * item = self.dataSources[indexPath.section][indexPath.row];
+        //自动计算高度
+        self.knowPointCell.contentLabel.text = item.diagnose;
+        CGSize size = [self.knowPointCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
         return 1  + size.height;
     }else {
         return 30.f;
     }
 }
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    AEExamResultCell * cell = [self createCellWithNibIndex:indexPath.section];
+    
+    if (indexPath.section == 1) {
+        cell.contentLabel.font = [UIFont systemFontOfSize:indexPath.row == 0 ? 20: 14];
+    }else if (indexPath.section == 2) {
+        cell.contentLabel.preferredMaxLayoutWidth = SCREEN_WIDTH - cell.titleLabel.right - 5 - 16;
+        self.prototypeCell = cell;
+    }else if (indexPath.section == 3) {
+        cell.contentLabel.preferredMaxLayoutWidth = SCREEN_WIDTH - cell.titleLabel.right - 5 - 16;
+        self.knowPointCell = cell;
+    }
+    if (indexPath.section == 3) {
+        AEExamKnowPointItem * item = self.dataSources[indexPath.section][indexPath.row];
+        [cell updateCellKnowPointCell:item];
+    }else {
+        NSDictionary * dict = self.dataSources[indexPath.section][indexPath.row];
+        [cell updateCell:dict];
+    }
+    return cell;
+}
+- (AEExamResultCell *)createCellWithNibIndex:(NSInteger)index {
+    NSString * identifier;
+    switch (index) {
+        case 0:
+            identifier = firstSectionReuseIdentifier;
+            break;
+        case 1:
+            identifier = secondSectionReuseIdentifier;
+            break;
+        case 2:
+            identifier = thirdSectionReuseIdentifier;
+            break;
+        case 3:
+            identifier = fourSectionReuseIdentifier;
+            break;
+        default:
+            break;
+    }
+    AEExamResultCell * cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        NSArray * array = [[NSBundle mainBundle]loadNibNamed:@"AEExamResultCell" owner:nil options:nil];
+        cell =array[index];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return cell;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10.f;
+    return section == self.dataSources.count - 1 ? 0.f: 10.f;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (section == self.dataSources.count - 1) {
+        return [UIView new];
+    }
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
     view.backgroundColor = [UIColor whiteColor];
     UIView * lion = [[UIView alloc]initWithFrame:CGRectMake(16, 4.5, SCREEN_WIDTH - 2 * 16, 1)];
-    lion.backgroundColor = [UIColor redColor];//AEColorLine;
+    lion.backgroundColor = AEColorLine;
     [view addSubview:lion];
     return view;
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary * dict = self.dataSources[indexPath.section][indexPath.row];
-    if (indexPath.section == 0 || indexPath.section == 2) {
-        AEExamResultCell * cell = [AEExamResultCell cellWithTableView:tableView];
-        if (dict) {
-            cell.titleLabel.text = dict[@"title"];
-            cell.contentLabel.text = dict[@"content"];
-        }
-        return cell;
-    }else {
-        AEExamResultSecondCell * cell = [AEExamResultSecondCell cellWithTableView:tableView];
-        if (dict) {
-            cell.contentLabel.font = [UIFont systemFontOfSize:indexPath.row == 0 ? 20: 14];
-            cell.titleLabel.text = dict[@"title"];
-            cell.contentLabel.text = dict[@"content"];
-        }
-        return cell;
-    }
-}
-
 
 -(void)backAction:(UIBarButtonItem *)sender {
     for (UIViewController *viewController in self.navigationController.viewControllers) {

@@ -29,6 +29,7 @@
     [super awakeFromNib];
     // Initialization code
     self.dataSources = @[].mutableCopy;
+    //必须使用注册的方式，否则自动计算行高不起作用
     [self.tableView registerNib:[UINib nibWithNibName:@"AEExamQuestionCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([AEExamQuestionCell class])];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B7060059206FDC33003A4A35 /* AEExamResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7060057206FDC33003A4A35 /* AEExamResultVC.m */; };
-		B706005A206FDC33003A4A35 /* AEExamResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7060058206FDC33003A4A35 /* AEExamResultVC.xib */; };
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AERegistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AERegistVC.m */; };
 		B7131020202B55C7001CBAE8 /* AERegistVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AERegistVC.xib */; };
@@ -152,8 +151,6 @@
 		B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C320102046BBFB0022A562 /* LaunchScreen.xib */; };
 		B9D29532207F3A960010B9B3 /* AEExamResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D29530207F3A960010B9B3 /* AEExamResultCell.m */; };
 		B9D29533207F3A960010B9B3 /* AEExamResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D29531207F3A960010B9B3 /* AEExamResultCell.xib */; };
-		B9D29537207F461D0010B9B3 /* AEExamResultSecondCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D29535207F461D0010B9B3 /* AEExamResultSecondCell.m */; };
-		B9D29538207F461D0010B9B3 /* AEExamResultSecondCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D29536207F461D0010B9B3 /* AEExamResultSecondCell.xib */; };
 		B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */; };
 		B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */; };
 		B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */; };
@@ -191,7 +188,6 @@
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
 		B7060056206FDC33003A4A35 /* AEExamResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamResultVC.h; sourceTree = "<group>"; };
 		B7060057206FDC33003A4A35 /* AEExamResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamResultVC.m; sourceTree = "<group>"; };
-		B7060058206FDC33003A4A35 /* AEExamResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamResultVC.xib; sourceTree = "<group>"; };
 		B7129A662031AF460081472E /* AESettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESettingVC.h; sourceTree = "<group>"; };
 		B7129A672031AF460081472E /* AESettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESettingVC.m; sourceTree = "<group>"; };
 		B713101C202B55C6001CBAE8 /* AERegistVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistVC.h; sourceTree = "<group>"; };
@@ -455,9 +451,6 @@
 		B9D2952F207F3A960010B9B3 /* AEExamResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamResultCell.h; sourceTree = "<group>"; };
 		B9D29530207F3A960010B9B3 /* AEExamResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamResultCell.m; sourceTree = "<group>"; };
 		B9D29531207F3A960010B9B3 /* AEExamResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamResultCell.xib; sourceTree = "<group>"; };
-		B9D29535207F461D0010B9B3 /* AEExamResultSecondCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamResultSecondCell.m; sourceTree = "<group>"; };
-		B9D29536207F461D0010B9B3 /* AEExamResultSecondCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamResultSecondCell.xib; sourceTree = "<group>"; };
-		B9D29539207F483A0010B9B3 /* AEExamResultSecondCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEExamResultSecondCell.h; sourceTree = "<group>"; };
 		B9D2F643206CBFFC00C5A034 /* AEExamPaperInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamPaperInfoVC.h; sourceTree = "<group>"; };
 		B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamPaperInfoVC.m; sourceTree = "<group>"; };
 		B9D2F6A2206CEAA500C5A034 /* JWMenuBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWMenuBarView.h; sourceTree = "<group>"; };
@@ -597,9 +590,6 @@
 				B9D2952F207F3A960010B9B3 /* AEExamResultCell.h */,
 				B9D29530207F3A960010B9B3 /* AEExamResultCell.m */,
 				B9D29531207F3A960010B9B3 /* AEExamResultCell.xib */,
-				B9D29539207F483A0010B9B3 /* AEExamResultSecondCell.h */,
-				B9D29535207F461D0010B9B3 /* AEExamResultSecondCell.m */,
-				B9D29536207F461D0010B9B3 /* AEExamResultSecondCell.xib */,
 				B9DFA1DD206F6FF600AFAD27 /* AEAnswerCardCell.h */,
 				B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */,
 				B9DFA1DC206F6FF600AFAD27 /* AnswerCardReusableView.h */,
@@ -1219,7 +1209,6 @@
 				B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */,
 				B7060056206FDC33003A4A35 /* AEExamResultVC.h */,
 				B7060057206FDC33003A4A35 /* AEExamResultVC.m */,
-				B7060058206FDC33003A4A35 /* AEExamResultVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1365,8 +1354,6 @@
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B7C44246206D250400D4EA03 /* AEExamContentCell.xib in Resources */,
-				B9D29538207F461D0010B9B3 /* AEExamResultSecondCell.xib in Resources */,
-				B706005A206FDC33003A4A35 /* AEExamResultVC.xib in Resources */,
 				B9DE2B4F2074B37000BC09C9 /* AEExamBottomView.xib in Resources */,
 				B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
@@ -1516,7 +1503,6 @@
 				B93C7CEF205A9DFB00FC5E6C /* AEMyOrderHeaderView.m in Sources */,
 				B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
-				B9D29537207F461D0010B9B3 /* AEExamResultSecondCell.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
 				B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */,
 				B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */,

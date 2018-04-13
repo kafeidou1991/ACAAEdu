@@ -209,6 +209,13 @@
 @property (nonatomic, copy) NSString * part_time; //限时
 @end;
 
+@interface AEExamKnowPointItem :DateCenter
+@property (nonatomic, copy) NSString * getpoint; //答对数量
+@property (nonatomic, copy) NSString * diagnose; //知识点分析
+@property (nonatomic, copy) NSString * category; //知识点名称
+@property (nonatomic, copy) NSString * point; //知识点考题数量
+@end
+
 @interface AEExamEvaluateItem : DateCenter
 @property (nonatomic, copy) NSString * total_question; //总共题目数
 @property (nonatomic, copy) NSString * exam_time; // 考试时间
@@ -218,6 +225,7 @@
 @property (nonatomic, copy) NSString * paper_score; //总分
 @property (nonatomic, copy) NSString * evaluate; //评价
 @property (nonatomic, strong) NSArray * part_info;
+@property (nonatomic, strong) NSArray * category_info; //知识点明细
 @property (nonatomic, copy) NSString * pass; //通过状态
 @end
 

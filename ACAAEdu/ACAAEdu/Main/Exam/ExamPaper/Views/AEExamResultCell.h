@@ -14,4 +14,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
+- (void)updateCell:(NSDictionary *)dict;
+
+- (void)updateCellKnowPointCell:(AEExamKnowPointItem *)item;
+
 @end
