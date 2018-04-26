@@ -34,6 +34,8 @@
 #define kGetProfile @"mobile/user/getProfile"
 //绑定身份证
 #define kBindIdCard @"mobile/user/bindIdCard"
+//设置密码
+#define kSetPWD  @"mobile/user/setPwd"
 
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐

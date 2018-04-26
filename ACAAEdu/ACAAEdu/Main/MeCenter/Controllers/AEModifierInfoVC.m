@@ -47,7 +47,15 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     [self initComonpent];
-    
+    if (!IsNilOrNull(_loginData)) {
+        self.navigationItem.rightBarButtonItem = self.type == BindEmailType ? nil : [AEBase createCustomBarButtonItem:self action:@selector(gotoEmail) title:@"邮箱绑定"];
+    }
+}
+- (void)gotoEmail {
+    AEModifierInfoVC * pushVC = [AEModifierInfoVC new];
+    pushVC.type = BindEmailType;
+    pushVC.loginData = _loginData;
+    [self.navigationController pushViewController:pushVC animated:YES];
 }
 
 - (void)initComonpent {
@@ -141,17 +149,35 @@
         [weakSelf hudclose];
         if (weakSelf.type == BindMobileType || weakSelf.type == BindEmailType) {
             [AEBase alertMessage:@"绑定成功!" cb:nil];
-            [weakSelf bindSuccess:account];
+            if (IsNilOrNull(weakSelf.loginData)) {
+                [weakSelf bindSuccess:account];
+            }else {
+                [weakSelf loginSuccess:account];
+            }
         }else {
             [AEBase alertMessage:@"解绑成功!" cb:nil];
             [weakSelf unBindSuccess:account];
         }
-        [weakSelf.navigationController popViewControllerAnimated:YES];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
 }
+//登陆成功
+- (void)loginSuccess:(NSString *)account {
+    if (self.loginData) {
+        [AEUserInfo yy_modelWithDictionary:self.loginData];
+        if (self.type == BindMobileType) {
+            User.mobile =account;
+        }else if (self.type == BindEmailType) {
+            User.email = account;
+        }
+        [User save];
+    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:kLoginSuccess object:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 //绑定成功
 - (void)bindSuccess:(NSString *)account {
     if (self.type == BindMobileType) {
@@ -161,6 +187,7 @@
     }
     [User save];
     [[NSNotificationCenter defaultCenter]postNotificationName:kBindAccountSuccess object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 //解绑成功
 - (void)unBindSuccess:(NSString *)account {
@@ -171,6 +198,7 @@
     }
     [User save];
     [[NSNotificationCenter defaultCenter]postNotificationName:kBindAccountSuccess object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark - 发送验证码
 - (IBAction)sendCodeClick:(UIButton *)sender {

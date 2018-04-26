@@ -59,6 +59,7 @@
     return [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
 - (void)backAction:(UIBarButtonItem *)sender {
+    [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

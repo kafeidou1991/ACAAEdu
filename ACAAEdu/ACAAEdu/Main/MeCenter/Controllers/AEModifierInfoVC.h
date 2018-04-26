@@ -20,4 +20,9 @@ typedef NS_ENUM(NSInteger, ModifierType) {
 @property (nonatomic, assign) ModifierType type;
 
 
+/**
+ 为了增加标识是否从登陆绑定手机而来
+ */
+@property (nonatomic, strong) id loginData;
+
 @end

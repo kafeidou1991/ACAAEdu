@@ -244,6 +244,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
 
 //返回
 -(void)backAction:(UIBarButtonItem *)sender {
+    [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

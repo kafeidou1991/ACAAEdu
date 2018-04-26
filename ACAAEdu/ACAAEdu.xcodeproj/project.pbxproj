@@ -127,6 +127,8 @@
 		B992CEEF207371E7007F3EF2 /* UIImage+Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEE0207371E7007F3EF2 /* UIImage+Utility.m */; };
 		B992CEF0207371E7007F3EF2 /* XHCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEE1207371E7007F3EF2 /* XHCacheManager.m */; };
 		B992CEF1207371E7007F3EF2 /* XHFileAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = B992CEE6207371E7007F3EF2 /* XHFileAttribute.m */; };
+		B9A3D09520919F2D004E8B54 /* AESetPasswordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A3D09320919F2D004E8B54 /* AESetPasswordVC.m */; };
+		B9A3D09620919F2D004E8B54 /* AESetPasswordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A3D09420919F2D004E8B54 /* AESetPasswordVC.xib */; };
 		B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A60440205BA9A100278568 /* AEScreenHeaderView.m */; };
 		B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */; };
 		B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B18F01201826C200BA38BE /* AppDelegate.m */; };
@@ -403,6 +405,9 @@
 		B992CEE7207371E7007F3EF2 /* XHImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHImageViewer.h; sourceTree = "<group>"; };
 		B992CEE8207371E7007F3EF2 /* XHViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHViewState.h; sourceTree = "<group>"; };
 		B992CEE9207371E7007F3EF2 /* XHCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCacheManager.h; sourceTree = "<group>"; };
+		B9A3D09220919F2D004E8B54 /* AESetPasswordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESetPasswordVC.h; sourceTree = "<group>"; };
+		B9A3D09320919F2D004E8B54 /* AESetPasswordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESetPasswordVC.m; sourceTree = "<group>"; };
+		B9A3D09420919F2D004E8B54 /* AESetPasswordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AESetPasswordVC.xib; sourceTree = "<group>"; };
 		B9A6043F205BA9A100278568 /* AEScreenHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEScreenHeaderView.h; sourceTree = "<group>"; };
 		B9A60440205BA9A100278568 /* AEScreenHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEScreenHeaderView.m; sourceTree = "<group>"; };
 		B9A60441205BA9A100278568 /* AEScreenHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEScreenHeaderView.xib; sourceTree = "<group>"; };
@@ -892,6 +897,9 @@
 				B713101C202B55C6001CBAE8 /* AERegistVC.h */,
 				B713101D202B55C7001CBAE8 /* AERegistVC.m */,
 				B713101E202B55C7001CBAE8 /* AERegistVC.xib */,
+				B9A3D09220919F2D004E8B54 /* AESetPasswordVC.h */,
+				B9A3D09320919F2D004E8B54 /* AESetPasswordVC.m */,
+				B9A3D09420919F2D004E8B54 /* AESetPasswordVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1348,6 +1356,7 @@
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
+				B9A3D09620919F2D004E8B54 /* AESetPasswordVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
 				B93C7CF4205AA0F000FC5E6C /* AEMyOrderCell.xib in Resources */,
 				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
@@ -1533,6 +1542,7 @@
 				B918BBC0202B088700EDB00D /* NSNull+safe.m in Sources */,
 				B949F9B92068DF8D009D0555 /* SGPageTitleView.m in Sources */,
 				B992CEEC207371E7007F3EF2 /* XHZoomingImageView.m in Sources */,
+				B9A3D09520919F2D004E8B54 /* AESetPasswordVC.m in Sources */,
 				B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */,
 				B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */,
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,

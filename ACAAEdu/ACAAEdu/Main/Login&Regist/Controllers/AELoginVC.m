@@ -9,6 +9,8 @@
 #import "AELoginVC.h"
 #import "AENavigationController.h"
 #import "AERegistVC.h"
+#import "AESetPasswordVC.h"
+#import "AEModifierInfoVC.h"
 
 typedef NS_ENUM(NSInteger, LoginType) {
     AccountLoginType = 100,
@@ -42,7 +44,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
 - (void)initComonpent {
     self.loginType = AccountLoginType;
     [self changeTextFieldStatus];
-    self.accountTextField.text = [AEUserDefaults objectForKey:@"ACAA_Acount"];
+    self.accountTextField.text = [AEUserDefaults objectForKey:@"ACAA_MobileAcount"];
     if (!STRISEMPTY(self.accountTextField.text)) {
         if ([self.passwordTextField canBecomeFirstResponder]) {
             [self.passwordTextField becomeFirstResponder];
@@ -82,18 +84,29 @@ typedef NS_ENUM(NSInteger, LoginType) {
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:nil path:nil body:paramsDic success:^(id object) {
         [weakSelf hudclose];
-        if (object) {
-           [AEUserInfo yy_modelWithDictionary:object];
-            [User save];
-            if (weakSelf.loginType == AccountLoginType) {
-                [AEUserDefaults setObject:account forKey:@"ACAA_Acount"];
+        if (self.loginType == AccountLoginType) {
+            [AEUserDefaults setObject:account forKey:@"ACAA_MobileAcount"];
+            [weakSelf loginSuccess:object];
+        }else {
+            //身份证登录 没有设置密码 设置密码，没有账号设置账号  只有账号跟密码全部设置才能登录成功
+            //account_status: 0=>正常 1=>没有账号且没有密码 2=>没有设置(无手机号且无邮箱) 账号 3=>没有设置密码
+            NSInteger  accountStatus = [object[@"account_status"]integerValue];
+            if (accountStatus == 0) {
+//                [weakSelf loginSuccess:object];
+                [AEBase alertMessage:@"已经绑定手机/邮箱,请使用账户登陆" cb:nil];
+            }else if (accountStatus == 2) {
+                //进入绑定账户
+                AEModifierInfoVC * pushVC = [AEModifierInfoVC new];
+                pushVC.type = BindMobileType;
+                pushVC.loginData = object;
+                [weakSelf.navigationController pushViewController:pushVC animated:YES];
+            }else {
+                AESetPasswordVC * pushVC = [AESetPasswordVC new];
+                pushVC.loginData = object;
+                pushVC.accountType = accountStatus;
+                PUSHCustomViewController(pushVC, weakSelf);
             }
         }
-        if (weakSelf.loginCompletion) {
-            weakSelf.loginCompletion(YES);
-        }
-        [[NSNotificationCenter defaultCenter]postNotificationName:kLoginSuccess object:nil];
-        [weakSelf backAction:nil];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -101,6 +114,17 @@ typedef NS_ENUM(NSInteger, LoginType) {
             self.loginCompletion(NO);
         }
     }];
+}
+- (void)loginSuccess:(id)object {
+    if (object) {
+        [AEUserInfo yy_modelWithDictionary:object];
+        [User save];
+    }
+    if (self.loginCompletion) {
+        self.loginCompletion(YES);
+    }
+    [[NSNotificationCenter defaultCenter]postNotificationName:kLoginSuccess object:nil];
+    [self backAction:nil];
 }
 - (IBAction)forgetClick:(UIButton *)sender {
     [self.view endEditing:YES];
@@ -130,12 +154,12 @@ typedef NS_ENUM(NSInteger, LoginType) {
 - (void)changeTextFieldStatus {
     BOOL b = self.loginType - 100;
     //身份证18位 手机号11位
+//    self.accountTextField.keyboardType = b ? UIKeyboardTypeDefault:UIKeyboardTypePhonePad;
     self.accountTextField.lengthLimit = b ? 18 : 40;
     self.accountTextField.placeholder = b ? @"请输入身份证号" : @"请输入手机号/邮箱";
     self.accountTextField.text =@"";
     self.passwordTextField.secureTextEntry = !b;
     self.passwordTextField.lengthLimit = 30;
-    self.passwordTextField.keyboardType =  UIKeyboardTypeDefault;
     self.passwordTextField.placeholder = b ? @"请输入姓名" : @"请输入密码";
     self.passwordTextField.text =@"";
     if ([self.accountTextField canBecomeFirstResponder]) {
@@ -169,6 +193,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
 }
 //返回
 -(void)backAction:(UIBarButtonItem *)sender {
+    [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
