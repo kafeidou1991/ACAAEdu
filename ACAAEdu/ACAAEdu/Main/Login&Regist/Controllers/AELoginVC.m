@@ -9,6 +9,7 @@
 #import "AELoginVC.h"
 #import "AENavigationController.h"
 #import "AERegistVC.h"
+#import "AERegistNewVC.h"
 #import "AESetPasswordVC.h"
 #import "AEModifierInfoVC.h"
 
@@ -136,7 +137,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
 
 - (IBAction)registClick:(id)sender {
     [self.view endEditing:YES];
-    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:[AERegistVC new]];
+    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:[AERegistNewVC new]];
     [self presentViewController:nav animated:YES completion:nil];
 }
 

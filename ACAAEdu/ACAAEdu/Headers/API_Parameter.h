@@ -37,6 +37,9 @@
 //设置密码
 #define kSetPWD  @"mobile/user/setPwd"
 
+//新注册流程
+#define kRegisterAccount @"mobile/register/account"
+
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐
 #define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"

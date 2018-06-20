@@ -165,6 +165,8 @@
 		B9DFA1E0206F6FF700AFAD27 /* AnswerCardReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1DE206F6FF700AFAD27 /* AnswerCardReusableView.m */; };
 		B9DFA1E3206F70B400AFAD27 /* UIView+RectCorner.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */; };
 		B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */; };
+		B9EE537F20DA37F400A43627 /* AERegistNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EE537D20DA37F400A43627 /* AERegistNewVC.m */; };
+		B9EE538020DA37F400A43627 /* AERegistNewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9EE537E20DA37F400A43627 /* AERegistNewVC.xib */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -479,6 +481,9 @@
 		B9DFA1E1206F70B400AFAD27 /* UIView+RectCorner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+RectCorner.h"; sourceTree = "<group>"; };
 		B9DFA1E2206F70B400AFAD27 /* UIView+RectCorner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+RectCorner.m"; sourceTree = "<group>"; };
 		B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardCell.m; sourceTree = "<group>"; };
+		B9EE537C20DA37F400A43627 /* AERegistNewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistNewVC.h; sourceTree = "<group>"; };
+		B9EE537D20DA37F400A43627 /* AERegistNewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERegistNewVC.m; sourceTree = "<group>"; };
+		B9EE537E20DA37F400A43627 /* AERegistNewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERegistNewVC.xib; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -894,6 +899,9 @@
 				B97447642019E04C00A6A538 /* AELoginVC.h */,
 				B918BB1D202ACEBD00EDB00D /* AELoginVC.m */,
 				B97447662019E04C00A6A538 /* AELoginVC.xib */,
+				B9EE537C20DA37F400A43627 /* AERegistNewVC.h */,
+				B9EE537D20DA37F400A43627 /* AERegistNewVC.m */,
+				B9EE537E20DA37F400A43627 /* AERegistNewVC.xib */,
 				B713101C202B55C6001CBAE8 /* AERegistVC.h */,
 				B713101D202B55C7001CBAE8 /* AERegistVC.m */,
 				B713101E202B55C7001CBAE8 /* AERegistVC.xib */,
@@ -1355,6 +1363,7 @@
 				B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
+				B9EE538020DA37F400A43627 /* AERegistNewVC.xib in Resources */,
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B9A3D09620919F2D004E8B54 /* AESetPasswordVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
@@ -1553,6 +1562,7 @@
 				B7D5C46B207D0AE400EDD72B /* AESearchExamVC.m in Sources */,
 				B96FD9902029857200FE7495 /* AENetworkingTool.m in Sources */,
 				B918BBC2202B088700EDB00D /* UIView+Frame.m in Sources */,
+				B9EE537F20DA37F400A43627 /* AERegistNewVC.m in Sources */,
 				B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */,
 				B9B9164720186209002A63CE /* main.m in Sources */,
 				B7D86B75205C2086001CAA02 /* NSDate+Extension.m in Sources */,
