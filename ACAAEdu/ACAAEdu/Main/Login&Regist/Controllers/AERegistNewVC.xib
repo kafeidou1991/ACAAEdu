@@ -171,7 +171,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wRq-ny-mWM">
-                    <rect key="frame" x="16" y="306" width="375" height="40"/>
+                    <rect key="frame" x="16" y="306" width="343" height="40"/>
                     <color key="backgroundColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="U8C-cY-cI6"/>
@@ -197,9 +197,9 @@
                 <constraint firstItem="peX-TE-yAd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MY5-qa-8AK"/>
                 <constraint firstItem="wRq-ny-mWM" firstAttribute="leading" secondItem="peX-TE-yAd" secondAttribute="leading" constant="16" id="VpW-B7-EcE"/>
                 <constraint firstItem="tYa-Rb-RYD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cKI-tS-uNz"/>
+                <constraint firstAttribute="trailing" secondItem="wRq-ny-mWM" secondAttribute="trailing" constant="16" id="cuo-Lo-B5W"/>
                 <constraint firstAttribute="trailing" secondItem="peX-TE-yAd" secondAttribute="trailing" id="lw6-zC-u4p"/>
                 <constraint firstItem="peX-TE-yAd" firstAttribute="top" secondItem="tYa-Rb-RYD" secondAttribute="bottom" constant="20" id="pY3-id-oHl"/>
-                <constraint firstItem="wRq-ny-mWM" firstAttribute="trailing" secondItem="peX-TE-yAd" secondAttribute="trailing" constant="16" id="ph0-7W-Lbe"/>
             </constraints>
         </view>
         <tapGestureRecognizer id="De4-j6-xq4">
