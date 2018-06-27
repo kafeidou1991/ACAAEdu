@@ -131,14 +131,12 @@ typedef NS_ENUM(NSInteger, LoginType) {
     [self.view endEditing:YES];
     AERegistVC * vc = [AERegistVC new];
     vc.isFindPassword = YES;
-    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:vc];
-    [self presentViewController:nav animated:YES completion:nil];
+    PUSHCustomViewController(vc, self);
 }
 
 - (IBAction)registClick:(id)sender {
     [self.view endEditing:YES];
-    AENavigationController *nav = [[AENavigationController alloc]initWithRootViewController:[AERegistNewVC new]];
-    [self presentViewController:nav animated:YES completion:nil];
+    PUSHCustomViewController([AERegistNewVC new], self);
 }
 
 #pragma mark - 切换登录方式

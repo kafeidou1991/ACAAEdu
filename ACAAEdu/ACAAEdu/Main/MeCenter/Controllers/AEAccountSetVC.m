@@ -9,7 +9,7 @@
 #import "AEAccountSetVC.h"
 #import "AEModifierInfoCell.h"
 #import "AEModifierInfoVC.h"
-#import "AEBindIdCardVC.h"
+#import "AERegistIdCardVC.h"
 
 @interface AEAccountSetVC ()
 
@@ -70,7 +70,7 @@
     }else {
         //身份证验证  不支持解绑
         if (STRISEMPTY(User.id_card)) {
-            [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
+            [self.navigationController pushViewController:[AERegistIdCardVC new] animated:YES];
         }
     }
 }

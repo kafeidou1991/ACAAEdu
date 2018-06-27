@@ -142,12 +142,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:self.isFindPassword ? kFindPassword :kRegister query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:self.isFindPassword ? @"密码已重置":@"注册成功!" cb:nil];
-//        if (weakSelf.presentingViewController.presentingViewController) {
-//            [weakSelf.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-//        }else {
-//            [weakSelf dismissViewControllerAnimated:YES completion:nil];
-//        }
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -245,7 +240,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
 //返回
 -(void)backAction:(UIBarButtonItem *)sender {
     [self.view endEditing:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -8,6 +8,7 @@
 
 #import "AERegistNewVC.h"
 #import "CircularProgressBar.h"
+#import "AESetNickNameVC.h"
 
 @interface AERegistNewVC ()<CircularProgressDelegate>
 /**
@@ -106,8 +107,8 @@
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterAccount query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
-        
-        //下一步
+        //下一步 设置昵称和密码
+        [weakSelf.navigationController pushViewController:[AESetNickNameVC new] animated:YES];
         
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -157,7 +158,7 @@
 //返回
 -(void)backAction:(UIBarButtonItem *)sender {
     [self.view endEditing:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
