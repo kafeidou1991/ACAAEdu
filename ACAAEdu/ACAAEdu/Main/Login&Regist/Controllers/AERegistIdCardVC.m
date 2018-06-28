@@ -24,8 +24,12 @@
 }
 //跳过
 - (void)skip {
-    WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
+    [self requestRegister];
+    
+}
+- (void)requestRegister {
+    WS(weakSelf);
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterCreate query:nil path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"注册成功" cb:nil];
@@ -34,7 +38,6 @@
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
-    
 }
 //MARK: 绑定
 - (IBAction)bindClick:(UIButton *)sender {
@@ -52,9 +55,9 @@
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterBindIdCard query:nil path:nil body:@{@"id_card":idCard,@"user_name":name} success:^(id object) {
-        [weakSelf hudclose];
-        [AEBase alertMessage:@"绑定成功" cb:nil];
-       [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+//        [AEBase alertMessage:@"绑定成功" cb:nil];
+        //确认注册
+        [weakSelf requestRegister];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
