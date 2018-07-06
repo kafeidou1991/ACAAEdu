@@ -16,6 +16,8 @@
 #define kLogout @"mobile/user/logout"
 //注册
 #define kRegister @"mobile/user/register"
+//账户是否存在
+#define kIsexists @"mobile/register/isexists"
 //找回密码
 #define kFindPassword @"mobile/user/findpwd"
 //获取图形验证码
