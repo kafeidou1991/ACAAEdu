@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     CardLoginType,
 };
 
-@interface AELoginVC ()
+@interface AELoginVC ()<UITextFieldDelegate>
 /**
  登录方式
  */
@@ -46,11 +46,11 @@ typedef NS_ENUM(NSInteger, LoginType) {
     self.loginType = AccountLoginType;
     [self changeTextFieldStatus];
     self.accountTextField.text = [AEUserDefaults objectForKey:@"ACAA_MobileAcount"];
-    if (!STRISEMPTY(self.accountTextField.text)) {
-        if ([self.passwordTextField canBecomeFirstResponder]) {
-            [self.passwordTextField becomeFirstResponder];
-        }
-    }
+//    if (!STRISEMPTY(self.accountTextField.text)) {
+//        if ([self.passwordTextField canBecomeFirstResponder]) {
+//            [self.passwordTextField becomeFirstResponder];
+//        }
+//    }
 }
 #pragma mark - 忘记密码 登录 注册
 - (IBAction)loginClick:(UIButton *)sender {
@@ -154,6 +154,8 @@ typedef NS_ENUM(NSInteger, LoginType) {
     BOOL b = self.loginType - 100;
     //身份证18位 手机号11位
 //    self.accountTextField.keyboardType = b ? UIKeyboardTypeDefault:UIKeyboardTypePhonePad;
+    self.accountTextField.delegate = self;
+    self.passwordTextField.delegate = self;
     self.accountTextField.lengthLimit = b ? 18 : 40;
     self.accountTextField.placeholder = b ? @"请输入身份证号" : @"请输入手机号/邮箱";
     self.accountTextField.text =@"";
@@ -175,7 +177,10 @@ typedef NS_ENUM(NSInteger, LoginType) {
         [self.view layoutIfNeeded];
     }];
 }
-
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
+}
 #pragma mark - other
 //吊起登录
 +(void) OpenLogin:(UIViewController *)viewController callback:(CBLoginCompletion) loginComplation {

@@ -23,13 +23,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACAA考试" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vF-hv-nld">
-                    <rect key="frame" x="117" y="50" width="141" height="36"/>
+                    <rect key="frame" x="117" y="20" width="141" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                     <color key="textColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hwp-sz-33e">
-                    <rect key="frame" x="0.0" y="116" width="375" height="150"/>
+                    <rect key="frame" x="0.0" y="86" width="375" height="150"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j1W-ct-b1p">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
@@ -129,7 +129,7 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6E-hP-s88">
-                    <rect key="frame" x="16" y="316" width="343" height="40"/>
+                    <rect key="frame" x="16" y="286" width="343" height="40"/>
                     <color key="backgroundColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="ifp-oB-m5T"/>
@@ -156,7 +156,7 @@
                 <constraint firstAttribute="trailing" secondItem="H6E-hP-s88" secondAttribute="trailing" constant="16" id="ZRc-0Q-nPE"/>
                 <constraint firstItem="H6E-hP-s88" firstAttribute="leading" secondItem="Hwp-sz-33e" secondAttribute="leading" constant="16" id="grr-7y-TZj"/>
                 <constraint firstItem="8vF-hv-nld" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="in7-cj-LXg"/>
-                <constraint firstItem="8vF-hv-nld" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="50" id="ulA-Of-KHH"/>
+                <constraint firstItem="8vF-hv-nld" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="ulA-Of-KHH"/>
                 <constraint firstItem="Hwp-sz-33e" firstAttribute="top" secondItem="8vF-hv-nld" secondAttribute="bottom" constant="30" id="yS4-2Z-Ldx"/>
             </constraints>
             <point key="canvasLocation" x="24.5" y="51.5"/>
