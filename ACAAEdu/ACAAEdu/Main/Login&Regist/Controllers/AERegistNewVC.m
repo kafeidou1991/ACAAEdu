@@ -134,8 +134,9 @@
         [AEBase alertMessage:@"验证码已发送..." cb:nil];
         [weakSelf circleProgressStart];
     } faile:^(NSInteger code, NSString *error) {
-        [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
+        [weakSelf reSendImageCodeClick:nil];
+        weakSelf.imageTextField.text = @"";
     }];
 }
 

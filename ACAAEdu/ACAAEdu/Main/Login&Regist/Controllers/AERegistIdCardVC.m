@@ -28,6 +28,14 @@
     [self requestRegister];
     
 }
+-(void)backAction:(UIBarButtonItem *)sender {
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:nil message:@"确定要退出注册么？" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
 - (void)requestRegister {
     WS(weakSelf);
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterCreate query:nil path:nil body:nil success:^(id object) {
