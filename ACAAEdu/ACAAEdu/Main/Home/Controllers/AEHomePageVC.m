@@ -56,6 +56,8 @@
     WS(weakSelf)
     [self createTableViewStyle:UITableViewStylePlain];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorColor = AEColorLine;
     self.tableView.tableHeaderView = self.headerView;
     [self addHeaderRefesh:NO Block:^{
         [weakSelf afterProFun];
@@ -99,34 +101,32 @@
 
 
 #pragma mark - tableView delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSources.count;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.dataSources.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
-    [cell updateCell:self.dataSources[indexPath.section]];
+    [cell updateCell:self.dataSources[indexPath.row]];
     cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:@[self.dataSources[indexPath.section]]];
+        [weakSelf pushOrderDetailVC:@[self.dataSources[indexPath.row]]];
     };
     return cell;
+}
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([cell respondsToSelector:@selector(separatorInset)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(layoutMargins)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return cellHeight;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0.f;
-    }else {
-        return 10.f;
-    }
-}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self pushOrderDetailVC:@[self.dataSources[indexPath.section]]];
+    [self pushOrderDetailVC:@[self.dataSources[indexPath.row]]];
 }
 
 - (void)pushOrderDetailVC:(NSArray *)data {
@@ -139,7 +139,7 @@
 -(HomeHeaderReusableView *)headerView {
     if (!_headerView) {
         _headerView = [[NSBundle mainBundle]loadNibNamed:@"HomeHeaderReusableView" owner:nil options:nil].firstObject;
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 185.f);
     }
     return _headerView;
 }

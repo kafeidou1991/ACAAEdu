@@ -177,7 +177,7 @@
         _pageControl.numberOfPages = _totalNumber;
         _pageControl.center = CGPointMake(self.centerX, self.height - 8);
         _pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-        _pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        _pageControl.pageIndicatorTintColor = UIColorFromRGB(0xFBAB4E);//[UIColor grayColor];
     }
     
     return _pageControl;
