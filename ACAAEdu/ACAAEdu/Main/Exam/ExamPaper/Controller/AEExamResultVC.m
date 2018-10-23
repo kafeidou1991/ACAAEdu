@@ -174,7 +174,7 @@ static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifie
     return view;
 }
 
--(void)backAction:(UIBarButtonItem *)sender {
+- (void)backAction:(UIButton *)sender {
     for (UIViewController *viewController in self.navigationController.viewControllers) {
         if ([viewController isKindOfClass:[AECustomSegmentVC class]]) {
             [[NSNotificationCenter defaultCenter]postNotificationName:@"kExamResultBack" object:nil];

@@ -58,10 +58,16 @@
     btn.imageEdgeInsets = UIEdgeInsetsMake(0, - btn.width + MIN(image.size.width, 14), 0, 0);
     return [[UIBarButtonItem alloc]initWithCustomView:btn];
 }
-- (void)backAction:(UIBarButtonItem *)sender {
-    [self.view endEditing:YES];
-    [self.navigationController popViewControllerAnimated:YES];
+
+- (AEBaseTopView *)baseTopView {
+    if (!_baseTopView) {
+        ySpace = IS_IPHONEX ? 88 : 64;
+        _baseTopView = [[AEBaseTopView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ySpace)];
+    }
+    return _baseTopView;
 }
+
+
 
 //x进行一些网络请求
 - (void)afterProFun{
@@ -96,7 +102,9 @@
     return self.navigationController.viewControllers.count > 1;
 }
 
-
+-(void)backAction:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 

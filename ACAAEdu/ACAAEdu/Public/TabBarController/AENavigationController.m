@@ -14,17 +14,14 @@
 
 @implementation AENavigationController
 
-+ (void)load {
-    
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageWithColor:AEThemeColor] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]}];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationBar.translucent = NO;
-    //    self.delegate = self;
+    
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]};
+    self.navigationBar.barTintColor = [UIColor whiteColor];
+//    self.navigationBar.translucent = YES;
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
-//    self.navigationBar.tintColor   = AEFontColor;
     
 }
 
@@ -33,8 +30,11 @@
     if (self.viewControllers.count > 0) {
         viewController.hidesBottomBarWhenPushed = YES;
     }
+    
     [super pushViewController:viewController animated:animated];
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {

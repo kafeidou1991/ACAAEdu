@@ -7,20 +7,32 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AEBaseTopView.h"
 
-@interface AEBaseController : UIViewController
 
+@interface AEBaseController : UIViewController {
+    //y边距，控制subView排布
+    CGFloat ySpace;
+}
 /**
  于加载网络请求方法
  */
 - (void)afterProFun;
 
 /**
- 返回键返回
+ 自定义导航视图
+ */
+@property (nonatomic, strong) AEBaseTopView * baseTopView;
+
+
+
+/**
+ 需要点击返回时做些功作,在子类实现这个方法,并且自己调用popViewControllerAnimated方法,
+ 否则不要实现;
 
  @param sender button
  */
-- (void)backAction:(UIBarButtonItem *)sender;
+- (void)backAction:(UIButton *)sender;
 
 /**
  开启当前加载

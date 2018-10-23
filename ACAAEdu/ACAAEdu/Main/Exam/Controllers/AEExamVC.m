@@ -68,7 +68,7 @@ static CGFloat const GoodsViewHeight = 50.f;
 - (void)initComponent {
     self.buyType = BuySigleExamType;
     [self createTableViewStyle:UITableViewStylePlain];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TAB_BAR_HEIGHT);
     WS(weakSelf)
     [self createEmptyViewBlock:^{
         [weakSelf loadData:YES];

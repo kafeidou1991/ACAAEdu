@@ -46,11 +46,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     self.loginType = AccountLoginType;
     [self changeTextFieldStatus];
     self.accountTextField.text = [AEUserDefaults objectForKey:@"ACAA_MobileAcount"];
-//    if (!STRISEMPTY(self.accountTextField.text)) {
-//        if ([self.passwordTextField canBecomeFirstResponder]) {
-//            [self.passwordTextField becomeFirstResponder];
-//        }
-//    }
+    
 }
 #pragma mark - 忘记密码 登录 注册
 - (IBAction)loginClick:(UIButton *)sender {
@@ -196,7 +192,7 @@ typedef NS_ENUM(NSInteger, LoginType) {
     }];
 }
 //返回
--(void)backAction:(UIBarButtonItem *)sender {
+- (void)backAction:(UIButton *)sender {
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

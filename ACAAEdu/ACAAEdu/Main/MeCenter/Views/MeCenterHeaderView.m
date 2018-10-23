@@ -20,13 +20,14 @@
 
 -(instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 60.f);
+        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200.f);
+        
     }
     return self;
 }
 -(instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 60.f);
+        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200.f);
     }
     return self;
 }
@@ -43,7 +44,7 @@
     if (User.isLogin) {
         self.nameLabel.text = STRISEMPTY(User.user_profile.user_name) ? User.username : User.user_profile.user_name;
     }else {
-        self.nameLabel.text = @"登录";
+        self.nameLabel.text = @"点击头像登录";
     }
 }
 

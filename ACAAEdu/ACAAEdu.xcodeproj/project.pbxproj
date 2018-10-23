@@ -171,6 +171,7 @@
 		B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DFA1E7206F8ACC00AFAD27 /* AEAnswerCardCell.m */; };
 		B9EE537F20DA37F400A43627 /* AERegistNewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9EE537D20DA37F400A43627 /* AERegistNewVC.m */; };
 		B9EE538020DA37F400A43627 /* AERegistNewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9EE537E20DA37F400A43627 /* AERegistNewVC.xib */; };
+		B9F2990C217EF30500C767DD /* AEBaseTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F2990B217EF30500C767DD /* AEBaseTopView.m */; };
 		BBA0127B2004CE9813FBF5FF /* libPods-ACAAEdu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */; };
 /* End PBXBuildFile section */
 
@@ -494,6 +495,8 @@
 		B9EE537C20DA37F400A43627 /* AERegistNewVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistNewVC.h; sourceTree = "<group>"; };
 		B9EE537D20DA37F400A43627 /* AERegistNewVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AERegistNewVC.m; sourceTree = "<group>"; };
 		B9EE537E20DA37F400A43627 /* AERegistNewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERegistNewVC.xib; sourceTree = "<group>"; };
+		B9F2990A217EF30500C767DD /* AEBaseTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEBaseTopView.h; sourceTree = "<group>"; };
+		B9F2990B217EF30500C767DD /* AEBaseTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEBaseTopView.m; sourceTree = "<group>"; };
 		E55FAF33D99F20CBE0A145BD /* Pods-ACAAEdu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.release.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1060,7 +1063,7 @@
 			children = (
 				B9B9173E20188DF0002A63CE /* AENetworking */,
 				B79C92512029DC84002D0B66 /* Commond(通用类) */,
-				B9B91728201879AE002A63CE /* BaseController */,
+				B9B91728201879AE002A63CE /* Base */,
 				B9B916ED201874C3002A63CE /* TabBarController */,
 				B9B917462018907F002A63CE /* DateCenter */,
 				B93C7CDD205A14F200FC5E6C /* Purchase(购买) */,
@@ -1079,17 +1082,13 @@
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		B9B91728201879AE002A63CE /* BaseController */ = {
+		B9B91728201879AE002A63CE /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				B9B91729201879BF002A63CE /* AEBaseController.h */,
-				B9B9172A201879BF002A63CE /* AEBaseController.m */,
-				B9B9173820187F30002A63CE /* AEBaseTableController.h */,
-				B9B9173920187F30002A63CE /* AEBaseTableController.m */,
-				B9B9173B2018832F002A63CE /* AEBaseWebVC.h */,
-				B9B9173C2018832F002A63CE /* AEBaseWebVC.m */,
+				B9F29908217EF2E400C767DD /* BaseController */,
+				B9F29909217EF2F000C767DD /* BaseView */,
 			);
-			path = BaseController;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		B9B9172C20187DA4002A63CE /* Home(首页) */ = {
@@ -1263,6 +1262,28 @@
 				B9DFA1C9206F30A900AFAD27 /* AETimerHelper.m */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		B9F29908217EF2E400C767DD /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				B9B91729201879BF002A63CE /* AEBaseController.h */,
+				B9B9172A201879BF002A63CE /* AEBaseController.m */,
+				B9B9173820187F30002A63CE /* AEBaseTableController.h */,
+				B9B9173920187F30002A63CE /* AEBaseTableController.m */,
+				B9B9173B2018832F002A63CE /* AEBaseWebVC.h */,
+				B9B9173C2018832F002A63CE /* AEBaseWebVC.m */,
+			);
+			path = BaseController;
+			sourceTree = "<group>";
+		};
+		B9F29909217EF2F000C767DD /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				B9F2990A217EF30500C767DD /* AEBaseTopView.h */,
+				B9F2990B217EF30500C767DD /* AEBaseTopView.m */,
+			);
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1561,6 +1582,7 @@
 				B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */,
 				B7C44241206D1DC200D4EA03 /* AEExamContentView.m in Sources */,
 				B992CEED207371E7007F3EF2 /* XHViewState.m in Sources */,
+				B9F2990C217EF30500C767DD /* AEBaseTopView.m in Sources */,
 				B918BBCD202B088700EDB00D /* UITableViewCell+HM.m in Sources */,
 				B9D29532207F3A960010B9B3 /* AEExamResultCell.m in Sources */,
 				B7432DFF20DA8BAC00A07A75 /* AEBindIdCardVC.m in Sources */,

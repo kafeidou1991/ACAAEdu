@@ -335,7 +335,7 @@
     }
     return _timerLabel;
 }
--(void)backAction:(UIBarButtonItem *)sender {
+- (void)backAction:(UIButton *)sender {
     if (self.dataSourceArr.count == 0) {
         [self.navigationController popViewControllerAnimated:YES];
         return;

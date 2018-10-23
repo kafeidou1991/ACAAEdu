@@ -157,7 +157,7 @@
     
 }
 //返回
--(void)backAction:(UIBarButtonItem *)sender {
+- (void)backAction:(UIButton *)sender {
     [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }

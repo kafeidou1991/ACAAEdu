@@ -19,14 +19,14 @@
         return nil;
     }
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.titleLabel.font = [UIFont systemFontOfSize:14.f];
+    button.titleLabel.font = [UIFont systemFontOfSize:18.f];
     CGSize size = STR_FONT_SIZE(title,200, button.titleLabel.font);
     button.frame=CGRectMake(0, 0, size.width, size.height+10.f);
     
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateNormal];
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    [button setTitleColor:AEColorLightText forState:UIControlStateDisabled];
+    [button setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateHighlighted];
+    [button setTitleColor:UIColorFromRGB(0x333333) forState:UIControlStateDisabled];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
     
     return [[UIBarButtonItem alloc]initWithCustomView:button];

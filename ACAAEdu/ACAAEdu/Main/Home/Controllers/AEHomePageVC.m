@@ -19,6 +19,7 @@
 @interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
 
+
 //@property (nonatomic, strong) AEPurchaseManage * mange;
 @end
 
@@ -27,16 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.leftBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"首页"]];
     [self initTableView];
-    
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        NSString * url =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
-//        NSString * url1 =@"https://www.baidu.com/img/bd_logo1.png";
-//        NSString * url2 =@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517936621904&di=59ff6ebac7e3d599f62849da4ba7a168&imgtype=jpg&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170626%2Fe27d47199ce645999100af5c0fc56f56_th.jpg";
-//        NSArray * array = @[url,url1,url2];
-//        [self.headerView updateBanner:array];
-//    });
 //    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    btn.backgroundColor = [UIColor redColor];
 //    [self.view addSubview:btn];
@@ -44,18 +37,14 @@
 //    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
 }
 - (void)buy {
-//    _mange = [AEPurchaseManage new];
-//    [_mange startPurchWithID:@"com.acaaedu.1" completeHandle:^(IAPPurchType type, NSData *data) {
-//        NSLog(@"回调");
-//
-//    }];
     [self.navigationController pushViewController:[AEExamResultVC new] animated:YES];
 }
 
 - (void)initTableView {
+//    [self.view addSubview:self.baseTopView];
     WS(weakSelf)
     [self createTableViewStyle:UITableViewStylePlain];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - TAB_BAR_HEIGHT - ySpace);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = AEColorLine;
     self.tableView.tableHeaderView = self.headerView;
@@ -143,5 +132,7 @@
     }
     return _headerView;
 }
+
+
 
 @end

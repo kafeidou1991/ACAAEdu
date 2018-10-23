@@ -28,7 +28,7 @@
     [self requestRegister];
     
 }
--(void)backAction:(UIBarButtonItem *)sender {
+- (void)backAction:(UIButton *)sender {
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:nil message:@"确定要退出注册么？" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popToRootViewControllerAnimated:YES];
