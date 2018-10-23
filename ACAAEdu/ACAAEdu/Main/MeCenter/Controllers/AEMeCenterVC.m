@@ -115,7 +115,8 @@
 
 //隐藏导航栏
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    BOOL home = [viewController isKindOfClass:[self class]];
+    BOOL home = [viewController isKindOfClass:[self class]]
+              ||[viewController isKindOfClass:[AESettingVC class]];
     [navigationController setNavigationBarHidden:home animated:YES];
 }
 @end

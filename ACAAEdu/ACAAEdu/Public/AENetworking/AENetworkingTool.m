@@ -166,6 +166,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
             [[NSNotificationCenter defaultCenter]postNotificationName:kreLogin object:nil];
         }
     }
+    if (!responseObject) return;
     NSLog(@"接收消息[%@]---json = \n%@",[NSString stringWithFormat:@"%@",url],[[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding]);
 }
 //检查是否有是正确参数返回

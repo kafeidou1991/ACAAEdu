@@ -61,7 +61,7 @@
 
 - (AEBaseTopView *)baseTopView {
     if (!_baseTopView) {
-        ySpace = IS_IPHONEX ? 88 : 64;
+        ySpace = 100.f;
         _baseTopView = [[AEBaseTopView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ySpace)];
     }
     return _baseTopView;

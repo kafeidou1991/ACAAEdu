@@ -12,8 +12,19 @@
 
 @interface AEBaseTopView : UIView
 
+/**
+ 背景图片
+ */
 @property (nonatomic, copy) NSString *imageViewName;
-@property (nonatomic, copy) NSString *leftImageViewName;
+
+/**
+ 标题title
+ */
 @property (nonatomic, copy) NSString *titleName;
+
+/**
+ 默认pop返回  实现会滴需要自行处理逻辑
+ */
+@property (nonatomic, copy) dispatch_block_t backBlock;
 
 @end

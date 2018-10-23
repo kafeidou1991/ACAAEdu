@@ -19,6 +19,8 @@
     [super viewDidLoad];
     self.title = @"设置";
     self.dataSources = @[@"账户安全",@"清除信息",@"版本信息"].mutableCopy;
+    [self.view addSubview:self.baseTopView];
+    
     [self createTableViewStyle:UITableViewStylePlain];
     
     if ([AEUserInfo shareInstance].isLogin) {
@@ -26,7 +28,6 @@
     }else{
         self.tableView.tableFooterView = [UIView new];
     }
-    
 }
 
 
