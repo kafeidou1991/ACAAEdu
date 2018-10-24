@@ -24,10 +24,11 @@
     [tabBarItemAppearance setTitleTextAttributes:selectedAttr forState:UIControlStateSelected];
     
     // 字体和图片的偏移
-    tabBarItemAppearance.titlePositionAdjustment = UIOffsetMake(0, -2);
+//    tabBarItemAppearance.titlePositionAdjustment = UIOffsetMake(0, -2);
     
     UITabBar *tabBarAppearance = [UITabBar appearance];
     [tabBarAppearance setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]]];
+    
 }
 
 - (void)viewDidLoad {
@@ -35,13 +36,22 @@
     self.delegate = self;
     [self setupChildViewControllers];
 }
-
 #pragma mark - Private
 
 - (void)setupChildViewControllers {
-    [self addChildControllerName:@"AEHomePageVC" normalImage:@"tabBar_home_l" selectedImage:@"tabBar_home_h" title:@""];
-    [self addChildControllerName:@"AEExamVC" normalImage:@"tabBar_exam_l" selectedImage:@"tabBar_exam_h" title:@"考试"];
-    [self addChildControllerName:@"AEMeCenterVC" normalImage:@"tabBar_me_l" selectedImage:@"tabBar_me_h" title:@"我的"];
+    [self addChildControllerName:@"AEHomePageVC" normalImage:[self layoutImageName:@"tabBar_home_h"] selectedImage:[self layoutImageName:@"tabBar_home_l"] title:@""];
+    [self addChildControllerName:@"AEExamVC" normalImage:[self layoutImageName:@"tabBar_acaa_h"] selectedImage:[self layoutImageName:@"tabBar_acaa_l"] title:@""];
+    [self addChildControllerName:@"AEExamVC" normalImage:[self layoutImageName:@"tabBar_autodesk_h"] selectedImage:[self layoutImageName:@"tabBar_autodesk_l"] title:@""];
+    [self addChildControllerName:@"AEMeCenterVC" normalImage:[self layoutImageName:@"tabBar_me_h"] selectedImage:[self layoutImageName:@"tabBar_me_l"] title:@""];
+}
+- (NSString *)layoutImageName:(NSString *)imgName {
+    //320 375 414  各个机型宽度
+    if (SCREEN_WIDTH == 320.f) {
+        return [imgName stringByAppendingString:@"_small"];
+    }else if (SCREEN_WIDTH == 414) {
+        return [imgName stringByAppendingString:@"_plus"];
+    }
+    return imgName;
 }
 
 - (void)addChildControllerName:(NSString *)controllerName
@@ -54,12 +64,14 @@
     UIImage *normalImg = [[UIImage imageNamed:normalImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     UIImage *selectedImg = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
     controller.title = title;
     
     UITabBarItem *item = controller.tabBarItem;
+    //去除偏移
+    item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     item.image = normalImg;
     item.selectedImage = selectedImg;
-    
     
     UINavigationController *navi = [[AENavigationController alloc] initWithRootViewController:controller];
     [self addChildViewController:navi];

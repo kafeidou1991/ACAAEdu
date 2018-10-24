@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -190,9 +191,10 @@
                 <constraint firstAttribute="trailing" secondItem="BtT-o7-eFw" secondAttribute="trailing" id="8o0-pL-JGv"/>
                 <constraint firstAttribute="trailing" secondItem="Ocp-Ax-J5y" secondAttribute="trailing" constant="16" id="O4e-ZK-iiT"/>
                 <constraint firstItem="BtT-o7-eFw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RAy-dq-0AT"/>
+                <constraint firstItem="C5R-9V-uEi" firstAttribute="top" secondItem="BtT-o7-eFw" secondAttribute="bottom" constant="-130" id="hyR-kC-pvP"/>
                 <constraint firstItem="Ocp-Ax-J5y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="oAp-bI-MHy"/>
-                <constraint firstItem="BtT-o7-eFw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="sXZ-Jj-Dl0"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="C5R-9V-uEi"/>
         </view>
         <tapGestureRecognizer id="xO3-aW-9fS">
             <connections>

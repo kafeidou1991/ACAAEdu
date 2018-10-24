@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,26 +23,26 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abountme" translatesAutoresizingMaskIntoConstraints="NO" id="wjW-VV-c73">
-                    <rect key="frame" x="157" y="273.5" width="60" height="60"/>
+                    <rect key="frame" x="157.5" y="273.5" width="60" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="d4w-nM-DIY"/>
                         <constraint firstAttribute="width" constant="60" id="lGN-zG-LkJ"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACAA教育" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBd-6Z-h8A">
-                    <rect key="frame" x="154" y="338.5" width="66" height="17"/>
+                    <rect key="frame" x="154.5" y="338.5" width="66" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iPhone V1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMp-jI-SwC">
-                    <rect key="frame" x="146.5" y="361" width="82" height="16"/>
+                    <rect key="frame" x="147.5" y="361" width="82" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y91-Vi-5wZ">
-                    <rect key="frame" x="55" y="625.5" width="266" height="31.5"/>
+                    <rect key="frame" x="54.5" y="625.5" width="266" height="31.5"/>
                     <string key="text">版权所有
 copyright ©2011-2018 .ALL Right Reserved.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -53,17 +54,18 @@ copyright ©2011-2018 .ALL Right Reserved.</string>
             <constraints>
                 <constraint firstItem="iMp-jI-SwC" firstAttribute="centerX" secondItem="rBd-6Z-h8A" secondAttribute="centerX" id="2vs-19-YcE"/>
                 <constraint firstItem="rBd-6Z-h8A" firstAttribute="centerX" secondItem="wjW-VV-c73" secondAttribute="centerX" id="CVn-62-xqs"/>
-                <constraint firstAttribute="bottom" secondItem="Y91-Vi-5wZ" secondAttribute="bottom" constant="10" id="DLa-ea-V4Q"/>
                 <constraint firstItem="wjW-VV-c73" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="LzD-Jm-cuO"/>
+                <constraint firstItem="Y91-Vi-5wZ" firstAttribute="top" secondItem="6c8-fi-KIZ" secondAttribute="bottom" constant="-41.5" id="RJ4-F0-XQh"/>
                 <constraint firstItem="iMp-jI-SwC" firstAttribute="top" secondItem="rBd-6Z-h8A" secondAttribute="bottom" constant="5" id="Ze7-za-Wso"/>
                 <constraint firstItem="rBd-6Z-h8A" firstAttribute="top" secondItem="wjW-VV-c73" secondAttribute="bottom" constant="5" id="fPq-Ka-x5v"/>
                 <constraint firstItem="Y91-Vi-5wZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ruD-sV-GFa"/>
                 <constraint firstItem="wjW-VV-c73" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-30" id="x5g-ou-Oaf"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="6c8-fi-KIZ"/>
             <point key="canvasLocation" x="32.5" y="121.5"/>
         </view>
     </objects>
     <resources>
-        <image name="abountme" width="60" height="60"/>
+        <image name="abountme" width="100" height="100"/>
     </resources>
 </document>

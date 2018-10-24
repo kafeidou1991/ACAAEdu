@@ -41,10 +41,9 @@
 }
 
 - (void)initTableView {
-//    [self.view addSubview:self.baseTopView];
     WS(weakSelf)
     [self createTableViewStyle:UITableViewStylePlain];
-    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - TAB_BAR_HEIGHT - ySpace);
+    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - TAB_BAR_HEIGHT - NAVIGATION_HEIGHT  - ySpace);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = AEColorLine;
     self.tableView.tableHeaderView = self.headerView;
