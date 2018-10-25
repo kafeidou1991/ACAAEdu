@@ -8,9 +8,8 @@
 
 #import "AELoginVC.h"
 #import "AENavigationController.h"
-#import "AERegistVC.h"
+#import "AEForgetPwVC.h"
 #import "AERegistNewVC.h"
-#import "AESetPasswordVC.h"
 #import "AEModifierInfoVC.h"
 
 @interface AELoginVC ()<UITextFieldDelegate,UINavigationControllerDelegate>
@@ -76,30 +75,10 @@
                                   @"password":password,
                                   @"scene":@"acount"};
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:nil path:nil body:paramsDic success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kLogin query:paramsDic.mutableCopy path:nil body:nil success:^(id object) {
         [weakSelf hudclose];
         [AEUserDefaults setObject:account forKey:@"ACAA_MobileAcount"];
         [weakSelf loginSuccess:object];
-        /*
-         //身份证登录 没有设置密码 设置密码，没有账号设置账号  只有账号跟密码全部设置才能登录成功
-         //account_status: 0=>正常 1=>没有账号且没有密码 2=>没有设置(无手机号且无邮箱) 账号 3=>没有设置密码
-         NSInteger  accountStatus = [object[@"account_status"]integerValue];
-         if (accountStatus == 0) {
-         //                [weakSelf loginSuccess:object];
-         [AEBase alertMessage:@"已经绑定手机/邮箱,请使用账户登陆" cb:nil];
-         }else if (accountStatus == 2) {
-         //进入绑定账户
-         AEModifierInfoVC * pushVC = [AEModifierInfoVC new];
-         pushVC.type = BindMobileType;
-         pushVC.loginData = object;
-         [weakSelf.navigationController pushViewController:pushVC animated:YES];
-         }else {
-         AESetPasswordVC * pushVC = [AESetPasswordVC new];
-         pushVC.loginData = object;
-         pushVC.accountType = accountStatus;
-         PUSHCustomViewController(pushVC, weakSelf);
-         }
-         */
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -121,8 +100,7 @@
 }
 - (IBAction)forgetClick:(UIButton *)sender {
     [self.view endEditing:YES];
-    AERegistVC * vc = [AERegistVC new];
-    vc.isFindPassword = YES;
+    AEForgetPwVC * vc = [AEForgetPwVC new];
     PUSHCustomViewController(vc, self);
 }
 

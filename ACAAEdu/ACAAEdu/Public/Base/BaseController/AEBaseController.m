@@ -8,6 +8,8 @@
 
 #import "AEBaseController.h"
 
+#define AEBaseTopViewHeight 107.f
+
 @interface AEBaseController ()<UIGestureRecognizerDelegate>{
     MBProgressHUD   *_mbProgressHud;
 }
@@ -61,7 +63,7 @@
 
 - (AEBaseTopView *)baseTopView {
     if (!_baseTopView) {
-        ySpace = 100.f;
+        ySpace = AEBaseTopViewHeight;
         _baseTopView = [[AEBaseTopView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ySpace)];
     }
     return _baseTopView;

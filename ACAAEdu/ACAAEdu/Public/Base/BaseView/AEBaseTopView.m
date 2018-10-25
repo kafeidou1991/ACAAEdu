@@ -71,7 +71,7 @@ static const CGFloat LEFT_TITLE_SPACE = 40.f;
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.font = [UIFont systemFontOfSize:25];
+        _titleLabel.font = [UIFont systemFontOfSize:20];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.text = @"关于我们";
         [self.spaceView addSubview:_titleLabel];

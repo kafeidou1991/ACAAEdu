@@ -1,12 +1,12 @@
 //
-//  AERegistVC.m
+//  AEForgetPwVC.m
 //  ACAAEdu
 //
 //  Created by 张竟巍 on 2018/2/7.
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AERegistVC.h"
+#import "AEForgetPwVC.h"
 #import "CircularProgressBar.h"
 
 typedef NS_ENUM(NSInteger, RegistType) {
@@ -15,7 +15,7 @@ typedef NS_ENUM(NSInteger, RegistType) {
 };
 
 
-@interface AERegistVC ()<CircularProgressDelegate>
+@interface AEForgetPwVC ()<CircularProgressDelegate,UITextFieldDelegate>
 /**
 注册方式
  */
@@ -32,6 +32,10 @@ typedef NS_ENUM(NSInteger, RegistType) {
  底部横线左约束
  */
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewConstrain;
+/**
+ 账号提示文案
+ */
+@property (weak, nonatomic) IBOutlet UILabel *accountTipLabel;
 /**
  账号输入框
  */
@@ -67,13 +71,12 @@ typedef NS_ENUM(NSInteger, RegistType) {
 
 @end
 
-@implementation AERegistVC
+@implementation AEForgetPwVC
 
 #pragma mark - Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.title = self.isFindPassword ? @"找回密码" : @"注册";
+    self.title = @"忘记密码";
     [self initComonpent];
     
 }
@@ -81,7 +84,6 @@ typedef NS_ENUM(NSInteger, RegistType) {
     self.registType = MobileRegistType;
     self.circularBar.delegate =self;
     [self changeTextFieldStatus];
-    [self setButtonsTitle];
 }
 -(void)afterProFun {
     //获取图形验证码
@@ -134,14 +136,11 @@ typedef NS_ENUM(NSInteger, RegistType) {
     [pramsDict setObject:account forKey:(self.registType == MobileRegistType) ? @"mobile" : @"email"];
     [pramsDict setObject:password forKey:@"password"];
     [pramsDict setObject:code forKey:@"verify"];
-    if (!self.isFindPassword) {
-        [pramsDict setObject:(self.registType == MobileRegistType) ? @"mobile" : @"email" forKey:@"scene"];
-    }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:self.isFindPassword ? kFindPassword :kRegister query:nil path:nil body:pramsDict success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kFindPassword query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
-        [AEBase alertMessage:self.isFindPassword ? @"密码已重置":@"注册成功!" cb:nil];
+        [AEBase alertMessage:@"密码已重置" cb:nil];
         [weakSelf.navigationController popViewControllerAnimated:YES];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -203,22 +202,15 @@ typedef NS_ENUM(NSInteger, RegistType) {
     BOOL b = self.registType - 100;
     //身份证18位 手机号11位
     self.accountTextField.lengthLimit = b ? 40 : 11;
-    self.accountTextField.placeholder = b ? @"请输入邮箱" : @"请输入手机号";
+    self.accountTipLabel.text = b ? @"请输入邮箱" : @"请输入手机号";
     self.accountTextField.text =@"";
     if ([self.accountTextField canBecomeFirstResponder]) {
         [self.accountTextField becomeFirstResponder];
     }
 }
-- (void)setButtonsTitle {
-    [self.mobileButton setTitle:self.isFindPassword ? @"手机找回" : @"手机注册" forState:UIControlStateNormal];
-    [self.mobileButton setTitle:self.isFindPassword ? @"手机找回" : @"手机注册" forState:UIControlStateHighlighted];
-    [self.mobileButton setTitle:self.isFindPassword ? @"手机找回" : @"手机注册" forState:UIControlStateSelected];
-    [self.emailButton setTitle:self.isFindPassword ? @"邮箱找回" : @"邮箱注册" forState:UIControlStateNormal];
-    [self.emailButton setTitle:self.isFindPassword ? @"邮箱找回" : @"邮箱注册" forState:UIControlStateHighlighted];
-    [self.emailButton setTitle:self.isFindPassword ? @"邮箱找回" : @"邮箱注册" forState:UIControlStateSelected];
-    [self.bttomButton setTitle:self.isFindPassword ? @"找回" : @"注册" forState:UIControlStateNormal];
-    [self.bttomButton setTitle:self.isFindPassword ? @"找回" : @"注册" forState:UIControlStateHighlighted];
-    [self.bttomButton setTitle:self.isFindPassword ? @"找回" : @"注册" forState:UIControlStateSelected];
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
 }
 #pragma mark - 进度条
 // 开启圆形进度条
@@ -241,6 +233,26 @@ typedef NS_ENUM(NSInteger, RegistType) {
 - (void)backAction:(UIButton *)sender {
     [self.view endEditing:YES];
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (IBAction)click1:(id)sender {
+    if ([self.accountTextField canBecomeFirstResponder]) {
+        [self.accountTextField becomeFirstResponder];
+    }
+}
+- (IBAction)click2:(id)sender {
+    if ([self.imageTextField canBecomeFirstResponder]) {
+        [self.imageTextField becomeFirstResponder];
+    }
+}
+- (IBAction)click3:(id)sender {
+    if ([self.codeTextField canBecomeFirstResponder]) {
+        [self.codeTextField becomeFirstResponder];
+    }
+}
+- (IBAction)click4:(id)sender {
+    if ([self.passwordTextField canBecomeFirstResponder]) {
+        [self.passwordTextField becomeFirstResponder];
+    }
 }
 
 

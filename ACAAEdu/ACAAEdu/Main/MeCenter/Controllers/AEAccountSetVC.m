@@ -19,7 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"账户安全";
+    [self.view addSubview:self.baseTopView];
+    self.baseTopView.titleName = @"账户安全";
+    
     self.dataSources = @[@{@"title":@"手机号",@"value":User.mobile},
                          @{@"title":@"邮箱账号",@"value":User.email},
                          @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;

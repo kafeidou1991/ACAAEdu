@@ -88,7 +88,7 @@ alpha:1.0]
 #define AEThemeColor      AEHexColor(@"#F55F62")   ///< 项目红
 #define AEColorLightText  AEHexColor(@"#333333")   ///< 字体颜色  偏黑
 #define AEColorLine       AEHexColor(@"#E5E5E5")   ///< 分割线颜色
-#define AEColorBgVC       AEHexColor(@"#f0f2f6")   ///< 控制器背景颜色F5F5F5
+#define AEColorBgVC       [UIColor whiteColor]//AEHexColor(@"#f0f2f6")   ///< 控制器背景颜色F5F5F5
 #define AEFontColor       AEHexColor(@"#C88417") ///< 字体颜色
 
 // MARK: -----系统相关-----

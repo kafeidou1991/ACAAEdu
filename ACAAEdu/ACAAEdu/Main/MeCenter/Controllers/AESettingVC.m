@@ -18,8 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
-    self.dataSources = @[@"账户安全",@"清除信息",@"版本信息"].mutableCopy;
+    self.dataSources = @[@"       账户安全",@"       清除信息",@"       版本信息"].mutableCopy;
     [self.view addSubview:self.baseTopView];
+    self.baseTopView.titleName = @"设置";
     
     [self createTableViewStyle:UITableViewStylePlain];
     

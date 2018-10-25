@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"关于我们";
+    [self.view addSubview:self.baseTopView];
     self.appNameLabel.text = AEAppName;
     self.appVersionLabel.text = [NSString stringWithFormat:@"iPhone V%@",AEVersion];
     

@@ -15,6 +15,7 @@
 #import "AECustomSegmentVC.h"
 #import "AEMessageListVC.h"
 #import "AEMyTestExamVC.h"
+#import "AEAccountSetVC.h"
 
 @interface AEMeCenterVC ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) MeCenterHeaderView * loginHeaderView;
@@ -115,8 +116,12 @@
 
 //隐藏导航栏
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    BOOL home = [viewController isKindOfClass:[self class]]
-              ||[viewController isKindOfClass:[AESettingVC class]];
+    BOOL home =
+      [viewController isKindOfClass:[self class]]
+    ||[viewController isKindOfClass:[AESettingVC class]]
+    ||[viewController isKindOfClass:[AEAboutMeVC class]]
+    ||[viewController isKindOfClass:[AEAccountSetVC class]]
+    ;
     [navigationController setNavigationBarHidden:home animated:YES];
 }
 @end

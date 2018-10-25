@@ -8,7 +8,7 @@
 
 #import "AERegistNewVC.h"
 #import "CircularProgressBar.h"
-#import "AESetNickNameVC.h"
+#import "AESetNickNamePwVC.h"
 
 @interface AERegistNewVC ()<CircularProgressDelegate>
 /**
@@ -49,7 +49,7 @@
     [super viewDidLoad];
     [self initComonpent];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"注册";
+    self.title = @"注册账号";
     
 }
 - (void)initComonpent {
@@ -59,7 +59,6 @@
 - (void)changeTextFieldStatus {
     //邮箱40位 手机号11位
     self.accountTextField.lengthLimit = 40;
-    self.accountTextField.placeholder = @"请输入手机号/邮箱";
     self.accountTextField.text =@"";
     if ([self.accountTextField canBecomeFirstResponder]) {
         [self.accountTextField becomeFirstResponder];
@@ -108,7 +107,7 @@
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterAccount query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
         //下一步 设置昵称和密码
-        [weakSelf.navigationController pushViewController:[AESetNickNameVC new] animated:YES];
+        [weakSelf.navigationController pushViewController:[AESetNickNamePwVC new] animated:YES];
         
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];

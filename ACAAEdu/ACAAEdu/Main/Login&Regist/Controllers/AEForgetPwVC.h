@@ -1,5 +1,5 @@
 //
-//  AERegistVC.h
+//  AEForgetPwVC.h
 //  ACAAEdu
 //
 //  Created by 张竟巍 on 2018/2/7.
@@ -8,11 +8,6 @@
 
 #import "AEBaseController.h"
 
-@interface AERegistVC : AEBaseController
-
-/**
- 找回密码页面
- */
-@property (nonatomic, assign) BOOL isFindPassword;
+@interface AEForgetPwVC : AEBaseController
 
 @end
