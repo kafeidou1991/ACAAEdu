@@ -15,12 +15,12 @@
 /**
  背景图片
  */
-@property (nonatomic, copy) NSString *imageViewName;
+@property (nonatomic, copy) IBInspectable NSString *imageViewName;
 
 /**
  标题title
  */
-@property (nonatomic, copy) NSString *titleName;
+@property (nonatomic, copy) IBInspectable NSString *titleName;
 
 /**
  默认pop返回  实现会滴需要自行处理逻辑

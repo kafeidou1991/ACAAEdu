@@ -20,15 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.baseTopView];
 }
 - (void)setupPageView:(NSArray *)titlesArray ContentViewControllers:(NSArray <UIViewController *> * )viewControllers {
-    CGFloat statusHeight = CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
-    CGFloat pageTitleViewY = 0;
-    if (statusHeight == 20.0) {
-        pageTitleViewY = 64;
-    } else {
-        pageTitleViewY = 88;
-    }
+    
     if(titlesArray.count == 0 || viewControllers.count == 0 || (titlesArray.count != viewControllers.count)) {
         return;
     }
@@ -37,10 +32,11 @@
     configure.titleColor = AEHexColor(@"333333");
     configure.titleSelectedColor = AEThemeColor;
     configure.indicatorColor = AEThemeColor;
+    configure.indicatorHeight = 4.f;
     configure.indicatorAdditionalWidth = MAXFLOAT; // 说明：指示器额外增加的宽度，不设置，指示器宽度为标题文字宽度；若设置无限大，则指示器宽度为按钮宽度
     configure.bottomSeparatorColor = AEColorLine;
     /// pageTitleView
-    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44) delegate:self titleNames:titleArr configure:configure];
+    self.pageTitleView = [SGPageTitleView pageTitleViewWithFrame:CGRectMake(0, ySpace, self.view.frame.size.width, 44) delegate:self titleNames:titleArr configure:configure];
     self.pageTitleView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_pageTitleView];
     //    _pageTitleView.selectedIndex = 1;

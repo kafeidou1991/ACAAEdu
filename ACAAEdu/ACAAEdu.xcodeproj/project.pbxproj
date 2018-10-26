@@ -156,6 +156,8 @@
 		B9D2F645206CBFFC00C5A034 /* AEExamPaperInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F644206CBFFC00C5A034 /* AEExamPaperInfoVC.m */; };
 		B9D2F6A4206CEAA500C5A034 /* JWMenuBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */; };
 		B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */; };
+		B9D8E01C2182B8F50027CFD2 /* AEInfoFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D8E01B2182B8F50027CFD2 /* AEInfoFooterView.m */; };
+		B9D8E01E2182B8FC0027CFD2 /* AEInfoFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9D8E01D2182B8FC0027CFD2 /* AEInfoFooterView.xib */; };
 		B9DE2B4A2074A17900BC09C9 /* AETestPaperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DE2B492074A17900BC09C9 /* AETestPaperVC.m */; };
 		B9DE2B4D2074B36600BC09C9 /* AEExamBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DE2B4C2074B36600BC09C9 /* AEExamBottomView.m */; };
 		B9DE2B4F2074B37000BC09C9 /* AEExamBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DE2B4E2074B37000BC09C9 /* AEExamBottomView.xib */; };
@@ -467,6 +469,9 @@
 		B9D2F6A3206CEAA500C5A034 /* JWMenuBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWMenuBarView.m; sourceTree = "<group>"; };
 		B9D2F6A5206CFA4C00C5A034 /* JWScrollPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JWScrollPageView.h; sourceTree = "<group>"; };
 		B9D2F6A6206CFA4C00C5A034 /* JWScrollPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JWScrollPageView.m; sourceTree = "<group>"; };
+		B9D8E01A2182B8F50027CFD2 /* AEInfoFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEInfoFooterView.h; sourceTree = "<group>"; };
+		B9D8E01B2182B8F50027CFD2 /* AEInfoFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEInfoFooterView.m; sourceTree = "<group>"; };
+		B9D8E01D2182B8FC0027CFD2 /* AEInfoFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEInfoFooterView.xib; sourceTree = "<group>"; };
 		B9DE2B482074A17900BC09C9 /* AETestPaperVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AETestPaperVC.h; sourceTree = "<group>"; };
 		B9DE2B492074A17900BC09C9 /* AETestPaperVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AETestPaperVC.m; sourceTree = "<group>"; };
 		B9DE2B4B2074B36600BC09C9 /* AEExamBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamBottomView.h; sourceTree = "<group>"; };
@@ -1135,9 +1140,6 @@
 				B9B9173620187DE2002A63CE /* AEMeCenterVC.m */,
 				B949F9A02068C790009D0555 /* AEMyTestExamVC.h */,
 				B949F9A12068C790009D0555 /* AEMyTestExamVC.m */,
-				B9B1CD42202C54360017C97D /* AEAboutMeVC.h */,
-				B9B1CD43202C54360017C97D /* AEAboutMeVC.m */,
-				B9B1CD44202C54360017C97D /* AEAboutMeVC.xib */,
 				B913B09D202D8BAD006C7414 /* AEMyOrderVC.h */,
 				B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */,
 				B7129A662031AF460081472E /* AESettingVC.h */,
@@ -1154,6 +1156,9 @@
 				B7432DFB20DA8BAC00A07A75 /* AEBindIdCardVC.h */,
 				B7432DFD20DA8BAC00A07A75 /* AEBindIdCardVC.m */,
 				B7432DFC20DA8BAC00A07A75 /* AEBindIdCardVC.xib */,
+				B9B1CD42202C54360017C97D /* AEAboutMeVC.h */,
+				B9B1CD43202C54360017C97D /* AEAboutMeVC.m */,
+				B9B1CD44202C54360017C97D /* AEAboutMeVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1170,6 +1175,9 @@
 				B7C3952C203A650900AB8513 /* AEModifierInfoCell.h */,
 				B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */,
 				B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */,
+				B9D8E01A2182B8F50027CFD2 /* AEInfoFooterView.h */,
+				B9D8E01B2182B8F50027CFD2 /* AEInfoFooterView.m */,
+				B9D8E01D2182B8FC0027CFD2 /* AEInfoFooterView.xib */,
 				B94C1CCB20400054006344F2 /* AEUserInfoCell.h */,
 				B94C1CCC20400054006344F2 /* AEUserInfoCell.m */,
 				B94C1CCD20400054006344F2 /* AEUserInfoCell.xib */,
@@ -1404,6 +1412,7 @@
 				B9F299B72181981000C767DD /* AESetNickNamePwVC.xib in Resources */,
 				B9DE2B4F2074B37000BC09C9 /* AEExamBottomView.xib in Resources */,
 				B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */,
+				B9D8E01E2182B8FC0027CFD2 /* AEInfoFooterView.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
 				B9D29533207F3A960010B9B3 /* AEExamResultCell.xib in Resources */,
@@ -1563,6 +1572,7 @@
 				B9B917492018907F002A63CE /* DateCenter.m in Sources */,
 				B9DFA1CA206F30A900AFAD27 /* AETimerHelper.m in Sources */,
 				B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */,
+				B9D8E01C2182B8F50027CFD2 /* AEInfoFooterView.m in Sources */,
 				B713101F202B55C7001CBAE8 /* AEForgetPwVC.m in Sources */,
 				B7432DFA20DA8B6F00A07A75 /* AERegistIdCardVC.m in Sources */,
 				B918BBC5202B088700EDB00D /* NSMutableArray+safe.m in Sources */,

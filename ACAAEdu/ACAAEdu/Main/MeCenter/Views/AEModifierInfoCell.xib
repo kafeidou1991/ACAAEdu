@@ -27,15 +27,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtN-qY-AKn">
-                        <rect key="frame" x="270" y="18.5" width="50" height="30"/>
+                        <rect key="frame" x="254" y="18.5" width="50" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="4ev-aR-1dL"/>
                             <constraint firstAttribute="width" constant="50" id="r5I-W6-sPN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <state key="normal" title="解绑">
-                            <color key="titleColor" red="0.96078431369999995" green="0.37254901959999998" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
+                        <state key="normal" image="account_switch_off"/>
+                        <state key="selected" image="account_switch_on"/>
+                        <state key="highlighted" image="account_switch_on"/>
                         <connections>
                             <action selector="functionClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WES-Ii-ceh"/>
                         </connections>
@@ -45,7 +45,7 @@
                     <constraint firstItem="hvd-wH-43Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HU3-7B-R0L"/>
                     <constraint firstItem="hvd-wH-43Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="S8d-M0-RE9"/>
                     <constraint firstItem="EtN-qY-AKn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m8t-DE-Q5S"/>
-                    <constraint firstAttribute="trailing" secondItem="EtN-qY-AKn" secondAttribute="trailing" id="qap-n0-O1Q"/>
+                    <constraint firstAttribute="trailing" secondItem="EtN-qY-AKn" secondAttribute="trailing" constant="16" id="qap-n0-O1Q"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -54,4 +54,8 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="account_switch_off" width="37" height="20"/>
+        <image name="account_switch_on" width="37" height="20"/>
+    </resources>
 </document>

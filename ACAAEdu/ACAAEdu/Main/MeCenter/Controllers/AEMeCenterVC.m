@@ -16,6 +16,8 @@
 #import "AEMessageListVC.h"
 #import "AEMyTestExamVC.h"
 #import "AEAccountSetVC.h"
+#import "AEModifierInfoVC.h"
+#import "AEBindIdCardVC.h"
 
 @interface AEMeCenterVC ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) MeCenterHeaderView * loginHeaderView;
@@ -80,7 +82,7 @@
         PUSHCustomViewController([AEAboutMeVC new], self)
     }else if ([title isEqualToString:@"我的订单"]) {
         AECustomSegmentVC * customVC = [AECustomSegmentVC new];
-        customVC.title = @"我的订单";
+        customVC.baseTopView.titleName = @"我的订单";
         AEMyOrderVC * noPayVC = [[AEMyOrderVC alloc] init];
         noPayVC.payType = ExamNoPayType;
         AEMyOrderVC * hasPayVC = [[AEMyOrderVC alloc] init];
@@ -91,7 +93,7 @@
         PUSHCustomViewController([AESettingVC new], self)
     }else if ([title isEqualToString:@"通知"]) {
         AECustomSegmentVC * customVC = [AECustomSegmentVC new];
-        customVC.title = @"通知";
+        customVC.baseTopView.titleName = @"通知";
         AEMessageListVC * unReadMessageVC = [[AEMessageListVC alloc] init];
         unReadMessageVC.messageType = UnReadMessageListType;
         AEMessageListVC *readMessageVC = [[AEMessageListVC alloc] init];
@@ -100,7 +102,7 @@
         PUSHLoginCustomViewController(customVC, self)
     }else if ([title isEqualToString:@"我的模考"]) {
         AECustomSegmentVC * customVC = [AECustomSegmentVC new];
-        customVC.title = @"我的模考";
+        customVC.baseTopView.titleName = @"我的模考";
         AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
         noExamVC.examType = NoneTestExamType;
         AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
@@ -121,6 +123,9 @@
     ||[viewController isKindOfClass:[AESettingVC class]]
     ||[viewController isKindOfClass:[AEAboutMeVC class]]
     ||[viewController isKindOfClass:[AEAccountSetVC class]]
+    ||[viewController isKindOfClass:[AEModifierInfoVC class]]
+    ||[viewController isKindOfClass:[AEBindIdCardVC class]]
+    ||[viewController isKindOfClass:[AECustomSegmentVC class]]
     ;
     [navigationController setNavigationBarHidden:home animated:YES];
 }

@@ -8,7 +8,6 @@
 
 #import "AEBaseController.h"
 
-#define AEBaseTopViewHeight 107.f
 
 @interface AEBaseController ()<UIGestureRecognizerDelegate>{
     MBProgressHUD   *_mbProgressHud;

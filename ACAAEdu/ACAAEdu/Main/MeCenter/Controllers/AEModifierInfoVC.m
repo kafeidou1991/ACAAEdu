@@ -14,6 +14,12 @@
  账号输入框
  */
 @property (weak, nonatomic) IBOutlet AETextField *accountTextField;
+
+/**
+ 占位显示label
+ */
+@property (weak, nonatomic) IBOutlet UILabel *tipAccountLabel;
+
 /**
  图形验证码输入框
  */
@@ -38,6 +44,14 @@
  绑定按钮
  */
 @property (weak, nonatomic) IBOutlet UIButton *bindBtn;
+/**
+ 顶部约束  适配iPhone X
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+/**
+ 底部约束
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -45,31 +59,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     [self initComonpent];
-    if (!IsNilOrNull(_loginData)) {
-        self.navigationItem.rightBarButtonItem = self.type == BindEmailType ? nil : [AEBase createCustomBarButtonItem:self action:@selector(gotoEmail) title:@"邮箱绑定"];
-    }
 }
-- (void)gotoEmail {
-    AEModifierInfoVC * pushVC = [AEModifierInfoVC new];
-    pushVC.type = BindEmailType;
-    pushVC.loginData = _loginData;
-    [self.navigationController pushViewController:pushVC animated:YES];
-}
-
 - (void)initComonpent {
+    [self.view addSubview:self.baseTopView];
+    self.topConstraint.constant = self.baseTopView.bottom;
+    self.bottomConstraint.constant = HOME_INDICATOR_HEIGHT;
     if (self.type == BindEmailType) {
-        self.title = @"绑定邮箱";
+        self.baseTopView.titleName = @"绑定邮箱";
     }else if (self.type == BindMobileType) {
-        self.title = @"绑定手机号";
+        self.baseTopView.titleName = @"绑定手机号";
     }else if (self.type == UnBindEmailType) {
-        self.title = @"解绑邮箱";
+        self.baseTopView.titleName = @"解绑邮箱";
     }else if (self.type == UnBindMobileType) {
-        self.title = @"解绑手机号";
+        self.baseTopView.titleName = @"解绑手机号";
     }
     if (self.type == BindMobileType || self.type == BindEmailType) {
-        [self.bindBtn setTitle:@"确定绑定" forState:UIControlStateNormal];
+        [self.bindBtn setTitle:@"绑   定" forState:UIControlStateNormal];
     }else {
         [self.bindBtn setTitle:@"解除绑定" forState:UIControlStateNormal];
     }
@@ -81,10 +87,10 @@
     //身份证18位 手机号11位 邮箱40
     if (self.type == BindEmailType || self.type == UnBindEmailType) {
         self.accountTextField.lengthLimit = 40;
-        self.accountTextField.placeholder = @"请输入邮箱";
+        self.tipAccountLabel.text = @"请输入邮箱";
     }else if (self.type == BindMobileType || self.type == UnBindMobileType) {
         self.accountTextField.lengthLimit = 11;
-        self.accountTextField.placeholder = @"请输入手机号";
+        self.tipAccountLabel.text = @"请输入手机号";
     }
     if ([self.accountTextField canBecomeFirstResponder]) {
         [self.accountTextField becomeFirstResponder];
@@ -245,7 +251,25 @@
     
     [self.sendCodeBtn wy_animate];
     [self.circularBar wy_animate];
-    
 }
+#pragma mark - 响应链
+
+- (IBAction)accountClick:(id)sender {
+    if ([self.accountTextField canBecomeFirstResponder]) {
+        [self.accountTextField becomeFirstResponder];
+    }
+}
+- (IBAction)imageClick:(id)sender {
+    if ([self.imageTextField canBecomeFirstResponder]) {
+        [self.imageTextField becomeFirstResponder];
+    }
+}
+- (IBAction)codeClick:(id)sender {
+    if ([self.codeTextField canBecomeFirstResponder]) {
+        [self.codeTextField becomeFirstResponder];
+    }
+}
+
+
 
 @end

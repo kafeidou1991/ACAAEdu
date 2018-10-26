@@ -10,6 +10,7 @@
 #import "AEModifierInfoCell.h"
 #import "AEModifierInfoVC.h"
 #import "AEBindIdCardVC.h"
+#import "AEInfoFooterView.h"
 
 @interface AEAccountSetVC ()
 
@@ -26,6 +27,7 @@
                          @{@"title":@"邮箱账号",@"value":User.email},
                          @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;
     [self createTableViewStyle:UITableViewStylePlain];
+    [self tipBindIdCard];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:kBindAccountSuccess object:nil];
 }
 - (void)reload {
@@ -33,8 +35,20 @@
                          @{@"title":@"邮箱账号",@"value":User.email},
                          @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;
     [self.tableView reloadData];
+    [self tipBindIdCard];
 }
-
+- (void)tipBindIdCard {
+    if (STRISEMPTY(User.id_card)) {
+        self.tableView.tableFooterView = [UIView new];
+    }else {
+        self.tableView.tableFooterView = [self createFootView];
+    }
+}
+- (AEInfoFooterView *)createFootView {
+    AEInfoFooterView * footView = [[NSBundle mainBundle]loadNibNamed:@"AEInfoFooterView" owner:nil options:nil].firstObject;
+    footView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 60.f);
+    return footView;
+}
 #pragma mark - tableview delegate & datesource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEModifierInfoCell * cell = [AEModifierInfoCell cellWithTableView:tableView];
@@ -72,7 +86,6 @@
     }else {
         //身份证验证  不支持解绑
         if (STRISEMPTY(User.id_card)) {
-//            [self.navigationController pushViewController:[AERegistIdCardVC new] animated:YES];
             [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
         }
     }

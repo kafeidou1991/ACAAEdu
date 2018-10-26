@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AEBaseTopView.h"
 
+#define AEBaseTopViewHeight (HOME_INDICATOR_HEIGHT + 107.f)
 
 @interface AEBaseController : UIViewController {
     //y边距，控制subView排布

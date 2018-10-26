@@ -11,6 +11,14 @@
 @interface AEBindIdCardVC ()
 @property (weak, nonatomic) IBOutlet AETextField *idCardTextField;
 @property (weak, nonatomic) IBOutlet AETextField *nameTextField;
+/**
+ 顶部约束  适配iPhone X
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
+/**
+ 底部约束
+ */
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 @end
 
@@ -18,9 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title =@"绑定身份证";
-    self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self initComonpent];
+}
+- (void)initComonpent {
+    [self.view addSubview:self.baseTopView];
+    self.topConstraint.constant = self.baseTopView.bottom;
+    self.bottomConstraint.constant = HOME_INDICATOR_HEIGHT;
+    self.baseTopView.titleName = @"绑定身份证";
 }
 - (IBAction)bindClick:(UIButton *)sender {
     NSString * idCard = self.idCardTextField.text.trimString;

@@ -23,13 +23,11 @@ static const CGFloat headerViewHeight = 110.f;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的订单";
     [self initTableView];
-    self.tableView.height -= 44;
-    
+    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refrshLoad) name:kPayOrderSuccess object:nil];
-    
 }
+
 //初始化tableview
 - (void)initTableView {
     [self createTableViewStyle:UITableViewStyleGrouped];

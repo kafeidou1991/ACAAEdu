@@ -10,7 +10,6 @@
 
 @interface AEModifierInfoCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIButton *functionBtn;
 
 @end
@@ -27,18 +26,19 @@
     
 }
 -(void)updateCell:(NSDictionary *)dict {
-    self.titleLabel.text = dict[@"title"];
-    self.contentLabel.text = dict[@"value"];
-    if (!STRISEMPTY(dict[@"value"])) {
-        [self.functionBtn setTitle:@"解绑" forState:UIControlStateNormal];
+    NSString * value = dict[@"value"];
+    if (!STRISEMPTY(value)) {
+        self.titleLabel.text = [NSString stringWithFormat:@"%@\n%@",dict[@"title"],value];
+        self.functionBtn.selected = YES;
     }else {
-        [self.functionBtn setTitle:@"绑定" forState:UIControlStateNormal];
+        self.titleLabel.text = dict[@"title"];
+        self.functionBtn.selected = NO;
     }
-    if ([dict[@"title"] isEqualToString:@"身份证账号"] && !STRISEMPTY(User.id_card)) {
-        self.functionBtn.hidden = YES;
-    }else {
-        self.functionBtn.hidden = NO;
-    }
+//    if ([dict[@"title"] isEqualToString:@"身份证账号"] && !STRISEMPTY(User.id_card)) {
+//        self.functionBtn.hidden = YES;
+//    }else {
+//        self.functionBtn.hidden = NO;
+//    }
 }
 - (IBAction)functionClick:(UIButton *)sender {
     if (_actionBlock) {
