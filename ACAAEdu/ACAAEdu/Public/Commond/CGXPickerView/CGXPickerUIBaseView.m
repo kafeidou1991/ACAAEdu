@@ -75,7 +75,7 @@
 - (UIButton *)leftBtn {
     if (!_leftBtn) {
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _leftBtn.frame = CGRectMake(5, 7, 60, self.manager.kTopViewH-14);
+        _leftBtn.frame = CGRectMake(5, 7, 60, self.manager.kTopViewH - 14);
         _leftBtn.backgroundColor = self.manager.leftBtnBGColor;
         _leftBtn.layer.cornerRadius = self.manager.leftBtnCornerRadius;;
         _leftBtn.layer.borderColor = self.manager.leftBtnborderColor.CGColor;
@@ -93,7 +93,7 @@
 - (UIButton *)rightBtn {
     if (!_rightBtn) {
         _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _rightBtn.frame = CGRectMake(SCREEN_WIDTH - 65, 7, 60, self.manager.kTopViewH-14);
+        _rightBtn.frame = CGRectMake(SCREEN_WIDTH - 65, 7, 60, self.manager.kTopViewH - 14);
         _rightBtn.backgroundColor = self.manager.rightBtnBGColor;;
         _rightBtn.layer.cornerRadius = self.manager.rightBtnCornerRadius;
         _rightBtn.layer.masksToBounds = YES;

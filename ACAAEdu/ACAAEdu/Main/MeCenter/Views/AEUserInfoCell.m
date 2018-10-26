@@ -25,6 +25,7 @@
     NSString * title = dict[@"title"];
     self.titleLabel.text = title;
     self.contentTextField.text = dict[@"value"];
+    self.leftImageView.hidden = STRISEMPTY(dict[@"value"]);
 }
 
 @end

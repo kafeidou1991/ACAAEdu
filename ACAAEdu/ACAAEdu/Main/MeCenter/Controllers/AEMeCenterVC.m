@@ -18,6 +18,7 @@
 #import "AEAccountSetVC.h"
 #import "AEModifierInfoVC.h"
 #import "AEBindIdCardVC.h"
+#import "AEUserInfoVC.h"
 
 @interface AEMeCenterVC ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) MeCenterHeaderView * loginHeaderView;
@@ -126,6 +127,7 @@
     ||[viewController isKindOfClass:[AEModifierInfoVC class]]
     ||[viewController isKindOfClass:[AEBindIdCardVC class]]
     ||[viewController isKindOfClass:[AECustomSegmentVC class]]
+    ||[viewController isKindOfClass:[AEUserInfoVC class]]
     ;
     [navigationController setNavigationBarHidden:home animated:YES];
 }

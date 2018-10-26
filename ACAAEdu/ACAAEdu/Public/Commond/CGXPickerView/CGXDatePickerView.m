@@ -144,7 +144,7 @@
         // 浮现动画
         [UIView animateWithDuration:0.3 animations:^{
             CGRect rect = self.alertView.frame;
-            rect.origin.y -= self.manager.kTopViewH + self.manager.kPickerViewH;
+            rect.origin.y -= self.manager.kTopViewH + self.manager.kPickerViewH + HOME_INDICATOR_HEIGHT;
             self.alertView.frame = rect;
         }];
     }

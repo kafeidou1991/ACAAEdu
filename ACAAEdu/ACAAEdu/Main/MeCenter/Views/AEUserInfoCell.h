@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet AETextField *contentTextField;
+@property (weak, nonatomic) IBOutlet UIImageView * leftImageView;
 
 - (void)updateCell:(NSDictionary * )dict;
 

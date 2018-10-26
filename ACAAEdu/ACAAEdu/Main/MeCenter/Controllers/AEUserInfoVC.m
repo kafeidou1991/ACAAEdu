@@ -27,9 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"个人资料";
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(save) title:@"保存"];
+    [self.view addSubview:self.baseTopView];
+    self.baseTopView.titleName = @"个人资料";
+    [self addSaveButton];
 }
 -(void)afterProFun {
     WS(weakSelf);
@@ -194,6 +194,7 @@
         _info.birthday = selectValue;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
         cell.contentTextField.text = selectValue;
+        cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
     }];
 }
@@ -204,6 +205,7 @@
         _info.gender = (NSString *)selectRow;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         cell.contentTextField.text = [weakSelf toString:_info.gender];
+        cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
     }];
 }
@@ -216,6 +218,7 @@
         _info.city = selectAddressArr[1];
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
         cell.contentTextField.text = [NSString stringWithFormat:@"%@ %@",_info.province,_info.city];
+        cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
     }];
 }
@@ -226,6 +229,7 @@
         _info.vocation = (NSString *)selectValue;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
         cell.contentTextField.text = _info.vocation;
+        cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
     }];
 }
@@ -236,6 +240,7 @@
         _info.edu_level = (NSString *)selectValue;
         AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
         cell.contentTextField.text = _info.edu_level;
+        cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
     }];
 }
@@ -274,8 +279,9 @@
     if (!_pickViewManage) {
         _pickViewManage = [CGXPickerViewManager new];
         _pickViewManage.leftBtnTitleColor = _pickViewManage.rightBtnTitleColor = [UIColor whiteColor];
-        _pickViewManage.titleLabelColor = _pickViewManage.leftBtnBGColor = _pickViewManage.leftBtnborderColor =  _pickViewManage.rightBtnBGColor = _pickViewManage.rightBtnborderColor = AEThemeColor;
-        
+        _pickViewManage.titleLabelColor = AEColorLightText;
+        _pickViewManage.leftBtnBGColor = _pickViewManage.leftBtnborderColor = AEHexColor(@"E7E8EA");
+        _pickViewManage.rightBtnBGColor = _pickViewManage.rightBtnborderColor = AEThemeColor;
     }
     return _pickViewManage;
 }
@@ -284,6 +290,19 @@
         _info = [AEUserProfile new];
     }
     return _info;
+}
+- (void)addSaveButton {
+    UIButton * btn = [AEBase createButton:CGRectZero type:UIButtonTypeCustom title:@"保存"];
+    btn.layer.cornerRadius = 25.f;
+    btn.backgroundColor = AEThemeColor;
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    [self.baseTopView addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.height.mas_equalTo(50);
+        make.right.mas_equalTo(-20);
+        make.bottom.mas_equalTo(-30);
+    }];
 }
 - (NSString *)toString:(NSString *)gender {
     if (STRISEMPTY(gender)) {
