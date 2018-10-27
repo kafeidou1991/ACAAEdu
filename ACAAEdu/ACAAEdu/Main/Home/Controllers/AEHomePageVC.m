@@ -11,14 +11,17 @@
 #import "HomeHeaderReusableView.h"
 #import "AEOrderDetailVC.h"
 #import "AEExamItem.h"
+#import "AEHomeNoticeIconView.h"
+#import "AEMessageListVC.h"
+#import "AECustomSegmentVC.h"
 
 //Temp
 #import "AEPurchaseManage.h"
 #import "AEExamResultVC.h"
 
-@interface AEHomePageVC ()
+@interface AEHomePageVC ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
-
+@property (nonatomic, strong) AEHomeNoticeIconView * noticeView;
 
 //@property (nonatomic, strong) AEPurchaseManage * mange;
 @end
@@ -27,14 +30,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.delegate = self;
     self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"首页"]];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.noticeView];
+    [self.noticeView addTarget:self action:@selector(gotoNoticeDetail) forControlEvents:UIControlEventTouchUpInside];
+    
     [self initTableView];
+    
 //    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
 //    btn.backgroundColor = [UIColor redColor];
 //    [self.view addSubview:btn];
 //    btn.frame = CGRectMake(100, 100, 100, 100);
 //    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.noticeView updateNoShowNumber:5];
 }
 - (void)buy {
     [self.navigationController pushViewController:[AEExamResultVC new] animated:YES];
@@ -116,13 +126,29 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self pushOrderDetailVC:@[self.dataSources[indexPath.row]]];
 }
-
+//MARK: 订单详情
 - (void)pushOrderDetailVC:(NSArray *)data {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     [VC loadData:data];
     PUSHLoginCustomViewController(VC, self);
 }
-
+//MARK: 通知列表
+- (void)gotoNoticeDetail {
+    AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+    customVC.baseTopView.titleName = @"通知";
+    AEMessageListVC * unReadMessageVC = [[AEMessageListVC alloc] init];
+    unReadMessageVC.messageType = UnReadMessageListType;
+    AEMessageListVC *readMessageVC = [[AEMessageListVC alloc] init];
+    readMessageVC.messageType = ReadMessageListType;
+    [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
+    PUSHLoginCustomViewController(customVC, self)
+}
+//隐藏导航栏
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    BOOL home =
+    [viewController isKindOfClass:[AECustomSegmentVC class]];
+    [navigationController setNavigationBarHidden:home animated:YES];
+}
 #pragma mark - 懒加载
 -(HomeHeaderReusableView *)headerView {
     if (!_headerView) {
@@ -132,6 +158,12 @@
     return _headerView;
 }
 
+-(AEHomeNoticeIconView *)noticeView {
+    if (!_noticeView) {
+        _noticeView = [[AEHomeNoticeIconView alloc]initWithFrame:CGRectMake(0, 0, 40, 40)];
+    }
+    return _noticeView;
+}
 
 
 @end

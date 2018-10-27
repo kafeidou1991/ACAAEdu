@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 //个人简介
-#define RemarkHeight 150.f
+#define RemarkHeight 120.f
 @interface AEUserRemarkCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;

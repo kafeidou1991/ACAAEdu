@@ -41,6 +41,7 @@
         weakSelf.info.birthday = [NSString dateToStringFormatter:@"yyyy-MM-dd" date:[NSDate dateWithTimeIntervalSince1970:weakSelf.info.birthday.integerValue]];
         [weakSelf reloadDataSources];
         [weakSelf createTableViewStyle:UITableViewStylePlain];
+        
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -260,6 +261,10 @@
         _info.fax_num = beString;
     }
     [self reloadDataSources];
+    AEUserInfoCell * cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:textField.tag inSection:0]];
+    if (cell) {
+        cell.leftImageView.hidden = STRISEMPTY(beString);
+    }
     return YES;
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
