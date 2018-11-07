@@ -10,13 +10,14 @@
 #import "AEExamItem.h"
 
 @interface AEHomePageCell ()
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn; //多选按钮
 @property (weak, nonatomic) IBOutlet UIButton *buyBtn; //购买按钮
+@property (weak, nonatomic) IBOutlet UILabel *orginPriceLabel; //原始价格
+@property (weak, nonatomic) IBOutlet UIView *statusView;
 
 
 @end
@@ -50,7 +51,6 @@
     self.priceLabel.hidden = YES;
 }
 - (void)setMyExamContentText:(AEMyExamItem *)item {
-    self.titleLabel.text = [NSString stringWithFormat:@"%@",item.subject.short_name.length > 0 ? [item.subject.short_name substringToIndex:1] : @""];
     self.nameLabel.text = item.subject.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"版本：%@",item.subject.version];
     self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@",item.subject.short_name];
@@ -58,11 +58,12 @@
 }
 
 - (void)setContentText:(AEExamItem *)item {
-    self.titleLabel.text = [NSString stringWithFormat:@"%@",item.short_name.length > 0 ? [item.short_name substringToIndex:1] : @""];
     self.nameLabel.text = item.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"版本：%@",item.version];
     self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@",item.short_name];
     self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_price];
+    NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:@"￥500" attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+    self.orginPriceLabel.attributedText = attStr;
 }
 
 - (IBAction)buyAction:(UIButton *)sender {

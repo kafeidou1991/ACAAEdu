@@ -19,7 +19,7 @@
         return nil;
     }
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.titleLabel.font = [UIFont systemFontOfSize:18.f];
+    button.titleLabel.font = [UIFont systemFontOfSize:16.f];
     CGSize size = STR_FONT_SIZE(title,200, button.titleLabel.font);
     button.frame=CGRectMake(0, 0, size.width, size.height+10.f);
     

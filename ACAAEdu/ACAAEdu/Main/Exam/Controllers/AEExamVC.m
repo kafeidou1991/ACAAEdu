@@ -38,8 +38,8 @@ static CGFloat const GoodsViewHeight = 50.f;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItem = nil;//[AEBase createCustomBarButtonItem:self action:@selector(moreList) title:@"更多"];
-    self.navigationItem.rightBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"],[AEBase createCustomBarButtonItem:self action:@selector(searchExam) image:@"exam_search"]];
+    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"考试"]];
+//    self.navigationItem.rightBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:@selector(matchItem) title:@"筛选"],[AEBase createCustomBarButtonItem:self action:@selector(searchExam) image:@"exam_search"]];
     [self initComponent];
 }
 #pragma mark - 更多

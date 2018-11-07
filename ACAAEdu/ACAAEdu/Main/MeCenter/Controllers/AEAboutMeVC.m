@@ -11,6 +11,7 @@
 @interface AEAboutMeVC ()
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *appVersionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 
 @end
 
@@ -25,11 +26,11 @@
     
     //配置环境
 #ifdef DEBUG
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(changeServer) title:@"    "];
+    self.changeBtn.hidden = NO;
 #endif
 }
 // 内部测试功能
-- (void)changeServer {
+- (IBAction)changeServer:(id)sender {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络环境切换仅供开发、测试人员使用" message:[self getNetworkDomain] preferredStyle:UIAlertControllerStyleActionSheet];
     
     UIAlertAction *officialEnv = [UIAlertAction actionWithTitle:@"正式环境：id.acaa.cn" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -56,6 +57,7 @@
     
     [self presentViewController:alert animated:YES completion:nil];
 }
+
 
 - (NSString *)getNetworkDomain {
     NSString * domain = @"http://id.acaa.cn/";
