@@ -96,17 +96,41 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
                                             }];
     [getDataTask resume];
 }
+- (AFHTTPSessionManager *)configPostSeccsionManagerApiSign:(NSString *)apiSign {
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    if (openHttpsSSL) {
+        [manager setSecurityPolicy:[self customSecurityPolicy]];
+    }
+    AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
+    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [requestSerializer setValue:apiSign forHTTPHeaderField:@"Api-Sign"];
+    [requestSerializer setValue:[self readCacheApiToken] forHTTPHeaderField:@"Api-Token"];
+    requestSerializer.timeoutInterval = TIMEOUT_INTERVAL;
+    manager.requestSerializer = requestSerializer;
+    
+    AFJSONResponseSerializer *responseSerialiazer = [AFJSONResponseSerializer serializer];
+    responseSerialiazer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/xml",@"text/plain", @"application/javascript", @"image/*", nil];
+    manager.responseSerializer = responseSerialiazer;
 
+    return manager;
+
+}
 #pragma mark -- POST & PUT & DELETE
 - (void)POSTHttpRequestAsynUrl:(NSString *)url HttpMethod:(NSString *)method methodName:(NSString *)methodName parameters:(NSDictionary *)parameters apiSign:(NSString *)apiSign body:(id)body{
     dispatch_group_enter(self.dispathGroup);
+    /*
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    */
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     AFJSONResponseSerializer *responseSerialiazer = [AFJSONResponseSerializer serializer];
     responseSerialiazer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/xml",@"text/plain", @"application/javascript", @"image/*", nil];
     manager.responseSerializer = responseSerialiazer;
     if (openHttpsSSL) {
         [manager setSecurityPolicy:[self customSecurityPolicy]];
     }
+    /*
     NSMutableURLRequest *requst = [self configSeccsionManagerApiSign:apiSign method:method url:url body:body];
     __block NSURLSessionDataTask *postDataTask = nil;
     postDataTask = [manager dataTaskWithRequest:requst
@@ -119,6 +143,26 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
                                   }
                               }];
     [postDataTask resume];
+     */
+    
+    //增加鉴权
+    if (parameters) {
+        NSMutableDictionary * tempDic = [NSMutableDictionary dictionaryWithDictionary:parameters];
+        [tempDic setValue:[self readCacheApiToken] forKey:@"Api-Token"];
+        [tempDic setValue:apiSign forKey:@"Api-Sign"];
+        parameters = tempDic.copy;
+    }else {
+        parameters = @{@"Api-Token" : [self readCacheApiToken],
+                       @"Api-Sign" : apiSign};
+    }
+    WS(weakSelf)
+    [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        dispatch_group_leave(self.dispathGroup);
+        [weakSelf requestSuccess:task responseObject:responseObject url:url];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        dispatch_group_leave(self.dispathGroup);
+        [weakSelf requestFailure:task error:error methodName:methodName];
+    }];
 }
 - (void)configAppHttpInfo:(HttpRequestType)httpType methodName:(NSString *)methodName query:(NSMutableDictionary *)query path:(NSString *)path body:(id)body{
     _info = [[AEHttpInfo alloc] init];
