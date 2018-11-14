@@ -20,7 +20,7 @@
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:AEHexColor(@"333333"),NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]};
     self.navigationBar.barTintColor = [UIColor whiteColor];
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
-    self.navigationBar.shadowImage = [UIImage new];
+//    self.navigationBar.shadowImage = [UIImage new];
     
 }
 

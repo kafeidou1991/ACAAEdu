@@ -59,8 +59,8 @@
 
 - (void)setContentText:(AEExamItem *)item {
     self.nameLabel.text = item.subject_full_name;
-    self.versionLabel.text = [NSString stringWithFormat:@"版本：%@",item.version];
-    self.categoryLabel.text = [NSString stringWithFormat:@"类别：%@",item.short_name];
+    self.versionLabel.text = [NSString stringWithFormat:@"%@",item.version];
+    self.categoryLabel.text = [NSString stringWithFormat:@"%@",item.short_name];
     self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_price];
     NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:@"￥500" attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
     self.orginPriceLabel.attributedText = attStr;
