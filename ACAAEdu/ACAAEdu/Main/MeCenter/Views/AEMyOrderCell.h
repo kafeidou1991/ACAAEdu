@@ -14,8 +14,7 @@
  充填数据
 
  @param item 数据
- @param isHidden 是否隐藏title
  */
-- (void)updateCell:(AEGoodItem *)item hiddenTitle:(BOOL)isHidden;
+- (void)updateCell:(AEGoodItem *)item;
 
 @end

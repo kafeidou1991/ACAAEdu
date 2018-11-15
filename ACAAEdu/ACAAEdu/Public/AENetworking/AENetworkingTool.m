@@ -83,6 +83,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 - (void)GETHttpRequestAsynUrl:(NSString *)url methodName:(NSString *)methodName parameters:(NSDictionary *)parameters apiSign:(NSString *)apiSign{
     dispatch_group_enter(self.dispathGroup);
     NSString *urlStr = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"参数<%@>",parameters);
     AFHTTPSessionManager *manager = [self configHTTPSessionManagerWith:apiSign];
     NSURLSessionDataTask *getDataTask = [manager GET:urlStr parameters:nil
                                             progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -120,17 +121,17 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 #pragma mark -- POST & PUT & DELETE
 - (void)POSTHttpRequestAsynUrl:(NSString *)url HttpMethod:(NSString *)method methodName:(NSString *)methodName parameters:(NSDictionary *)parameters apiSign:(NSString *)apiSign body:(id)body{
     dispatch_group_enter(self.dispathGroup);
-    /*
+    
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    */
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     AFJSONResponseSerializer *responseSerialiazer = [AFJSONResponseSerializer serializer];
     responseSerialiazer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/xml",@"text/plain", @"application/javascript", @"image/*", nil];
     manager.responseSerializer = responseSerialiazer;
     if (openHttpsSSL) {
         [manager setSecurityPolicy:[self customSecurityPolicy]];
     }
-    /*
+    
     NSMutableURLRequest *requst = [self configSeccsionManagerApiSign:apiSign method:method url:url body:body];
     __block NSURLSessionDataTask *postDataTask = nil;
     postDataTask = [manager dataTaskWithRequest:requst
@@ -143,26 +144,27 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
                                   }
                               }];
     [postDataTask resume];
-     */
+    
     
     //增加鉴权
-    if (parameters) {
-        NSMutableDictionary * tempDic = [NSMutableDictionary dictionaryWithDictionary:parameters];
-        [tempDic setValue:[self readCacheApiToken] forKey:@"Api-Token"];
-        [tempDic setValue:apiSign forKey:@"Api-Sign"];
-        parameters = tempDic.copy;
-    }else {
-        parameters = @{@"Api-Token" : [self readCacheApiToken],
-                       @"Api-Sign" : apiSign};
-    }
-    WS(weakSelf)
-    [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        dispatch_group_leave(self.dispathGroup);
-        [weakSelf requestSuccess:task responseObject:responseObject url:url];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        dispatch_group_leave(self.dispathGroup);
-        [weakSelf requestFailure:task error:error methodName:methodName];
-    }];
+//    if (parameters) {
+//        NSMutableDictionary * tempDic = [NSMutableDictionary dictionaryWithDictionary:parameters];
+//        [tempDic setValue:[self readCacheApiToken] forKey:@"Api-Token"];
+//        [tempDic setValue:apiSign forKey:@"Api-Sign"];
+//        parameters = tempDic.copy;
+//    }else {
+//        parameters = @{@"Api-Token" : [self readCacheApiToken],
+//                       @"Api-Sign" : apiSign};
+//    }
+//    WS(weakSelf)
+//    NSLog(@"------------------参数<%@>",parameters);
+//    [manager POST:url parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        dispatch_group_leave(self.dispathGroup);
+//        [weakSelf requestSuccess:task responseObject:responseObject url:url];
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        dispatch_group_leave(self.dispathGroup);
+//        [weakSelf requestFailure:task error:error methodName:methodName];
+//    }];
 }
 - (void)configAppHttpInfo:(HttpRequestType)httpType methodName:(NSString *)methodName query:(NSMutableDictionary *)query path:(NSString *)path body:(id)body{
     _info = [[AEHttpInfo alloc] init];
@@ -377,7 +379,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 }
 #pragma 储存token
 -(void) saveCacheApiToken:(NSString *)apitoken {
-    NSLog(@"------------>apiToken<%@>",apitoken);
+    NSLog(@"保存>>>>>>> apiToken<%@>",apitoken);
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     [defaults setObject: apitoken forKey:@"token"];
     [defaults synchronize];

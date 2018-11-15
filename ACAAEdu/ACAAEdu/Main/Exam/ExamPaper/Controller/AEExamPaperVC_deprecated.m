@@ -6,7 +6,7 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEExamPaperInfoVC.h"
+#import "AEExamPaperVC_deprecated.h"
 #import "AEExamItem.h"
 #import "JWMenuBarView.h"
 #import "JWScrollPageView.h"
@@ -16,7 +16,7 @@
 
 #define MENUHEIHT 41
 
-@interface AEExamPaperInfoVC ()<MenuBarViewDelegate,ScrollPageViewDelegate,UIScrollViewDelegate>
+@interface AEExamPaperVC_deprecated ()<MenuBarViewDelegate,ScrollPageViewDelegate,UIScrollViewDelegate>
 /**
  题型数组 试题全部数据  因为获取试题接口返回 全部数据，可覆盖部分试题接口返回的数据
  */
@@ -48,7 +48,7 @@
 
 @end
 
-@implementation AEExamPaperInfoVC
+@implementation AEExamPaperVC_deprecated
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

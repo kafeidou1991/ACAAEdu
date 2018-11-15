@@ -7,11 +7,13 @@
 //
 
 #import "AEMyTestExamVC.h"
-#import "AEHomePageCell.h"
+//#import "AEHomePageCell.h"
+#import "AEMyExamCell.h"
 #import "AEExamItem.h"
-#import "AEExamPaperInfoVC.h"
+#import "AEExamPaperVC_deprecated.h"
 #import "AEExamResultVC.h"
-#import "AETestPaperVC.h"
+#import "AEExamPaperVC.h"
+
 
 
 @interface AEMyTestExamVC ()
@@ -23,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initTableView];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:@"kExamResultBack" object:nil];
 }
@@ -82,31 +85,25 @@
 
 
 #pragma mark - tableView delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataSources.count;
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
+    AEMyExamCell * cell = [AEMyExamCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    WS(weakSelf)
-    [cell updateMyTestExamCell:self.dataSources[indexPath.section] done:_examType];
-    cell.buyBlock = ^{
-        [weakSelf pushExamVC:indexPath];
-    };
+    [cell updateMyTestExamCell:self.dataSources[indexPath.row] done:_examType];
     return cell;
 }
 - (void) pushExamVC:(NSIndexPath * )indexPath {
     if (_examType == NoneTestExamType) {
 //        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
-        AETestPaperVC * VC = [AETestPaperVC new];
-        VC.examItem = self.dataSources[indexPath.section];
+        AEExamPaperVC * VC = [AEExamPaperVC new];
+        VC.examItem = self.dataSources[indexPath.row];
         [self.navigationController pushViewController:VC animated:YES];
     }else {
         AEExamResultVC * VC = [AEExamResultVC new];
-        AEMyExamItem * item = self.dataSources[indexPath.section];
+        AEMyExamItem * item = self.dataSources[indexPath.row];
         VC.examId = item.id;
         [self.navigationController pushViewController:VC animated:YES];
     }
@@ -123,9 +120,7 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
+    [self pushExamVC:indexPath];
 }
 
 -(void)dealloc {

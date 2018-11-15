@@ -216,6 +216,7 @@
 @property (nonatomic, copy) NSString * point; //知识点考题数量
 @end
 
+
 @interface AEExamEvaluateItem : DateCenter
 @property (nonatomic, copy) NSString * total_question; //总共题目数
 @property (nonatomic, copy) NSString * exam_time; // 考试时间

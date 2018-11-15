@@ -8,10 +8,10 @@
 
 #import "AEMyOrderVC.h"
 #import "AEMyOrderCell.h"
-#import "AEMyOrderHeaderView.h"
+#import "AEMyOrderFooterView.h"
 #import "AEOrderPayVC.h"
 
-static const CGFloat headerViewHeight = 110.f;
+static const CGFloat headerViewHeight = 145.f;
 
 @interface AEMyOrderVC ()
 
@@ -96,28 +96,32 @@ static const CGFloat headerViewHeight = 110.f;
     AEMyOrderCell * cell = [AEMyOrderCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     AEMyOrderList * good = self.dataSources[indexPath.section];
-    [cell updateCell:good.goods[indexPath.row] hiddenTitle:indexPath.row != 0];
+    [cell updateCell:good.goods[indexPath.row]];
     return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 25.f;
+    return 60.f;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return headerViewHeight;
+    return 8.f;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10.f;
+    return headerViewHeight;
 }
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    AEMyOrderHeaderView * view = [[AEMyOrderHeaderView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerViewHeight)];
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    AEMyOrderFooterView * view = [[AEMyOrderFooterView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, headerViewHeight)];
     AEMyOrderList * good = self.dataSources[section];
     [view updateContent:good];
     WS(weakSelf)
     view.clickBlock = ^{
         [weakSelf gotoNextStep:good];
     };
+    return view;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 8.f)];
     return view;
 }
 //点击跳转

@@ -8,7 +8,7 @@
 
 #import "AEBaseController.h"
 @class AEMyExamItem;
-@interface AETestPaperVC : AEBaseController
+@interface AEExamPaperVC : AEBaseController
 
 //数据参数
 @property (nonatomic, strong) AEMyExamItem * examItem;

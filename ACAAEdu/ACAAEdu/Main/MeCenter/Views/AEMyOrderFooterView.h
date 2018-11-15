@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AEMyOrderHeaderView : UIView
+@interface AEMyOrderFooterView : UIView
 
 - (void)updateContent:(AEMyOrderList *)item;
 

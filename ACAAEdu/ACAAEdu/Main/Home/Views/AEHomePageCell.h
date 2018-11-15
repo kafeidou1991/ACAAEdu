@@ -24,13 +24,7 @@ static const CGFloat cellHeight = 80.f;
  @param item 数据
  */
 - (void)updateMoreCell:(AEExamItem *)item;
-/**
- 我的模考列表
- 
- @param item 数据
- @param done 标识是未考还是已考
- */
-- (void)updateMyTestExamCell:(AEMyExamItem *)item done:(BOOL)done;
+
 /**
  购买回调
  */

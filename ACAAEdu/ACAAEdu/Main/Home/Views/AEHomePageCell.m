@@ -42,14 +42,6 @@
     self.moreBtn.selected = item.isSelect;
 }
 
-- (void)updateMyTestExamCell:(AEMyExamItem *)item done:(BOOL)done {
-    [self setMyExamContentText:item];
-    self.buyBtn.hidden = NO;
-    self.buyBtn.titleLabel.font = [UIFont systemFontOfSize:11];
-    [self.buyBtn setTitle:done ? @"查看成绩" : @"开始考试" forState:UIControlStateNormal];
-    self.moreBtn.hidden = YES;
-    self.priceLabel.hidden = YES;
-}
 - (void)setMyExamContentText:(AEMyExamItem *)item {
     self.nameLabel.text = item.subject.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"版本：%@",item.subject.version];

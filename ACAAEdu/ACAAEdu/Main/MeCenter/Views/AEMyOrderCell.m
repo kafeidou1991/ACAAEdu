@@ -11,8 +11,8 @@
 @interface AEMyOrderCell ()
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cateLabel;
 
 @end
 
@@ -29,10 +29,10 @@
     // Configure the view for the selected state
 }
 
-- (void)updateCell:(AEGoodItem *)item hiddenTitle:(BOOL)isHidden{
-    self.titleLabel.hidden = isHidden;
-    self.contentLabel.text = item.goods_name;
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.goods_price];
+- (void)updateCell:(AEGoodItem *)item{
+    self.titleLabel.text = item.goods_name;
+    self.versionLabel.text = [NSString stringWithFormat:@"版本:2018"];
+    self.cateLabel.text = [NSString stringWithFormat:@"类别:CAD"];
 }
 
 

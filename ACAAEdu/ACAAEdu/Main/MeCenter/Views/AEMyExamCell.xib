@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AEMyExamCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xw9-ku-bj1">
+                        <rect key="frame" x="0.0" y="2" width="2" height="55.5"/>
+                        <color key="backgroundColor" red="0.71764705882352942" green="0.47058823529411764" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="2" id="DvU-pb-fJ1"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018初级工程师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1f-7h-viK">
+                        <rect key="frame" x="10" y="10" width="96.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="考试结果:通过" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEy-vx-w28">
+                        <rect key="frame" x="10" y="35" width="77.5" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="考试结束" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRq-WT-8ta">
+                        <rect key="frame" x="230" y="21.5" width="58" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myexam_waite" translatesAutoresizingMaskIntoConstraints="NO" id="DSm-Z2-8lW">
+                        <rect key="frame" x="298" y="18" width="12" height="24"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="WEy-vx-w28" secondAttribute="bottom" constant="10" id="3ZL-7o-csS"/>
+                    <constraint firstItem="x1f-7h-viK" firstAttribute="leading" secondItem="Xw9-ku-bj1" secondAttribute="trailing" constant="8" id="4Mg-ca-5SP"/>
+                    <constraint firstAttribute="trailing" secondItem="DSm-Z2-8lW" secondAttribute="trailing" constant="10" id="4ux-LN-Ycz"/>
+                    <constraint firstItem="gRq-WT-8ta" firstAttribute="centerY" secondItem="DSm-Z2-8lW" secondAttribute="centerY" id="Syn-fy-MUo"/>
+                    <constraint firstAttribute="bottom" secondItem="Xw9-ku-bj1" secondAttribute="bottom" constant="2" id="UYt-du-GJN"/>
+                    <constraint firstItem="WEy-vx-w28" firstAttribute="leading" secondItem="x1f-7h-viK" secondAttribute="leading" id="ZTz-CH-ZUE"/>
+                    <constraint firstItem="DSm-Z2-8lW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mNJ-iU-pd2"/>
+                    <constraint firstItem="Xw9-ku-bj1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="q11-S6-pGk"/>
+                    <constraint firstItem="Xw9-ku-bj1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="rw2-W8-p9U"/>
+                    <constraint firstItem="DSm-Z2-8lW" firstAttribute="leading" secondItem="gRq-WT-8ta" secondAttribute="trailing" constant="10" id="vJF-fN-A5d"/>
+                    <constraint firstItem="x1f-7h-viK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="wLL-Ss-KLl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="examRightView" destination="DSm-Z2-8lW" id="tKn-vV-zoK"/>
+                <outlet property="examStatusLabel" destination="gRq-WT-8ta" id="icl-zn-6i5"/>
+                <outlet property="nameLabel" destination="x1f-7h-viK" id="16l-5m-smn"/>
+                <outlet property="resultLabel" destination="WEy-vx-w28" id="qMC-op-YRS"/>
+                <outlet property="statusView" destination="Xw9-ku-bj1" id="3mD-FD-jAN"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="myexam_waite" width="12" height="24"/>
+    </resources>
+</document>

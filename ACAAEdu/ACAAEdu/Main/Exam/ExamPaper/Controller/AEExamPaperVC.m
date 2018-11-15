@@ -6,7 +6,7 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AETestPaperVC.h"
+#import "AEExamPaperVC.h"
 #import "AEExamItem.h"
 #import "AEExamContentView.h"
 #import "AEAnswerCardVC.h"
@@ -15,7 +15,7 @@
 
 static CGFloat const bottomViewHeight = 50.f;
 
-@interface AETestPaperVC ()
+@interface AEExamPaperVC ()
 /**
  题型数组 试题全部数据  因为获取试题接口返回 全部数据，可覆盖部分试题接口返回的数据
  */
@@ -43,7 +43,7 @@ static CGFloat const bottomViewHeight = 50.f;
 
 @end
 
-@implementation AETestPaperVC
+@implementation AEExamPaperVC
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (_timer) {

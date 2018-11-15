@@ -10,7 +10,7 @@
 
 @class AEMyExamItem;
 
-@interface AEExamPaperInfoVC : AEBaseController
+@interface AEExamPaperVC_deprecated : AEBaseController
 
 @property (nonatomic, strong) AEMyExamItem * examItem;
 

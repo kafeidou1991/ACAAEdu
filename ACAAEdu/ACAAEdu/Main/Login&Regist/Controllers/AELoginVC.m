@@ -75,7 +75,7 @@
                                   @"password":password,
                                   @"scene":@"acount"};
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:paramsDic.mutableCopy path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogin query:nil path:nil body:paramsDic.mutableCopy success:^(id object) {
         [weakSelf hudclose];
         [AEUserDefaults setObject:account forKey:@"ACAA_MobileAcount"];
         [weakSelf loginSuccess:object];

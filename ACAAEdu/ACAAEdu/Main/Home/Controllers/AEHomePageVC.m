@@ -18,6 +18,8 @@
 //Temp
 #import "AEPurchaseManage.h"
 #import "AEExamResultVC.h"
+#import "AEExamAnalyzeVC.h"
+#import "AEExamInfoVC.h"
 
 @interface AEHomePageVC ()<UINavigationControllerDelegate>
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
@@ -38,16 +40,16 @@
     
     [self initTableView];
     
-//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btn.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:btn];
-//    btn.frame = CGRectMake(100, 100, 100, 100);
-//    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.backgroundColor = [UIColor redColor];
+    [self.view addSubview:btn];
+    btn.frame = CGRectMake(100, 100, 100, 100);
+    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
     
     [self.noticeView updateNoShowNumber:5];
 }
 - (void)buy {
-    [self.navigationController pushViewController:[AEExamResultVC new] animated:YES];
+    [self.navigationController pushViewController:[AEExamInfoVC new] animated:YES];
 }
 
 - (void)initTableView {
@@ -146,7 +148,9 @@
 //隐藏导航栏
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     BOOL home =
-    [viewController isKindOfClass:[AECustomSegmentVC class]];
+    [viewController isKindOfClass:[AECustomSegmentVC class]] ||
+    [viewController isKindOfClass:[AEExamAnalyzeVC class]]    ||
+    [viewController isKindOfClass:[AEExamInfoVC class]];
     [navigationController setNavigationBarHidden:home animated:YES];
 }
 #pragma mark - 懒加载

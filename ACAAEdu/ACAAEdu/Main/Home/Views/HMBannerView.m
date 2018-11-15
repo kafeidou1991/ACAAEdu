@@ -65,6 +65,9 @@
     }
     return self;
 }
+-(void)layoutSubviews {
+    self.imageView.frame = self.bounds;
+}
 
 
 
