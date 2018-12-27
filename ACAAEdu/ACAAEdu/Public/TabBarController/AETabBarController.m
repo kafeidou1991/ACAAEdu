@@ -9,6 +9,7 @@
 #import "AETabBarController.h"
 #import "AENavigationController.h"
 #import "AEBaseController.h"
+#import "AEExamVC.h"
 
 @interface AETabBarController ()<UITabBarControllerDelegate>
 
@@ -40,8 +41,8 @@
 
 - (void)setupChildViewControllers {
     [self addChildControllerName:@"AEHomePageVC" normalImage:[self layoutImageName:@"tabBar_home_h"] selectedImage:[self layoutImageName:@"tabBar_home_l"] title:@""];
-    [self addChildControllerName:@"AEExamVC" normalImage:[self layoutImageName:@"tabBar_acaa_h"] selectedImage:[self layoutImageName:@"tabBar_acaa_l"] title:@""];
-    [self addChildControllerName:@"AEExamVC" normalImage:[self layoutImageName:@"tabBar_autodesk_h"] selectedImage:[self layoutImageName:@"tabBar_autodesk_l"] title:@""];
+    [self addChildControllerName:@"AEExamVC1" normalImage:[self layoutImageName:@"tabBar_acaa_h"] selectedImage:[self layoutImageName:@"tabBar_acaa_l"] title:@""];
+    [self addChildControllerName:@"AEExamVC2" normalImage:[self layoutImageName:@"tabBar_autodesk_h"] selectedImage:[self layoutImageName:@"tabBar_autodesk_l"] title:@""];
     [self addChildControllerName:@"AEMeCenterVC" normalImage:[self layoutImageName:@"tabBar_me_h"] selectedImage:[self layoutImageName:@"tabBar_me_l"] title:@""];
 }
 - (NSString *)layoutImageName:(NSString *)imgName {
@@ -58,8 +59,16 @@
                    normalImage:(NSString *)normalImage
                  selectedImage:(NSString *)selectedImage
                          title:(NSString *)title {
-    Class class = NSClassFromString(controllerName);
-    AEBaseController *controller = [class new];
+    Class class;
+    AEBaseController *controller;
+    if ([controllerName isEqualToString:@"AEExamVC1"]) {
+        controller = [[AEExamVC alloc]initWithType:AEExamACAAType];
+    }else if ([controllerName isEqualToString:@"AEExamVC2"]) {
+        controller = [[AEExamVC alloc]initWithType:AEExamAUTODESKType];
+    }else {
+        class = NSClassFromString(controllerName);
+        controller = [class new];
+    }
     
     UIImage *normalImg = [[UIImage imageNamed:normalImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     

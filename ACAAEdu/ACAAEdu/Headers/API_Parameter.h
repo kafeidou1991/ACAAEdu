@@ -56,6 +56,10 @@
 #define kBanner @"mobile/system/banner"
 //科目列表
 #define kIndexList @"mobile/subject/index"
+//ACAA考试列表
+#define kAcaaList  @"mobile/subject/acaa"
+//AUTO考试列表
+#define kAutodeskList  @"mobile/subject/autodesk"
 //筛选类别列表
 #define kCategoryList @"mobile/subject_category/index"
 //筛选版本列表

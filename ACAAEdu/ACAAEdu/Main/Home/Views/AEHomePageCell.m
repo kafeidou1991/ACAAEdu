@@ -35,12 +35,7 @@
     self.moreBtn.hidden = YES;
     
 }
--(void)updateMoreCell:(AEExamItem *)item {
-    [self setContentText:item];
-    self.buyBtn.hidden = YES;
-    self.moreBtn.hidden = NO;
-    self.moreBtn.selected = item.isSelect;
-}
+
 
 - (void)setMyExamContentText:(AEMyExamItem *)item {
     self.nameLabel.text = item.subject.subject_full_name;
@@ -53,8 +48,8 @@
     self.nameLabel.text = item.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"%@",item.version];
     self.categoryLabel.text = [NSString stringWithFormat:@"%@",item.short_name];
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_price];
-    NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:@"￥500" attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_discount];
+    NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:STRISEMPTY(item.subject_price) ? @"￥0":[NSString stringWithFormat:@"￥%@",item.subject_price] attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
     self.orginPriceLabel.attributedText = attStr;
 }
 
@@ -63,11 +58,6 @@
         _buyBlock();
     }
 }
-//更多点击
-- (IBAction)moreAction:(UIButton *)sender {
-    if (_moreBlock) {
-        _moreBlock(sender);
-    }
-}
+
 
 @end

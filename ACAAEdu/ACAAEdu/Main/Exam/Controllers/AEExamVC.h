@@ -7,8 +7,13 @@
 //
 
 #import "AEBaseTableController.h"
+typedef NS_ENUM(NSInteger, AEExamType) {
+    AEExamACAAType = 0,
+    AEExamAUTODESKType ,
+};
 
 @interface AEExamVC : AEBaseTableController
 
+- (instancetype)initWithType:(AEExamType) examType;
 
 @end

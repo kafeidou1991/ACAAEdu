@@ -40,11 +40,11 @@
     
     [self initTableView];
     
-    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.backgroundColor = [UIColor redColor];
-    [self.view addSubview:btn];
-    btn.frame = CGRectMake(100, 100, 100, 100);
-    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:btn];
+//    btn.frame = CGRectMake(100, 100, 100, 100);
+//    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
     
     [self.noticeView updateNoShowNumber:5];
 }

@@ -11,8 +11,6 @@
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AEForgetPwVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AEForgetPwVC.m */; };
 		B7131020202B55C7001CBAE8 /* AEForgetPwVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AEForgetPwVC.xib */; };
-		B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */; };
-		B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */ = {isa = PBXBuildFile; fileRef = B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */; };
 		B7432DFA20DA8B6F00A07A75 /* AERegistIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7432DF920DA8B6E00A07A75 /* AERegistIdCardVC.m */; };
 		B7432DFE20DA8BAC00A07A75 /* AEBindIdCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7432DFC20DA8BAC00A07A75 /* AEBindIdCardVC.xib */; };
 		B7432DFF20DA8BAC00A07A75 /* AEBindIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7432DFD20DA8BAC00A07A75 /* AEBindIdCardVC.m */; };
@@ -210,9 +208,6 @@
 		B713101C202B55C6001CBAE8 /* AEForgetPwVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEForgetPwVC.h; sourceTree = "<group>"; };
 		B713101D202B55C7001CBAE8 /* AEForgetPwVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEForgetPwVC.m; sourceTree = "<group>"; };
 		B713101E202B55C7001CBAE8 /* AEForgetPwVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEForgetPwVC.xib; sourceTree = "<group>"; };
-		B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AEGoodsBasketView.xib; sourceTree = "<group>"; };
-		B73ED697205408AC00B7C2B3 /* AEGoodsBasketView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEGoodsBasketView.h; sourceTree = "<group>"; };
-		B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEGoodsBasketView.m; sourceTree = "<group>"; };
 		B7432DF920DA8B6E00A07A75 /* AERegistIdCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERegistIdCardVC.m; sourceTree = "<group>"; };
 		B7432DFB20DA8BAC00A07A75 /* AEBindIdCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEBindIdCardVC.h; sourceTree = "<group>"; };
 		B7432DFC20DA8BAC00A07A75 /* AEBindIdCardVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AEBindIdCardVC.xib; sourceTree = "<group>"; };
@@ -569,9 +564,6 @@
 		B73ED695205408AC00B7C2B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B73ED697205408AC00B7C2B3 /* AEGoodsBasketView.h */,
-				B73ED698205408AC00B7C2B3 /* AEGoodsBasketView.m */,
-				B73ED696205408AC00B7C2B3 /* AEGoodsBasketView.xib */,
 				B90615742057EC2600801D38 /* AEOrderDetailCell.h */,
 				B90615752057EC2600801D38 /* AEOrderDetailCell.m */,
 				B90615762057EC2600801D38 /* AEOrderDetailCell.xib */,
@@ -1458,7 +1450,6 @@
 				B9A60443205BA9A100278568 /* AEScreenHeaderView.xib in Resources */,
 				B9D8E01E2182B8FC0027CFD2 /* AEInfoFooterView.xib in Resources */,
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
-				B73ED699205408AC00B7C2B3 /* AEGoodsBasketView.xib in Resources */,
 				B9D29533207F3A960010B9B3 /* AEExamResultCell.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
 				B906157D2057F8BE00801D38 /* AEOrderDetailFooterView.xib in Resources */,
@@ -1659,7 +1650,6 @@
 				B93C7CE0205A154300FC5E6C /* AEPurchaseManage.m in Sources */,
 				B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */,
 				B9B9173720187DE2002A63CE /* AEMeCenterVC.m in Sources */,
-				B73ED69A205408AC00B7C2B3 /* AEGoodsBasketView.m in Sources */,
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
 				B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */,
