@@ -8,15 +8,22 @@
 
 #import "AEExamContentView.h"
 #import "AEExamContentCell.h"
+#import "AEExamTimeView.h"
 
+static CGFloat const timeViewHeight = 50.f;
 
-@interface AEExamContentView ()<UICollectionViewDelegate, UICollectionViewDataSource>{
+@interface AEExamContentView ()<UICollectionViewDataSource, UICollectionViewDelegate>{
     int questionCount;
 }
 /**
  试题数据源
  */
 @property (nonatomic, strong) AEExamQuestionItem * data;
+
+/**
+ 显示倒计时
+ */
+@property (nonatomic, strong) AEExamTimeView * timerView;
 
 
 @end
@@ -39,6 +46,7 @@
     vlf.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     if (self = [super initWithFrame:frame collectionViewLayout:vlf]) {
         [self registerNib:[UINib nibWithNibName:@"AEExamContentCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AEExamContentCell class])];
+        [self registerNib:[UINib nibWithNibName:@"AEExamTimeView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionHeaderIdentifier"];
         self.backgroundColor = [UIColor clearColor];
         self.dataSource = self;
         self.delegate = self;
@@ -120,5 +128,31 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return self.frame.size;
 }
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+        if (kind == UICollectionElementKindSectionHeader) {
+            AEExamTimeView * headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CollectionHeaderIdentifier" forIndexPath:indexPath];
+            headerView.backgroundColor = [UIColor redColor];
+//            headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, timeViewHeight);
+//            self.timerView = headerView;
+            return headerView;
+        }
+    }
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(SCREEN_WIDTH, 0);
+}
+
+
+//- (AEExamTimeView *)timerView {
+//    if (!_timerView) {
+//        _timerView = [[NSBundle mainBundle]loadNibNamed:@"AEExamTimeView" owner:nil options:nil].firstObject;
+//        _timerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, timeViewHeight);
+//    }
+//    return _timerView;
+//}
 
 @end

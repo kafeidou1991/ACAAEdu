@@ -16,6 +16,8 @@
 		B7432DFF20DA8BAC00A07A75 /* AEBindIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7432DFD20DA8BAC00A07A75 /* AEBindIdCardVC.m */; };
 		B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */; };
 		B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */; };
+		B762D4AF21DC97AF00FADCD5 /* AEExamTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B762D4AE21DC97AF00FADCD5 /* AEExamTimeView.m */; };
+		B762D4B121DC983700FADCD5 /* AEExamTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B762D4B021DC983700FADCD5 /* AEExamTimeView.xib */; };
 		B7897CF6207265C900F53E36 /* NSString+AEMatchTextMix.m in Sources */ = {isa = PBXBuildFile; fileRef = B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */; };
 		B7897CF92072753F00F53E36 /* AEQuestionHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B7897CF82072753F00F53E36 /* AEQuestionHeaderVIew.m */; };
 		B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92542029DCC9002D0B66 /* CExpandHeader.m */; };
@@ -215,6 +217,9 @@
 		B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailVC.h; sourceTree = "<group>"; };
 		B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailVC.m; sourceTree = "<group>"; };
 		B758DB38204ED4DC0017B270 /* AEOrderDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailVC.xib; sourceTree = "<group>"; };
+		B762D4AD21DC97AF00FADCD5 /* AEExamTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamTimeView.h; sourceTree = "<group>"; };
+		B762D4AE21DC97AF00FADCD5 /* AEExamTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamTimeView.m; sourceTree = "<group>"; };
+		B762D4B021DC983700FADCD5 /* AEExamTimeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamTimeView.xib; sourceTree = "<group>"; };
 		B7897CF4207265C900F53E36 /* NSString+AEMatchTextMix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AEMatchTextMix.h"; sourceTree = "<group>"; };
 		B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AEMatchTextMix.m"; sourceTree = "<group>"; };
 		B7897CF72072753F00F53E36 /* AEQuestionHeaderVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEQuestionHeaderVIew.h; sourceTree = "<group>"; };
@@ -646,6 +651,9 @@
 				B9DE2B4B2074B36600BC09C9 /* AEExamBottomView.h */,
 				B9DE2B4C2074B36600BC09C9 /* AEExamBottomView.m */,
 				B9DE2B4E2074B37000BC09C9 /* AEExamBottomView.xib */,
+				B762D4AD21DC97AF00FADCD5 /* AEExamTimeView.h */,
+				B762D4AE21DC97AF00FADCD5 /* AEExamTimeView.m */,
+				B762D4B021DC983700FADCD5 /* AEExamTimeView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1331,7 +1339,6 @@
 				B9B18EF9201826C200BA38BE /* Sources */,
 				B9B18EFA201826C200BA38BE /* Frameworks */,
 				B9B18EFB201826C200BA38BE /* Resources */,
-				EABB2E04327441F761E890F3 /* [CP] Embed Pods Frameworks */,
 				05F4AF30245C506B507D983D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1443,6 +1450,7 @@
 				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
+				B762D4B121DC983700FADCD5 /* AEExamTimeView.xib in Resources */,
 				B7432DFE20DA8BAC00A07A75 /* AEBindIdCardVC.xib in Resources */,
 				B7C44246206D250400D4EA03 /* AEExamContentCell.xib in Resources */,
 				B9F299B72181981000C767DD /* AESetNickNamePwVC.xib in Resources */,
@@ -1503,7 +1511,11 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoActionSheet.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowserCell.nib",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowser.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1526,21 +1538,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EABB2E04327441F761E890F3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1582,6 +1579,7 @@
 				B94C1CE920401B3F006344F2 /* CGXAddressModel.m in Sources */,
 				B94C1CEB20401B3F006344F2 /* CGXStringPickerView.m in Sources */,
 				B9DFA1E8206F8ACC00AFAD27 /* AEAnswerCardCell.m in Sources */,
+				B762D4AF21DC97AF00FADCD5 /* AEExamTimeView.m in Sources */,
 				B918BBC6202B088700EDB00D /* WLScaleLayoutConstrain.m in Sources */,
 				B992CEEE207371E7007F3EF2 /* XHImageViewer.m in Sources */,
 				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,

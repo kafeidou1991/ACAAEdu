@@ -69,12 +69,30 @@ alpha:1.0]
 // home indicator
 #define HOME_INDICATOR_HEIGHT (IS_IPHONEX ? 34.f : 0.f)
 
-// MARK: -----设备相关-----
-#define IS_IPHONE4 [[UIScreen mainScreen] bounds].size.height == 480.0
-#define IS_IPHONE5 [[UIScreen mainScreen] bounds].size.height == 568.0
-#define IS_IPHONE6 [[UIScreen mainScreen] bounds].size.height == 667.0
-#define IS_IPHONE6PLUS [[UIScreen mainScreen] bounds].size.height == 736.0
-#define IS_IPHONEX (([[UIScreen mainScreen] bounds].size.height-812)?NO:YES)
+// MARK: 设备相关
+#define isPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+// 320 480
+#define IS_IPHONE4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 320 568
+#define IS_IPHONE5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 375 667
+#define IS_IPHONE6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 414 736
+#define IS_IPHONE6PLUS ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 375 812
+#define IS_IPHONE_X ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 414 896
+#define IS_IPHONE_Xr ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828, 1792), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 375 812
+#define IS_IPHONE_Xs ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 414 896
+#define IS_IPHONE_Xs_Max ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2688), [[UIScreen mainScreen] currentMode].size) && !isPad : NO)
+// 全局的X系列判定
+#define IS_IPHONEX (IS_IPHONE_X==YES || IS_IPHONE_Xr ==YES || IS_IPHONE_Xs== YES || IS_IPHONE_Xs_Max== YES)
+// 全局的宽度判定
+#define IS_IPHONE_320 (IS_IPHONE4 == YES || IS_IPHONE5 == YES)
+#define IS_IPHONE_375 (IS_IPHONE6 == YES || IS_IPHONE_X == YES || IS_IPHONE_Xs == YES)
+#define IS_IPHONE_414 (IS_IPHONE6PLUS == YES || IS_IPHONE_Xr == YES || IS_IPHONE_Xs_Max == YES)
 
 // MARK: -----按屏幕大小缩放-----
 #define MAIN_SCALE (IS_IPHONE5?0.9:(IS_IPHONE6?1:1.1))

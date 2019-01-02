@@ -12,6 +12,7 @@
 #import "AEAnswerCardVC.h"
 #import "AEExamResultVC.h"
 #import "AEExamBottomView.h"
+#import "AEExamTimeView.h"
 
 static CGFloat const bottomViewHeight = 50.f;
 
@@ -24,10 +25,6 @@ static CGFloat const bottomViewHeight = 50.f;
  定时器
  */
 @property (nonatomic, strong) AETimerHelper * timer;
-/**
- 显示倒计时
- */
-@property (nonatomic, strong) UILabel * timerLabel;
 /**
  答题卡
  */
@@ -60,8 +57,7 @@ static CGFloat const bottomViewHeight = 50.f;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"ACAA考试";
-    self.navigationItem.rightBarButtonItems = [self createCustomBarButtons];
+    [self topNavtiation];
     WS(weakSelf)
     self.answerCardVC.selectedBlock = ^(NSIndexPath *indexPath) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -150,7 +146,7 @@ static CGFloat const bottomViewHeight = 50.f;
     WS(weakSelf)
     [self.timer countDownTimeInterval:countdown completeBlock:^(NSString *timeString, BOOL finish) {
         if (!finish) {
-            weakSelf.timerLabel.text = timeString;
+//            weakSelf.timerView.timeLabel.text = timeString;
         }else {
             //考试结束 应该交卷
             [weakSelf timeCountDownAction];
@@ -225,9 +221,16 @@ static CGFloat const bottomViewHeight = 50.f;
 }
 -(AEExamContentView *)contentView {
     if (!_contentView) {
-        _contentView = [[AEExamContentView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - bottomViewHeight)];
+        _contentView = [[AEExamContentView alloc]initWithFrame:CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - bottomViewHeight - ySpace)];
     }
     return _contentView;
+}
+-(AEExamBottomView *)bottomView {
+    if (!_bottomView) {
+        _bottomView = [[NSBundle mainBundle]loadNibNamed:@"AEExamBottomView" owner:nil options:nil].firstObject;
+        _bottomView.frame = CGRectMake(0, SCREEN_HEIGHT - bottomViewHeight, SCREEN_WIDTH, bottomViewHeight);
+    }
+    return _bottomView;
 }
 -(NSMutableArray *)dataSourceArr {
     if (!_dataSourceArr) {
@@ -241,11 +244,11 @@ static CGFloat const bottomViewHeight = 50.f;
     }
     return _timer;
 }
-- (NSArray <UIBarButtonItem *>*)createCustomBarButtons{
-    //隐藏答题卡
-//    ,[AEBase createCustomBarButtonItem:self action:@selector(gotoAnswerCard) image:@"answerCard"]
-    return @[[[UIBarButtonItem alloc]initWithCustomView:self.timerLabel]];
-}
+//- (NSArray <UIBarButtonItem *>*)createCustomBarButtons{
+//    //隐藏答题卡
+////    ,[AEBase createCustomBarButtonItem:self action:@selector(gotoAnswerCard) image:@"answerCard"]
+//    return @[[[UIBarButtonItem alloc]initWithCustomView:self.timerLabel]];
+//}
 - (void)gotoAnswerCard {
     if (self.dataSourceArr.count <= 0) {
         [AEBase alertMessage:@"没有考题内容，请返回刷新考题" cb:nil];
@@ -262,19 +265,6 @@ static CGFloat const bottomViewHeight = 50.f;
     return _answerCardVC;
 }
 
-- (UILabel *)timerLabel {
-    if (!_timerLabel) {
-        _timerLabel = [AEBase createLabel:CGRectMake(0, 0, 60, 25) font:[UIFont systemFontOfSize:14.f] text:@"" defaultSizeTxt:nil color:[UIColor whiteColor] backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentCenter];
-    }
-    return _timerLabel;
-}
--(AEExamBottomView *)bottomView {
-    if (!_bottomView) {
-        _bottomView = [[NSBundle mainBundle]loadNibNamed:@"AEExamBottomView" owner:nil options:nil].firstObject;
-        _bottomView.frame = CGRectMake(0, SCREEN_HEIGHT - NAVIGATION_HEIGHT - bottomViewHeight, SCREEN_WIDTH, bottomViewHeight);
-    }
-    return _bottomView;
-}
 - (void)backAction:(UIButton *)sender {
     if (self.dataSourceArr.count == 0) {
         [self.navigationController popViewControllerAnimated:YES];
@@ -290,6 +280,16 @@ static CGFloat const bottomViewHeight = 50.f;
     [self presentViewController:alertVC animated:YES completion:nil];
 }
 
+//顶部导航
+- (void)topNavtiation {
+    [self.view addSubview:self.baseTopView];
+    self.baseTopView.titleName = @"开始考试";
+    self.baseTopView.imageViewName = @"exam_top_banner";
+    WS(weakSelf)
+    self.baseTopView.backBlock = ^{
+        [weakSelf backAction:nil];
+    };
+}
 
 
 

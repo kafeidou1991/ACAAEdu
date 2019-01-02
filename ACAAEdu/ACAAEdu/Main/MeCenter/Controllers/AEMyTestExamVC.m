@@ -24,9 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self topNavtiation];
+    self.baseTopView.titleName = @"我的考试";
     [self initTableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
+//    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:@"kExamResultBack" object:nil];
 }
 
@@ -44,7 +46,9 @@
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kMyTestExamList query:nil path:nil body:@{@"status":(_examType == NoneTestExamType ? @"1" : @"2"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]} success:^(id object) {
+    NSDictionary * pramDict = @{@"page":[NSString stringWithFormat:@"%ld",self.currPage]};
+//     pramDict = @{@"status":(_examType == NoneTestExamType ? @"1" : @"2"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]};
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kMyTestExamList query:nil path:nil body:pramDict success:^(id object) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (weakSelf.currPage == 1) {
                 [weakSelf.dataSources removeAllObjects];
@@ -92,11 +96,12 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEMyExamCell * cell = [AEMyExamCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell updateMyTestExamCell:self.dataSources[indexPath.row] done:_examType];
+    [cell updateMyTestExamCell:self.dataSources[indexPath.row]];
     return cell;
 }
 - (void) pushExamVC:(NSIndexPath * )indexPath {
-    if (_examType == NoneTestExamType) {
+    AEMyExamItem * item = self.dataSources[indexPath.row];
+    if (item.pass != 1) {
 //        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
         AEExamPaperVC * VC = [AEExamPaperVC new];
         VC.examItem = self.dataSources[indexPath.row];
@@ -127,7 +132,12 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-
+//顶部导航
+- (void)topNavtiation {
+    [self.view addSubview:self.baseTopView];
+    self.baseTopView.titleName = @"我的考试";
+    self.baseTopView.imageViewName = @"exam_top_banner";
+}
 
 
 @end

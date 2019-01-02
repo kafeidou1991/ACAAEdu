@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AEExamTimeView">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exam_countdown" translatesAutoresizingMaskIntoConstraints="NO" id="Rn4-1m-jxR">
+                    <rect key="frame" x="20" y="15" width="20" height="20"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXI-wG-b6n">
+                    <rect key="frame" x="50" y="8" width="29" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="答题数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ND-bL-2Ky">
+                    <rect key="frame" x="50" y="25" width="43" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.94117647058823528" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSS-Rz-6Gv">
+                    <rect key="frame" x="109" y="16.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dR-oK-L62">
+                    <rect key="frame" x="109" y="33.5" width="0.0" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.80000000000000004" green="0.94117647059999998" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.65098039215686276" green="0.9137254901960784" blue="0.88235294117647056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="UXI-wG-b6n" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ETu-4i-g8S"/>
+                <constraint firstItem="jSS-Rz-6Gv" firstAttribute="leading" secondItem="UXI-wG-b6n" secondAttribute="trailing" constant="30" id="HmS-cR-dwq"/>
+                <constraint firstItem="9ND-bL-2Ky" firstAttribute="leading" secondItem="UXI-wG-b6n" secondAttribute="leading" id="LKJ-aa-XLN"/>
+                <constraint firstItem="5dR-oK-L62" firstAttribute="centerY" secondItem="9ND-bL-2Ky" secondAttribute="centerY" id="WE7-5h-ADG"/>
+                <constraint firstItem="5dR-oK-L62" firstAttribute="leading" secondItem="jSS-Rz-6Gv" secondAttribute="leading" id="YCr-LR-qbP"/>
+                <constraint firstItem="UXI-wG-b6n" firstAttribute="leading" secondItem="Rn4-1m-jxR" secondAttribute="trailing" constant="10" id="ipp-zj-3Xm"/>
+                <constraint firstItem="Rn4-1m-jxR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="jDS-t3-b24"/>
+                <constraint firstItem="9ND-bL-2Ky" firstAttribute="top" secondItem="UXI-wG-b6n" secondAttribute="bottom" id="ohX-0r-fZ9"/>
+                <constraint firstItem="Rn4-1m-jxR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="sdf-P7-dte"/>
+                <constraint firstItem="jSS-Rz-6Gv" firstAttribute="centerY" secondItem="UXI-wG-b6n" secondAttribute="centerY" id="xb3-eb-YVG"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="examNumLabel" destination="5dR-oK-L62" id="p8H-Hg-cdQ"/>
+                <outlet property="timeLabel" destination="jSS-Rz-6Gv" id="LHu-fv-Tj0"/>
+            </connections>
+            <point key="canvasLocation" x="85" y="-99"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="exam_countdown" width="20" height="20"/>
+    </resources>
+</document>

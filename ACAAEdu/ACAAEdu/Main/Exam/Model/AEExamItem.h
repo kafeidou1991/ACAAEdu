@@ -46,10 +46,11 @@
 
 
 @property (nonatomic, copy) NSString * id;
-@property (nonatomic, copy) NSString * status;
+@property (nonatomic, copy) NSString * status; //0=>未开始 1 =>进行中 2=>完成考试
 @property (nonatomic, strong) AEExamSubjectItem * subject;
 @property (nonatomic, copy) NSString * user_id;
 @property (nonatomic, copy) NSString * subject_id;
+@property (nonatomic, assign) int pass;    //0=>未通过 1 =>通过 2=>待打分
 
 
 @end

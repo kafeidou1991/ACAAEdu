@@ -103,13 +103,14 @@
         PUSHLoginCustomViewController(customVC, self)
     }else if ([title isEqualToString:@"我的模考"]) {
         AECustomSegmentVC * customVC = [AECustomSegmentVC new];
-        customVC.baseTopView.titleName = @"我的模考";
+//        customVC.baseTopView.titleName = @"我的模考";
+//        AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
+//        noExamVC.examType = NoneTestExamType;
+//        AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
+//        hasExamVC.examType = HasTestExamType;
+//        [customVC setupPageView:@[@"未考试",@"已考试"] ContentViewControllers:@[noExamVC,hasExamVC]];
         AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
-        noExamVC.examType = NoneTestExamType;
-        AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
-        hasExamVC.examType = HasTestExamType;
-        [customVC setupPageView:@[@"未考试",@"已考试"] ContentViewControllers:@[noExamVC,hasExamVC]];
-        PUSHLoginCustomViewController(customVC, self)
+        PUSHLoginCustomViewController(noExamVC, self)
     }
 }
 
@@ -119,6 +120,7 @@
 
 //隐藏导航栏
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
     BOOL home =
       [viewController isKindOfClass:[self class]]
     ||[viewController isKindOfClass:[AESettingVC class]]
@@ -127,7 +129,9 @@
     ||[viewController isKindOfClass:[AEModifierInfoVC class]]
     ||[viewController isKindOfClass:[AEBindIdCardVC class]]
     ||[viewController isKindOfClass:[AECustomSegmentVC class]]
+    ||[viewController isKindOfClass:[AEMyTestExamVC class]]
     ||[viewController isKindOfClass:[AEUserInfoVC class]]
+    ||[viewController isKindOfClass:[NSClassFromString(@"AEExamPaperVC") class]]
     ;
     [navigationController setNavigationBarHidden:home animated:YES];
 }
