@@ -12,7 +12,7 @@
 #import "AERegistNewVC.h"
 #import "AEModifierInfoVC.h"
 
-@interface AELoginVC ()<UITextFieldDelegate,UINavigationControllerDelegate>
+@interface AELoginVC ()<UITextFieldDelegate>
 /**
  账号框
  */
@@ -44,7 +44,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"登录";
-    self.navigationController.delegate = self;
     [self initComonpent];
     
 }
@@ -162,10 +161,6 @@
 - (IBAction)backAction:(UIButton *)sender {
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
-}
--(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    BOOL isShow = [viewController isKindOfClass:[self class]];
-    [navigationController setNavigationBarHidden:isShow animated:YES];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

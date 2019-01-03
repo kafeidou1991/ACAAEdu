@@ -94,15 +94,14 @@
 @property (nonatomic, copy) NSString * pay_price; //
 @property (nonatomic, copy) NSString * pay_type; //支付类型  alipay
 @property (nonatomic, copy) NSString * pay_type_txt;
-@property (nonatomic, copy) NSString * pay_status;
+@property (nonatomic, copy) NSString * pay_status; //0 未支付需要走支付流程  1 支付完成直接进入购买的商品列表
 @property (nonatomic, copy) NSString * goods_price; //商品价格
 @property (nonatomic, strong) NSArray * goods;   //商品项目
 
 @end
 
-
+@class AEExamItem;
 @interface AEGoodItem :DateCenter
-
 @property (nonatomic, copy) NSString * goods_id; //商品id
 @property (nonatomic, copy) NSString * goods_num; //商品条目
 @property (nonatomic, copy) NSString * id; //商品id
@@ -110,6 +109,7 @@
 @property (nonatomic, copy) NSString * orders_no; //商品订单
 @property (nonatomic, copy) NSString * goods_name; //商品名称
 @property (nonatomic, copy) NSString * goods_type; //商品类型
+@property (nonatomic, strong) AEExamItem * goods_attr_data; //商品信息
 
 @end
 

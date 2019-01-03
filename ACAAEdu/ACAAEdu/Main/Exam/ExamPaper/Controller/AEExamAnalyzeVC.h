@@ -10,4 +10,5 @@
 
 @interface AEExamAnalyzeVC : AEBaseController
 
+@property (nonatomic, copy) NSString * examId;
 @end

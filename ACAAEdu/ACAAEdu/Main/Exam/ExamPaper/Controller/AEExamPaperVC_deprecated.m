@@ -12,7 +12,7 @@
 #import "JWScrollPageView.h"
 #import "AEExamContentView.h"
 #import "AEAnswerCardVC.h"
-#import "AEExamResultVC.h"
+#import "AEExamResultVC_deprecated.h"
 
 #define MENUHEIHT 41
 
@@ -212,7 +212,7 @@
         AEExamQuestionItem * item = self.dataSourceArr[0];
         [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.id} success:^(id object) {
             [weakSelf hudclose];
-            AEExamResultVC * VC = [AEExamResultVC new];
+            AEExamResultVC_deprecated * VC = [AEExamResultVC_deprecated new];
             VC.examId = item.id;
             [weakSelf.navigationController pushViewController:VC animated:YES];
             

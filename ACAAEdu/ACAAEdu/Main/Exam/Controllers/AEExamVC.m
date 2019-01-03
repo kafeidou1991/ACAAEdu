@@ -124,7 +124,7 @@
     [cell updateCell:self.dataSources[indexPath.row]];
     //点击购买
     cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:@[weakSelf.dataSources[indexPath.row]]];
+        [weakSelf pushOrderDetailVC:weakSelf.dataSources[indexPath.row]];
     };
     return cell;
 }
@@ -139,12 +139,12 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self pushOrderDetailVC:@[self.dataSources[indexPath.row]]];
+    [self pushOrderDetailVC:self.dataSources[indexPath.row]];
 }
 
-- (void)pushOrderDetailVC:(NSArray *)data {
+- (void)pushOrderDetailVC:(AEExamItem *)item {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
-    [VC loadData:data];
+    VC.item = item;
     PUSHLoginCustomViewController(VC, self);
 }
 

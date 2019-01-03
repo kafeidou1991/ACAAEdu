@@ -12,12 +12,12 @@
 @property (nonatomic, copy) NSString * id;
 @property (nonatomic, copy) NSString * subject_price; //原价
 @property (nonatomic, copy) NSString * subject_discount; //折扣价
-@property (nonatomic, copy) NSString * version;
+@property (nonatomic, copy) NSString * version; //版本
 @property (nonatomic, copy) NSString * subject_full_name;
 @property (nonatomic, copy) NSString * delete_time;
 @property (nonatomic, copy) NSString * short_name;
 @property (nonatomic, copy) NSString * subject_type;
-@property (nonatomic, copy) NSString * subject_type_name;
+@property (nonatomic, copy) NSString * subject_type_name; //类别
 @property (nonatomic, copy) NSString * language;
 @property (nonatomic, copy) NSString * is_actived;
 @property (nonatomic, copy) NSString * subject_name;

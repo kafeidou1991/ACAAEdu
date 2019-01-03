@@ -7,6 +7,7 @@
 //
 
 #import "AEMyOrderCell.h"
+#import "AEExamItem.h"
 
 @interface AEMyOrderCell ()
 
@@ -31,8 +32,8 @@
 
 - (void)updateCell:(AEGoodItem *)item{
     self.titleLabel.text = item.goods_name;
-    self.versionLabel.text = [NSString stringWithFormat:@"版本:2018"];
-    self.cateLabel.text = [NSString stringWithFormat:@"类别:CAD"];
+    self.versionLabel.text = [NSString stringWithFormat:@"版本:%@",item.goods_attr_data.version];
+    self.cateLabel.text = [NSString stringWithFormat:@"类别:%@",item.goods_attr_data.subject_type_name];
 }
 
 

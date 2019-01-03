@@ -8,7 +8,7 @@
 
 #import "AEAnswerCardVC.h"
 #import "AnswerCardReusableView.h"
-#import "AEExamResultVC.h"
+#import "AEExamAnalyzeVC.h"
 #import "AEAnswerCardView.h"
 
 @interface AEAnswerCardVC (){
@@ -81,7 +81,7 @@
         AEExamQuestionItem * item = self.paperData[0];
         [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":item.exam_id} success:^(id object) {
             [weakSelf hudclose];
-            AEExamResultVC * VC = [AEExamResultVC new];
+            AEExamAnalyzeVC * VC = [AEExamAnalyzeVC new];
             VC.examId = item.exam_id;
             [weakSelf.navigationController pushViewController:VC animated:YES];
             

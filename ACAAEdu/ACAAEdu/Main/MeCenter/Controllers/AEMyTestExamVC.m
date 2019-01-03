@@ -11,8 +11,8 @@
 #import "AEMyExamCell.h"
 #import "AEExamItem.h"
 #import "AEExamPaperVC_deprecated.h"
-#import "AEExamResultVC.h"
 #import "AEExamPaperVC.h"
+#import "AEExamAnalyzeVC.h"
 
 
 
@@ -101,15 +101,15 @@
 }
 - (void) pushExamVC:(NSIndexPath * )indexPath {
     AEMyExamItem * item = self.dataSources[indexPath.row];
-    if (item.pass != 1) {
-//        AEExamPaperInfoVC * VC = [AEExamPaperInfoVC new];
-        AEExamPaperVC * VC = [AEExamPaperVC new];
-        VC.examItem = self.dataSources[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-    }else {
-        AEExamResultVC * VC = [AEExamResultVC new];
+    if (item.status.intValue == 2) {
+        //已经考试
+        AEExamAnalyzeVC * VC = [AEExamAnalyzeVC new];
         AEMyExamItem * item = self.dataSources[indexPath.row];
         VC.examId = item.id;
+        [self.navigationController pushViewController:VC animated:YES];
+    }else {
+        AEExamPaperVC * VC = [AEExamPaperVC new];
+        VC.examItem = self.dataSources[indexPath.row];
         [self.navigationController pushViewController:VC animated:YES];
     }
 }

@@ -36,19 +36,22 @@
     if (item.pass == 0) { //未通过
         self.statusView.backgroundColor = AEHexColor(@"B778FF");
         self.examRightView.image = [UIImage imageNamed:@"myexam_nopass"];
-        self.examStatusLabel.text = @"重新考试";
         self.resultLabel.text = [NSString stringWithFormat:@"考试结果:%@",@"未通过"];
     } else if (item.pass == 1) { //通过
         self.statusView.backgroundColor = AEHexColor(@"4ED3C1");
         self.examRightView.image = [UIImage imageNamed:@"myexam_pass"];
-        self.examStatusLabel.text = @"考试结束";
         self.resultLabel.text = [NSString stringWithFormat:@"考试结果:%@",@"通过"];
     } else if (item.pass == 2) { //评分
         self.statusView.backgroundColor = AEHexColor(@"FBAC52");
         self.examRightView.image = [UIImage imageNamed:@"myexam_waite"];
-        self.examStatusLabel.text = @"继续考试";
         self.resultLabel.text = [NSString stringWithFormat:@"考试结果:%@",@"待打分"];
-        
+    }
+    if (item.status.intValue == 2) {
+        self.examStatusLabel.text = @"查看结果";
+    }else  if (item.status.intValue == 1) {
+        self.examStatusLabel.text = @"继续考试";
+    }else {
+        self.examStatusLabel.text = @"开始考试";
     }
     
 }

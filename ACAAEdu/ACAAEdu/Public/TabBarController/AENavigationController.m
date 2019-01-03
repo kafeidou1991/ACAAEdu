@@ -21,6 +21,7 @@
     self.navigationBar.barTintColor = [UIColor whiteColor];
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
 //    self.navigationBar.shadowImage = [UIImage new];
+    self.delegate = self;
     
 }
 
@@ -33,8 +34,25 @@
     [super pushViewController:viewController animated:animated];
 }
 
-
-
+-(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    BOOL isShow =  [viewController isKindOfClass:NSClassFromString(@"AECustomSegmentVC")]
+//                 ||[viewController isKindOfClass:NSClassFromString(@"AEHomePageVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEExamAnalyzeVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEExamInfoVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEMeCenterVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AESettingVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEAboutMeVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEAccountSetVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEModifierInfoVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEBindIdCardVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEMyTestExamVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEUserInfoVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEExamPaperVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEExamAnalyzeVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AELoginVC")]
+    ;
+    [navigationController setNavigationBarHidden:isShow animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

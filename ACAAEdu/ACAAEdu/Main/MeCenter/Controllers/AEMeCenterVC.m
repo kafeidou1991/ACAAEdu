@@ -20,7 +20,7 @@
 #import "AEBindIdCardVC.h"
 #import "AEUserInfoVC.h"
 
-@interface AEMeCenterVC ()<UINavigationControllerDelegate>
+@interface AEMeCenterVC ()
 @property (nonatomic, strong) MeCenterHeaderView * loginHeaderView;
 @end
 
@@ -28,7 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.delegate = self;
     self.navigationItem.leftBarButtonItem = nil;
     self.view.backgroundColor = UIColorFromRGB(0x747476);
     [self addNotifications];
@@ -118,21 +117,4 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
-//隐藏导航栏
--(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-    BOOL home =
-      [viewController isKindOfClass:[self class]]
-    ||[viewController isKindOfClass:[AESettingVC class]]
-    ||[viewController isKindOfClass:[AEAboutMeVC class]]
-    ||[viewController isKindOfClass:[AEAccountSetVC class]]
-    ||[viewController isKindOfClass:[AEModifierInfoVC class]]
-    ||[viewController isKindOfClass:[AEBindIdCardVC class]]
-    ||[viewController isKindOfClass:[AECustomSegmentVC class]]
-    ||[viewController isKindOfClass:[AEMyTestExamVC class]]
-    ||[viewController isKindOfClass:[AEUserInfoVC class]]
-    ||[viewController isKindOfClass:[NSClassFromString(@"AEExamPaperVC") class]]
-    ;
-    [navigationController setNavigationBarHidden:home animated:YES];
-}
 @end

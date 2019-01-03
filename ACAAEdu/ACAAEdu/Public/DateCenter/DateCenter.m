@@ -7,6 +7,7 @@
 //
 
 #import "DateCenter.h"
+#import "AEExamItem.h"
 
 @implementation DateCenter
 //+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {

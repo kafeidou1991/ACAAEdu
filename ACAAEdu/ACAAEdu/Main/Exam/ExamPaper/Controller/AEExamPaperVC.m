@@ -10,11 +10,12 @@
 #import "AEExamItem.h"
 #import "AEExamContentView.h"
 #import "AEAnswerCardVC.h"
-#import "AEExamResultVC.h"
 #import "AEExamBottomView.h"
 #import "AEExamTimeView.h"
+#import "AEExamAnalyzeVC.h"
 
 static CGFloat const bottomViewHeight = 50.f;
+static CGFloat const timeViewHeight = 50.f;
 
 @interface AEExamPaperVC ()
 /**
@@ -25,6 +26,10 @@ static CGFloat const bottomViewHeight = 50.f;
  定时器
  */
 @property (nonatomic, strong) AETimerHelper * timer;
+/**
+ 显示倒计时
+ */
+@property (nonatomic, strong) AEExamTimeView * timerView;
 /**
  答题卡
  */
@@ -135,6 +140,8 @@ static CGFloat const bottomViewHeight = 50.f;
         
         //开启定时器
         [weakSelf openTimer:item.count_down_time.integerValue];
+        //设置题目数
+        weakSelf.timerView.examNumLabel.text = [NSString stringWithFormat:@"1 / %ld",item.question.count];
         
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -146,14 +153,14 @@ static CGFloat const bottomViewHeight = 50.f;
     WS(weakSelf)
     [self.timer countDownTimeInterval:countdown completeBlock:^(NSString *timeString, BOOL finish) {
         if (!finish) {
-//            weakSelf.timerView.timeLabel.text = timeString;
+            weakSelf.timerView.timeLabel.text = timeString;
         }else {
             //考试结束 应该交卷
             [weakSelf timeCountDownAction];
         }
     }];
 }
-//主动提交
+//MARK: 主动提交
 - (void)submitTest{
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"确认交卷?" message:@"请确认提交本次考试" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
@@ -162,7 +169,7 @@ static CGFloat const bottomViewHeight = 50.f;
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
-//倒计时结束
+//MARK: 倒计时结束
 - (void)timeCountDownAction {
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"交卷" message:@"考试时间已到，请交卷" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -170,7 +177,7 @@ static CGFloat const bottomViewHeight = 50.f;
     }]];
     [self presentViewController:alertVC animated:YES completion:nil];
 }
-//考卷超时
+//MARK: 考卷超时
 - (void)timeOutAction:(NSString *)exam_id {
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"交卷" message:@"考试时间已经结束，请交卷" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"交卷" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -192,7 +199,7 @@ static CGFloat const bottomViewHeight = 50.f;
     }
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSubmitExam query:nil path:nil body:@{@"exam_id":exam_id} success:^(id object) {
         [weakSelf hudclose];
-        AEExamResultVC * VC = [AEExamResultVC new];
+        AEExamAnalyzeVC * VC = [AEExamAnalyzeVC new];
         VC.examId = exam_id;
         [weakSelf.navigationController pushViewController:VC animated:YES];
         
@@ -203,22 +210,36 @@ static CGFloat const bottomViewHeight = 50.f;
 }
 //MARK: initUI
 - (void)createMainContentView {
+    [self.view addSubview:self.timerView];
     [self.view addSubview:self.contentView];
     [self.view addSubview:self.bottomView];
-    [_contentView refreshData:self.dataSourceArr[0]];
+    AEExamQuestionItem * item = self.dataSourceArr[0];
+    [_contentView refreshData:item];
     WS(weakSelf)
     self.bottomView.block = ^(BOOL isNext,UIButton * nextBtn) {
         //下一题 上一题
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.contentView scrollQuestion:isNext lastHandle:^(BOOL last) {
+            [weakSelf.contentView scrollQuestion:isNext lastHandle:^(BOOL last, int index) {
                 [nextBtn setTitle:last ? @"交卷" : @"下一题" forState:UIControlStateNormal];
             }];
         });
+    };
+    self.contentView.didScrollePage = ^(int page) {
+        weakSelf.timerView.examNumLabel.text = [NSString stringWithFormat:@"%d / %ld",page,item.question.count];
     };
     _contentView.submitExamBlock = ^{
         [weakSelf submitTest];
     };
 }
+- (AEExamTimeView *)timerView {
+    if (!_timerView) {
+        _timerView = [[NSBundle mainBundle]loadNibNamed:@"AEExamTimeView" owner:nil options:nil].firstObject;
+        _timerView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, timeViewHeight);
+        ySpace += timeViewHeight;
+    }
+    return _timerView;
+}
+
 -(AEExamContentView *)contentView {
     if (!_contentView) {
         _contentView = [[AEExamContentView alloc]initWithFrame:CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - bottomViewHeight - ySpace)];

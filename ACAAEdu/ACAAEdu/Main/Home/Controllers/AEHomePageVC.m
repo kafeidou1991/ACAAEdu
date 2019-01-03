@@ -15,24 +15,18 @@
 #import "AEMessageListVC.h"
 #import "AECustomSegmentVC.h"
 
-//Temp
-#import "AEPurchaseManage.h"
-#import "AEExamResultVC.h"
-#import "AEExamAnalyzeVC.h"
 #import "AEExamInfoVC.h"
 
-@interface AEHomePageVC ()<UINavigationControllerDelegate>
+@interface AEHomePageVC ()
 @property (nonatomic, strong) HomeHeaderReusableView * headerView;
 @property (nonatomic, strong) AEHomeNoticeIconView * noticeView;
 
-//@property (nonatomic, strong) AEPurchaseManage * mange;
 @end
 
 @implementation AEHomePageVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.delegate = self;
     self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"首页"]];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.noticeView];
@@ -110,7 +104,7 @@
     WS(weakSelf)
     [cell updateCell:self.dataSources[indexPath.row]];
     cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:@[self.dataSources[indexPath.row]]];
+        [weakSelf pushOrderDetailVC:weakSelf.dataSources[indexPath.row]];
     };
     return cell;
 }
@@ -126,12 +120,12 @@
     return cellHeight;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self pushOrderDetailVC:@[self.dataSources[indexPath.row]]];
+    [self pushOrderDetailVC:self.dataSources[indexPath.row]];
 }
 //MARK: 订单详情
-- (void)pushOrderDetailVC:(NSArray *)data {
+- (void)pushOrderDetailVC:(AEExamItem *)item {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
-    [VC loadData:data];
+    VC.item = item;
     PUSHLoginCustomViewController(VC, self);
 }
 //MARK: 通知列表
@@ -144,14 +138,6 @@
     readMessageVC.messageType = ReadMessageListType;
     [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
     PUSHLoginCustomViewController(customVC, self)
-}
-//隐藏导航栏
--(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    BOOL home =
-    [viewController isKindOfClass:[AECustomSegmentVC class]] ||
-    [viewController isKindOfClass:[AEExamAnalyzeVC class]]    ||
-    [viewController isKindOfClass:[AEExamInfoVC class]];
-    [navigationController setNavigationBarHidden:home animated:YES];
 }
 #pragma mark - 懒加载
 -(HomeHeaderReusableView *)headerView {

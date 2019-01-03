@@ -189,7 +189,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
         NSHTTPURLResponse *response = (NSHTTPURLResponse *)dataTask.response;
         NSUInteger httpStatusCode = response.statusCode;
         NSString *statusStr = [NSHTTPURLResponse localizedStringForStatusCode:response.statusCode];
-        NSLog(@"HTTP状态码:%ld,状态码描述%@",httpStatusCode,statusStr);
+//        NSLog(@"HTTP状态码:%ld,状态码描述%@",httpStatusCode,statusStr);
     }
 #endif
 #endif
@@ -264,7 +264,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     responseSerialiazer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/css",@"text/xml",@"text/plain", @"application/javascript", @"image/*", nil];
     manager.responseSerializer = responseSerialiazer;
 #ifdef DEBUG
-    NSLog(@"httpHeader %@",manager.requestSerializer.HTTPRequestHeaders);
+//    NSLog(@"httpHeader %@",manager.requestSerializer.HTTPRequestHeaders);
 #endif
     return manager;
 }
@@ -326,11 +326,11 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     if (!kArrayIsEmpty(sortAllArr)) {
         NSMutableString *allStr = [[sortAllArr componentsJoinedByString:@"&"] mutableCopy];
         NSString *urlStr = [NSString stringWithFormat:@"%@&%@",[self basicUrl:info],allStr];
-        NSLog(@"httpUrl: %@",urlStr);
+        NSLog(@"请求的URL: %@",urlStr);
         return urlStr;
     }else{
         NSString *urlStr = [NSString stringWithFormat:@"%@",[self basicUrl:info]];
-        NSLog(@"httpUrl: %@",urlStr);
+        NSLog(@"请求的URL: %@",urlStr);
         return urlStr;
     }
 }
@@ -379,7 +379,6 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 }
 #pragma 储存token
 -(void) saveCacheApiToken:(NSString *)apitoken {
-    NSLog(@"保存>>>>>>> apiToken<%@>",apitoken);
     NSUserDefaults *defaults =[NSUserDefaults standardUserDefaults];
     [defaults setObject: apitoken forKey:@"token"];
     [defaults synchronize];

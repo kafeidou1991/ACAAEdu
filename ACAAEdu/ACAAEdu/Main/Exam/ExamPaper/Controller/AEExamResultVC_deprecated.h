@@ -8,7 +8,7 @@
 
 #import "AEBaseTableController.h"
 
-@interface AEExamResultVC : AEBaseTableController
+@interface AEExamResultVC_deprecated : AEBaseTableController
 
 @property (nonatomic, copy) NSString * examId;
 

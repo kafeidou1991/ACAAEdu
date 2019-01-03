@@ -98,7 +98,7 @@
     [cell updateCell:self.dataSources[indexPath.section]];
     //点击购买
     cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:@[weakSelf.dataSources[indexPath.section]]];
+        [weakSelf pushOrderDetailVC:weakSelf.dataSources[indexPath.section]];
     };
     return cell;
 }
@@ -113,11 +113,11 @@
     }
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self pushOrderDetailVC:@[self.dataSources[indexPath.section]]];
+    [self pushOrderDetailVC:self.dataSources[indexPath.section]];
 }
-- (void)pushOrderDetailVC:(NSArray *)data {
+- (void)pushOrderDetailVC:(AEExamItem *)item {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
-    [VC loadData:data];
+    VC.item = item;
     PUSHLoginCustomViewController(VC, self);
 }
 //MARK: 初始化titleView

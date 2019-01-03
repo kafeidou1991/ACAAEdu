@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B7060059206FDC33003A4A35 /* AEExamResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7060057206FDC33003A4A35 /* AEExamResultVC.m */; };
+		B7060059206FDC33003A4A35 /* AEExamResultVC_deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = B7060057206FDC33003A4A35 /* AEExamResultVC_deprecated.m */; };
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AEForgetPwVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AEForgetPwVC.m */; };
 		B7131020202B55C7001CBAE8 /* AEForgetPwVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AEForgetPwVC.xib */; };
@@ -47,10 +47,6 @@
 		B7ECFF642070C002002E9DF5 /* AEAnswerCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
-		B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B90615752057EC2600801D38 /* AEOrderDetailCell.m */; };
-		B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90615762057EC2600801D38 /* AEOrderDetailCell.xib */; };
-		B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */; };
-		B906157D2057F8BE00801D38 /* AEOrderDetailFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */; };
 		B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B906157F2058018D00801D38 /* AEOrderPayVC.m */; };
 		B90615822058018D00801D38 /* AEOrderPayVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B90615802058018D00801D38 /* AEOrderPayVC.xib */; };
 		B913B09F202D8BAD006C7414 /* AEMyOrderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B913B09E202D8BAD006C7414 /* AEMyOrderVC.m */; };
@@ -203,8 +199,8 @@
 /* Begin PBXFileReference section */
 		056D2C323755E564D5E86D0E /* libPods-ACAAEdu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ACAAEdu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FD18B1C2828E4F552AF26F3 /* Pods-ACAAEdu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ACAAEdu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu.debug.xcconfig"; sourceTree = "<group>"; };
-		B7060056206FDC33003A4A35 /* AEExamResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamResultVC.h; sourceTree = "<group>"; };
-		B7060057206FDC33003A4A35 /* AEExamResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamResultVC.m; sourceTree = "<group>"; };
+		B7060056206FDC33003A4A35 /* AEExamResultVC_deprecated.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamResultVC_deprecated.h; sourceTree = "<group>"; };
+		B7060057206FDC33003A4A35 /* AEExamResultVC_deprecated.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamResultVC_deprecated.m; sourceTree = "<group>"; };
 		B7129A662031AF460081472E /* AESettingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESettingVC.h; sourceTree = "<group>"; };
 		B7129A672031AF460081472E /* AESettingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESettingVC.m; sourceTree = "<group>"; };
 		B713101C202B55C6001CBAE8 /* AEForgetPwVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEForgetPwVC.h; sourceTree = "<group>"; };
@@ -270,12 +266,6 @@
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
-		B90615742057EC2600801D38 /* AEOrderDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailCell.h; sourceTree = "<group>"; };
-		B90615752057EC2600801D38 /* AEOrderDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailCell.m; sourceTree = "<group>"; };
-		B90615762057EC2600801D38 /* AEOrderDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailCell.xib; sourceTree = "<group>"; };
-		B90615792057F8B700801D38 /* AEOrderDetailFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderDetailFooterView.h; sourceTree = "<group>"; };
-		B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderDetailFooterView.m; sourceTree = "<group>"; };
-		B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderDetailFooterView.xib; sourceTree = "<group>"; };
 		B906157E2058018D00801D38 /* AEOrderPayVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEOrderPayVC.h; sourceTree = "<group>"; };
 		B906157F2058018D00801D38 /* AEOrderPayVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEOrderPayVC.m; sourceTree = "<group>"; };
 		B90615802058018D00801D38 /* AEOrderPayVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEOrderPayVC.xib; sourceTree = "<group>"; };
@@ -569,12 +559,6 @@
 		B73ED695205408AC00B7C2B3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B90615742057EC2600801D38 /* AEOrderDetailCell.h */,
-				B90615752057EC2600801D38 /* AEOrderDetailCell.m */,
-				B90615762057EC2600801D38 /* AEOrderDetailCell.xib */,
-				B90615792057F8B700801D38 /* AEOrderDetailFooterView.h */,
-				B906157A2057F8B700801D38 /* AEOrderDetailFooterView.m */,
-				B906157C2057F8BE00801D38 /* AEOrderDetailFooterView.xib */,
 				B916E37320591D64007EB40B /* AEScreeningCell.h */,
 				B916E37420591D64007EB40B /* AEScreeningCell.m */,
 				B916E37520591D64007EB40B /* AEScreeningCell.xib */,
@@ -1269,8 +1253,8 @@
 				B9DB458A219D65DA009A999A /* AEExamAnalyzeVC.xib */,
 				B9DFA1D8206F6F8400AFAD27 /* AEAnswerCardVC.h */,
 				B9DFA1D9206F6F8400AFAD27 /* AEAnswerCardVC.m */,
-				B7060056206FDC33003A4A35 /* AEExamResultVC.h */,
-				B7060057206FDC33003A4A35 /* AEExamResultVC.m */,
+				B7060056206FDC33003A4A35 /* AEExamResultVC_deprecated.h */,
+				B7060057206FDC33003A4A35 /* AEExamResultVC_deprecated.m */,
 				B9D2F643206CBFFC00C5A034 /* AEExamPaperVC_deprecated.h */,
 				B9D2F644206CBFFC00C5A034 /* AEExamPaperVC_deprecated.m */,
 			);
@@ -1447,7 +1431,6 @@
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
 				B93C7CF4205AA0F000FC5E6C /* AEMyOrderCell.xib in Resources */,
-				B90615782057EC2700801D38 /* AEOrderDetailCell.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B762D4B121DC983700FADCD5 /* AEExamTimeView.xib in Resources */,
@@ -1460,7 +1443,6 @@
 				B94C1CC7203FC155006344F2 /* AEModifierInfoVC.xib in Resources */,
 				B9D29533207F3A960010B9B3 /* AEExamResultCell.xib in Resources */,
 				B9B9164820186209002A63CE /* Info.plist in Resources */,
-				B906157D2057F8BE00801D38 /* AEOrderDetailFooterView.xib in Resources */,
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
 				B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */,
 				B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */,
@@ -1601,7 +1583,6 @@
 				B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */,
 				B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */,
 				B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */,
-				B90615772057EC2700801D38 /* AEOrderDetailCell.m in Sources */,
 				B96FD9B0202998E200FE7495 /* NSObject+Json.m in Sources */,
 				B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */,
 				B9A60442205BA9A100278568 /* AEScreenHeaderView.m in Sources */,
@@ -1630,7 +1611,6 @@
 				B918BBC0202B088700EDB00D /* NSNull+safe.m in Sources */,
 				B949F9B92068DF8D009D0555 /* SGPageTitleView.m in Sources */,
 				B992CEEC207371E7007F3EF2 /* XHZoomingImageView.m in Sources */,
-				B906157B2057F8B700801D38 /* AEOrderDetailFooterView.m in Sources */,
 				B9D2F6A7206CFA4C00C5A034 /* JWScrollPageView.m in Sources */,
 				B918BBC9202B088700EDB00D /* NSDictionary+safe.m in Sources */,
 				B918BBC8202B088700EDB00D /* NSObject+swizzling.m in Sources */,
@@ -1651,7 +1631,7 @@
 				B96FD9AE202998E200FE7495 /* NSMutableDictionary+Json.m in Sources */,
 				B9B9173D20188330002A63CE /* AEBaseWebVC.m in Sources */,
 				B94C1CCE20400054006344F2 /* AEUserInfoCell.m in Sources */,
-				B7060059206FDC33003A4A35 /* AEExamResultVC.m in Sources */,
+				B7060059206FDC33003A4A35 /* AEExamResultVC_deprecated.m in Sources */,
 				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,
 				B918BBCC202B088700EDB00D /* UIFont+wl.m in Sources */,
 				B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */,

@@ -14,12 +14,23 @@ typedef NS_ENUM(NSInteger, QuestionType) {
     JudgeQuestionType,    //判断题
     
 };
+//记录已经滚动到第几页
+typedef void(^DidScrollePage)(int page);
 
 @interface AEExamContentView : UICollectionView
 
 @property (nonatomic, assign) QuestionType questionType;
 
+/**
+ 提交回调
+ */
 @property (nonatomic, copy) dispatch_block_t submitExamBlock;
+
+/**
+ 已经滚动到第几页，发生滚动之后才会调用 第一页的时候不会调用
+ */
+@property (nonatomic, copy)  DidScrollePage  didScrollePage;
+
 /**
  刷新数据源  同步会刷新视图
 
@@ -32,6 +43,7 @@ typedef NS_ENUM(NSInteger, QuestionType) {
 
  @param isNext 是否是下一题 上一题
  */
-- (void)scrollQuestion:(BOOL)isNext lastHandle:(void(^)(BOOL))lastBlock;
+- (void)scrollQuestion:(BOOL)isNext lastHandle:(void(^)(BOOL last,int index))lastBlock;
+
 
 @end

@@ -9,7 +9,6 @@
 #import "AEAnswerCardView.h"
 #import "AEAnswerCardCell.h"
 #import "AnswerCardReusableView.h"
-#import "AEExamResultVC.h"
 
 @interface AEAnswerCardView ()<UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 

@@ -10,6 +10,7 @@
 #import "AEMyOrderCell.h"
 #import "AEMyOrderFooterView.h"
 #import "AEOrderPayVC.h"
+#import "AEOrderDetailVC.h"
 
 static const CGFloat headerViewHeight = 145.f;
 
@@ -126,14 +127,28 @@ static const CGFloat headerViewHeight = 145.f;
 }
 //点击跳转
 - (void)gotoNextStep:(AEMyOrderList *)item {
-    //未支付 跳转支付
-    if ([item.pay_status isEqualToString:@"0"]) {
-        AEOrderPayVC * VC = [AEOrderPayVC new];
-        VC.item = item;
-        VC.totalPrice = item.pay_price.floatValue;
-        VC.comeType =ComeFromMyOrderType;
-        [self.navigationController pushViewController:VC animated:YES];
+//    //未支付 跳转支付
+//    if ([item.pay_status isEqualToString:@"0"]) {
+//        AEOrderPayVC * VC = [AEOrderPayVC new];
+//        VC.item = item;
+//        VC.totalPrice = item.pay_price.floatValue;
+//        VC.comeType =ComeFromMyOrderType;
+//        [self.navigationController pushViewController:VC animated:YES];
+//    }else {
+//        //跳转详情
+//    }
+    AEOrderDetailVC * VC = [AEOrderDetailVC new];
+    VC.comeType =ComeFromMyOrderType;
+    if (item.goods.count > 0) {
+        AEGoodItem * good = item.goods[0];
+        VC.item = good.goods_attr_data;
     }
+    if (_payType == ExamNoPayType) {
+        VC.payStatus = AEOrderPayingStatus;
+    }else {
+        VC.payStatus = AEOrderPaidStatus;
+    }
+    PUSHCustomViewController(VC, self);
     
     
 }

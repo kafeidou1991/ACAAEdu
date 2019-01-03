@@ -6,8 +6,8 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEExamResultVC.h"
-#import "AECustomSegmentVC.h"
+#import "AEExamResultVC_deprecated.h"
+#import "AEMyTestExamVC.h"
 #import "AEExamResultCell.h"
 
 static NSString * const firstSectionReuseIdentifier = @"firstSectionReuseIdentifier";
@@ -15,7 +15,7 @@ static NSString * const secondSectionReuseIdentifier = @"secondSectionReuseIdent
 static NSString * const thirdSectionReuseIdentifier = @"thirdSectionReuseIdentifier";
 static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifier";
 
-@interface AEExamResultVC ()
+@interface AEExamResultVC_deprecated ()
 
 @property (nonatomic, strong) AEExamResultCell *prototypeCell; //错题分析
 
@@ -25,7 +25,7 @@ static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifie
 
 @end
 
-@implementation AEExamResultVC
+@implementation AEExamResultVC_deprecated
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -176,7 +176,7 @@ static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifie
 
 - (void)backAction:(UIButton *)sender {
     for (UIViewController *viewController in self.navigationController.viewControllers) {
-        if ([viewController isKindOfClass:[AECustomSegmentVC class]]) {
+        if ([viewController isKindOfClass:[AEMyTestExamVC class]]) {
             [[NSNotificationCenter defaultCenter]postNotificationName:@"kExamResultBack" object:nil];
             [self.navigationController popToViewController:viewController animated:YES];
             return;

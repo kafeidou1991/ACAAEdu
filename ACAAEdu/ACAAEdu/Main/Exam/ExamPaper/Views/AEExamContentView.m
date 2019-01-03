@@ -8,9 +8,6 @@
 
 #import "AEExamContentView.h"
 #import "AEExamContentCell.h"
-#import "AEExamTimeView.h"
-
-static CGFloat const timeViewHeight = 50.f;
 
 @interface AEExamContentView ()<UICollectionViewDataSource, UICollectionViewDelegate>{
     int questionCount;
@@ -19,12 +16,6 @@ static CGFloat const timeViewHeight = 50.f;
  试题数据源
  */
 @property (nonatomic, strong) AEExamQuestionItem * data;
-
-/**
- 显示倒计时
- */
-@property (nonatomic, strong) AEExamTimeView * timerView;
-
 
 @end
 
@@ -46,7 +37,6 @@ static CGFloat const timeViewHeight = 50.f;
     vlf.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     if (self = [super initWithFrame:frame collectionViewLayout:vlf]) {
         [self registerNib:[UINib nibWithNibName:@"AEExamContentCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([AEExamContentCell class])];
-        [self registerNib:[UINib nibWithNibName:@"AEExamTimeView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"CollectionHeaderIdentifier"];
         self.backgroundColor = [UIColor clearColor];
         self.dataSource = self;
         self.delegate = self;
@@ -67,16 +57,16 @@ static CGFloat const timeViewHeight = 50.f;
     
     return cell;
 }
--(void)scrollQuestion:(BOOL)isNext  lastHandle:(void (^)(BOOL))lastBlock {
+- (void)scrollQuestion:(BOOL)isNext lastHandle:(void(^)(BOOL last,int index))lastBlock {
     int page = self.contentOffset.x / self.width;
     //即将显示最后一页   //试卷就一道题
     if (isNext && (questionCount == 1 || page == questionCount - 2 || page == questionCount - 1)) {
         if (lastBlock) {
-            lastBlock(YES);
+            lastBlock(YES,page);
         }
     }else {
         if (lastBlock) {
-            lastBlock(NO);
+            lastBlock(NO,page);
         }
     }
     //上一题 下一题
@@ -95,6 +85,13 @@ static CGFloat const timeViewHeight = 50.f;
         }else {
             [AEBase alertMessage:@"没有上一题了" cb:nil];
         }
+    }
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    int page = self.contentOffset.x / self.width;
+    if (_didScrollePage) {
+        _didScrollePage(page + 1);
     }
 }
 //上传答案
@@ -129,30 +126,5 @@ static CGFloat const timeViewHeight = 50.f;
     return self.frame.size;
 }
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    if([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        if (kind == UICollectionElementKindSectionHeader) {
-            AEExamTimeView * headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"CollectionHeaderIdentifier" forIndexPath:indexPath];
-            headerView.backgroundColor = [UIColor redColor];
-//            headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, timeViewHeight);
-//            self.timerView = headerView;
-            return headerView;
-        }
-    }
-    return nil;
-}
-
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(SCREEN_WIDTH, 0);
-}
-
-
-//- (AEExamTimeView *)timerView {
-//    if (!_timerView) {
-//        _timerView = [[NSBundle mainBundle]loadNibNamed:@"AEExamTimeView" owner:nil options:nil].firstObject;
-//        _timerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, timeViewHeight);
-//    }
-//    return _timerView;
-//}
 
 @end

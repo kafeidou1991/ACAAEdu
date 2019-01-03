@@ -7,11 +7,7 @@
 //
 
 #import "AEBaseController.h"
-
-typedef NS_ENUM(NSInteger, ComeFromType) {
-    ComeFromMyNormalType = 0,  //页面来源  返回rootVC
-    ComeFromMyOrderType,       //我的订单页面
-};
+#import "AEOrderDetailVC.h"
 
 @interface AEOrderPayVC : AEBaseController
 
@@ -20,5 +16,4 @@ typedef NS_ENUM(NSInteger, ComeFromType) {
 @property (nonatomic, assign) CGFloat totalPrice; //商品价格
 
 @property (nonatomic, assign) ComeFromType comeType; //页面来源
-
 @end

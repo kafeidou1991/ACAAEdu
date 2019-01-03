@@ -6,10 +6,28 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseTableController.h"
+#import "AEBaseController.h"
 
-@interface AEOrderDetailVC : AEBaseTableController
+typedef NS_ENUM(NSInteger, AEOrderPayStatus) {
+    AEOrderPayingStatus = 0, //未支付
+    AEOrderPaidStatus, //已支付
+};
 
-- (void)loadData:(NSArray *)data;
+typedef NS_ENUM(NSInteger, ComeFromType) {
+    ComeFromMyNormalType = 0,  //页面来源  返回rootVC
+    ComeFromMyOrderType,       //我的订单页面
+};
+
+
+@class AEExamItem;
+@interface AEOrderDetailVC : AEBaseController
+
+@property (nonatomic, strong) AEExamItem *item;
+@property (nonatomic, assign) ComeFromType comeType; //页面来源
+/**
+ 订单状态 默认待支付
+ */
+@property (nonatomic, assign) AEOrderPayStatus payStatus;
+
 
 @end
