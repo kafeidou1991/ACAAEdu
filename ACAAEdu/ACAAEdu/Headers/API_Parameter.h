@@ -28,7 +28,7 @@
 #define kBindMobile @"mobile/user/bindMobile"
 //解绑手机号 邮箱
 #define kUnBindMobileOrEmile @"mobile/user/unbind"
-//获取验证码
+//获取验证码 (修改密码时用)
 #define kVerifyCode @"mobile/user/verify"
 //上传用户资料
 #define kProfile @"mobile/user/profile"
@@ -48,7 +48,8 @@
 #define kRegisterBindIdCard @"mobile/register/idcard"
 //确认注册
 #define kRegisterCreate @"mobile/register/create"
-
+//获取验证码（注册时获取验证码）
+#define kRegisterVerifyCode @"mobile/register/verify"
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐
 #define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"
