@@ -48,7 +48,7 @@
     self.nameLabel.text = item.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"%@",item.version];
     self.categoryLabel.text = [NSString stringWithFormat:@"%@",item.short_name];
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_discount];
+    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_realPrice];
     NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:STRISEMPTY(item.subject_price) ? @"￥0":[NSString stringWithFormat:@"￥%@",item.subject_price] attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
     self.orginPriceLabel.attributedText = attStr;
 }

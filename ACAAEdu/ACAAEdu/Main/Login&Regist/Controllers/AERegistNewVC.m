@@ -107,7 +107,9 @@
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterAccount query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
         //下一步 设置昵称和密码
-        [weakSelf.navigationController pushViewController:[AESetNickNamePwVC new] animated:YES];
+        AESetNickNamePwVC * vc = [AESetNickNamePwVC new];
+        vc.account = account;
+        [weakSelf.navigationController pushViewController:vc animated:YES];
         
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
@@ -128,13 +130,27 @@
     }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
-        [weakSelf hudclose];
-        [AEBase alertMessage:@"验证码已发送..." cb:nil];
-        [weakSelf circleProgressStart];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIsexists query:nil path:nil body:@{@"account":account} success:^(id object) {
+        BOOL valid = object[@"valid"];
+        if (valid) {
+            [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
+                [weakSelf hudclose];
+                [AEBase alertMessage:@"验证码已发送..." cb:nil];
+                [weakSelf circleProgressStart];
+            } faile:^(NSInteger code, NSString *error) {
+                [weakSelf hudclose];
+                [AEBase alertMessage:error cb:nil];
+                [weakSelf reSendImageCodeClick:nil];
+                weakSelf.imageTextField.text = @"";
+            }];
+        }else {
+            [weakSelf hudclose];
+            [AEBase alertMessage:@"账户已注册" cb:nil];
+        }
+        
     } faile:^(NSInteger code, NSString *error) {
+        [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
-        [weakSelf reSendImageCodeClick:nil];
         weakSelf.imageTextField.text = @"";
     }];
 }

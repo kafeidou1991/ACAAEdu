@@ -20,6 +20,7 @@
                 <outlet property="orginPriceLabel" destination="xSN-1q-XXH" id="DIX-qI-6J8"/>
                 <outlet property="payLabel" destination="Q6U-mY-B2b" id="hZh-ch-XHi"/>
                 <outlet property="payStatusLabel" destination="2tw-en-7rg" id="5hT-vj-HEE"/>
+                <outlet property="toTestBtn" destination="smF-cl-Bw5" id="9Q6-CT-ogw"/>
                 <outlet property="versionLabel" destination="49O-jp-J79" id="io4-FD-Y46"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -191,6 +192,25 @@
                         <constraint firstAttribute="bottom" secondItem="5Kk-cb-run" secondAttribute="bottom" id="piy-br-hH9"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smF-cl-Bw5">
+                    <rect key="frame" x="137.5" y="457" width="100" height="100"/>
+                    <color key="backgroundColor" red="0.69803921568627447" green="0.70196078431372544" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="529-jy-K9J"/>
+                        <constraint firstAttribute="height" constant="100" id="D8i-4q-jhA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="我要测试"/>
+                    <state key="disabled" title="我要测试"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="50"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="toTestAction:" destination="-1" eventType="touchUpInside" id="fh0-Ml-8DH"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jll-I4-cZE">
                     <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <subviews>
@@ -258,6 +278,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="smF-cl-Bw5" firstAttribute="centerX" secondItem="nen-bx-ChC" secondAttribute="centerX" id="05r-CC-abx"/>
                 <constraint firstItem="Nya-Mz-mfM" firstAttribute="top" secondItem="9KV-kR-nur" secondAttribute="bottom" id="5Gj-tv-zYd"/>
                 <constraint firstItem="Nya-Mz-mfM" firstAttribute="trailing" secondItem="9KV-kR-nur" secondAttribute="trailing" id="Fds-bu-62k"/>
                 <constraint firstItem="9KV-kR-nur" firstAttribute="leading" secondItem="sij-A9-7eA" secondAttribute="leading" id="IdW-rx-tY9"/>
@@ -273,6 +294,7 @@
                 <constraint firstItem="mr6-Kz-wEc" firstAttribute="leading" secondItem="Nya-Mz-mfM" secondAttribute="leading" id="k5i-Xy-eLP"/>
                 <constraint firstItem="jll-I4-cZE" firstAttribute="leading" secondItem="nen-bx-ChC" secondAttribute="leading" id="p1G-22-bXB"/>
                 <constraint firstItem="mr6-Kz-wEc" firstAttribute="trailing" secondItem="Nya-Mz-mfM" secondAttribute="trailing" id="pVo-yo-eHA"/>
+                <constraint firstItem="jll-I4-cZE" firstAttribute="top" secondItem="smF-cl-Bw5" secondAttribute="bottom" constant="50" id="vNx-L9-5Z3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="nen-bx-ChC"/>
             <point key="canvasLocation" x="23.199999999999999" y="51.724137931034484"/>

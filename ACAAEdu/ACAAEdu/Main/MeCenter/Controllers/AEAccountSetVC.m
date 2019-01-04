@@ -27,7 +27,6 @@
                          @{@"title":@"邮箱账号",@"value":User.email},
                          @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;
     [self createTableViewStyle:UITableViewStylePlain];
-    [self tipBindIdCard];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reload) name:kBindAccountSuccess object:nil];
 }
 - (void)reload {
@@ -35,7 +34,6 @@
                          @{@"title":@"邮箱账号",@"value":User.email},
                          @{@"title":@"身份证账号",@"value":User.id_card}].mutableCopy;
     [self.tableView reloadData];
-    [self tipBindIdCard];
 }
 - (void)tipBindIdCard {
     if (STRISEMPTY(User.id_card)) {
@@ -74,6 +72,11 @@
             pushVC.type = BindMobileType;
         }else {
             pushVC.type = UnBindMobileType;
+            //解绑需要绑定身份证
+            if (STRISEMPTY(User.id_card)) {
+                [AEBase alertMessage:@"请先绑定身份证" cb:nil];
+                return;
+            }
         }
         [self.navigationController pushViewController:pushVC animated:YES];
     }else if (indexPath.row == 1) {
@@ -81,12 +84,19 @@
             pushVC.type = BindEmailType;
         }else {
             pushVC.type = UnBindEmailType;
+            //解绑需要绑定身份证
+            if (STRISEMPTY(User.id_card)) {
+                [AEBase alertMessage:@"请先绑定身份证" cb:nil];
+                return;
+            }
         }
         [self.navigationController pushViewController:pushVC animated:YES];
     }else {
         //身份证验证  不支持解绑
         if (STRISEMPTY(User.id_card)) {
             [self.navigationController pushViewController:[AEBindIdCardVC new] animated:YES];
+        }else {
+            [self tipBindIdCard];
         }
     }
 }

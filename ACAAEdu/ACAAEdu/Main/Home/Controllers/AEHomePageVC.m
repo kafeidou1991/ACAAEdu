@@ -40,7 +40,7 @@
 //    btn.frame = CGRectMake(100, 100, 100, 100);
 //    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.noticeView updateNoShowNumber:5];
+    [self.noticeView updateNoShowNumber:0];
 }
 - (void)buy {
     [self.navigationController pushViewController:[AEExamInfoVC new] animated:YES];

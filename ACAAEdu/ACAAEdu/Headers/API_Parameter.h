@@ -36,8 +36,6 @@
 #define kGetProfile @"mobile/user/getProfile"
 //绑定身份证
 #define kBindIdCard @"mobile/user/bindIdCard"
-//设置密码
-#define kSetPWD  @"mobile/user/setPwd"
 
 #pragma mark ---------------------- 新注册流程----------------------------
 //注册账号
@@ -48,7 +46,7 @@
 #define kRegisterBindIdCard @"mobile/register/idcard"
 //确认注册
 #define kRegisterCreate @"mobile/register/create"
-//获取验证码（注册时获取验证码）
+//获取验证码（注册时获取验证码）(账户没有注册时用)
 #define kRegisterVerifyCode @"mobile/register/verify"
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐

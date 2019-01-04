@@ -11,7 +11,7 @@
 @interface AESetNickNamePwVC : AEBaseController
 
 
-//登录数据
-@property (nonatomic, strong) id loginData;
+//登录账号
+@property (nonatomic, copy) NSString *account;
 
 @end

@@ -227,12 +227,14 @@
     }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:(self.type == BindEmailType || self.type == BindMobileType) ? kRegisterVerifyCode : kVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"验证码已发送..." cb:nil];
         [weakSelf circleProgressStart];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
+        weakSelf.imageTextField.text = @"";
+        [weakSelf reSendImageCodeClick:nil];
         [AEBase alertMessage:error cb:nil];
     }];
 }

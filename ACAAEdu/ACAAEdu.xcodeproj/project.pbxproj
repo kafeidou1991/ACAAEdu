@@ -824,8 +824,8 @@
 		B96FD8682027FA9A00FE7495 /* Exam(考试) */ = {
 			isa = PBXGroup;
 			children = (
-				B9D2F640206CBF8E00C5A034 /* ExamPaper(试卷部分) */,
 				B96FD8692027FA9A00FE7495 /* Controllers */,
+				B9D2F640206CBF8E00C5A034 /* ExamPaper(试卷部分) */,
 				B73ED695205408AC00B7C2B3 /* Views */,
 				B7FB06A8202C994700D5642D /* Model */,
 			);

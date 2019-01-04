@@ -26,6 +26,7 @@
 
 - (void)updateNoShowNumber:(int)noShowNumber{
     if (noShowNumber <= 0) {
+        self.noShowLabel.hidden = YES;
         return;
     }
     self.noShowLabel.hidden = NO;

@@ -10,6 +10,16 @@
 
 @implementation AEExamItem
 
+- (NSString *)getRealPrice {
+    if (!STRISEMPTY(_subject_realPrice)) {
+        return _subject_realPrice;
+    }
+    float price = self.subject_price.floatValue;
+    float discountPrice = self.subject_discount.floatValue;
+    float real = (price - discountPrice) > 0 ? (price - discountPrice) : 0.00;
+    return [NSString stringWithFormat:@"%.2f",real];
+}
+
 @end
 
 @implementation AEExamSubjectItem

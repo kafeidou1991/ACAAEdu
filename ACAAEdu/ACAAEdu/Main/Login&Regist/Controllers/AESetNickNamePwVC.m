@@ -8,7 +8,7 @@
 
 #import "AESetNickNamePwVC.h"
 
-@interface AESetNickNamePwVC ()
+@interface AESetNickNamePwVC ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet AETextField *firstTextField;
 @property (weak, nonatomic) IBOutlet AETextField *secondTextField;
@@ -43,32 +43,42 @@
     }
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
+    NSDictionary * paramDict;
     if (STRISEMPTY(nickName)) {
-        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kSetPWD query:nil path:nil body:@{@"password":password,@"repassword":rePassword} success:^(id object) {
-            [weakSelf hudclose];
-            [weakSelf loginSuccess];
-        } faile:^(NSInteger code, NSString *error) {
-            [weakSelf hudclose];
-            [AEBase alertMessage:error cb:nil];
-        }];
+        paramDict = @{@"password":password,@"repassword":rePassword};
     }else {
-        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterPWD query:nil path:nil body:@{@"username":nickName,@"password":password,@"repassword":rePassword} success:^(id object) {
-            [weakSelf hudclose];
-            [weakSelf loginSuccess];
-        } faile:^(NSInteger code, NSString *error) {
-            [weakSelf hudclose];
-            [AEBase alertMessage:error cb:nil];
-        }];
+        paramDict = @{@"username":nickName,@"password":password,@"repassword":rePassword};
     }
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterPWD query:nil path:nil body:paramDict success:^(id object) {
+        [weakSelf loginSuccess];
+    } faile:^(NSInteger code, NSString *error) {
+        [weakSelf hudclose];
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
 }
 
 - (void)loginSuccess {
-    if (self.loginData) {
-        [AEUserInfo yy_modelWithDictionary:self.loginData];
-        [User save];
+    if (!STRISEMPTY(self.account)) {
+        [AEUserDefaults setObject:self.account forKey:@"ACAA_MobileAcount"];
     }
-    [[NSNotificationCenter defaultCenter]postNotificationName:kLoginSuccess object:nil];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //确认注册
+    [self requestRegister];
+}
+- (void)requestRegister {
+    WS(weakSelf);
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterCreate query:nil path:nil body:nil success:^(id object) {
+        [weakSelf hudclose];
+        [AEBase alertMessage:@"注册成功" cb:nil];
+        //设置完密码昵称 跳转登录页面 登录
+        [weakSelf.navigationController pushViewController:[AELoginVC new] animated:YES];
+    } faile:^(NSInteger code, NSString *error) {
+        [weakSelf hudclose];
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

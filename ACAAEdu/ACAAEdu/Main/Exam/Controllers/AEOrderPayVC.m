@@ -39,7 +39,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:kPayOrderSuccess object:nil];
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             }else {
-             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             }
         }
         }];

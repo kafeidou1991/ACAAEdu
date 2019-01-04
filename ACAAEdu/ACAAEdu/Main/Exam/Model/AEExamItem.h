@@ -10,8 +10,9 @@
 //考试列表页
 @interface AEExamItem : DateCenter
 @property (nonatomic, copy) NSString * id;
-@property (nonatomic, copy) NSString * subject_price; //原价
-@property (nonatomic, copy) NSString * subject_discount; //折扣价
+@property (nonatomic, copy) NSString * subject_price; //模拟考试单次原价
+@property (nonatomic, copy) NSString * subject_discount; //优惠的金额
+@property (nonatomic, copy, getter=getRealPrice) NSString * subject_realPrice; //本地计算的实际金额
 @property (nonatomic, copy) NSString * version; //版本
 @property (nonatomic, copy) NSString * subject_full_name;
 @property (nonatomic, copy) NSString * delete_time;

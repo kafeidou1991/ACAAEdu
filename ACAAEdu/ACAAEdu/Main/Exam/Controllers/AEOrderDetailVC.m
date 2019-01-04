@@ -9,10 +9,9 @@
 #import "AEOrderDetailVC.h"
 #import "AEOrderPayVC.h"
 #import "AEExamItem.h"
+#import "AEMyTestExamVC.h"
 
 @interface AEOrderDetailVC ()
-
-@property (nonatomic, assign) CGFloat totalPrice;
 //UI元素
 //支付状态
 @property (weak, nonatomic) IBOutlet UILabel *payStatusLabel;
@@ -34,6 +33,7 @@
 ///优惠了多少 400
 @property (weak, nonatomic) IBOutlet UILabel *discountsLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *toTestBtn;
 
 @end
 
@@ -46,7 +46,6 @@
     [self initContent];
 }
 - (void)initContent {
-    self.totalPrice = STRISEMPTY(_item.subject_discount) ? _item.subject_price.floatValue : _item.subject_discount.floatValue;
     
     //状态
     self.payStatusLabel.text = _payStatus == AEOrderPaidStatus ? @"已付款" : @"待付款";
@@ -55,23 +54,21 @@
     self.versionLabel.text = [NSString stringWithFormat:@"版本:%@",_item.version];
     self.cateLabel.text = [NSString stringWithFormat:@"类别:%@",_item.subject_type_name];
     //价格
-    self.orderPriceLabel.text = [NSString stringWithFormat:@"￥%@",_item.subject_discount];
+    self.orderPriceLabel.text = [NSString stringWithFormat:@"￥%@",_item.subject_realPrice];
     //原价
     NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"原价 ￥%@",_item.subject_price] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13],NSForegroundColorAttributeName:AEHexColor(@"999999"),NSStrikethroughStyleAttributeName : @1}];
     self.orginPriceLabel.attributedText = att;
+    //我要测试
+    self.toTestBtn.backgroundColor = _payStatus == AEOrderPaidStatus ? AEThemeColor : AEHexColor(@"B2B3B4");
     
     if (_payStatus == AEOrderPaidStatus) {
         self.bottmOrderView.hidden = YES;
-        return;
+    }else {
+        //应付
+        self.payLabel.text = _item.subject_realPrice;
+        //优惠
+        self.discountsLabel.text = _item.subject_discount;
     }
-    //应付
-    self.payLabel.text = _item.subject_discount;
-    //优惠
-    CGFloat price = _item.subject_price.floatValue;
-    CGFloat orignPrice = _item.subject_discount.floatValue;
-    self.discountsLabel.text = [NSString stringWithFormat:@"%.2f",price - orignPrice > 0 ? price - orignPrice : 0.00];
-    
-    
 }
 //MARK:购买考试
 - (void)buyExam {
@@ -81,7 +78,7 @@
         if ([item.pay_status isEqualToString:@"0"]) {
             AEOrderPayVC * VC = [AEOrderPayVC new];
             VC.item = item;
-            VC.totalPrice = weakSelf.totalPrice;
+            VC.totalPrice = weakSelf.item.subject_realPrice.floatValue;
             VC.comeType = weakSelf.comeType;
             [weakSelf.navigationController pushViewController:VC animated:YES];
         }else {
@@ -115,6 +112,13 @@
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
     }];
+}
+//MARK: 我要测试
+- (IBAction)toTestAction:(UIButton *)sender {
+    if (_payStatus == AEOrderPaidStatus) {
+         PUSHCustomViewController([AEMyTestExamVC new], self);
+    }
+    
 }
 
 @end
