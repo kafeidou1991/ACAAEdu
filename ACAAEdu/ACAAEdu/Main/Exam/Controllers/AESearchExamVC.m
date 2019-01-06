@@ -122,10 +122,11 @@
 }
 //MARK: 初始化titleView
 - (void)setupTitleView{
-    self.navigationItem.leftBarButtonItem = nil;
-    [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.titleView = [self createNavigationView];
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(pop) title:@" 取消"];
+    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"考试"]];
+//    self.navigationItem.leftBarButtonItem = nil;
+//    [self.navigationItem setHidesBackButton:YES];
+//    self.navigationItem.titleView = [self createNavigationView];
+//    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(pop) title:@" 取消"];
 }
 
 - (UIView *)createNavigationView

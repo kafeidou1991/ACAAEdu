@@ -291,8 +291,8 @@ static CGFloat const timeViewHeight = 50.f;
         [self.navigationController popViewControllerAnimated:YES];
         return;
     }
-    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"退出考试?" message:@"退出考试会保存您已答题目的记录" preferredStyle:UIAlertControllerStyleAlert];
-    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"考试中途退出之后可以继续考试，但一天以内继续考试有效，超过一天未继续考试，系统自动交卷~" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"继续考试" style:UIAlertActionStyleDefault handler:nil]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"退出考试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self.navigationController popViewControllerAnimated:YES];
         //应该摧毁定时器 避免浪费资源

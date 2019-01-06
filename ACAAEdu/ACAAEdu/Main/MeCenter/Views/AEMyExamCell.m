@@ -28,7 +28,6 @@
     //通过 未通过  待打分
     self.resultLabel.text = [NSString stringWithFormat:@"考试结果:%@",@"通过"];
      //通过 未通过  待打分
-    self.examStatusLabel.text = @"考试通过";
     //考试通过 #4ED3C1   未通过 #B778FF  带平分 #FBAC52
     //考试通过 myexam_pass   未通过 myexam_nopass  带平分 myexam_waite
     //通过 未通过  待打分
@@ -47,7 +46,7 @@
         self.resultLabel.text = [NSString stringWithFormat:@"考试结果:%@",@"待打分"];
     }
     if (item.status.intValue == 2) {
-        self.examStatusLabel.text = @"查看结果";
+        self.examStatusLabel.text = @"考试结束";
     }else  if (item.status.intValue == 1) {
         self.examStatusLabel.text = @"继续考试";
     }else {

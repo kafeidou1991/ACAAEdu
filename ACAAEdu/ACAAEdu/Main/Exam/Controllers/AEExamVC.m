@@ -34,9 +34,9 @@
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:_examType == AEExamACAAType ?  @"ACAA" : @"AUTODESK"]];
     [self initComponent];
+    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(searchExam) title:@"搜索"];
 }
-#pragma mark - 更多
-
+#pragma mark - 搜索
 - (void)searchExam {
     PUSHCustomViewController([AESearchExamVC new], self);
 }
