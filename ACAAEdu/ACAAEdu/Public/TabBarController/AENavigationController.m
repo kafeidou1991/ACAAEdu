@@ -17,10 +17,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:AEHexColor(@"333333"),NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]};
-    self.navigationBar.barTintColor = [UIColor whiteColor];
-    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
-//    self.navigationBar.shadowImage = [UIImage new];
+//    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:AEHexColor(@"333333"),NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]};
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:AEHexColor(@"FFFFFF"),NSFontAttributeName:[UIFont wlfontWithName:AECustomFont size:18]};
+    //状态栏白色
+    self.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationBar setBackgroundImage:[UIImage imageWithColor:AEThemeColor] forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [UIImage new];
     self.delegate = self;
     
 }
@@ -36,7 +38,8 @@
 
 -(void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
     BOOL isShow =  [viewController isKindOfClass:NSClassFromString(@"AECustomSegmentVC")]
-//                 ||[viewController isKindOfClass:NSClassFromString(@"AEHomePageVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEHomePageVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEExamVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEExamAnalyzeVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEExamInfoVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEMeCenterVC")]

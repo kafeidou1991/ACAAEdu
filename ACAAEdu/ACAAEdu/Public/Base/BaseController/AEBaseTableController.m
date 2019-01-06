@@ -22,7 +22,7 @@
 }
 - (void)createTableViewStyle:(UITableViewStyle)style{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, ySpace, SCREEN_WIDTH, self.view.height - ySpace) style:style];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, ySpace, SCREEN_WIDTH,SCREEN_HEIGHT - NAVIGATION_HEIGHT - ySpace) style:style];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorColor = AEColorLine;

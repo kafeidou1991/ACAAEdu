@@ -20,6 +20,7 @@
  请求参数
  */
 @property (nonatomic, strong) NSMutableDictionary * pararsDict;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeight;
 @property (nonatomic, assign) AEExamType examType;
 @end
 
@@ -32,12 +33,14 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:_examType == AEExamACAAType ?  @"ACAA" : @"AUTODESK"]];
+    
+    //顶部导航 暂时隐藏
+//    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:_examType == AEExamACAAType ?  @"ACAA" : @"AUTODESK"]];
+    self.topViewHeight.constant = NAVIGATION_HEIGHT;
     [self initComponent];
-    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(searchExam) title:@"搜索"];
 }
 #pragma mark - 搜索
-- (void)searchExam {
+- (IBAction)searchExam:(id)sender {
     PUSHCustomViewController([AESearchExamVC new], self);
 }
 #pragma mark - 筛选
@@ -53,7 +56,7 @@
 }
 - (void)initComponent {
     [self createTableViewStyle:UITableViewStylePlain];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT- TAB_BAR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, NAVIGATION_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT- TAB_BAR_HEIGHT);
     WS(weakSelf)
     [self createEmptyViewBlock:^{
         [weakSelf loadData:YES];

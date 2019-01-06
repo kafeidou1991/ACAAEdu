@@ -50,7 +50,8 @@
 }
 
 - (UIBarButtonItem *)createLeftBarBackItemHandle{
-    UIImage * image = [UIImage imageNamed:@"ic_global_return"];
+//    UIImage * image = [UIImage imageNamed:@"ic_global_return"];
+    UIImage * image = [UIImage imageNamed:@"left_back_arrow"];
     UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:image forState:UIControlStateNormal];
     [btn setImage:image forState:UIControlStateHighlighted];

@@ -47,7 +47,7 @@
         [self hudShow:self.view msg:STTR_ater_on];
     }
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kAcaaList query:self.pararsDict path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:_examType == AEExamACAAType ? kAcaaList : kAutodeskList query:self.pararsDict path:nil body:nil success:^(id object) {
         isLoad ? [weakSelf hudclose] : nil;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
@@ -122,11 +122,10 @@
 }
 //MARK: 初始化titleView
 - (void)setupTitleView{
-    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"考试"]];
-//    self.navigationItem.leftBarButtonItem = nil;
-//    [self.navigationItem setHidesBackButton:YES];
-//    self.navigationItem.titleView = [self createNavigationView];
-//    self.navigationItem.rightBarButtonItem = [AEBase createCustomBarButtonItem:self action:@selector(pop) title:@" 取消"];
+    self.navigationItem.leftBarButtonItem = nil;
+    [self.navigationItem setHidesBackButton:YES];
+    self.navigationItem.titleView = [self createNavigationView];
+    self.navigationItem.rightBarButtonItem = [self createCustomBarButtonItem:self action:@selector(pop) title:@" 取消"];
 }
 
 - (UIView *)createNavigationView
@@ -145,7 +144,7 @@
     searchTextField.delegate = self;
     searchTextField.leftView = [self createLeftSearchView];
     searchTextField.leftViewMode = UITextFieldViewModeAlways;
-    searchTextField.placeholder = @"搜索考试";
+    searchTextField.placeholder = @"请输入关键词";
     searchTextField.tintColor       = [UIColor blueColor];
     searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     searchTextField.rightViewMode   = UITextFieldViewModeWhileEditing;
@@ -161,6 +160,24 @@
     imageView.frame = CGRectMake(10, 5, 20, 32);
     [leftView addSubview:imageView];
     return leftView;
+}
+- (UIBarButtonItem *)createCustomBarButtonItem:(id)target action:(SEL)action title:(NSString *)title
+{
+    if (STRISEMPTY(title)) {
+        return nil;
+    }
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.titleLabel.font = [UIFont systemFontOfSize:16.f];
+    CGSize size = STR_FONT_SIZE(title,200, button.titleLabel.font);
+    button.frame=CGRectMake(0, 0, size.width, size.height+10.f);
+    
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
+    [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    
+    return [[UIBarButtonItem alloc]initWithCustomView:button];
 }
 - (void)pop{
     if ([_textField canResignFirstResponder]) {

@@ -6,10 +6,11 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AEBaseTableController.h"
+#import "AEExamVC.h"
 
 @interface AESearchExamVC : AEBaseTableController
 
+@property (nonatomic, assign) AEExamType examType;
 
 
 @end

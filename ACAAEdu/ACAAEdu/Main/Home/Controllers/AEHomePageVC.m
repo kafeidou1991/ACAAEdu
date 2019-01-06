@@ -27,19 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"首页"]];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.noticeView];
-    [self.noticeView addTarget:self action:@selector(gotoNoticeDetail) forControlEvents:UIControlEventTouchUpInside];
-    
+    //顶部导航 暂时隐藏
+//    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"首页"]];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.noticeView];
+//    [self.noticeView addTarget:self action:@selector(gotoNoticeDetail) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItems = nil;
     [self initTableView];
-    
-//    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    btn.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:btn];
-//    btn.frame = CGRectMake(100, 100, 100, 100);
-//    [btn addTarget:self action:@selector(buy) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.noticeView updateNoShowNumber:0];
 }
 - (void)buy {
@@ -49,7 +42,7 @@
 - (void)initTableView {
     WS(weakSelf)
     [self createTableViewStyle:UITableViewStylePlain];
-    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - NAVIGATION_HEIGHT - TAB_BAR_HEIGHT  - ySpace);
+    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT  - TAB_BAR_HEIGHT  - ySpace);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = AEColorLine;
     self.tableView.tableHeaderView = self.headerView;

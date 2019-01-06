@@ -31,6 +31,8 @@
     AETabBarController *tabBarVC = [AETabBarController new];
     self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
+    
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 - (void)setupIQKeyBoard {
     // 去除键盘上的工具栏

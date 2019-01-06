@@ -41,6 +41,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //顶部导航 暂时隐藏
 //    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"订单确认"]];
     self.title = _payStatus == AEOrderPaidStatus ? @"订单详情" : @"订单确认";
     [self initContent];

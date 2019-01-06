@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AEExamVC">
             <connections>
+                <outlet property="topViewHeight" destination="Ra6-IG-Awi" id="fgf-OX-Air"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,7 +19,64 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFq-I5-pg2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GoF-TL-ji4">
+                            <rect key="frame" x="20" y="25" width="335" height="34"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="Hbi-EI-1t5"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="43y-a5-DXu" appends="YES" id="IVf-d6-awe"/>
+                            </connections>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索你感兴趣的考试" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOa-bF-3XK">
+                            <rect key="frame" x="114" y="32.5" width="147" height="19.5"/>
+                            <gestureRecognizers/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YuA-Kw-HGg">
+                            <rect key="frame" x="90" y="32.5" width="19" height="19"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.8980392157" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="zOa-bF-3XK" firstAttribute="centerY" secondItem="GoF-TL-ji4" secondAttribute="centerY" id="7o1-yT-cyu"/>
+                        <constraint firstAttribute="height" constant="64" id="Ra6-IG-Awi"/>
+                        <constraint firstAttribute="trailing" secondItem="GoF-TL-ji4" secondAttribute="trailing" constant="20" id="ZNB-kx-VNJ"/>
+                        <constraint firstItem="GoF-TL-ji4" firstAttribute="leading" secondItem="FFq-I5-pg2" secondAttribute="leading" constant="20" id="fhD-e5-efL"/>
+                        <constraint firstItem="zOa-bF-3XK" firstAttribute="centerX" secondItem="GoF-TL-ji4" secondAttribute="centerX" id="i8A-7R-Zzp"/>
+                        <constraint firstItem="zOa-bF-3XK" firstAttribute="leading" secondItem="YuA-Kw-HGg" secondAttribute="trailing" constant="5" id="rhe-cv-eLF"/>
+                        <constraint firstItem="YuA-Kw-HGg" firstAttribute="centerY" secondItem="zOa-bF-3XK" secondAttribute="centerY" id="yFl-cs-Uxz"/>
+                        <constraint firstAttribute="bottom" secondItem="GoF-TL-ji4" secondAttribute="bottom" constant="5" id="zea-tO-QLL"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="FFq-I5-pg2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="36A-Y4-Xdx"/>
+                <constraint firstAttribute="trailing" secondItem="FFq-I5-pg2" secondAttribute="trailing" id="6d3-5b-y7S"/>
+                <constraint firstItem="FFq-I5-pg2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lhG-Wu-4mI"/>
+            </constraints>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
         </view>
+        <tapGestureRecognizer id="43y-a5-DXu">
+            <connections>
+                <action selector="searchExam:" destination="-1" id="7hA-3l-yWB"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
+    <resources>
+        <image name="searchImage" width="19" height="19"/>
+    </resources>
 </document>
