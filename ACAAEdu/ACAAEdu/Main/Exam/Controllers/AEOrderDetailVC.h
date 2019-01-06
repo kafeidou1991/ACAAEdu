@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSInteger, AEOrderPayStatus) {
     AEOrderPayingStatus = 0, //未支付
     AEOrderPaidStatus, //已支付
+    AEOrderAffirmPay, //确认订单
 };
 
 typedef NS_ENUM(NSInteger, ComeFromType) {

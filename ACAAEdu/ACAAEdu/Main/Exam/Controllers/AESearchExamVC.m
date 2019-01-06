@@ -7,7 +7,6 @@
 //
 
 #import "AESearchExamVC.h"
-#import "AEExamItem.h"
 #import "AEHomePageCell.h"
 #import "AEOrderDetailVC.h"
 
@@ -27,7 +26,8 @@
     [super viewDidLoad];
     [self setupTitleView];
     self.pararsDict = @{@"page" : @(self.currPage)}.mutableCopy;
-    [self createTableViewStyle:UITableViewStyleGrouped];
+    [self createTableViewStyle:UITableViewStylePlain];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (STRISEMPTY(textField.text.trimString)) {
@@ -85,39 +85,30 @@
     }];
 }
 #pragma mark - tableView delegate
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSources.count;
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.dataSources.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
-    [cell updateCell:self.dataSources[indexPath.section]];
+    [cell updateCell:self.dataSources[indexPath.row]];
     //点击购买
     cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:weakSelf.dataSources[indexPath.section]];
+        [weakSelf pushOrderDetailVC:weakSelf.dataSources[indexPath.row]];
     };
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return cellHeight;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0.f;
-    }else {
-        return 10.f;
-    }
-}
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self pushOrderDetailVC:self.dataSources[indexPath.section]];
+    [self pushOrderDetailVC:self.dataSources[indexPath.row]];
 }
 - (void)pushOrderDetailVC:(AEExamItem *)item {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
+    VC.payStatus = AEOrderAffirmPay;
     PUSHLoginCustomViewController(VC, self);
 }
 //MARK: 初始化titleView

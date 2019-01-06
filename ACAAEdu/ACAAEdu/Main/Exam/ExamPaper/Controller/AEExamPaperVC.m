@@ -7,7 +7,6 @@
 //
 
 #import "AEExamPaperVC.h"
-#import "AEExamItem.h"
 #import "AEExamContentView.h"
 #import "AEAnswerCardVC.h"
 #import "AEExamBottomView.h"

@@ -7,7 +7,6 @@
 //
 
 #import "AEMyExamCell.h"
-#import "AEExamItem.h"
 
 @implementation AEMyExamCell
 

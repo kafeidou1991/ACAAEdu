@@ -20,6 +20,7 @@
                 <outlet property="orginPriceLabel" destination="xSN-1q-XXH" id="DIX-qI-6J8"/>
                 <outlet property="payLabel" destination="Q6U-mY-B2b" id="hZh-ch-XHi"/>
                 <outlet property="payStatusLabel" destination="2tw-en-7rg" id="5hT-vj-HEE"/>
+                <outlet property="submitBtn" destination="Opx-Ll-x2H" id="nFU-EZ-jbU"/>
                 <outlet property="toTestBtn" destination="smF-cl-Bw5" id="9Q6-CT-ogw"/>
                 <outlet property="versionLabel" destination="49O-jp-J79" id="io4-FD-Y46"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

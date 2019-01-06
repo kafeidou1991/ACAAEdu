@@ -10,7 +10,6 @@
 #import "AEHomePageCell.h"
 #import "HomeHeaderReusableView.h"
 #import "AEOrderDetailVC.h"
-#import "AEExamItem.h"
 #import "AEHomeNoticeIconView.h"
 #import "AEMessageListVC.h"
 #import "AECustomSegmentVC.h"
@@ -119,6 +118,7 @@
 - (void)pushOrderDetailVC:(AEExamItem *)item {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
+    VC.payStatus = AEOrderAffirmPay;
     PUSHLoginCustomViewController(VC, self);
 }
 //MARK: 通知列表

@@ -7,7 +7,6 @@
 //
 
 #import "AEMyOrderCell.h"
-#import "AEExamItem.h"
 
 @interface AEMyOrderCell ()
 

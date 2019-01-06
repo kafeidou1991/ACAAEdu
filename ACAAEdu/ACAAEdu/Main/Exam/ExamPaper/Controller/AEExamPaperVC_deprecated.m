@@ -7,7 +7,6 @@
 //
 
 #import "AEExamPaperVC_deprecated.h"
-#import "AEExamItem.h"
 #import "JWMenuBarView.h"
 #import "JWScrollPageView.h"
 #import "AEExamContentView.h"

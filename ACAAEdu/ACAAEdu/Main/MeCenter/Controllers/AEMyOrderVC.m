@@ -66,14 +66,14 @@ static const CGFloat headerViewHeight = 145.f;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
         NSArray * tempArray = [NSArray yy_modelArrayWithClass:[AEMyOrderList class] json:object];
-        [weakSelf.dataSources addObjectsFromArray:tempArray];
-        if (tempArray > 0) {
-            AEMyOrderList * lastItem = [weakSelf.dataSources lastObject];
+        if (tempArray.count > 0) {
+            AEMyOrderList * lastItem = [tempArray lastObject];
             weakSelf.lastId = lastItem.id;
+            [weakSelf.dataSources addObjectsFromArray:tempArray];
+             [weakSelf.tableView reloadData];
         }else {
             [weakSelf noHasMoreData];
         }
-        [weakSelf.tableView reloadData];
 
         
     } faile:^(NSInteger code, NSString *error) {
@@ -141,7 +141,12 @@ static const CGFloat headerViewHeight = 145.f;
     VC.comeType =ComeFromMyOrderType;
     if (item.goods.count > 0) {
         AEGoodItem * good = item.goods[0];
-        VC.item = good.goods_attr_data;
+        //因为服务端没有赋值id 此处手动赋值
+        AEExamItem * item = good.goods_attr_data;
+        if (STRISEMPTY(item.examId)) {
+            item.examId = good.goods_id;
+        }
+        VC.item = item;
     }
     if (_payType == ExamNoPayType) {
         VC.payStatus = AEOrderPayingStatus;

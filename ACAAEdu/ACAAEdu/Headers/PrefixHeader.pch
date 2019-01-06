@@ -28,6 +28,7 @@
 // MARK: --------Headers---------
 #import "API_Parameter.h"
 #import "DateCenter.h"
+#import "AEExamItem.h"
 #import "AENotificationCenter.h"
 #import "AEAppConfig.h"
 #import "AEDefineConstant.h"

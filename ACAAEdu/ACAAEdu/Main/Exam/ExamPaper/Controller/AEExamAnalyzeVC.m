@@ -8,6 +8,7 @@
 
 #import "AEExamAnalyzeVC.h"
 #import "CircleView.h"
+#import "AEMyTestExamVC.h"
 
 @interface AEExamAnalyzeVC ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstraint;
@@ -49,10 +50,21 @@
     //顶部导航
     [self topNavtiation];
     [self initComponent];
+    
 }
 - (void)initComponent {
     //进度条宽度
     _circleV.strokelineWidth = 3;
+}
+- (void)backAction:(UIButton *)sender {
+    for (UIViewController *viewController in self.navigationController.viewControllers) {
+        if ([viewController isKindOfClass:[AEMyTestExamVC class]]) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"kExamResultBack" object:nil];
+            [self.navigationController popToViewController:viewController animated:YES];
+            return;
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 -(void)afterProFun {
     WS(weakSelf);

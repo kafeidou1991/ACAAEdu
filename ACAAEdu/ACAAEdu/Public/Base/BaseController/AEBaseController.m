@@ -65,6 +65,10 @@
     if (!_baseTopView) {
         ySpace = AEBaseTopViewHeight;
         _baseTopView = [[AEBaseTopView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, ySpace)];
+        WS(weakSelf)
+        _baseTopView.backBlock = ^{
+            [weakSelf backAction:nil];
+        };
     }
     return _baseTopView;
 }

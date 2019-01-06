@@ -9,7 +9,6 @@
 #import "AEExamVC.h"
 #import "AEHomePageCell.h"
 #import "AEOrderDetailVC.h"
-#import "AEExamItem.h"
 #import "AEScreeningVC.h"
 #import "AESearchExamVC.h"
 
@@ -148,6 +147,7 @@
 - (void)pushOrderDetailVC:(AEExamItem *)item {
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
+    VC.payStatus = AEOrderAffirmPay;
     PUSHLoginCustomViewController(VC, self);
 }
 

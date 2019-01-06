@@ -10,6 +10,11 @@
 
 @implementation AEExamItem
 
++ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
+    return @{@"exam_id":@"id"};
+}
+
+
 - (NSString *)getRealPrice {
     if (!STRISEMPTY(_subject_realPrice)) {
         return _subject_realPrice;

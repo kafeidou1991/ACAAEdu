@@ -7,7 +7,6 @@
 //
 
 #import "AEHomePageCell.h"
-#import "AEExamItem.h"
 
 @interface AEHomePageCell ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
