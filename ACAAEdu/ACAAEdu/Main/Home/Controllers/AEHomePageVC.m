@@ -136,7 +136,7 @@
 -(HomeHeaderReusableView *)headerView {
     if (!_headerView) {
         _headerView = [[NSBundle mainBundle]loadNibNamed:@"HomeHeaderReusableView" owner:nil options:nil].firstObject;
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 185.f);
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 185.f * SCREEN_WIDTH / 375.f);
     }
     return _headerView;
 }

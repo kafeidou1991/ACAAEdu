@@ -125,7 +125,7 @@
     navigationView.backgroundColor = [UIColor whiteColor];
     navigationView.layer.cornerRadius = 2;
     navigationView.layer.masksToBounds = YES;
-    UITextField *searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, navigationView.width-5, navigationView.height)];
+    UITextField *searchTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, navigationView.width- 10, navigationView.height)];
     searchTextField.keyboardAppearance = UIKeyboardAppearanceDefault;
     searchTextField.returnKeyType = UIReturnKeySearch;
     searchTextField.font = [UIFont systemFontOfSize:14.0f];

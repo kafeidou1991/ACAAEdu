@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,18 +17,15 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igC-u7-13t" customClass="HMBannerView">
                     <rect key="frame" x="0.0" y="0.0" width="389" height="155"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="155" id="C4c-f9-kqG"/>
-                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6hW-qI-wt9">
                     <rect key="frame" x="0.0" y="155" width="389" height="30"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_hot_exam" translatesAutoresizingMaskIntoConstraints="NO" id="h0y-Zm-TAy">
-                            <rect key="frame" x="10" y="5.5" width="20" height="20"/>
+                            <rect key="frame" x="10" y="-6" width="42" height="42"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门ACAA考试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKd-1m-RDR">
-                            <rect key="frame" x="40" y="7.5" width="95" height="17"/>
+                            <rect key="frame" x="62" y="6.5" width="95" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -44,6 +41,7 @@
                         <constraint firstItem="MKd-1m-RDR" firstAttribute="leading" secondItem="h0y-Zm-TAy" secondAttribute="trailing" constant="10" id="KF0-yp-MZD"/>
                         <constraint firstItem="MKd-1m-RDR" firstAttribute="centerY" secondItem="h0y-Zm-TAy" secondAttribute="centerY" id="KoN-pg-AC6"/>
                         <constraint firstAttribute="trailing" secondItem="ltd-HF-5W5" secondAttribute="trailing" constant="10" id="Ltj-gL-SCP"/>
+                        <constraint firstAttribute="height" constant="30" id="Q5r-g6-bkH"/>
                         <constraint firstItem="h0y-Zm-TAy" firstAttribute="leading" secondItem="6hW-qI-wt9" secondAttribute="leading" constant="10" id="mPT-52-Owa"/>
                         <constraint firstItem="h0y-Zm-TAy" firstAttribute="centerY" secondItem="6hW-qI-wt9" secondAttribute="centerY" id="zey-wm-8Yh"/>
                     </constraints>
@@ -55,9 +53,9 @@
                 <constraint firstAttribute="bottom" secondItem="6hW-qI-wt9" secondAttribute="bottom" id="GlE-b9-6Ds"/>
                 <constraint firstAttribute="trailing" secondItem="igC-u7-13t" secondAttribute="trailing" id="Tu1-uh-9RX"/>
                 <constraint firstItem="igC-u7-13t" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="Wcx-0o-clV"/>
-                <constraint firstItem="6hW-qI-wt9" firstAttribute="top" secondItem="igC-u7-13t" secondAttribute="bottom" id="e0x-mh-tt3"/>
                 <constraint firstItem="igC-u7-13t" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" id="mFr-Zf-XYm"/>
                 <constraint firstAttribute="trailing" secondItem="6hW-qI-wt9" secondAttribute="trailing" id="nsK-lR-mqr"/>
+                <constraint firstItem="6hW-qI-wt9" firstAttribute="top" secondItem="igC-u7-13t" secondAttribute="bottom" id="x1N-DF-hQK"/>
             </constraints>
             <connections>
                 <outlet property="bannerView" destination="igC-u7-13t" id="oWE-eb-fET"/>
@@ -66,7 +64,7 @@
         </collectionReusableView>
     </objects>
     <resources>
-        <image name="home_hot_exam" width="20" height="20"/>
+        <image name="home_hot_exam" width="42" height="42"/>
         <image name="home_hot_exam_downarrow" width="20" height="20"/>
     </resources>
 </document>
