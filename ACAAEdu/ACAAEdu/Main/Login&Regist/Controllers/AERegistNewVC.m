@@ -60,9 +60,6 @@
     //邮箱40位 手机号11位
     self.accountTextField.lengthLimit = 40;
     self.accountTextField.text =@"";
-    if ([self.accountTextField canBecomeFirstResponder]) {
-        [self.accountTextField becomeFirstResponder];
-    }
 }
 -(void)afterProFun {
     //获取图形验证码
