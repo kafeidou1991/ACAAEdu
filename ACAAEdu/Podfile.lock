@@ -16,7 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - Bugly (2.5.0)
   - HcdGuideView (0.0.5)
-  - IQKeyboardManager (5.0.7)
+  - IQKeyboardManager (6.0.3)
   - JCore (1.1.6)
   - JPush (3.0.7):
     - JCore (~> 1.1.6)
@@ -80,7 +80,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   HcdGuideView: 3ffaa22aebe7409bbd3fd6bcfcbe912d391a237a
-  IQKeyboardManager: 0bfa4607d39924116b5c0c8b55b5d789288b5cba
+  IQKeyboardManager: c390e612f4b98c8fd748016470138537dc163ead
   JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
   JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
   LYEmptyView: 6a1e41c3546d0d806b59a55498732bde70217155
