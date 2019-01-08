@@ -40,7 +40,9 @@
 }
 #pragma mark - 搜索
 - (IBAction)searchExam:(id)sender {
-    PUSHCustomViewController([AESearchExamVC new], self);
+    AESearchExamVC * searchVC = [AESearchExamVC new];
+    searchVC.examType = self.examType;
+    PUSHCustomViewController(searchVC, self);
 }
 #pragma mark - 筛选
 - (void)matchItem {
