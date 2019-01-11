@@ -21,9 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置昵称和密码";
-    if ([self.firstTextField canBecomeFirstResponder]) {
-        [self.firstTextField becomeFirstResponder];
-    }
     self.firstTextField.lengthLimit = self.secondTextField.lengthLimit = 30;
     
     

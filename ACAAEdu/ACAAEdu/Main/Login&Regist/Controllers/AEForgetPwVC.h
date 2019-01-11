@@ -10,4 +10,9 @@
 
 @interface AEForgetPwVC : AEBaseController
 
+/**
+ 是否来自设置页面
+ */
+@property (nonatomic, assign) BOOL isFormeSet;
+
 @end

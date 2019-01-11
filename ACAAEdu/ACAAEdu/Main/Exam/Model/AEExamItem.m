@@ -7,12 +7,13 @@
 //
 
 #import "AEExamItem.h"
+#import "YYModel.h"
 
 @implementation AEExamItem
 
-+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
-    return @{@"exam_id":@"id"};
-}
+//+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
+//    return @{@"exam_id":@"id"};
+//}
 
 
 - (NSString *)getRealPrice {

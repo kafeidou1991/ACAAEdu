@@ -8,6 +8,7 @@
 
 #import "AESettingVC.h"
 #import "AEAccountSetVC.h"
+#import "AEForgetPwVC.h"
 
 @interface AESettingVC ()
 
@@ -18,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"设置";
-    self.dataSources = @[@"       账户安全",@"       清除信息",@"       版本信息"].mutableCopy;
+    self.dataSources = @[@"       账户安全",@"       忘记密码",@"       清除信息",@"       版本信息"].mutableCopy;
     [self.view addSubview:self.baseTopView];
     self.baseTopView.titleName = @"设置";
     
@@ -41,10 +42,10 @@
         cell.detailTextLabel.font = [UIFont systemFontOfSize:13];
     }
     cell.textLabel.text = self.dataSources[indexPath.row];
-    if (indexPath.row == 0) {
+    if (indexPath.row == 0 || indexPath.row == 1) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = @"";
-    }else if (indexPath.row == 1) {
+    }else if (indexPath.row == 2) {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%0.2fMB",[self computeCache]];
     }else {
@@ -67,7 +68,11 @@
                [self.navigationController pushViewController:[AEAccountSetVC new] animated:YES];
             }];
         }
-    }else if (indexPath.row == 1){
+    }else if (indexPath.row == 1) {
+        AEForgetPwVC * vc = [AEForgetPwVC new];
+        vc.isFormeSet = YES;
+        PUSHCustomViewController(vc, self);
+    }else if (indexPath.row == 2){
         [self cleanCache];
     }
 }

@@ -31,4 +31,10 @@ typedef NS_ENUM(NSInteger, ComeFromType) {
 @property (nonatomic, assign) AEOrderPayStatus payStatus;
 
 
+/**
+ 我的订单 参数，内部包含item
+ */
+@property (nonatomic, strong) AEMyOrderList * orderList;
+
+
 @end

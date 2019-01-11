@@ -77,12 +77,13 @@
 
 - (BOOL)isValidateMobile
 {
-    //手机号以13，14, 15，19开头，八个 \d 数字字符
-    NSString *phoneRegex = @"^((13[0-9])|(14[0-9])|(15[^4,\\D])|(19[0,0-9]))\\d{8}$";
-    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
-    //    NSLog(@"phoneTest is %@",phoneTest);
-    //    BOOL b = [phoneTest evaluateWithObject:mobile];
-    return [phoneTest evaluateWithObject:self];
+//    //手机号以13，14, 15，19开头，八个 \d 数字字符
+//    NSString *phoneRegex = @"^((13[0-9])|(14[0-9])|(15[^4,\\D])|(19[0,0-9]))\\d{8}$";
+//    NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",phoneRegex];
+//    //    NSLog(@"phoneTest is %@",phoneTest);
+//    //    BOOL b = [phoneTest evaluateWithObject:mobile];
+//    return [phoneTest evaluateWithObject:self];
+    return self.length ==11;
 }
 
 - (BOOL)validateCarNo

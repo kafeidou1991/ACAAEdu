@@ -48,6 +48,14 @@
     self.title = _payStatus == AEOrderAffirmPay ? @"订单确认" : @"订单详情";
     [self initContent];
 }
+- (void)setOrderList:(AEMyOrderList *)orderList {
+    _orderList = orderList;
+    if (orderList.goods.count > 0) {
+        AEGoodItem * good = self.orderList.goods[0];
+        AEExamItem * goodItem = good.goods_attr_data;
+        self.item = goodItem;
+    }
+}
 - (void)initContent {
     
     //状态
@@ -84,6 +92,20 @@
 }
 //MARK:购买考试
 - (void)buyExam {
+    if (_payStatus == AEOrderPayingStatus) {
+        //未支付的订单不需要创建订单 直接跳转支付页面
+        AEOrderPayVC * VC = [AEOrderPayVC new];
+        VC.item = self.orderList;
+        if (self.orderList.goods.count > 0) {
+            AEGoodItem * good = self.orderList.goods[0];
+            //因为服务端没有赋值id 此处手动赋值
+            AEExamItem * goodItem = good.goods_attr_data;
+            VC.totalPrice = goodItem.subject_realPrice.floatValue;
+        }
+        VC.comeType = self.comeType;
+        [self.navigationController pushViewController:VC animated:YES];
+        return;
+    }
     WS(weakSelf)
     [self createOrderDetailSuccess:^(AEMyOrderList *item) {
         //pay_status ==0 继续购买  ==1 说明是价格0  直接购买成功
@@ -113,7 +135,7 @@
 - (void)createOrderDetailSuccess:(void(^)(AEMyOrderList * item))success {
     WS(weakSelf);
     [self hudShow:self.view msg:@"生成订单.."];
-    NSArray * paramArray = @[@{@"goods_type":@"subject",@"goods_id":_item.examId,@"goods_num":@"1"}];
+    NSArray * paramArray = @[@{@"goods_type":@"subject",@"goods_id":_item.id,@"goods_num":@"1"}];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kCreatOrder query:nil path:nil body:@{@"goods" : paramArray} success:^(id object) {
         [weakSelf hudclose];
         AEMyOrderList * item = [AEMyOrderList yy_modelWithJSON:object];

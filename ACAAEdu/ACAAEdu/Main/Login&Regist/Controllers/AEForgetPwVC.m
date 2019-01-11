@@ -141,7 +141,18 @@ typedef NS_ENUM(NSInteger, RegistType) {
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kFindPassword query:nil path:nil body:pramsDict success:^(id object) {
         [weakSelf hudclose];
         [AEBase alertMessage:@"密码已重置" cb:nil];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        if (weakSelf.isFormeSet && User.isLogin) {
+            [[AEUserInfo shareInstance]removeLoginData];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kLoginExit object:nil];
+            [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogout query:nil path:nil body:nil success:^(id object) {
+            } faile:^(NSInteger code, NSString *error) {
+                [AEBase alertMessage:error cb:nil];
+            }];
+            //返回我的页面
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }else {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -204,9 +215,6 @@ typedef NS_ENUM(NSInteger, RegistType) {
     self.accountTextField.lengthLimit = b ? 40 : 11;
     self.accountTipLabel.text = b ? @"请输入邮箱" : @"请输入手机号";
     self.accountTextField.text =@"";
-    if ([self.accountTextField canBecomeFirstResponder]) {
-        [self.accountTextField becomeFirstResponder];
-    }
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];

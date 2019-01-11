@@ -9,7 +9,7 @@
 #import "DateCenter.h"
 //考试列表页
 @interface AEExamItem : DateCenter
-@property (nonatomic, copy) NSString * examId; // 考试id  本地将服务端id转换成examId
+@property (nonatomic, copy) NSString * id; // 考试id  本地将服务端id转换成examId
 @property (nonatomic, copy) NSString * subject_price; //模拟考试单次原价
 @property (nonatomic, copy) NSString * subject_discount; //优惠的金额
 @property (nonatomic, copy, getter=getRealPrice) NSString * subject_realPrice; //本地计算的实际金额

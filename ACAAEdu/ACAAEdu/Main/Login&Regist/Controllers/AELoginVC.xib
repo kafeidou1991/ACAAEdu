@@ -124,11 +124,8 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acU-6e-zlQ" customClass="AETextField">
-                            <rect key="frame" x="55" y="40" width="8" height="16"/>
+                            <rect key="frame" x="55" y="40" width="194" height="16"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="8bg-7M-6a6"/>
-                            </constraints>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -162,6 +159,7 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="acU-6e-zlQ" firstAttribute="leading" secondItem="zwB-2y-3p7" secondAttribute="leading" id="4Zv-EB-1Nd"/>
+                        <constraint firstItem="4Go-0O-Rhw" firstAttribute="leading" secondItem="acU-6e-zlQ" secondAttribute="trailing" id="5PG-TY-XmT"/>
                         <constraint firstAttribute="trailing" secondItem="4Go-0O-Rhw" secondAttribute="trailing" constant="16" id="7yd-ca-G1h"/>
                         <constraint firstItem="pqZ-xh-ZQ3" firstAttribute="leading" secondItem="tb6-fc-jHD" secondAttribute="leading" constant="25" id="PuR-ZI-LJX"/>
                         <constraint firstAttribute="height" constant="70" id="XqY-XU-AdD"/>

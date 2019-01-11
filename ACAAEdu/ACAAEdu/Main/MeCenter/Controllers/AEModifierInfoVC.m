@@ -92,9 +92,6 @@
         self.accountTextField.lengthLimit = 11;
         self.tipAccountLabel.text = @"请输入手机号";
     }
-    if ([self.accountTextField canBecomeFirstResponder]) {
-        [self.accountTextField becomeFirstResponder];
-    }
 }
 -(void)afterProFun {
     //获取图形验证码
