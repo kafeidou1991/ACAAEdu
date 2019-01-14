@@ -62,7 +62,7 @@ static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifie
         NSArray * arr2 = @[@{@"title":@"您的考试成绩总分:",@"content":[NSString stringWithFormat:@"%@/%@",item.total_score,item.paper_score]},
                            @{@"title":@"题目总数:",@"content":subItem.part_num},
                            @{@"title":@"答对总数:",@"content":subItem.part_correct},
-                           @{@"title":@"合格率:",@"content":subItem.part_passrate.integerValue == 1 ? @"100%" : [NSString stringWithFormat:@"%.2g%%",subItem.part_passrate.floatValue * 100.f]}];
+                           @{@"title":@"合格率:",@"content":subItem.rate.integerValue == 1 ? @"100%" : [NSString stringWithFormat:@"%.2g%%",subItem.rate.floatValue * 100.f]}];
         [self.dataSources addObject:arr2];
     }else {
         [self.dataSources addObject:@[]];
