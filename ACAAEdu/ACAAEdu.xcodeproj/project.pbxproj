@@ -11,7 +11,6 @@
 		B7129A682031AF460081472E /* AESettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7129A672031AF460081472E /* AESettingVC.m */; };
 		B713101F202B55C7001CBAE8 /* AEForgetPwVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B713101D202B55C7001CBAE8 /* AEForgetPwVC.m */; };
 		B7131020202B55C7001CBAE8 /* AEForgetPwVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B713101E202B55C7001CBAE8 /* AEForgetPwVC.xib */; };
-		B7432DFA20DA8B6F00A07A75 /* AERegistIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7432DF920DA8B6E00A07A75 /* AERegistIdCardVC.m */; };
 		B7432DFE20DA8BAC00A07A75 /* AEBindIdCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7432DFC20DA8BAC00A07A75 /* AEBindIdCardVC.xib */; };
 		B7432DFF20DA8BAC00A07A75 /* AEBindIdCardVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7432DFD20DA8BAC00A07A75 /* AEBindIdCardVC.m */; };
 		B758DB39204ED4DC0017B270 /* AEOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B758DB37204ED4DC0017B270 /* AEOrderDetailVC.m */; };
@@ -79,7 +78,6 @@
 		B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */ = {isa = PBXBuildFile; fileRef = B92733A6204148DE006F48C2 /* CGXAddressCity_child.plist */; };
 		B92733AB20415E61006F48C2 /* AEUserRemarkCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B92733A920415E61006F48C2 /* AEUserRemarkCell.m */; };
 		B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */; };
-		B92B97812043FCA30086DBA9 /* AERegistIdCardVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B92B977F2043FCA30086DBA9 /* AERegistIdCardVC.xib */; };
 		B93C7CE0205A154300FC5E6C /* AEPurchaseManage.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */; };
 		B93C7CE2205A162F00FC5E6C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B93C7CE1205A162F00FC5E6C /* StoreKit.framework */; };
 		B93C7CE8205A79F000FC5E6C /* UIView+category.m in Sources */ = {isa = PBXBuildFile; fileRef = B93C7CE7205A79F000FC5E6C /* UIView+category.m */; };
@@ -206,7 +204,6 @@
 		B713101C202B55C6001CBAE8 /* AEForgetPwVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEForgetPwVC.h; sourceTree = "<group>"; };
 		B713101D202B55C7001CBAE8 /* AEForgetPwVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEForgetPwVC.m; sourceTree = "<group>"; };
 		B713101E202B55C7001CBAE8 /* AEForgetPwVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEForgetPwVC.xib; sourceTree = "<group>"; };
-		B7432DF920DA8B6E00A07A75 /* AERegistIdCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AERegistIdCardVC.m; sourceTree = "<group>"; };
 		B7432DFB20DA8BAC00A07A75 /* AEBindIdCardVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEBindIdCardVC.h; sourceTree = "<group>"; };
 		B7432DFC20DA8BAC00A07A75 /* AEBindIdCardVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AEBindIdCardVC.xib; sourceTree = "<group>"; };
 		B7432DFD20DA8BAC00A07A75 /* AEBindIdCardVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEBindIdCardVC.m; sourceTree = "<group>"; };
@@ -325,8 +322,6 @@
 		B92733A820415E61006F48C2 /* AEUserRemarkCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserRemarkCell.h; sourceTree = "<group>"; };
 		B92733A920415E61006F48C2 /* AEUserRemarkCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserRemarkCell.m; sourceTree = "<group>"; };
 		B92733AA20415E61006F48C2 /* AEUserRemarkCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEUserRemarkCell.xib; sourceTree = "<group>"; };
-		B92B977D2043FCA30086DBA9 /* AERegistIdCardVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AERegistIdCardVC.h; sourceTree = "<group>"; };
-		B92B977F2043FCA30086DBA9 /* AERegistIdCardVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AERegistIdCardVC.xib; sourceTree = "<group>"; };
 		B93C7CDE205A154300FC5E6C /* AEPurchaseManage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEPurchaseManage.h; sourceTree = "<group>"; };
 		B93C7CDF205A154300FC5E6C /* AEPurchaseManage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEPurchaseManage.m; sourceTree = "<group>"; };
 		B93C7CE1205A162F00FC5E6C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -927,9 +922,6 @@
 				B9F299B32181980F00C767DD /* AESetNickNamePwVC.h */,
 				B9F299B42181981000C767DD /* AESetNickNamePwVC.m */,
 				B9F299B52181981000C767DD /* AESetNickNamePwVC.xib */,
-				B92B977D2043FCA30086DBA9 /* AERegistIdCardVC.h */,
-				B7432DF920DA8B6E00A07A75 /* AERegistIdCardVC.m */,
-				B92B977F2043FCA30086DBA9 /* AERegistIdCardVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1446,7 +1438,6 @@
 				B97447682019E04C00A6A538 /* AELoginVC.xib in Resources */,
 				B92733A7204148DF006F48C2 /* CGXAddressCity_child.plist in Resources */,
 				B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */,
-				B92B97812043FCA30086DBA9 /* AERegistIdCardVC.xib in Resources */,
 				B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */,
 				B7131020202B55C7001CBAE8 /* AEForgetPwVC.xib in Resources */,
 				B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */,
@@ -1591,7 +1582,6 @@
 				B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */,
 				B9D8E01C2182B8F50027CFD2 /* AEInfoFooterView.m in Sources */,
 				B713101F202B55C7001CBAE8 /* AEForgetPwVC.m in Sources */,
-				B7432DFA20DA8B6F00A07A75 /* AERegistIdCardVC.m in Sources */,
 				B918BBC5202B088700EDB00D /* NSMutableArray+safe.m in Sources */,
 				B918BBBF202B088700EDB00D /* NSArray+description.m in Sources */,
 				B96FD9AD202998E200FE7495 /* NSString+MD5Addition.m in Sources */,

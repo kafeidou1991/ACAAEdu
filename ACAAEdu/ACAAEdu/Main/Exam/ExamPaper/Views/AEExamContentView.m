@@ -42,7 +42,7 @@
         self.delegate = self;
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
-        self.scrollEnabled = NO;
+//        self.scrollEnabled = NO;
     }
     return self;
 }
@@ -89,6 +89,12 @@
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    int page = self.contentOffset.x / self.width;
+    if (_didScrollePage) {
+        _didScrollePage(page + 1);
+    }
+}
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     int page = self.contentOffset.x / self.width;
     if (_didScrollePage) {
         _didScrollePage(page + 1);

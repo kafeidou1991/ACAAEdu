@@ -128,7 +128,7 @@
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kIsexists query:nil path:nil body:@{@"account":account} success:^(id object) {
-        BOOL valid = object[@"valid"];
+        BOOL valid = [object[@"valid"]boolValue];
         if (valid) {
             [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRegisterVerifyCode query:nil path:nil body:@{@"captcha":imageCode,@"account":account} success:^(id object) {
                 [weakSelf hudclose];
