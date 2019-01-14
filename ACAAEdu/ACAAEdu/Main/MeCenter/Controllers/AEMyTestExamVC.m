@@ -12,6 +12,7 @@
 #import "AEExamPaperVC_deprecated.h"
 #import "AEExamPaperVC.h"
 #import "AEExamAnalyzeVC.h"
+#import "AEBindIdCardVC.h"
 
 
 
@@ -99,6 +100,17 @@
     return cell;
 }
 - (void) pushExamVC:(NSIndexPath * )indexPath {
+    if (STRISEMPTY(User.id_card)) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"请先绑定您的身份证信息" preferredStyle:UIAlertControllerStyleAlert];
+            [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+            [alertVC addAction:[UIAlertAction actionWithTitle:@"绑定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                PUSHCustomViewController([AEBindIdCardVC new], self);
+            }]];
+            [self presentViewController:alertVC animated:YES completion:nil];
+        });
+        return;
+    }
     AEMyExamItem * item = self.dataSources[indexPath.row];
     if (item.status.intValue == 2) {
         //已经考试
