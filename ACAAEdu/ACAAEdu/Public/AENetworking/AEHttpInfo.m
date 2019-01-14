@@ -27,20 +27,20 @@
 }
 
 - (NSString *)getNetworkDomain {
-//    NSString * domain = @"http://id.acaa.cn/";
-//    NSString * temp = [AEUserDefaults objectForKey:ChangeServerEnv];
-//    if (STRISEMPTY(temp)) {
-//        return domain;
-//    }
-//    if (temp.integerValue == 1) {
-//        return domain;
-//    }else if (temp.integerValue == 2) {
-//        domain = @"http://www.iww123.com/";
-//    }else {
-//        domain = @"http://www.bagua9.com/";
-//    }
-//    return domain;
-    return @"http://www.iww123.com/";
+    NSString * domain = @"https://id.acaa.cn/";
+    NSString * temp = [AEUserDefaults objectForKey:ChangeServerEnv];
+    if (STRISEMPTY(temp)) {
+        return domain;
+    }
+    if (temp.integerValue == 1) {
+        return domain;
+    }else if (temp.integerValue == 2) {
+        domain = @"http://www.iww123.com/";
+    }else {
+        domain = @"http://www.bagua9.com/";
+    }
+    return domain;
+//    return @"http://www.iww123.com/";
 }
 
 @end

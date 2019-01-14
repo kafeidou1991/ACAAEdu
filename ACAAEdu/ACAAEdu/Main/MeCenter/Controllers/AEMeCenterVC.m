@@ -29,7 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = nil;
-    self.view.backgroundColor = UIColorFromRGB(0x747476);
+//    self.view.backgroundColor = UIColorFromRGB(0x747476);
+    self.view.layer.contents = (__bridge id)[UIImage imageNamed:@"login_bg"].CGImage;
     [self addNotifications];
     self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
                         @{@"icon" :@"meceter2",@"title":@"通知"},
@@ -41,6 +42,12 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     [self createHeaderView];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateInfo];
+}
+
 - (void)addNotifications{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginSuccess object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginExit object:nil];
@@ -48,7 +55,22 @@
 
 #pragma mark - 登陆成功
 - (void)updateInfo {
+    if (User.isLogin) {
+        self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
+                            @{@"icon" :@"meceter2",@"title":@"通知"},
+                            @{@"icon" :@"meceter3",@"title":@"我的模考"},
+                            @{@"icon" :@"meceter4",@"title":@"我的订单"},
+                            @{@"icon" :@"meceter5",@"title":@"关于我们"},
+                            @{@"icon" :@"meceter6",@"title":@"退出"}].mutableCopy;
+    }else {
+        self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
+                            @{@"icon" :@"meceter2",@"title":@"通知"},
+                            @{@"icon" :@"meceter3",@"title":@"我的模考"},
+                            @{@"icon" :@"meceter4",@"title":@"我的订单"},
+                            @{@"icon" :@"meceter5",@"title":@"关于我们"}].mutableCopy;
+    }
     [self.loginHeaderView updateheaderInfo];
+    [self.tableView reloadData];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,6 +79,11 @@
     NSDictionary * dict = self.dataSources[indexPath.row];
     cell.leftImageView.image = [UIImage imageNamed:dict[@"icon"]];
     cell.titleLabel.text = dict[@"title"];
+    if ([dict[@"title"] isEqualToString:@"退出"]) {
+        cell.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
+    }else {
+        cell.backgroundColor = [UIColor clearColor];
+    }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,7 +128,7 @@
         [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
         PUSHLoginCustomViewController(customVC, self)
     }else if ([title isEqualToString:@"我的模考"]) {
-        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+//        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
 //        customVC.baseTopView.titleName = @"我的模考";
 //        AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
 //        noExamVC.examType = NoneTestExamType;
@@ -110,7 +137,31 @@
 //        [customVC setupPageView:@[@"未考试",@"已考试"] ContentViewControllers:@[noExamVC,hasExamVC]];
         AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
         PUSHLoginCustomViewController(noExamVC, self)
+    }else if ([title isEqualToString:@"退出"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self exitAction];
+        });
     }
+}
+
+#pragma mark - 退出登录
+- (void)exitAction{
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您确定要退出么？" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self exit];
+        });
+    }]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+- (void)exit {
+    [[AEUserInfo shareInstance]removeLoginData];
+    [[NSNotificationCenter defaultCenter]postNotificationName:kLoginExit object:nil];
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kLogout query:nil path:nil body:nil success:^(id object) {
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 
 -(void)dealloc {

@@ -42,7 +42,7 @@
 
 -(void)updateheaderInfo {
     if (User.isLogin) {
-        self.nameLabel.text = STRISEMPTY(User.user_profile.user_name) ? User.username : User.user_profile.user_name;
+        self.nameLabel.text = STRISEMPTY(User.user_profile.user_name) ? [NSString stringWithFormat:@"你好,%@", User.username] : [NSString stringWithFormat:@"你好,%@", User.user_profile.user_name];
     }else {
         self.nameLabel.text = @"点击头像登录";
     }

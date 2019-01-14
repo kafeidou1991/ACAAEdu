@@ -25,11 +25,11 @@
     
     [self createTableViewStyle:UITableViewStylePlain];
     
-    if ([AEUserInfo shareInstance].isLogin) {
-        self.tableView.tableFooterView = [self _createFootView];
-    }else{
-        self.tableView.tableFooterView = [UIView new];
-    }
+//    if ([AEUserInfo shareInstance].isLogin) {
+//        self.tableView.tableFooterView = [self _createFootView];
+//    }else{
+//        self.tableView.tableFooterView = [UIView new];
+//    }
 }
 
 

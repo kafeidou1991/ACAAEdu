@@ -66,13 +66,13 @@
                             <rect key="frame" x="25" y="25.5" width="20" height="19"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="请输入手机号/邮箱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwQ-Fv-d2m">
-                            <rect key="frame" x="55" y="20.5" width="110.5" height="16"/>
+                            <rect key="frame" x="55" y="15.5" width="110.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.76078431369999999" green="0.76470588240000004" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8L6-kp-Bol" customClass="AETextField">
-                            <rect key="frame" x="55" y="41.5" width="8" height="16"/>
+                            <rect key="frame" x="55" y="36.5" width="8" height="16"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="cSf-Dj-iud"/>
@@ -97,7 +97,7 @@
                         <constraint firstItem="a2j-7Y-MyK" firstAttribute="leading" secondItem="2my-QL-s3W" secondAttribute="leading" constant="25" id="7UI-aY-Qf3"/>
                         <constraint firstItem="8L6-kp-Bol" firstAttribute="top" secondItem="UwQ-Fv-d2m" secondAttribute="bottom" constant="5" id="91j-Eb-nhl"/>
                         <constraint firstItem="8L6-kp-Bol" firstAttribute="leading" secondItem="UwQ-Fv-d2m" secondAttribute="leading" id="bYk-yx-x0Q"/>
-                        <constraint firstItem="UwQ-Fv-d2m" firstAttribute="top" secondItem="a2j-7Y-MyK" secondAttribute="top" constant="-5" id="zhg-pJ-GWb"/>
+                        <constraint firstItem="UwQ-Fv-d2m" firstAttribute="top" secondItem="a2j-7Y-MyK" secondAttribute="top" constant="-10" id="zhg-pJ-GWb"/>
                         <constraint firstItem="a2j-7Y-MyK" firstAttribute="centerY" secondItem="2my-QL-s3W" secondAttribute="centerY" id="zzh-1O-XcW"/>
                     </constraints>
                     <connections>

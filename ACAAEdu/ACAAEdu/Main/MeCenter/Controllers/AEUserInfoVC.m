@@ -287,6 +287,7 @@
         _pickViewManage.titleLabelColor = AEColorLightText;
         _pickViewManage.leftBtnBGColor = _pickViewManage.leftBtnborderColor = AEHexColor(@"E7E8EA");
         _pickViewManage.rightBtnBGColor = _pickViewManage.rightBtnborderColor = AEThemeColor;
+        _pickViewManage.pickerTitleSize = 18;
     }
     return _pickViewManage;
 }

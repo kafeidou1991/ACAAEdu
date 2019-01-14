@@ -31,6 +31,17 @@
     [tabBarAppearance setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]]];
     [tabBarAppearance setShadowImage:[UIImage new]];
     
+    //去掉tabBar顶部线条
+    CGRect rect = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [[UIColor clearColor] CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    [tabBarAppearance setBackgroundImage:img];
+    [tabBarAppearance setShadowImage:img];
+    
 }
 
 - (void)viewDidLoad {
