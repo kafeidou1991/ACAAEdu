@@ -287,6 +287,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
         [req setHTTPBody:[jsonString dataUsingEncoding:NSUTF8StringEncoding]];
     }
 #ifdef DEBUG
+    NSLog(@"URL %@\n",url);
     NSLog(@"参数 %@\n",body);
 #endif
     return req;
