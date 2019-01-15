@@ -202,7 +202,6 @@
 @interface AEExamEvaluateSubItem :DateCenter
 @property (nonatomic, copy) NSString * part_num; //数量
 @property (nonatomic, copy) NSString * part_type; //题目类型
-@property (nonatomic, copy) NSString * rate; // z正确率
 @property (nonatomic, copy) NSString * part_name; //名称
 @property (nonatomic, copy) NSString * part_correct; //正确
 @property (nonatomic, copy) NSString * part_score; //得分
@@ -228,6 +227,7 @@
 @property (nonatomic, strong) NSArray * part_info;
 @property (nonatomic, strong) NSArray * category_info; //知识点明细
 @property (nonatomic, copy) NSString * pass; //通过状态
+@property (nonatomic, assign) double rate; // z正确率
 @end
 
 

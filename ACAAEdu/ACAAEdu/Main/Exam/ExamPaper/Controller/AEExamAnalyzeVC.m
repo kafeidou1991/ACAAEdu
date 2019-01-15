@@ -94,9 +94,9 @@
         self.examCateLabel.text = [NSString stringWithFormat:@"课程类别：%@",subItem.part_name];
         self.totalLabel.text = [NSString stringWithFormat:@"题目总数：%@",subItem.part_num];
         self.correctLabel.text = [NSString stringWithFormat:@"答对题目数：%@",subItem.part_correct];
-        //设置进度,是否有动画效果
-        [self.circleV circleWithProgress:subItem.rate.integerValue == 1 ? 100 : (int)(subItem.rate.floatValue * 100) andIsAnimate:YES];
     }
+    //设置进度,是否有动画效果
+    [self.circleV circleWithProgress:item.rate == 1 ? 100 : (int)item.rate andIsAnimate:YES];
     //第三分区 知识点分析
     if (item.category_info.count > 0) {
         NSMutableAttributedString * mutableStr = [[NSMutableAttributedString alloc]initWithString:@"" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]}];
