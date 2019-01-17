@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class HMBannerView;
 
-@interface HomeHeaderReusableView : UICollectionReusableView
+@interface AEHomeHeaderView : UIView
 
 /**
  更新banner数据

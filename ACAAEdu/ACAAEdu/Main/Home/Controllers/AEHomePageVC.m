@@ -8,16 +8,17 @@
 
 #import "AEHomePageVC.h"
 #import "AEHomePageCell.h"
-#import "HomeHeaderReusableView.h"
+#import "AEHomeHeaderView.h"
 #import "AEOrderDetailVC.h"
 #import "AEHomeNoticeIconView.h"
 #import "AEMessageListVC.h"
 #import "AECustomSegmentVC.h"
-
 #import "AEExamInfoVC.h"
+#import "AEHomeSectionView.h"
+#import "AEHomeModuleItem.h"
 
 @interface AEHomePageVC ()
-@property (nonatomic, strong) HomeHeaderReusableView * headerView;
+@property (nonatomic, strong) AEHomeHeaderView * headerView;
 @property (nonatomic, strong) AEHomeNoticeIconView * noticeView;
 
 @end
@@ -26,10 +27,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //顶部导航 暂时隐藏
-//    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"首页"]];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.noticeView];
-//    [self.noticeView addTarget:self action:@selector(gotoNoticeDetail) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItems = nil;
     [self initTableView];
     [self.noticeView updateNoShowNumber:0];
@@ -39,8 +36,18 @@
 }
 
 - (void)initTableView {
+    for (int i = 0; i < 2; i++) {
+        AEHomeModuleItem * item = [AEHomeModuleItem new];
+        if (i == 0) {
+//            是否展开
+            item.sectionDict = @{@"image":@"home_my_exam",@"title":@"我的考试",@"isExpand":@1,@"backgroundColor":@"4FD2C2"};
+        }else {
+            item.sectionDict = @{@"image":@"home_hot_exam",@"title":@"热门考试",@"isExpand":@1,@"backgroundColor":@"FBAB53"};
+        }
+        [self.dataSources addObject:item];
+    }
     WS(weakSelf)
-    [self createTableViewStyle:UITableViewStylePlain];
+    [self createTableViewStyle:UITableViewStyleGrouped];
     self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT  - TAB_BAR_HEIGHT  - ySpace);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.separatorColor = AEColorLine;
@@ -53,17 +60,37 @@
 -(void)afterProFun {
     WS(weakSelf);
     [self hudShow:self.view msg:STTR_ater_on];
-    __block NSInteger isEnd = - 2; //控制请求是否完成
+    __block NSInteger isEnd = - 3; //控制请求是否完成
+    
+    //我的考试数据 未登录不需要请求
+    if (User.isLogin) {
+        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
+            isEnd += 1;
+            AEHomeModuleItem * item = weakSelf.dataSources[0];
+            item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+            [weakSelf.dataSources replaceObjectAtIndex:0 withObject:item];
+            [weakSelf endLoadData:isEnd];
+        } faile:^(NSInteger code, NSString *error) {
+            isEnd += 1;
+            [weakSelf endLoadData:isEnd];
+            [AEBase alertMessage:error cb:nil];
+        }];
+    }else {
+        isEnd += 1;
+    }
+    //热门考试
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
         isEnd += 1;
-        weakSelf.dataSources = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+        AEHomeModuleItem * item = weakSelf.dataSources[1];
+        item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+        [weakSelf.dataSources replaceObjectAtIndex:1 withObject:item];
         [weakSelf endLoadData:isEnd];
     } faile:^(NSInteger code, NSString *error) {
         isEnd += 1;
         [weakSelf endLoadData:isEnd];
         [AEBase alertMessage:error cb:nil];
     }];
-    
+    //banner图数据
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kBanner query:nil path:nil body:nil success:^(id object) {
         isEnd += 1;
         if ([object isKindOfClass:[NSArray class]]) {
@@ -85,20 +112,63 @@
     }
 }
 
-
 #pragma mark - tableView delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSources.count;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    AEHomeModuleItem * item = self.dataSources[section];
+    if ([item.sectionDict[@"isExpand"] intValue] == 1) {
+        return item.data.count;
+    }else { //不展开显示0
+        return 0;
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEHomePageCell * cell = [AEHomePageCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
-    [cell updateCell:self.dataSources[indexPath.row]];
+    AEHomeModuleItem * item = self.dataSources[indexPath.section];
+    [cell updateCell:item.data[indexPath.row]];
     cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:weakSelf.dataSources[indexPath.row]];
+        [weakSelf pushOrderDetailVC:item.data[indexPath.row]];
     };
     return cell;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    __block __weak typeof(AEHomeModuleItem *) item = self.dataSources[section];
+    NSMutableDictionary * dict = item.sectionDict.mutableCopy;
+    if (item.data.count > 0) {
+        AEHomeSectionView * sectionView = [[NSBundle mainBundle]loadNibNamed:@"AEHomeSectionView" owner:nil options:nil].firstObject;
+        sectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
+        [sectionView updateSectionView:item.sectionDict];
+        //展开
+        WS(weakSelf)
+        sectionView.expandBlock = ^{
+            if ([dict[@"isExpand"]intValue] == 1) {
+                [dict setObject:@0 forKey:@"isExpand"];
+            }else {
+                [dict setObject:@1 forKey:@"isExpand"];
+            }
+            item.sectionDict = dict.copy;
+            [weakSelf.dataSources replaceObjectAtIndex:section withObject:item];
+            [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+            
+        };
+        return sectionView;
+    }
+    return [UIView new];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    AEHomeModuleItem * item = self.dataSources[section];
+    return item.data.count > 0 ? 30.f : 0.00000001;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return cellHeight;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    AEHomeModuleItem * item = self.dataSources[indexPath.section];
+    [self pushOrderDetailVC:item.data[indexPath.row]];
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([cell respondsToSelector:@selector(separatorInset)]) {
@@ -107,12 +177,6 @@
     if ([cell respondsToSelector:@selector(layoutMargins)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
     }
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return cellHeight;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self pushOrderDetailVC:self.dataSources[indexPath.row]];
 }
 //MARK: 订单详情
 - (void)pushOrderDetailVC:(AEExamItem *)item {
@@ -133,10 +197,11 @@
     PUSHLoginCustomViewController(customVC, self)
 }
 #pragma mark - 懒加载
--(HomeHeaderReusableView *)headerView {
+-(AEHomeHeaderView *)headerView {
     if (!_headerView) {
-        _headerView = [[NSBundle mainBundle]loadNibNamed:@"HomeHeaderReusableView" owner:nil options:nil].firstObject;
-        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 185.f * SCREEN_WIDTH / 375.f);
+        _headerView = [[NSBundle mainBundle]loadNibNamed:@"AEHomeHeaderView" owner:nil options:nil].firstObject;
+        //图片宽高比
+        _headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH * 9/16);
     }
     return _headerView;
 }

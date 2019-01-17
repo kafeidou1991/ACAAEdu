@@ -42,6 +42,9 @@
     [tabBarAppearance setBackgroundImage:img];
     [tabBarAppearance setShadowImage:img];
     
+    //解决模拟器上 tabbar回发生偏移得问题
+    tabBarAppearance.translucent = NO;
+    
 }
 
 - (void)viewDidLoad {

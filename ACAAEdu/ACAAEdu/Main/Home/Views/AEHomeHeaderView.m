@@ -6,16 +6,16 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "HomeHeaderReusableView.h"
+#import "AEHomeHeaderView.h"
 #import "HMBannerView.h"
 
-@interface HomeHeaderReusableView()<HMBannerViewClickDelegate>
+@interface AEHomeHeaderView()<HMBannerViewClickDelegate>
 
 @property (weak, nonatomic) IBOutlet HMBannerView *bannerView;
 
 @end
 
-@implementation HomeHeaderReusableView
+@implementation AEHomeHeaderView
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -36,9 +36,9 @@
 
 - (void)setContentText:(AEExamItem *)item {
     self.nameLabel.text = item.subject_full_name;
-    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_realPrice];
-    NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:STRISEMPTY(item.subject_price) ? @"￥0":[NSString stringWithFormat:@"￥%@",item.subject_price] attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-    self.orginPriceLabel.attributedText = attStr;
+//    self.priceLabel.text = [NSString stringWithFormat:@"￥%@",item.subject_realPrice];
+//    NSMutableAttributedString * attStr = [[NSMutableAttributedString alloc]initWithString:STRISEMPTY(item.subject_price) ? @"￥0":[NSString stringWithFormat:@"￥%@",item.subject_price] attributes:@{NSStrikethroughStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+//    self.orginPriceLabel.attributedText = attStr;
 }
 
 - (IBAction)buyAction:(UIButton *)sender {

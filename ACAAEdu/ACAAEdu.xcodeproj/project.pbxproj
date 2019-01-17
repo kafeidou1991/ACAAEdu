@@ -25,8 +25,8 @@
 		B79C925D2029EBFA002D0B66 /* HMBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C925C2029EBFA002D0B66 /* HMBannerView.m */; };
 		B79C9277202A0255002D0B66 /* AEHomePageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C9274202A0255002D0B66 /* AEHomePageCell.xib */; };
 		B79C927B202A0277002D0B66 /* AEHomePageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C927A202A0277002D0B66 /* AEHomePageCell.m */; };
-		B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C9285202A0630002D0B66 /* HomeHeaderReusableView.m */; };
-		B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */; };
+		B79C9287202A0630002D0B66 /* AEHomeHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C9285202A0630002D0B66 /* AEHomeHeaderView.m */; };
+		B79C9288202A0630002D0B66 /* AEHomeHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C9286202A0630002D0B66 /* AEHomeHeaderView.xib */; };
 		B7C3952B203A637B00AB8513 /* AEUserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952A203A637B00AB8513 /* AEUserInfoVC.m */; };
 		B7C3952F203A650900AB8513 /* AEModifierInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C3952D203A650900AB8513 /* AEModifierInfoCell.m */; };
 		B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C3952E203A650900AB8513 /* AEModifierInfoCell.xib */; };
@@ -35,7 +35,7 @@
 		B7C44246206D250400D4EA03 /* AEExamContentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C44244206D250400D4EA03 /* AEExamContentCell.xib */; };
 		B7C4424A206D268F00D4EA03 /* AEExamQuestionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7C44248206D268F00D4EA03 /* AEExamQuestionCell.m */; };
 		B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */; };
-		B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D6520502761008D6970 /* AESpaceItem.m */; };
+		B7CA3D6620502761008D6970 /* AEHomeModuleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D6520502761008D6970 /* AEHomeModuleItem.m */; };
 		B7CA3D692050293B008D6970 /* AEExamItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B7CA3D682050293B008D6970 /* AEExamItem.m */; };
 		B7D5C46B207D0AE400EDD72B /* AESearchExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D5C46A207D0AE400EDD72B /* AESearchExamVC.m */; };
 		B7D86B68205C0630001CAA02 /* AEScreeningFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B67205C0630001CAA02 /* AEScreeningFooterView.m */; };
@@ -44,6 +44,8 @@
 		B7D86B72205C1AAC001CAA02 /* AEMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */; };
 		B7D86B75205C2086001CAA02 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B74205C2085001CAA02 /* NSDate+Extension.m */; };
 		B7ECFF642070C002002E9DF5 /* AEAnswerCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */; };
+		B7FB011021F07CA9006A209F /* AEHomeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB010F21F07CA9006A209F /* AEHomeSectionView.m */; };
+		B7FB011221F07CB2006A209F /* AEHomeSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB011121F07CB2006A209F /* AEHomeSectionView.xib */; };
 		B7FB06A6202C93F100D5642D /* AEExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB06A4202C93F100D5642D /* AEExamVC.m */; };
 		B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB06A5202C93F100D5642D /* AEExamVC.xib */; };
 		B90615812058018D00801D38 /* AEOrderPayVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B906157F2058018D00801D38 /* AEOrderPayVC.m */; };
@@ -227,9 +229,9 @@
 		B79C9274202A0255002D0B66 /* AEHomePageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AEHomePageCell.xib; sourceTree = "<group>"; };
 		B79C9279202A0277002D0B66 /* AEHomePageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEHomePageCell.h; sourceTree = "<group>"; };
 		B79C927A202A0277002D0B66 /* AEHomePageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AEHomePageCell.m; sourceTree = "<group>"; };
-		B79C9284202A0630002D0B66 /* HomeHeaderReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeaderReusableView.h; sourceTree = "<group>"; };
-		B79C9285202A0630002D0B66 /* HomeHeaderReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeaderReusableView.m; sourceTree = "<group>"; };
-		B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeHeaderReusableView.xib; sourceTree = "<group>"; };
+		B79C9284202A0630002D0B66 /* AEHomeHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHomeHeaderView.h; sourceTree = "<group>"; };
+		B79C9285202A0630002D0B66 /* AEHomeHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEHomeHeaderView.m; sourceTree = "<group>"; };
+		B79C9286202A0630002D0B66 /* AEHomeHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEHomeHeaderView.xib; sourceTree = "<group>"; };
 		B7C39529203A637B00AB8513 /* AEUserInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEUserInfoVC.h; sourceTree = "<group>"; };
 		B7C3952A203A637B00AB8513 /* AEUserInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEUserInfoVC.m; sourceTree = "<group>"; };
 		B7C3952C203A650900AB8513 /* AEModifierInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEModifierInfoCell.h; sourceTree = "<group>"; };
@@ -243,8 +245,8 @@
 		B7C44247206D268F00D4EA03 /* AEExamQuestionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamQuestionCell.h; sourceTree = "<group>"; };
 		B7C44248206D268F00D4EA03 /* AEExamQuestionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamQuestionCell.m; sourceTree = "<group>"; };
 		B7C44249206D268F00D4EA03 /* AEExamQuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamQuestionCell.xib; sourceTree = "<group>"; };
-		B7CA3D6420502761008D6970 /* AESpaceItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESpaceItem.h; sourceTree = "<group>"; };
-		B7CA3D6520502761008D6970 /* AESpaceItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESpaceItem.m; sourceTree = "<group>"; };
+		B7CA3D6420502761008D6970 /* AEHomeModuleItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHomeModuleItem.h; sourceTree = "<group>"; };
+		B7CA3D6520502761008D6970 /* AEHomeModuleItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEHomeModuleItem.m; sourceTree = "<group>"; };
 		B7CA3D672050293B008D6970 /* AEExamItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamItem.h; sourceTree = "<group>"; };
 		B7CA3D682050293B008D6970 /* AEExamItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamItem.m; sourceTree = "<group>"; };
 		B7D5C469207D0AE400EDD72B /* AESearchExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESearchExamVC.h; sourceTree = "<group>"; };
@@ -260,6 +262,9 @@
 		B7D86B74205C2085001CAA02 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		B7ECFF622070C002002E9DF5 /* AEAnswerCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardView.h; sourceTree = "<group>"; };
 		B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardView.m; sourceTree = "<group>"; };
+		B7FB010E21F07CA9006A209F /* AEHomeSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHomeSectionView.h; sourceTree = "<group>"; };
+		B7FB010F21F07CA9006A209F /* AEHomeSectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEHomeSectionView.m; sourceTree = "<group>"; };
+		B7FB011121F07CB2006A209F /* AEHomeSectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEHomeSectionView.xib; sourceTree = "<group>"; };
 		B7FB06A3202C93F100D5642D /* AEExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamVC.h; sourceTree = "<group>"; };
 		B7FB06A4202C93F100D5642D /* AEExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamVC.m; sourceTree = "<group>"; };
 		B7FB06A5202C93F100D5642D /* AEExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamVC.xib; sourceTree = "<group>"; };
@@ -599,8 +604,8 @@
 		B79C92682029F3F9002D0B66 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B7CA3D6420502761008D6970 /* AESpaceItem.h */,
-				B7CA3D6520502761008D6970 /* AESpaceItem.m */,
+				B7CA3D6420502761008D6970 /* AEHomeModuleItem.h */,
+				B7CA3D6520502761008D6970 /* AEHomeModuleItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1112,9 +1117,12 @@
 				B79C9279202A0277002D0B66 /* AEHomePageCell.h */,
 				B79C927A202A0277002D0B66 /* AEHomePageCell.m */,
 				B79C9274202A0255002D0B66 /* AEHomePageCell.xib */,
-				B79C9284202A0630002D0B66 /* HomeHeaderReusableView.h */,
-				B79C9285202A0630002D0B66 /* HomeHeaderReusableView.m */,
-				B79C9286202A0630002D0B66 /* HomeHeaderReusableView.xib */,
+				B79C9284202A0630002D0B66 /* AEHomeHeaderView.h */,
+				B79C9285202A0630002D0B66 /* AEHomeHeaderView.m */,
+				B79C9286202A0630002D0B66 /* AEHomeHeaderView.xib */,
+				B7FB010E21F07CA9006A209F /* AEHomeSectionView.h */,
+				B7FB010F21F07CA9006A209F /* AEHomeSectionView.m */,
+				B7FB011121F07CB2006A209F /* AEHomeSectionView.xib */,
 				B79C925B2029EBFA002D0B66 /* HMBannerView.h */,
 				B79C925C2029EBFA002D0B66 /* HMBannerView.m */,
 				B9176FF221840DE70093D292 /* AEHomeNoticeIconView.h */,
@@ -1415,6 +1423,7 @@
 				B916E37720591D64007EB40B /* AEScreeningCell.xib in Resources */,
 				B9C320112046BBFB0022A562 /* LaunchScreen.xib in Resources */,
 				B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */,
+				B7FB011221F07CB2006A209F /* AEHomeSectionView.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9EE538020DA37F400A43627 /* AERegistNewVC.xib in Resources */,
@@ -1440,7 +1449,7 @@
 				B92733AC20415E61006F48C2 /* AEUserRemarkCell.xib in Resources */,
 				B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */,
 				B7131020202B55C7001CBAE8 /* AEForgetPwVC.xib in Resources */,
-				B79C9288202A0630002D0B66 /* HomeHeaderReusableView.xib in Resources */,
+				B79C9288202A0630002D0B66 /* AEHomeHeaderView.xib in Resources */,
 				B7FB06A7202C93F100D5642D /* AEExamVC.xib in Resources */,
 				B79C9277202A0255002D0B66 /* AEHomePageCell.xib in Resources */,
 				B9B9164620186209002A63CE /* Assets.xcassets in Resources */,
@@ -1556,7 +1565,7 @@
 				B918BBC6202B088700EDB00D /* WLScaleLayoutConstrain.m in Sources */,
 				B992CEEE207371E7007F3EF2 /* XHImageViewer.m in Sources */,
 				B96FD9AF202998E200FE7495 /* JSONKit.m in Sources */,
-				B7CA3D6620502761008D6970 /* AESpaceItem.m in Sources */,
+				B7CA3D6620502761008D6970 /* AEHomeModuleItem.m in Sources */,
 				B916E37620591D64007EB40B /* AEScreeningCell.m in Sources */,
 				B918BBCB202B088700EDB00D /* NSString+category.m in Sources */,
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
@@ -1564,7 +1573,8 @@
 				B9DFA1DA206F6F8400AFAD27 /* AEAnswerCardVC.m in Sources */,
 				B9DE2B522074C9EF00BC09C9 /* UIControl+AcceptEventInterval.m in Sources */,
 				B9F299B62181981000C767DD /* AESetNickNamePwVC.m in Sources */,
-				B79C9287202A0630002D0B66 /* HomeHeaderReusableView.m in Sources */,
+				B79C9287202A0630002D0B66 /* AEHomeHeaderView.m in Sources */,
+				B7FB011021F07CA9006A209F /* AEHomeSectionView.m in Sources */,
 				B93C7CEF205A9DFB00FC5E6C /* AEMyOrderFooterView.m in Sources */,
 				B9D2F645206CBFFC00C5A034 /* AEExamPaperVC_deprecated.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,

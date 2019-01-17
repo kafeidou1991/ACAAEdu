@@ -6,8 +6,8 @@
 //  Copyright © 2018年 ACAA. All rights reserved.
 //
 
-#import "AESpaceItem.h"
+#import "AEHomeModuleItem.h"
 
-@implementation AESpaceItem
+@implementation AEHomeModuleItem
 
 @end

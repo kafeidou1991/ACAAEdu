@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class AEMyExamItem,AEExamItem;
-static const CGFloat cellHeight = 80.f;
+static const CGFloat cellHeight = 50.f;
 
 @interface AEHomePageCell : UITableViewCell
 /**
