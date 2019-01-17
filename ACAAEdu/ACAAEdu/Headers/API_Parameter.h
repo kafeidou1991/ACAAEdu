@@ -87,6 +87,8 @@
 #define kOrderList @"mobile/shop/orders"
 //生成订单
 #define kCreatOrder @"mobile/shop/order"
+//删除订单
+#define kDeleteOrder @"mobile/shop/order_del"
 //验证凭据
 #define kValidateReceipt  @"mobile/shop/apple"
 

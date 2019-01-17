@@ -34,8 +34,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *discountsLabel;
 /// q我要测试
 @property (weak, nonatomic) IBOutlet UIButton *toTestBtn;
-//去支付
+//提交订单
 @property (weak, nonatomic) IBOutlet UIButton *submitBtn;
+
+//支付底部提交订单
+@property (weak, nonatomic) IBOutlet UIView *bottomSubmitView;
+/// 删除订单
+@property (weak, nonatomic) IBOutlet UIButton *deleteOrderBtn;
+//立即支付
+@property (weak, nonatomic) IBOutlet UIButton *payNowBtn;
+//左边约束
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leftSpaceContraint;
+
 
 @end
 
@@ -43,8 +53,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //顶部导航 暂时隐藏
-//    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:@"订单确认"]];
     self.title = _payStatus == AEOrderAffirmPay ? @"订单确认" : @"订单详情";
     [self initContent];
 }
@@ -56,18 +64,21 @@
         self.item = goodItem;
     }
 }
+//MARK: 初始化订单数据
 - (void)initContent {
-    
     //状态
-    if (_payStatus != AEOrderAffirmPay) {
-        self.payStatusLabel.text = _payStatus == AEOrderPaidStatus ? @"已付款" : @"待付款";
-        //我要测试
-        self.toTestBtn.backgroundColor = _payStatus == AEOrderPaidStatus ? AEThemeColor : AEHexColor(@"B2B3B4");
-    }else {
+    if (_payStatus == AEOrderAffirmPay) {
         self.payStatusLabel.text = @"";
-        //我要测试
         self.toTestBtn.hidden = YES;
+    }else if (_payStatus == AEOrderPayingStatus) {
+        self.payStatusLabel.text =  @"待付款";
+        self.toTestBtn.hidden = YES;
+    }else {
+        self.payStatusLabel.text =  @"已付款";
+        //我要测试
+        self.toTestBtn.backgroundColor = AEThemeColor;
     }
+    
     //类别 名称 版本
     self.orderNameLabel.text = _item.subject_full_name;
     self.versionLabel.text = [NSString stringWithFormat:@"版本:%@",_item.version];
@@ -78,34 +89,26 @@
     NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"原价 ￥%@",_item.subject_price] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13],NSForegroundColorAttributeName:AEHexColor(@"999999"),NSStrikethroughStyleAttributeName : @1}];
     self.orginPriceLabel.attributedText = att;
     
-    if (_payStatus == AEOrderPayingStatus || _payStatus == AEOrderAffirmPay) {
+    
+    if (_payStatus == AEOrderAffirmPay) {
+        //确认订单
+        self.bottmOrderView.hidden = NO;
+        self.bottomSubmitView.hidden = YES;
         //应付
         self.payLabel.text = _item.subject_realPrice;
         //优惠
         self.discountsLabel.text = _item.subject_discount;
-        
-        [self.submitBtn setTitle:_payStatus == AEOrderPayingStatus ? @"立即支付" : @"提交订单" forState:UIControlStateNormal];
-        
     }else {
         self.bottmOrderView.hidden = YES;
+        self.bottomSubmitView.hidden = NO;
+        if (_payStatus == AEOrderPaidStatus) { //已支付
+            self.payNowBtn.hidden = YES;
+            self.leftSpaceContraint.constant = SCREEN_WIDTH /2;
+        }
     }
 }
 //MARK:购买考试
 - (void)buyExam {
-    if (_payStatus == AEOrderPayingStatus) {
-        //未支付的订单不需要创建订单 直接跳转支付页面
-        AEOrderPayVC * VC = [AEOrderPayVC new];
-        VC.item = self.orderList;
-        if (self.orderList.goods.count > 0) {
-            AEGoodItem * good = self.orderList.goods[0];
-            //因为服务端没有赋值id 此处手动赋值
-            AEExamItem * goodItem = good.goods_attr_data;
-            VC.totalPrice = goodItem.subject_realPrice.floatValue;
-        }
-        VC.comeType = self.comeType;
-        [self.navigationController pushViewController:VC animated:YES];
-        return;
-    }
     WS(weakSelf)
     [self createOrderDetailSuccess:^(AEMyOrderList *item) {
         //pay_status ==0 继续购买  ==1 说明是价格0  直接购买成功
@@ -127,11 +130,7 @@
         }
     }];
 }
-
-- (IBAction)submitOrderAction:(UIButton *)sender {
-    _payStatus == AEOrderPaidStatus ? nil : [self buyExam];
-}
-
+//MARK: 创建订单
 - (void)createOrderDetailSuccess:(void(^)(AEMyOrderList * item))success {
     WS(weakSelf);
     [self hudShow:self.view msg:@"生成订单.."];
@@ -147,6 +146,46 @@
         [AEBase alertMessage:error cb:nil];
     }];
 }
+//MARK: 提交订单
+- (IBAction)submitOrderAction:(UIButton *)sender {
+    [self buyExam];
+}
+//MARK: 删除订单
+- (IBAction)deleteAction:(UIButton *)sender {
+    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"您确定要删除此订单么？" preferredStyle:UIAlertControllerStyleAlert];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        WS(weakSelf);
+        [self hudShow:self.view msg:@"生成删除.."];
+        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kDeleteOrder query:nil path:nil body:@{@"orders_no" : self.orderList.orders_no} success:^(id object) {
+            [weakSelf hudclose];
+            [AEBase alertMessage:@"删除成功" cb:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kOrderDeleteSuccess object:nil];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        } faile:^(NSInteger code, NSString *error) {
+            [weakSelf hudclose];
+            [AEBase alertMessage:error cb:nil];
+        }];
+    }]];
+    [alertVC addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+//MARK: 立即支付 未支付订单
+- (IBAction)payNowAction:(UIButton *)sender {
+    //未支付的订单不需要创建订单 直接跳转支付页面
+    AEOrderPayVC * VC = [AEOrderPayVC new];
+    VC.item = self.orderList;
+    if (self.orderList.goods.count > 0) {
+        AEGoodItem * good = self.orderList.goods[0];
+        //因为服务端没有赋值id 此处手动赋值
+        AEExamItem * goodItem = good.goods_attr_data;
+        VC.totalPrice = goodItem.subject_realPrice.floatValue;
+    }
+    VC.comeType = self.comeType;
+    [self.navigationController pushViewController:VC animated:YES];
+}
+
 //MARK: 我要测试
 - (IBAction)toTestAction:(UIButton *)sender {
     if (_payStatus == AEOrderPaidStatus) {

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hvd-wH-43Y">
-                        <rect key="frame" x="40" y="17.5" width="142.5" height="31.5"/>
+                        <rect key="frame" x="16" y="17.5" width="142.5" height="31.5"/>
                         <string key="text">身份证号
 4111578199103044567</string>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -43,7 +43,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="hvd-wH-43Y" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HU3-7B-R0L"/>
-                    <constraint firstItem="hvd-wH-43Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="S8d-M0-RE9"/>
+                    <constraint firstItem="hvd-wH-43Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="S8d-M0-RE9"/>
                     <constraint firstItem="EtN-qY-AKn" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="m8t-DE-Q5S"/>
                     <constraint firstAttribute="trailing" secondItem="EtN-qY-AKn" secondAttribute="trailing" constant="16" id="qap-n0-O1Q"/>
                 </constraints>

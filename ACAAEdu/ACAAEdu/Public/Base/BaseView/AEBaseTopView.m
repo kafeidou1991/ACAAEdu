@@ -9,7 +9,7 @@
 #import "AEBaseTopView.h"
 
 static const CGFloat SPACE_HEIGHT = 44.f;
-static const CGFloat LEFT_TITLE_SPACE = 40.f;
+static const CGFloat LEFT_TITLE_SPACE = 16.f;
 
 @interface AEBaseTopView ()
 
@@ -73,6 +73,7 @@ static const CGFloat LEFT_TITLE_SPACE = 40.f;
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:20];
         _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.text = @"关于我们";
         [self.spaceView addSubview:_titleLabel];
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

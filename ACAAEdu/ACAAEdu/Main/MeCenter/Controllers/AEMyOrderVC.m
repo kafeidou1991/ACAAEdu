@@ -27,6 +27,7 @@ static const CGFloat headerViewHeight = 145.f;
     [self initTableView];
     self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refrshLoad) name:kPayOrderSuccess object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(refrshLoad) name:kOrderDeleteSuccess object:nil];
 }
 
 //初始化tableview

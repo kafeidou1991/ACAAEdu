@@ -15,6 +15,7 @@ static NSString * const kBindAccountSuccess = @"BindAccountSuccess"; //绑定账
 static NSString * const kreLogin = @"reLogin"; //重新登录
 
 static NSString * const kPayOrderSuccess = @"PayOrderSuccess"; //订单支付成功
+static NSString * const kOrderDeleteSuccess = @"OrderDeleteSuccess"; //删除订单成功
 
 
 
