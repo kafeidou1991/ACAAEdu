@@ -42,7 +42,6 @@
         self.delegate = self;
         self.pagingEnabled = YES;
         self.showsHorizontalScrollIndicator = NO;
-//        self.scrollEnabled = NO;
     }
     return self;
 }

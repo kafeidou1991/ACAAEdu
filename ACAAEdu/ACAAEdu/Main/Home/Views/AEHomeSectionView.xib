@@ -15,11 +15,8 @@
             <rect key="frame" x="0.0" y="0.0" width="345" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_hot_exam" translatesAutoresizingMaskIntoConstraints="NO" id="Or1-4G-n7c">
-                    <rect key="frame" x="16" y="4.5" width="21" height="21"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="热门ACAA考试" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jh-cy-Jn1">
-                    <rect key="frame" x="47" y="6.5" width="95" height="17"/>
+                    <rect key="frame" x="41" y="6.5" width="95" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -35,6 +32,9 @@
                         <action selector="expandAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xaU-7q-z0y"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_hot_exam" translatesAutoresizingMaskIntoConstraints="NO" id="Or1-4G-n7c">
+                    <rect key="frame" x="10" y="4.5" width="21" height="21"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.30980392156862746" green="0.82352941176470584" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -43,7 +43,7 @@
                 <constraint firstItem="Or1-4G-n7c" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Dya-hE-BGz"/>
                 <constraint firstItem="4Jh-cy-Jn1" firstAttribute="centerY" secondItem="Or1-4G-n7c" secondAttribute="centerY" id="Zwj-qA-WnR"/>
                 <constraint firstAttribute="trailing" secondItem="VMk-Gr-6qd" secondAttribute="trailing" id="qaT-4U-QpH"/>
-                <constraint firstItem="Or1-4G-n7c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="v9d-AJ-JbC"/>
+                <constraint firstItem="Or1-4G-n7c" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="v9d-AJ-JbC"/>
                 <constraint firstItem="VMk-Gr-6qd" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wwS-uo-lIt"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

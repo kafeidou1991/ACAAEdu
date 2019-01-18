@@ -182,8 +182,6 @@
         judgeItem.question = judgeArray.copy;
         [self.dataSourceArr addObject:judgeItem];
     }
-    
-    
 }
 //MARK: Private Method
 - (void)refreshExamView:(NSInteger)aIndex {

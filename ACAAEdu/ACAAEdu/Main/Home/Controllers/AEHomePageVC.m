@@ -31,11 +31,8 @@
     self.navigationItem.leftBarButtonItems = nil;
     [self initTableView];
     [self.noticeView updateNoShowNumber:0];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData:) name:kPayOrderSuccess object:nil];
 }
-- (void)buy {
-    [self.navigationController pushViewController:[AEExamInfoVC new] animated:YES];
-}
-
 - (void)initTableView {
     for (int i = 0; i < 2; i++) {
         AEHomeModuleItem * item = [AEHomeModuleItem new];
@@ -57,10 +54,15 @@
         [weakSelf afterProFun];
     }];
 }
-
+#pragma mark - 加载数据
 -(void)afterProFun {
+    [self loadData:YES];
+}
+- (void)loadData:(BOOL)isShow {
     WS(weakSelf);
-    [self hudShow:self.view msg:STTR_ater_on];
+    if (isShow) {
+        [self hudShow:self.view msg:STTR_ater_on];
+    }
     __block NSInteger isEnd = - 3; //控制请求是否完成
     
     //我的考试数据 未登录不需要请求
@@ -110,12 +112,20 @@
         [AEBase alertMessage:error cb:nil];
     }];
 }
+
 - (void)endLoadData:(NSInteger)isEnd {
     if (isEnd >= 0) {
         [self hudclose];
         [self endRefesh:YES];
         [self.tableView reloadData];
     }
+}
+#pragma mark - 购买成功
+- (void)buy {
+    [self.navigationController pushViewController:[AEExamInfoVC new] animated:YES];
+}
+- (void)buySuccess {
+    [self loadData:NO];
 }
 
 #pragma mark - tableView delegate
@@ -177,6 +187,11 @@
     return cellHeight;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        //跳转考试列表
+        PUSHLoginCustomViewController([AEMyTestExamVC new], self);
+        return;
+    }
     AEHomeModuleItem * item = self.dataSources[indexPath.section];
     [self pushOrderDetailVC:item.data[indexPath.row]];
 }
@@ -223,5 +238,8 @@
     return _noticeView;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 @end
