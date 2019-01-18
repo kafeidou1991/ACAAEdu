@@ -7,15 +7,9 @@
 //
 
 #import "DateCenter.h"
-
-//首页我的考试列表
-@interface AEHomeExamItem : DateCenter
-//@property (nonatomic, copy) status *<#statements#>;
-@end
-
 //考试列表页
 @interface AEExamItem : DateCenter
-@property (nonatomic, copy) NSString * id; // 考试id  本地将服务端id转换成examId
+@property (nonatomic, copy) NSString * id; // 考试id
 @property (nonatomic, copy) NSString * subject_price; //模拟考试单次原价
 @property (nonatomic, copy) NSString * subject_discount; //优惠的金额
 @property (nonatomic, copy, getter=getRealPrice) NSString * subject_realPrice; //本地计算的实际金额
@@ -29,35 +23,20 @@
 @property (nonatomic, copy) NSString * is_actived;
 @property (nonatomic, copy) NSString * subject_name;
 @property (nonatomic, copy) NSString * create_time;
-
+@property (nonatomic, copy) NSString * subject_institute; //类别 2是ADSK  1是ACAA
 //本地多选使用
 @property (nonatomic, assign) BOOL isSelect;
 
 @end
-//我的模考数据
-@interface AEExamSubjectItem :DateCenter
-@property (nonatomic, copy) NSString * is_actived;
-@property (nonatomic, copy) NSString * subject_type_name;
-@property (nonatomic, copy) NSString * id;
-@property (nonatomic, copy) NSString * subject_type;
-@property (nonatomic, copy) NSString * subject_name;
-@property (nonatomic, copy) NSString * language;
-@property (nonatomic, copy) NSString * version;
-@property (nonatomic, copy) NSString * short_name;
-@property (nonatomic, copy) NSString * subject_price;
-@property (nonatomic, copy) NSString * subject_full_name;
 
-@end
-//我的模考数据
+//我的模考数据  首页我的考试
 @interface AEMyExamItem :DateCenter
-
-
 @property (nonatomic, copy) NSString * id;
 @property (nonatomic, copy) NSString * status; //0=>未开始 1 =>进行中 2=>完成考试
-@property (nonatomic, strong) AEExamSubjectItem * subject;
 @property (nonatomic, copy) NSString * user_id;
 @property (nonatomic, copy) NSString * subject_id;
 @property (nonatomic, assign) int pass;    //0=>未通过 1 =>通过 2=>待打分
+@property (nonatomic, strong) AEExamItem * subject;
 
 
 @end

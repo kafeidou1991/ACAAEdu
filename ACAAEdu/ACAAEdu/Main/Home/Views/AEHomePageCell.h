@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class AEMyExamItem,AEExamItem;
-static const CGFloat cellHeight = 50.f;
+static const CGFloat cellHeight = 45.f;
 
 @interface AEHomePageCell : UITableViewCell
 /**
@@ -17,6 +17,13 @@ static const CGFloat cellHeight = 50.f;
  @param item 数据
  */
 - (void)updateCell:(AEExamItem *)item;
+
+/**
+ 首页我的考试
+ 
+ @param item 数据
+ */
+- (void)updateHomeMyExamCell:(AEMyExamItem *)item;
 
 /**
  购买回调

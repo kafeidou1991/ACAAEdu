@@ -9,17 +9,10 @@
 #import "AEExamItem.h"
 #import "YYModel.h"
 
-@implementation AEHomeExamItem
-
-@end
-
 @implementation AEExamItem
-
 //+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
 //    return @{@"exam_id":@"id"};
 //}
-
-
 - (NSString *)getRealPrice {
     if (!STRISEMPTY(_subject_realPrice)) {
         return _subject_realPrice;
@@ -32,9 +25,6 @@
 
 @end
 
-@implementation AEExamSubjectItem
-
-@end
 @implementation AEMyExamItem
 
 @end

@@ -16,6 +16,7 @@
 #import "AEExamInfoVC.h"
 #import "AEHomeSectionView.h"
 #import "AEHomeModuleItem.h"
+#import "AEMyTestExamVC.h"
 
 @interface AEHomePageVC ()
 @property (nonatomic, strong) AEHomeHeaderView * headerView;
@@ -67,7 +68,7 @@
         [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kHomeMyExam query:nil path:nil body:nil success:^(id object) {
             isEnd += 1;
             AEHomeModuleItem * item = weakSelf.dataSources[0];
-            item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+            item.data = [NSArray yy_modelArrayWithClass:[AEMyExamItem class] json:object].mutableCopy;
             [weakSelf.dataSources replaceObjectAtIndex:0 withObject:item];
             [weakSelf endLoadData:isEnd];
         } faile:^(NSInteger code, NSString *error) {
@@ -134,10 +135,20 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     WS(weakSelf)
     AEHomeModuleItem * item = self.dataSources[indexPath.section];
-    [cell updateCell:item.data[indexPath.row]];
-    cell.buyBlock = ^{
-        [weakSelf pushOrderDetailVC:item.data[indexPath.row]];
-    };
+    if (indexPath.section == 0) {
+        AEMyExamItem * subItem = item.data[indexPath.row];
+        [cell updateHomeMyExamCell:subItem];
+        cell.buyBlock = ^{
+            //跳转考试列表
+            PUSHLoginCustomViewController([AEMyTestExamVC new], weakSelf);
+        };
+    }else {
+        AEExamItem * subItem = item.data[indexPath.row];
+        [cell updateCell:subItem];
+        cell.buyBlock = ^{
+            [weakSelf pushOrderDetailVC:subItem];
+        };
+    }
     return cell;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
