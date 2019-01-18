@@ -133,7 +133,6 @@ static CGFloat const timeViewHeight = 50.f;
         [weakSelf hudclose];
         //已经获取到全部试题  替换数据源
         AEExamQuestionItem * item = [AEExamQuestionItem yy_modelWithJSON:object];
-        [self sortData:item];
         weakSelf.dataSourceArr = [NSMutableArray arrayWithObject:item];
         //添加视图
         [weakSelf createMainContentView];
@@ -148,43 +147,7 @@ static CGFloat const timeViewHeight = 50.f;
         [AEBase alertMessage:error cb:nil];
     }];
 }
-//type 1-判断题2-单选题 3-复选题
-- (void)sortData:(AEExamQuestionItem *)item {
-    NSMutableArray * signleArray = @[].mutableCopy;
-    NSMutableArray * doubleArray = @[].mutableCopy;
-    NSMutableArray* judgeArray   = @[].mutableCopy;
-    //筛选出来题型然后展示界面
-    for (AEQuestionRresult * resutItem in item.question) {
-        if ([resutItem.type isEqualToString:@"2"]) {
-            [signleArray addObject:resutItem];
-        }else if ([resutItem.type isEqualToString:@"3"]) {
-            [doubleArray addObject:resutItem];
-        }else {
-            [judgeArray addObject:resutItem];
-        }
-    }
-    if (signleArray.count > 0) {
-        AEExamQuestionItem * signleItem = item.copy;
-        signleItem.question = signleArray.copy;
-//        signleItem.questionName = self.questionTypeArray[0];
-        [self.dataSourceArr addObject:signleItem];
-    }
-    if (doubleArray.count > 0) {
-        AEExamQuestionItem * doubleItem = item.copy;
-        doubleItem.question = doubleArray.copy;
-//        doubleItem.questionName = self.questionTypeArray[1];
-        [self.dataSourceArr addObject:doubleItem];
-    }
-    if (judgeArray.count > 0) {
-        AEExamQuestionItem * judgeItem = item.copy;
-//        judgeItem.questionName = self.questionTypeArray[2];
-        judgeItem.question = judgeArray.copy;
-        [self.dataSourceArr addObject:judgeItem];
-    }
-    
-    
-    
-}
+
 //MARK: 定时器
 - (void)openTimer:(NSTimeInterval)countdown {
     WS(weakSelf)
