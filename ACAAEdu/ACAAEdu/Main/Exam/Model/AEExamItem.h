@@ -7,6 +7,12 @@
 //
 
 #import "DateCenter.h"
+
+//首页我的考试列表
+@interface AEHomeExamItem : DateCenter
+//@property (nonatomic, copy) status *<#statements#>;
+@end
+
 //考试列表页
 @interface AEExamItem : DateCenter
 @property (nonatomic, copy) NSString * id; // 考试id  本地将服务端id转换成examId

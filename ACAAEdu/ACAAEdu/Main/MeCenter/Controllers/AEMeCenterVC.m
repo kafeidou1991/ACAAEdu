@@ -32,11 +32,11 @@
 //    self.view.backgroundColor = UIColorFromRGB(0x747476);
     self.view.layer.contents = (__bridge id)[UIImage imageNamed:@"login_bg"].CGImage;
     [self addNotifications];
-    self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
-                        @{@"icon" :@"meceter2",@"title":@"通知"},
-                        @{@"icon" :@"meceter3",@"title":@"我的模考"},
-                        @{@"icon" :@"meceter4",@"title":@"我的订单"},
-                        @{@"icon" :@"meceter5",@"title":@"关于我们"}].mutableCopy;
+    self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置",@"des":@""},
+                        @{@"icon" :@"meceter2",@"title":@"通知",@"des":@""},
+                        @{@"icon" :@"meceter3",@"title":@"我的模考",@"des":@""},
+                        @{@"icon" :@"meceter4",@"title":@"我的订单",@"des":@""},
+                        @{@"icon" :@"meceter5",@"title":@"关于我们",@"des":@""}].mutableCopy;
     [self createTableViewStyle:UITableViewStylePlain];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -46,6 +46,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateInfo];
+    [self getNoPayOrderCount];
 }
 
 - (void)addNotifications{
@@ -56,18 +57,18 @@
 #pragma mark - 登陆成功
 - (void)updateInfo {
     if (User.isLogin) {
-        self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
-                            @{@"icon" :@"meceter2",@"title":@"通知"},
-                            @{@"icon" :@"meceter3",@"title":@"我的模考"},
-                            @{@"icon" :@"meceter4",@"title":@"我的订单"},
-                            @{@"icon" :@"meceter5",@"title":@"关于我们"},
-                            @{@"icon" :@"meceter6",@"title":@"退出"}].mutableCopy;
+        self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置",@"des":@""},
+                            @{@"icon" :@"meceter2",@"title":@"通知",@"des":@""},
+                            @{@"icon" :@"meceter3",@"title":@"我的模考",@"des":@""},
+                            @{@"icon" :@"meceter4",@"title":@"我的订单",@"des":@""},
+                            @{@"icon" :@"meceter5",@"title":@"关于我们",@"des":@""},
+                            @{@"icon" :@"meceter6",@"title":@"退出",@"des":@""}].mutableCopy;
     }else {
-        self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置"},
-                            @{@"icon" :@"meceter2",@"title":@"通知"},
-                            @{@"icon" :@"meceter3",@"title":@"我的模考"},
-                            @{@"icon" :@"meceter4",@"title":@"我的订单"},
-                            @{@"icon" :@"meceter5",@"title":@"关于我们"}].mutableCopy;
+        self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置",@"des":@""},
+                            @{@"icon" :@"meceter2",@"title":@"通知",@"des":@""},
+                            @{@"icon" :@"meceter3",@"title":@"我的模考",@"des":@""},
+                            @{@"icon" :@"meceter4",@"title":@"我的订单",@"des":@""},
+                            @{@"icon" :@"meceter5",@"title":@"关于我们",@"des":@""}].mutableCopy;
     }
     [self.loginHeaderView updateheaderInfo];
     [self.tableView reloadData];
@@ -79,6 +80,12 @@
     NSDictionary * dict = self.dataSources[indexPath.row];
     cell.leftImageView.image = [UIImage imageNamed:dict[@"icon"]];
     cell.titleLabel.text = dict[@"title"];
+    if (STRISEMPTY(dict[@"des"])) {
+        cell.rightLabel.hidden = YES;
+    }else {
+        cell.rightLabel.hidden = NO;
+        cell.rightLabel.text = dict[@"des"];
+    }
     if ([dict[@"title"] isEqualToString:@"退出"]) {
         cell.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.4];
     }else {
@@ -143,6 +150,26 @@
         });
     }
 }
+#pragma mark - 查询未支付订单个数
+- (void)getNoPayOrderCount {
+    WS(weakSelf)
+    NSMutableDictionary * dict = @{@"pay_status":@"0"}.mutableCopy;
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kOrderList query:dict path:nil body:nil success:^(id object) {
+        NSArray * tempArray = [NSArray yy_modelArrayWithClass:[AEMyOrderList class] json:object];
+        //我的订单
+        NSMutableDictionary * mutableDict = [weakSelf.dataSources[3] mutableCopy];
+        if (tempArray.count > 0) {
+            [mutableDict setObject:[NSString stringWithFormat:@"未完成订单  %lu",(unsigned long)tempArray.count] forKey:@"des"];
+        }else {
+            [mutableDict setObject:@"" forKey:@"des"];
+        }
+        [weakSelf.dataSources replaceObjectAtIndex:3 withObject:mutableDict.copy];
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+
 
 #pragma mark - 退出登录
 - (void)exitAction{

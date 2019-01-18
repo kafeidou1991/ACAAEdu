@@ -42,7 +42,7 @@
     [tabBarAppearance setBackgroundImage:img];
     [tabBarAppearance setShadowImage:img];
     
-    //解决模拟器上 tabbar回发生偏移得问题
+    //解决iOS 12.1 pushd的时候 tabbar会发生偏移得问题
     tabBarAppearance.translucent = NO;
     
 }
@@ -93,7 +93,7 @@
     
     UITabBarItem *item = controller.tabBarItem;
     //去除偏移
-    item.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    item.imageInsets = UIEdgeInsetsMake(5.5, 0, -5.5, 0);
     item.image = normalImg;
     item.selectedImage = selectedImg;
     
@@ -118,8 +118,8 @@
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
-    AENavigationController *nav = (AENavigationController *)viewController;
-    UIViewController *rootVC = nav.viewControllers[0];
+//    AENavigationController *nav = (AENavigationController *)viewController;
+//    UIViewController *rootVC = nav.viewControllers[0];
 //    if ([rootVC isKindOfClass:NSClassFromString(@"WLHomePageVC")]) {
 //        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationTabBarSelectHomeVC object:nil];
 //    }

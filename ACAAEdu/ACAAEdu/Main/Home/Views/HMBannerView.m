@@ -92,7 +92,13 @@
     }
     [self addSubview:self.pageControl];
     
-    [_imageView sd_setImageWithURL:[NSURL URLWithString:[_imageArr objectAtIndex:_currentIndex]] placeholderImage:[UIImage imageNamed:@"course_def_h"]];
+    id currItem = [_imageArr objectAtIndex:_currentIndex];
+    if ([currItem isKindOfClass:[NSString class]]) {
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:currItem] placeholderImage:[UIImage imageNamed:@"course_def_h"]];
+    }else if ([currItem isKindOfClass:[UIImage class]]) {
+        //加载本地图片
+        [_imageView setImage:currItem];
+    }
     
     [self setupTimer];
 }
@@ -120,7 +126,13 @@
         _currentIndex = _imageArr.count - 1;
     }
     self.pageControl.currentPage = _currentIndex;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:_imageArr[_currentIndex]] placeholderImage:[UIImage imageNamed:@"course_def_h"]];
+    id currItem = [_imageArr objectAtIndex:_currentIndex];
+    if ([currItem isKindOfClass:[NSString class]]) {
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:currItem] placeholderImage:[UIImage imageNamed:@"course_def_h"]];
+    }else if ([currItem isKindOfClass:[UIImage class]]) {
+        //加载本地图片
+        [_imageView setImage:currItem];
+    }
     [self transTionWithsubtype:kCATransitionFromLeft];
 }
 
@@ -131,7 +143,13 @@
         _currentIndex = 0;
     }
     self.pageControl.currentPage = _currentIndex;
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:_imageArr[_currentIndex]] placeholderImage:[UIImage imageNamed:@"course_def_h"]];
+    id currItem = [_imageArr objectAtIndex:_currentIndex];
+    if ([currItem isKindOfClass:[NSString class]]) {
+        [_imageView sd_setImageWithURL:[NSURL URLWithString:currItem] placeholderImage:[UIImage imageNamed:@"course_def_h"]];
+    }else if ([currItem isKindOfClass:[UIImage class]]) {
+        //加载本地图片
+        [_imageView setImage:currItem];
+    }
     [self transTionWithsubtype:kCATransitionFromRight];
 }
 

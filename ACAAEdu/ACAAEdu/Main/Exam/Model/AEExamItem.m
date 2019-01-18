@@ -9,6 +9,10 @@
 #import "AEExamItem.h"
 #import "YYModel.h"
 
+@implementation AEHomeExamItem
+
+@end
+
 @implementation AEExamItem
 
 //+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {

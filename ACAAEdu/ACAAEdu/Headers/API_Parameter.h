@@ -51,6 +51,8 @@
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐
 #define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"
+//首页我的考试
+#define kHomeMyExam @"mobile/user_exam/home"
 //首页Banner
 #define kBanner @"mobile/system/banner"
 //科目列表

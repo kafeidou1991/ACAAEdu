@@ -64,7 +64,7 @@
     
     //我的考试数据 未登录不需要请求
     if (User.isLogin) {
-        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
+        [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kHomeMyExam query:nil path:nil body:nil success:^(id object) {
             isEnd += 1;
             AEHomeModuleItem * item = weakSelf.dataSources[0];
             item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
@@ -95,7 +95,12 @@
         isEnd += 1;
         if ([object isKindOfClass:[NSArray class]]) {
             //轮播图
-            [weakSelf.headerView updateBanner:object];
+            if ([object count] > 0) {
+                [weakSelf.headerView updateBanner:object];
+            }else {
+                //加载本地储存banner
+                [weakSelf.headerView updateBanner:@[[UIImage imageNamed:@"banner0"],[UIImage imageNamed:@"banner1"]]];
+            }
         }
         [weakSelf endLoadData:isEnd];
     } faile:^(NSInteger code, NSString *error) {
