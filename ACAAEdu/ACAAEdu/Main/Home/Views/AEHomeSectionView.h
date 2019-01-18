@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class AEHomeSectionItem;
 @interface AEHomeSectionView : UIView
 /**
  更新banner数据
  
  @param dict dict数组
  */
-- (void)updateSectionView:(NSDictionary *)dict;
+- (void)updateSectionView:(AEHomeSectionItem *)item;
 
 @property (nonatomic, copy) dispatch_block_t expandBlock;
 

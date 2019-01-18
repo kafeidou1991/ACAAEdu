@@ -7,6 +7,7 @@
 //
 
 #import "AEHomeSectionView.h"
+#import "AEHomeModuleItem.h"
 
 @implementation AEHomeSectionView {
     __weak IBOutlet UIImageView *leftImageView;
@@ -14,11 +15,11 @@
     __weak IBOutlet UIButton *rightBtn;
 }
 
-- (void)updateSectionView:(NSDictionary *)dict {
-    leftImageView.image = [UIImage imageNamed:dict[@"image"]];
-    titleLabel.text = dict[@"title"];
-    rightBtn.selected = [dict[@"isExpand"]intValue];
-    self.backgroundColor = AEHexColor(dict[@"backgroundColor"]);
+- (void)updateSectionView:(AEHomeSectionItem *)item {
+    leftImageView.image = [UIImage imageNamed:item.image];
+    titleLabel.text = item.title;
+    rightBtn.selected = item.isExpand;
+    self.backgroundColor = AEHexColor(item.backgroundColor);
 }
 
 

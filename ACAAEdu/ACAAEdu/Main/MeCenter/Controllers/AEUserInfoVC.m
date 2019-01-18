@@ -30,6 +30,8 @@
     [self.view addSubview:self.baseTopView];
     self.baseTopView.titleName = @"个人资料";
     [self addSaveButton];
+    [self createTableViewStyle:UITableViewStylePlain];
+    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - ySpace);
 }
 -(void)afterProFun {
     WS(weakSelf);
@@ -40,8 +42,7 @@
         //服务器返回时间戳 单独处理下
         weakSelf.info.birthday = [NSString dateToStringFormatter:@"yyyy-MM-dd" date:[NSDate dateWithTimeIntervalSince1970:weakSelf.info.birthday.integerValue]];
         [weakSelf reloadDataSources];
-        [weakSelf createTableViewStyle:UITableViewStylePlain];
-        
+        [weakSelf.tableView reloadData];
     } faile:^(NSInteger code, NSString *error) {
         [weakSelf hudclose];
         [AEBase alertMessage:error cb:nil];
@@ -51,6 +52,12 @@
 - (void)save {
     [self.view endEditing:YES];
     NSMutableDictionary * pramaDict = @{}.mutableCopy;
+    //英文名 性别  必传
+    if (STRISEMPTY(_info.user_name)) {
+        [AEBase alertMessage:@"请填入用户名!" cb:nil];
+        return;
+    }
+    [pramaDict setObject:_info.user_name forKey:@"user_name"];
     //英文名 性别  必传
     if (STRISEMPTY(_info.user_name_en)) {
         [AEBase alertMessage:@"请填入英文名!" cb:nil];
@@ -119,7 +126,8 @@
 }
 #pragma mark -刷新数据源
 - (void)reloadDataSources {
-    self.dataSources = @[@{@"title":@"英文名",@"value":_info.user_name_en},
+    self.dataSources = @[@{@"title":@"用户名",@"value":_info.user_name},
+                         @{@"title":@"英文名",@"value":_info.user_name_en},
                          @{@"title":@"生日",@"value":STRISEMPTY(_info.birthday) ? @"" : _info.birthday},
                          @{@"title":@"性别",@"value":[self toString:_info.gender]},
                          @{@"title":@"所在地",@"value":STRISEMPTY(_info.province) ? @"" : [NSString stringWithFormat:@"%@ %@",_info.province,_info.city]},
@@ -134,7 +142,7 @@
 #pragma mark - tableview delegate & datesource
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary * dict = self.dataSources[indexPath.row];
-    if (indexPath.row != 10) {
+    if (indexPath.row != 11) {
         AEUserInfoCell * cell = [AEUserInfoCell cellWithTableView:tableView];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -151,7 +159,7 @@
     }
 }
 - (void)textFieldPlacehold:(NSIndexPath *)indexPath Cell:(AEUserInfoCell *)cell {
-    if (indexPath.row == 0 || indexPath.row == 4 ||indexPath.row == 5 ||indexPath.row == 6 || indexPath.row == 7) {
+    if (indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 5 ||indexPath.row == 6 ||indexPath.row == 7 || indexPath.row == 8) {
         cell.contentTextField.placeholder = @"请输入";
         cell.contentTextField.enabled =YES;
     }else {
@@ -163,20 +171,20 @@
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.row == 10 ? RemarkHeight : 50.f;
+    return indexPath.row == 11 ? RemarkHeight : 50.f;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 1) {
+    if (indexPath.row == 2) {
         [self birthday];
-    }else if (indexPath.row == 2) {
-        [self gender];
     }else if (indexPath.row == 3) {
+        [self gender];
+    }else if (indexPath.row == 4) {
         [self province];
-    }else if (indexPath.row == 8) {
-        [self vocation];
     }else if (indexPath.row == 9) {
-        [self eduLevel];
+        [self vocation];
     }else if (indexPath.row == 10) {
+        [self eduLevel];
+    }else if (indexPath.row == 11) {
         AEUserRemarkCell * cell = [tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
         if ([cell.contentTextView canBecomeFirstResponder]) {
             [cell.contentTextView becomeFirstResponder];
@@ -193,7 +201,7 @@
     NSString *nowStr = [fmt stringFromDate:now];
     [CGXPickerView showDatePickerWithTitle:@"生日" DateType:UIDatePickerModeDate DefaultSelValue:STRISEMPTY(_info.birthday) ? nil : _info.birthday MinDateStr:@"1900-01-01 00:00:00" MaxDateStr:nowStr IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(NSString *selectValue) {
         _info.birthday = selectValue;
-        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
         cell.contentTextField.text = selectValue;
         cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
@@ -204,7 +212,7 @@
     WS(weakSelf);
     [CGXPickerView showStringPickerWithTitle:@"性别" DataSource:@[@"女", @"男", @"保密"] DefaultSelValue:STRISEMPTY([self toString:_info.gender]) ? nil :[self toString:_info.gender] IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
         _info.gender = (NSString *)selectRow;
-        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
         cell.contentTextField.text = [weakSelf toString:_info.gender];
         cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
@@ -217,7 +225,7 @@
         NSLog(@"%@-%@",selectAddressArr,selectAddressRow);
         _info.province = selectAddressArr[0];
         _info.city = selectAddressArr[1];
-        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:3 inSection:0]];
+        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:4 inSection:0]];
         cell.contentTextField.text = [NSString stringWithFormat:@"%@ %@",_info.province,_info.city];
         cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
@@ -228,7 +236,7 @@
     WS(weakSelf);
     [CGXPickerView showStringPickerWithTitle:@"职业" DataSource:@[@"学生", @"教师", @"设计",@"工程师",@"管理人员",@"其他"] DefaultSelValue:STRISEMPTY(_info.vocation) ? nil : _info.vocation IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
         _info.vocation = (NSString *)selectValue;
-        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:8 inSection:0]];
+        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
         cell.contentTextField.text = _info.vocation;
         cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
@@ -239,7 +247,7 @@
     WS(weakSelf);
     [CGXPickerView showStringPickerWithTitle:@"学历" DataSource:@[@"高中", @"大专", @"本科",@"学士",@"硕士",@"博士"] DefaultSelValue:STRISEMPTY(_info.edu_level) ? nil : _info.edu_level IsAutoSelect:NO Manager:self.pickViewManage ResultBlock:^(id selectValue, id selectRow) {
         _info.edu_level = (NSString *)selectValue;
-        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:9 inSection:0]];
+        AEUserInfoCell * cell = [weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:10 inSection:0]];
         cell.contentTextField.text = _info.edu_level;
         cell.leftImageView.hidden = NO;
         [weakSelf reloadDataSources];
@@ -250,14 +258,16 @@
     //0 4 5 6 7 10
     NSString * beString = [textField.text stringByReplacingCharactersInRange:range withString:string];
     if (textField.tag == 0) {
+        _info.user_name = beString;
+    } else if (textField.tag == 1) {
         _info.user_name_en = beString;
-    }else if (textField.tag == 4) {
+    } else if (textField.tag == 5) {
         _info.address = beString;
-    }else if (textField.tag == 5) {
+    } else if (textField.tag == 6) {
         _info.post_code = beString;
-    }else if (textField.tag == 6) {
+    } else if (textField.tag == 7) {
         _info.phone_num = beString;
-    }else if (textField.tag == 7) {
+    } else if (textField.tag == 8) {
         _info.fax_num = beString;
     }
     [self reloadDataSources];

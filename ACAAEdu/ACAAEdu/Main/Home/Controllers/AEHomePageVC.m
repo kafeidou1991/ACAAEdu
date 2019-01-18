@@ -40,9 +40,9 @@
         AEHomeModuleItem * item = [AEHomeModuleItem new];
         if (i == 0) {
 //            是否展开
-            item.sectionDict = @{@"image":@"home_my_exam",@"title":@"我的考试",@"isExpand":@1,@"backgroundColor":@"4FD2C2"};
+            item.sectionItem = [AEHomeSectionItem yy_modelWithDictionary:@{@"image":@"home_my_exam",@"title":@"我的考试",@"isExpand":@1,@"backgroundColor":@"4FD2C2"}];
         }else {
-            item.sectionDict = @{@"image":@"home_hot_exam",@"title":@"热门考试",@"isExpand":@1,@"backgroundColor":@"FBAB53"};
+            item.sectionItem = [AEHomeSectionItem yy_modelWithDictionary:@{@"image":@"home_hot_exam",@"title":@"热门考试",@"isExpand":@1,@"backgroundColor":@"FBAB53"}];
         }
         [self.dataSources addObject:item];
     }
@@ -118,7 +118,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     AEHomeModuleItem * item = self.dataSources[section];
-    if ([item.sectionDict[@"isExpand"] intValue] == 1) {
+    if (item.sectionItem.isExpand) {
         return item.data.count;
     }else { //不展开显示0
         return 0;
@@ -137,23 +137,17 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     __block __weak typeof(AEHomeModuleItem *) item = self.dataSources[section];
-    NSMutableDictionary * dict = item.sectionDict.mutableCopy;
+    __block __weak AEHomeSectionItem * sectionItem = item.sectionItem;
     if (item.data.count > 0) {
         AEHomeSectionView * sectionView = [[NSBundle mainBundle]loadNibNamed:@"AEHomeSectionView" owner:nil options:nil].firstObject;
         sectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
-        [sectionView updateSectionView:item.sectionDict];
+        [sectionView updateSectionView:sectionItem];
         //展开
         WS(weakSelf)
         sectionView.expandBlock = ^{
-            if ([dict[@"isExpand"]intValue] == 1) {
-                [dict setObject:@0 forKey:@"isExpand"];
-            }else {
-                [dict setObject:@1 forKey:@"isExpand"];
-            }
-            item.sectionDict = dict.copy;
+            sectionItem.isExpand = !sectionItem.isExpand;
             [weakSelf.dataSources replaceObjectAtIndex:section withObject:item];
             [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
-            
         };
         return sectionView;
     }
