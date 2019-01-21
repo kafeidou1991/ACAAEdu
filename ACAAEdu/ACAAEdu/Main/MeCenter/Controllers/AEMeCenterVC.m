@@ -153,6 +153,9 @@
 }
 #pragma mark - 查询未支付订单个数
 - (void)getNoPayOrderCount {
+    if (!User.isLogin) {
+        return;
+    }
     WS(weakSelf)
     NSMutableDictionary * dict = @{@"pay_status":@"0"}.mutableCopy;
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kOrderList query:dict path:nil body:nil success:^(id object) {
@@ -172,6 +175,9 @@
 }
 #pragma mark - 查询未完成考试个数
 - (void)getNoPayExamCount {
+    if (!User.isLogin) {
+        return;
+    }
     WS(weakSelf)
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kUnExamCount query:nil path:nil body:nil success:^(id object) {
         int count = [object intValue];

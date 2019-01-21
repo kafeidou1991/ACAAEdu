@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self topNavtiation];
-    self.baseTopView.titleName = @"我的考试";
+    self.baseTopView.titleName = @"我的模考";
     [self initTableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 //    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
@@ -146,7 +146,7 @@
 //顶部导航
 - (void)topNavtiation {
     [self.view addSubview:self.baseTopView];
-    self.baseTopView.titleName = @"我的考试";
+    self.baseTopView.titleName = @"我的模考";
     self.baseTopView.imageViewName = @"exam_top_banner";
 }
 

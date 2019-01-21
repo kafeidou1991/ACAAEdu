@@ -31,7 +31,7 @@
     self.navigationItem.leftBarButtonItems = nil;
     [self initTableView];
     [self.noticeView updateNoShowNumber:0];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData:) name:kPayOrderSuccess object:nil];
+    [self addNotifications];
 }
 - (void)initTableView {
     for (int i = 0; i < 2; i++) {
@@ -53,6 +53,11 @@
     [self addHeaderRefesh:NO Block:^{
         [weakSelf loadData:NO];
     }];
+}
+- (void)addNotifications {
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData:) name:kPayOrderSuccess object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData:) name:kLoginExit object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(loadData:) name:kLoginSuccess object:nil];
 }
 #pragma mark - 加载数据
 -(void)afterProFun {

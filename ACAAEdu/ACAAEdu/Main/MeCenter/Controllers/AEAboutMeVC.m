@@ -21,13 +21,13 @@
     [super viewDidLoad];
     [self.view addSubview:self.baseTopView];
     self.appNameLabel.text = AEAppName;
-    self.appVersionLabel.text = [NSString stringWithFormat:@"iPhone V%@",AEVersion];
+    self.appVersionLabel.text = [NSString stringWithFormat:@"V%@",AEVersion];
     
     
     //配置环境
-#ifdef DEBUG
-    self.changeBtn.hidden = NO;
-#endif
+//#ifdef DEBUG
+//    self.changeBtn.hidden = NO;
+//#endif
 }
 // 内部测试功能
 - (IBAction)changeServer:(id)sender {
