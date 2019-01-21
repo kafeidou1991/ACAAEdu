@@ -14,14 +14,20 @@
     __weak IBOutlet UILabel *titleLabel;
     __weak IBOutlet UIButton *rightBtn;
 }
-
+//首页分区
 - (void)updateSectionView:(AEHomeSectionItem *)item {
     leftImageView.image = [UIImage imageNamed:item.image];
-    titleLabel.text = item.title;
+    titleLabel.text = item.name;
     rightBtn.selected = item.isExpand;
     self.backgroundColor = AEHexColor(item.backgroundColor);
 }
 
+//acaa分区分类
+- (void)updateACAACategaoryView:(AEAcaaCategoryItem *)item {
+    leftImageView.image = [UIImage imageNamed:@"acaa_categaory_exam"];
+    titleLabel.text = item.name;
+    rightBtn.selected = item.isExpand;
+}
 
 - (IBAction)expandAction:(UIButton *)sender {
     if (_expandBlock) {

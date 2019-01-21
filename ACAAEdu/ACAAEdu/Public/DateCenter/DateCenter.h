@@ -231,7 +231,19 @@
 @end
 
 
+@interface AEAcaaCategoryItem : DateCenter
+@property (nonatomic, copy) NSString  * id;
+@property (nonatomic, copy) NSString  * type; //1.acaa 2.adesk
+@property (nonatomic, copy) NSString  * name; //显示的section名称
+@property (nonatomic, copy) NSString  * create_time;
+@property (nonatomic, copy) NSString  * update_time;
+@property (nonatomic, strong) NSArray * subject;
+/**
+ 是否关闭展开
+ */
+@property (nonatomic, assign) BOOL isExpand;
 
+@end
 
 
 

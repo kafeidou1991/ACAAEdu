@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AEACAAExamVC">
+            <connections>
+                <outlet property="topViewHeight" destination="kca-MX-hq7" id="ICs-T9-ek9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-V1-JO2">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="75w-Ht-9z1">
+                            <rect key="frame" x="20" y="25" width="335" height="34"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="34" id="vcm-Hg-QOT"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="搜索你感兴趣的考试" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8w-Hh-oRf">
+                            <rect key="frame" x="114" y="32.5" width="147" height="19.5"/>
+                            <gestureRecognizers/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchImage" translatesAutoresizingMaskIntoConstraints="NO" id="zIb-Po-ddm">
+                            <rect key="frame" x="90" y="32.5" width="19" height="19"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.8980392157" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="75w-Ht-9z1" secondAttribute="trailing" constant="20" id="KG5-iJ-QTW"/>
+                        <constraint firstItem="d8w-Hh-oRf" firstAttribute="leading" secondItem="zIb-Po-ddm" secondAttribute="trailing" constant="5" id="LoX-MQ-JVI"/>
+                        <constraint firstItem="d8w-Hh-oRf" firstAttribute="centerX" secondItem="75w-Ht-9z1" secondAttribute="centerX" id="WeB-eV-AZU"/>
+                        <constraint firstItem="d8w-Hh-oRf" firstAttribute="centerY" secondItem="75w-Ht-9z1" secondAttribute="centerY" id="XWQ-5i-fO2"/>
+                        <constraint firstAttribute="bottom" secondItem="75w-Ht-9z1" secondAttribute="bottom" constant="5" id="Y2s-Zy-PVZ"/>
+                        <constraint firstItem="zIb-Po-ddm" firstAttribute="centerY" secondItem="d8w-Hh-oRf" secondAttribute="centerY" id="gp6-dc-N2j"/>
+                        <constraint firstItem="75w-Ht-9z1" firstAttribute="leading" secondItem="3gB-V1-JO2" secondAttribute="leading" constant="20" id="i1m-vX-eBp"/>
+                        <constraint firstAttribute="height" constant="64" id="kca-MX-hq7"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="BMl-ql-xdX" appends="YES" id="2c9-UB-mAc"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="3gB-V1-JO2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AgT-Ia-2xk"/>
+                <constraint firstAttribute="trailing" secondItem="3gB-V1-JO2" secondAttribute="trailing" id="rlT-5E-rsx"/>
+                <constraint firstItem="3gB-V1-JO2" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yz2-b1-Dck"/>
+            </constraints>
+        </view>
+        <tapGestureRecognizer id="BMl-ql-xdX">
+            <connections>
+                <action selector="searchExam:" destination="-1" id="qZJ-vh-nig"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="searchImage" width="19" height="19"/>
+    </resources>
+</document>

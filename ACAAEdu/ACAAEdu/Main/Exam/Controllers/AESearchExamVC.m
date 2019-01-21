@@ -47,7 +47,7 @@
         [self hudShow:self.view msg:STTR_ater_on];
     }
     WS(weakSelf);
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:_examType == AEExamACAAType ? kAcaaList : kAutodeskList query:self.pararsDict path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:_examType == AEExamACAAType ? kAcaaSearchList : kAutodeskList query:self.pararsDict path:nil body:nil success:^(id object) {
         isLoad ? [weakSelf hudclose] : nil;
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];

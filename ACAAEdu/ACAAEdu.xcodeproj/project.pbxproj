@@ -19,6 +19,8 @@
 		B762D4B121DC983700FADCD5 /* AEExamTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B762D4B021DC983700FADCD5 /* AEExamTimeView.xib */; };
 		B7897CF6207265C900F53E36 /* NSString+AEMatchTextMix.m in Sources */ = {isa = PBXBuildFile; fileRef = B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */; };
 		B7897CF92072753F00F53E36 /* AEQuestionHeaderVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = B7897CF82072753F00F53E36 /* AEQuestionHeaderVIew.m */; };
+		B79282D821F5AD6E00070248 /* AEACAAExamVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B79282D621F5AD6E00070248 /* AEACAAExamVC.m */; };
+		B79282D921F5AD6E00070248 /* AEACAAExamVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79282D721F5AD6E00070248 /* AEACAAExamVC.xib */; };
 		B79C92552029DCC9002D0B66 /* CExpandHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92542029DCC9002D0B66 /* CExpandHeader.m */; };
 		B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79C92572029DFB9002D0B66 /* MeCenterHeaderView.m */; };
 		B79C925A2029DFC2002D0B66 /* MeCenterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79C92592029DFC2002D0B66 /* MeCenterHeaderView.xib */; };
@@ -219,6 +221,9 @@
 		B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AEMatchTextMix.m"; sourceTree = "<group>"; };
 		B7897CF72072753F00F53E36 /* AEQuestionHeaderVIew.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEQuestionHeaderVIew.h; sourceTree = "<group>"; };
 		B7897CF82072753F00F53E36 /* AEQuestionHeaderVIew.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEQuestionHeaderVIew.m; sourceTree = "<group>"; };
+		B79282D521F5AD6E00070248 /* AEACAAExamVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEACAAExamVC.h; sourceTree = "<group>"; };
+		B79282D621F5AD6E00070248 /* AEACAAExamVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEACAAExamVC.m; sourceTree = "<group>"; };
+		B79282D721F5AD6E00070248 /* AEACAAExamVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEACAAExamVC.xib; sourceTree = "<group>"; };
 		B79C92532029DCC9002D0B66 /* CExpandHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CExpandHeader.h; sourceTree = "<group>"; };
 		B79C92542029DCC9002D0B66 /* CExpandHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CExpandHeader.m; sourceTree = "<group>"; };
 		B79C92562029DFB9002D0B66 /* MeCenterHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeCenterHeaderView.h; sourceTree = "<group>"; };
@@ -839,6 +844,9 @@
 				B7FB06A3202C93F100D5642D /* AEExamVC.h */,
 				B7FB06A4202C93F100D5642D /* AEExamVC.m */,
 				B7FB06A5202C93F100D5642D /* AEExamVC.xib */,
+				B79282D521F5AD6E00070248 /* AEACAAExamVC.h */,
+				B79282D621F5AD6E00070248 /* AEACAAExamVC.m */,
+				B79282D721F5AD6E00070248 /* AEACAAExamVC.xib */,
 				B7D5C469207D0AE400EDD72B /* AESearchExamVC.h */,
 				B7D5C46A207D0AE400EDD72B /* AESearchExamVC.m */,
 				B758DB36204ED4DC0017B270 /* AEOrderDetailVC.h */,
@@ -1425,6 +1433,7 @@
 				B7C4424B206D268F00D4EA03 /* AEExamQuestionCell.xib in Resources */,
 				B7FB011221F07CB2006A209F /* AEHomeSectionView.xib in Resources */,
 				B94C1CEA20401B3F006344F2 /* CGXBasicInfoPicker.plist in Resources */,
+				B79282D921F5AD6E00070248 /* AEACAAExamVC.xib in Resources */,
 				B7C39530203A650900AB8513 /* AEModifierInfoCell.xib in Resources */,
 				B9EE538020DA37F400A43627 /* AERegistNewVC.xib in Resources */,
 				B9DB458C219D65DA009A999A /* AEExamAnalyzeVC.xib in Resources */,
@@ -1535,6 +1544,7 @@
 				B949F9B72068DF8D009D0555 /* SGPageContentScrollView.m in Sources */,
 				B918BB25202AECD200EDB00D /* AETextField.m in Sources */,
 				B9B9173420187DCE002A63CE /* AEHomePageVC.m in Sources */,
+				B79282D821F5AD6E00070248 /* AEACAAExamVC.m in Sources */,
 				B949F9B62068DF8D009D0555 /* UIView+SGPagingView.m in Sources */,
 				B94C1CE820401B3F006344F2 /* CGXPickerUIBaseView.m in Sources */,
 				B9B9172B201879BF002A63CE /* AEBaseController.m in Sources */,

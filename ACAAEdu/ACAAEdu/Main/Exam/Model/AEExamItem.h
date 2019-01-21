@@ -24,9 +24,6 @@
 @property (nonatomic, copy) NSString * subject_name;
 @property (nonatomic, copy) NSString * create_time;
 @property (nonatomic, copy) NSString * subject_institute; //类别 2是ADSK  1是ACAA
-//本地多选使用
-@property (nonatomic, assign) BOOL isSelect;
-
 @end
 
 //我的模考数据  首页我的考试
@@ -37,6 +34,6 @@
 @property (nonatomic, copy) NSString * subject_id;
 @property (nonatomic, assign) int pass;    //0=>未通过 1 =>通过 2=>待打分
 @property (nonatomic, strong) AEExamItem * subject;
-
-
 @end
+
+

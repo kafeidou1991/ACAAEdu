@@ -9,14 +9,22 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@class AEHomeSectionItem;
+@class AEHomeSectionItem,AEAcaaCategoryItem;
 @interface AEHomeSectionView : UIView
 /**
- 更新banner数据
+ 更新首页分区数据
  
- @param dict dict数组
+ @param item 数据源
  */
 - (void)updateSectionView:(AEHomeSectionItem *)item;
+
+/**
+ 更新ACAA分类分区数据
+
+ @param item 数据源
+ */
+- (void)updateACAACategaoryView:(AEAcaaCategoryItem *)item;
+
 
 @property (nonatomic, copy) dispatch_block_t expandBlock;
 

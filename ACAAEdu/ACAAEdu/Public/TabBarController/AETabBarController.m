@@ -56,8 +56,8 @@
 
 - (void)setupChildViewControllers {
     [self addChildControllerName:@"AEHomePageVC" normalImage:[self layoutImageName:@"tabBar_home_h"] selectedImage:[self layoutImageName:@"tabBar_home_l"] title:@""];
-    [self addChildControllerName:@"AEExamVC1" normalImage:[self layoutImageName:@"tabBar_acaa_h"] selectedImage:[self layoutImageName:@"tabBar_acaa_l"] title:@""];
-    [self addChildControllerName:@"AEExamVC2" normalImage:[self layoutImageName:@"tabBar_autodesk_h"] selectedImage:[self layoutImageName:@"tabBar_autodesk_l"] title:@""];
+    [self addChildControllerName:@"AEACAAExamVC" normalImage:[self layoutImageName:@"tabBar_acaa_h"] selectedImage:[self layoutImageName:@"tabBar_acaa_l"] title:@""];
+    [self addChildControllerName:@"AEExamVC" normalImage:[self layoutImageName:@"tabBar_autodesk_h"] selectedImage:[self layoutImageName:@"tabBar_autodesk_l"] title:@""];
     [self addChildControllerName:@"AEMeCenterVC" normalImage:[self layoutImageName:@"tabBar_me_h"] selectedImage:[self layoutImageName:@"tabBar_me_l"] title:@""];
 }
 - (NSString *)layoutImageName:(NSString *)imgName {
@@ -76,9 +76,7 @@
                          title:(NSString *)title {
     Class class;
     AEBaseController *controller;
-    if ([controllerName isEqualToString:@"AEExamVC1"]) {
-        controller = [[AEExamVC alloc]initWithType:AEExamACAAType];
-    }else if ([controllerName isEqualToString:@"AEExamVC2"]) {
+    if ([controllerName isEqualToString:@"AEExamVC"]) {
         controller = [[AEExamVC alloc]initWithType:AEExamAUTODESKType];
     }else {
         class = NSClassFromString(controllerName);

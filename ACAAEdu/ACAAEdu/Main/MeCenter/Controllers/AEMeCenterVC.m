@@ -47,6 +47,7 @@
     [super viewWillAppear:animated];
     [self updateInfo];
     [self getNoPayOrderCount];
+    [self getNoPayExamCount];
 }
 
 - (void)addNotifications{
@@ -165,6 +166,24 @@
         }
         [weakSelf.dataSources replaceObjectAtIndex:3 withObject:mutableDict.copy];
         [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+#pragma mark - 查询未完成考试个数
+- (void)getNoPayExamCount {
+    WS(weakSelf)
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kUnExamCount query:nil path:nil body:nil success:^(id object) {
+        int count = [object intValue];
+        //我的订单
+        NSMutableDictionary * mutableDict = [weakSelf.dataSources[2] mutableCopy];
+        if (count > 0) {
+            [mutableDict setObject:[NSString stringWithFormat:@"未完成考试  %d",count] forKey:@"des"];
+        }else {
+            [mutableDict setObject:@"" forKey:@"des"];
+        }
+        [weakSelf.dataSources replaceObjectAtIndex:2 withObject:mutableDict.copy];
+        [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     } faile:^(NSInteger code, NSString *error) {
         [AEBase alertMessage:error cb:nil];
     }];

@@ -85,5 +85,12 @@
 
 @end
 
+@implementation AEAcaaCategoryItem
+
++ (NSDictionary *)modelContainerPropertyGenericClass{
+    return @{@"subject":[AEExamItem class]};
+}
+
+@end
 
 

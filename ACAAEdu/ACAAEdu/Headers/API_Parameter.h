@@ -50,7 +50,9 @@
 #define kRegisterVerifyCode @"mobile/register/verify"
 #pragma mark ---------------------- 科目----------------------------
 //首页推荐
-#define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"
+//#define kRecommendSubjectList @"mobile/subject/recommendsubjectlist"
+//首页热门考试
+#define kHomeHotExam @"mobile/user_exam/hot"
 //首页我的考试
 #define kHomeMyExam @"mobile/user_exam/home"
 //首页Banner
@@ -58,7 +60,9 @@
 //科目列表
 #define kIndexList @"mobile/subject/index"
 //ACAA考试列表
-#define kAcaaList  @"mobile/subject/acaa"
+#define kAcaaList  @"mobile/subject/subjectCategoryList"
+//ACAA考试列表 搜索用
+#define kAcaaSearchList  @"mobile/subject/acaa"
 //AUTO考试列表
 #define kAutodeskList  @"mobile/subject/autodesk"
 //筛选类别列表
@@ -87,6 +91,8 @@
 #pragma mark ---------------------- 订单----------------------------
 //订单列表
 #define kOrderList @"mobile/shop/orders"
+//未完成考试个数
+#define kUnExamCount @"mobile/user_exam/count"
 //生成订单
 #define kCreatOrder @"mobile/shop/order"
 //删除订单

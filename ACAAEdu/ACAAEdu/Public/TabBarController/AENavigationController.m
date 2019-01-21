@@ -39,6 +39,7 @@
     BOOL isShow =  [viewController isKindOfClass:NSClassFromString(@"AECustomSegmentVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEHomePageVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEExamVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEACAAExamVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEExamAnalyzeVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEExamInfoVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEMeCenterVC")]

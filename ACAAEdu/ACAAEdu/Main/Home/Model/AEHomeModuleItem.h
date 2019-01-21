@@ -11,7 +11,7 @@
 @class AEHomeSectionItem;
 @interface AEHomeModuleItem : NSObject
 /**
- 展示数据
+ 首页展示数据
  */
 @property (nonatomic, strong) NSArray * data;
 
@@ -34,7 +34,7 @@
 /**
  显示的内容
  */
-@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *name;
 
 /**
  分区背景颜色

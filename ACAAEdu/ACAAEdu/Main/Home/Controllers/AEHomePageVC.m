@@ -38,9 +38,9 @@
         AEHomeModuleItem * item = [AEHomeModuleItem new];
         if (i == 0) {
 //            是否展开
-            item.sectionItem = [AEHomeSectionItem yy_modelWithDictionary:@{@"image":@"home_my_exam",@"title":@"我的考试",@"isExpand":@1,@"backgroundColor":@"4FD2C2"}];
+            item.sectionItem = [AEHomeSectionItem yy_modelWithDictionary:@{@"image":@"home_my_exam",@"name":@"我的考试",@"isExpand":@1,@"backgroundColor":@"4FD2C2"}];
         }else {
-            item.sectionItem = [AEHomeSectionItem yy_modelWithDictionary:@{@"image":@"home_hot_exam",@"title":@"热门考试",@"isExpand":@1,@"backgroundColor":@"FBAB53"}];
+            item.sectionItem = [AEHomeSectionItem yy_modelWithDictionary:@{@"image":@"home_hot_exam",@"name":@"热门考试",@"isExpand":@1,@"backgroundColor":@"FBAB53"}];
         }
         [self.dataSources addObject:item];
     }
@@ -51,7 +51,7 @@
     self.tableView.separatorColor = AEColorLine;
     self.tableView.tableHeaderView = self.headerView;
     [self addHeaderRefesh:NO Block:^{
-        [weakSelf afterProFun];
+        [weakSelf loadData:NO];
     }];
 }
 #pragma mark - 加载数据
@@ -82,7 +82,7 @@
         isEnd += 1;
     }
     //热门考试
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kRecommendSubjectList query:nil path:nil body:nil success:^(id object) {
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kHomeHotExam query:nil path:nil body:nil success:^(id object) {
         isEnd += 1;
         AEHomeModuleItem * item = weakSelf.dataSources[1];
         item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
