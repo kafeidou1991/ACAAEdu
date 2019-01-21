@@ -105,14 +105,14 @@
     }
     return [UIView new];
 }
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-//    UIView * footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
-//    footView.backgroundColor = [UIColor whiteColor];
-//    return footView;
-//}
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-//    return 1.f;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView * footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1)];
+    footView.backgroundColor = [UIColor whiteColor];
+    return footView;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1.f;
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     AEAcaaCategoryItem * item = self.dataSources[section];
     return item.subject.count > 0 ? 30.f : 0.00000001;
