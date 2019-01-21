@@ -14,6 +14,17 @@
     __weak IBOutlet UILabel *titleLabel;
     __weak IBOutlet UIButton *rightBtn;
 }
+
+- (void)setType:(AESectionType)type {
+    _type = type;
+    if (_type == AEACAASectionType) {
+        leftImageView.image = [UIImage imageNamed:@"acaa_categaory_exam"];
+        titleLabel.textColor = AEHexColor(@"1D1D27");
+        self.backgroundColor = AEHexColor(@"E4E5E6");
+        [rightBtn setImage:[UIImage imageNamed:@"acaa_exam_close"] forState:UIControlStateNormal];
+        [rightBtn setImage:[UIImage imageNamed:@"acaa_exam_open"] forState:UIControlStateSelected];
+    }
+}
 //首页分区
 - (void)updateSectionView:(AEHomeSectionItem *)item {
     leftImageView.image = [UIImage imageNamed:item.image];
@@ -24,7 +35,6 @@
 
 //acaa分区分类
 - (void)updateACAACategaoryView:(AEAcaaCategoryItem *)item {
-    leftImageView.image = [UIImage imageNamed:@"acaa_categaory_exam"];
     titleLabel.text = item.name;
     rightBtn.selected = item.isExpand;
 }

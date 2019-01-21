@@ -10,7 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 @class AEHomeSectionItem,AEAcaaCategoryItem;
+
+typedef NS_ENUM(NSInteger, AESectionType) {
+    AEHomeSectionType = 0,
+    AEACAASectionType //ACAA分类页面
+};
 @interface AEHomeSectionView : UIView
+/**
+ 分类样式 初始化一些背景颜色什么的
+ */
+@property (nonatomic, assign) AESectionType type;
 /**
  更新首页分区数据
  
