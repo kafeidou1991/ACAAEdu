@@ -32,8 +32,12 @@
                         <action selector="expandAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="xaU-7q-z0y"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_hot_exam" translatesAutoresizingMaskIntoConstraints="NO" id="Or1-4G-n7c">
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_hot_exam" translatesAutoresizingMaskIntoConstraints="NO" id="Or1-4G-n7c">
                     <rect key="frame" x="10" y="4.5" width="21" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="21" id="cvA-yI-8go"/>
+                        <constraint firstAttribute="height" constant="21" id="q9p-vi-veF"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.30980392159999998" green="0.82352941180000006" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

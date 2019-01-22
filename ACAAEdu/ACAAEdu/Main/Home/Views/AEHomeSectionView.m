@@ -21,8 +21,8 @@
         leftImageView.image = [UIImage imageNamed:@"acaa_categaory_exam"];
         titleLabel.textColor = AEHexColor(@"1D1D27");
         self.backgroundColor = AEHexColor(@"E4E5E6");
-        [rightBtn setImage:[UIImage imageNamed:@"acaa_exam_close"] forState:UIControlStateNormal];
-        [rightBtn setImage:[UIImage imageNamed:@"acaa_exam_open"] forState:UIControlStateSelected];
+        [rightBtn setImage:[UIImage imageNamed:@"acaa_exam_close"] forState:UIControlStateSelected];
+        [rightBtn setImage:[UIImage imageNamed:@"acaa_exam_open"] forState:UIControlStateNormal];
     }
 }
 //首页分区
