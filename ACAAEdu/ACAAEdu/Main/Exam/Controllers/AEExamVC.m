@@ -37,23 +37,13 @@
 //    self.navigationItem.leftBarButtonItems = @[[AEBase createCustomBarButtonItem:self action:nil image:@"navtaion_topstyle"],[AEBase createCustomBarButtonItem:self action:nil title:_examType == AEExamACAAType ?  @"ACAA" : @"AUTODESK"]];
     self.topViewHeight.constant = NAVIGATION_HEIGHT;
     [self initComponent];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:kPayOrderSuccess object:nil];
 }
 #pragma mark - 搜索
 - (IBAction)searchExam:(id)sender {
     AESearchExamVC * searchVC = [AESearchExamVC new];
     searchVC.examType = self.examType;
     PUSHCustomViewController(searchVC, self);
-}
-#pragma mark - 筛选
-- (void)matchItem {
-    WS(weakSelf);
-    AEScreeningVC * screenVC = [AEScreeningVC new];
-    screenVC.resultBlock = ^(NSDictionary * dict) {
-        weakSelf.pararsDict = [NSMutableDictionary dictionaryWithDictionary:dict];
-        [weakSelf.pararsDict setObject:@(weakSelf.currPage) forKey:@"page"];
-        [weakSelf loadData:YES];
-    };
-    [self.navigationController pushViewController:screenVC animated:YES];
 }
 - (void)initComponent {
     [self createTableViewStyle:UITableViewStylePlain];
@@ -70,7 +60,7 @@
     [self loadData:YES];
 }
 - (void)loadData:(BOOL)isLoad {
-    self.pararsDict = @{@"page" : @(self.currPage)}.mutableCopy;
+    self.pararsDict = @{@"page" : @(self.currPage),@"pageNum":@(15)}.mutableCopy;
     if (isLoad) {
         [self hudShow:self.view msg:STTR_ater_on];
     }
@@ -151,6 +141,10 @@
     VC.item = item;
     VC.payStatus = AEOrderAffirmPay;
     PUSHLoginCustomViewController(VC, self);
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 @end

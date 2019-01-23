@@ -39,7 +39,7 @@
     rightBtn.selected = item.isExpand;
 }
 
-- (IBAction)expandAction:(UIButton *)sender {
+- (IBAction)expandAction:(id)sender {
     if (_expandBlock) {
         _expandBlock();
     }

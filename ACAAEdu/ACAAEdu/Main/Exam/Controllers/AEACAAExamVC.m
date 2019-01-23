@@ -23,6 +23,7 @@
     [super viewDidLoad];
     self.topViewHeight.constant = NAVIGATION_HEIGHT;
     [self initComponent];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:kPayOrderSuccess object:nil];
 }
 #pragma mark - 搜索
 - (IBAction)searchExam:(id)sender {
@@ -89,20 +90,18 @@
 }
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     __block __weak typeof(AEAcaaCategoryItem *) item = self.dataSources[section];
-    if (item.subject.count > 0) {
-        AEHomeSectionView * sectionView = [[NSBundle mainBundle]loadNibNamed:@"AEHomeSectionView" owner:nil options:nil].firstObject;
-        sectionView.type = AEACAASectionType;
-        sectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
-        [sectionView updateACAACategaoryView:item];
-        //展开
-        WS(weakSelf)
-        sectionView.expandBlock = ^{
-            item.isExpand = !item.isExpand;
-            [weakSelf.dataSources replaceObjectAtIndex:section withObject:item];
-            [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
-        };
-        return sectionView;
-    }
+    AEHomeSectionView * sectionView = [[NSBundle mainBundle]loadNibNamed:@"AEHomeSectionView" owner:nil options:nil].firstObject;
+    sectionView.type = AEACAASectionType;
+    sectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 30);
+    [sectionView updateACAACategaoryView:item];
+    //展开
+    WS(weakSelf)
+    sectionView.expandBlock = ^{
+        item.isExpand = !item.isExpand;
+        [weakSelf.dataSources replaceObjectAtIndex:section withObject:item];
+        [weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationNone];
+    };
+    return sectionView;
     return [UIView new];
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
@@ -114,8 +113,8 @@
     return 1.f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    AEAcaaCategoryItem * item = self.dataSources[section];
-    return item.subject.count > 0 ? 30.f : 0.00000001;
+//    AEAcaaCategoryItem * item = self.dataSources[section];
+    return 30.f;//item.subject.count > 0 ? 30.f : 0.00000001;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return cellHeight;
@@ -131,5 +130,9 @@
     VC.payStatus = AEOrderAffirmPay;
     PUSHLoginCustomViewController(VC, self);
 }
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
+
 
 @end

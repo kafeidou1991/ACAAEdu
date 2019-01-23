@@ -177,7 +177,7 @@ static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifie
 - (void)backAction:(UIButton *)sender {
     for (UIViewController *viewController in self.navigationController.viewControllers) {
         if ([viewController isKindOfClass:[AEMyTestExamVC class]]) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"kExamResultBack" object:nil];
+            [[NSNotificationCenter defaultCenter]postNotificationName:kExamResultBack object:nil];
             [self.navigationController popToViewController:viewController animated:YES];
             return;
         }

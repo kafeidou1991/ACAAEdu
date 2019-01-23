@@ -32,6 +32,9 @@
     [self initTableView];
     [self.noticeView updateNoShowNumber:0];
     [self addNotifications];
+    [self createEmptyViewBlock:^{
+        
+    }];
 }
 - (void)initTableView {
     for (int i = 0; i < 2; i++) {

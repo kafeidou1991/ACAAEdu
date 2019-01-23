@@ -121,8 +121,8 @@
         }else {
             [AEBase alertMessage:@"购买成功" cb:nil];
             //回到根页面
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPayOrderSuccess object:nil];
             if (weakSelf.comeType == ComeFromMyOrderType) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:kPayOrderSuccess object:nil];
                 [weakSelf.navigationController popViewControllerAnimated:YES];
             }else {
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];

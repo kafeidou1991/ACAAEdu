@@ -294,6 +294,8 @@ static CGFloat const timeViewHeight = 50.f;
     UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"考试中途退出之后可以继续考试，但一天以内继续考试有效，超过一天未继续考试，系统自动交卷~" preferredStyle:UIAlertControllerStyleAlert];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"继续考试" style:UIAlertActionStyleDefault handler:nil]];
     [alertVC addAction:[UIAlertAction actionWithTitle:@"退出考试" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        //中途退出考试需要刷新考试状态
+        [[NSNotificationCenter defaultCenter]postNotificationName:kExamResultBack object:nil];
         [self.navigationController popViewControllerAnimated:YES];
         //应该摧毁定时器 避免浪费资源
         [self.timer destoryTimer];

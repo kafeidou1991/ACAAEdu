@@ -28,8 +28,8 @@
     self.baseTopView.titleName = @"我的模考";
     [self initTableView];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-//    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:@"kExamResultBack" object:nil];
+    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - ySpace);
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(afterProFun) name:kExamResultBack object:nil];
 }
 
 - (void)initTableView {
