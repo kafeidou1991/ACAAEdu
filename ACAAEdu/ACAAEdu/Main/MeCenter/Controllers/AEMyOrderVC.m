@@ -71,10 +71,11 @@ static const CGFloat headerViewHeight = 145.f;
             AEMyOrderList * lastItem = [tempArray lastObject];
             weakSelf.lastId = lastItem.id;
             [weakSelf.dataSources addObjectsFromArray:tempArray];
-             [weakSelf.tableView reloadData];
         }else {
+            weakSelf.lastId = @"";
             [weakSelf noHasMoreData];
         }
+        [weakSelf.tableView reloadData];
 
         
     } faile:^(NSInteger code, NSString *error) {

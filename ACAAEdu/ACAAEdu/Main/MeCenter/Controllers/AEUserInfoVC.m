@@ -148,6 +148,7 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
         [cell updateCell:dict];
         [self textFieldPlacehold:indexPath Cell:cell];
+        cell.contentTextField.keyboardType = (indexPath.row == 6 || indexPath.row == 7 || indexPath.row == 8) ? UIKeyboardTypePhonePad : UIKeyboardTypeDefault;
         return cell;
     }else {
         AEUserRemarkCell * cell = [AEUserRemarkCell cellWithTableView:tableView];

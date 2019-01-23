@@ -105,12 +105,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AEExamQuestionCell * cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AEExamQuestionCell class]) forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    1-判断题2-单选题3-复选题4-匹配题11-操作题【4暂无】
+    if ([self.result.type isEqualToString:@"2"]) {
+        [cell.selectBtn setImage:[UIImage imageNamed:@"testpaper_single"] forState:UIControlStateNormal];
+        [cell.selectBtn setImage:[UIImage imageNamed:@"testpaper_single_select"] forState:UIControlStateSelected];
+    }else {
+        [cell.selectBtn setImage:[UIImage imageNamed:@"testpaper"] forState:UIControlStateNormal];
+        [cell.selectBtn setImage:[UIImage imageNamed:@"testpaper_select"] forState:UIControlStateSelected];
+    }
     [cell updateCell:self.dataSources[indexPath.row]];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     //第三方要求不需要显示是否单选还是多选，去除单选的限制
     //多选题
+    /*
     AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:indexPath];
     cell.selectBtn.selected = !cell.selectBtn.isSelected;
     AEResultItem * temp = self.dataSources[indexPath.row];
@@ -129,7 +138,8 @@
         answerString = [answerString substringToIndex:answerString.length - 1].mutableCopy;
     }
     self.result.answer = answerString;
-    /*
+     */
+    
 //    1-判断题 2-单选题 3-复选题 4-匹配题 11-操作题【4暂无】
     if ([self.result.type isEqualToString:@"2"] || [self.result.type isEqualToString:@"1"]) {
         //单选题  单选直接覆盖答案 答案的逻辑是 如果选择A B C D 对应服务器需要传1 2 3 4
@@ -137,6 +147,8 @@
         AEExamQuestionCell * lastCell = [self getSignleLastAnswerCell];
         AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:indexPath];
         if (lastCell) {
+            AEResultItem * lastItem = self.dataSources[[self.tableView indexPathForCell:lastCell].row];
+            lastItem.isSelect = NO;
             [lastCell select:NO];
         }
         if (lastCell == cell) {
@@ -144,6 +156,8 @@
             self.result.answer = @"";
             return;
         }
+        AEResultItem * item = self.dataSources[indexPath.row];
+        item.isSelect = YES;
         [cell select:YES];
         //末尾赋值 否则会覆盖
         self.result.answer = [NSString stringWithFormat:@"%ld",(long)indexPath.row + 1];
@@ -168,7 +182,6 @@
         }
         self.result.answer = answerString;
     }
-     */
 }
 //获取已经选择的
 - (AEExamQuestionCell *)getSignleLastAnswerCell {

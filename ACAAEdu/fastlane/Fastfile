@@ -1,0 +1,50 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Push a new release build to the App Store"
+  lane :release do
+    build_app(export_method: "app-store",workspace: "ACAAEdu.xcworkspace", scheme: "ACAAEdu",output_directory:"./build",export_options: {
+      provisioningProfiles: { 
+        "com.ACAAEdu.iosapp" => "ACAA_dis",    
+      }
+    })
+    deliver(force: true)
+    slack(message: "Successfully uploaded a new App Store build")
+  end
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+  desc "ipa打包"
+  lane :createIpa do
+    # sigh(adhoc:true)  #如果要使用ad-hoc打包, 则需打开此项配置
+    gym(scheme: "ACAAEdu",workspace: "ACAAEdu.xcworkspace",configuration: "Debug",clean: true, export_method:"development", export_options:{
+          provisioningProfiles: {
+             "com.ACAAEdu.iosapp" => "ACAA_dev",    
+          }
+       })
+    # 自动签名
+    # enable_automatic_code_signing(path: "ACAAEdu.xcodeproj")
+
+    end
+  desc "Deploy a test version to the fir.im" 
+  lane :firUp do
+    createIpa 
+    firim(firim_api_token: "e8ecf743a139bafab027172934d03894") 
+  end
+end

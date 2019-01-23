@@ -47,6 +47,7 @@
                 }];
             }else {
                 imageV.image = item.image;
+//                imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"123123" ofType:@"gif"]];
             }
             viewHeight += imageV.size.height;
             [self addSubview:imageV];

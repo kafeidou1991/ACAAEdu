@@ -62,6 +62,7 @@
         AEGoodItem * good = self.orderList.goods[0];
         AEExamItem * goodItem = good.goods_attr_data;
         self.item = goodItem;
+        self.item.subject_full_name = good.goods_name;
     }
 }
 //MARK: 初始化订单数据
@@ -78,9 +79,9 @@
         //我要测试
         self.toTestBtn.backgroundColor = AEThemeColor;
     }
-    
-    //类别 名称 版本
+    //名称
     self.orderNameLabel.text = _item.subject_full_name;
+    //类别 名称 版本
     self.versionLabel.text = [NSString stringWithFormat:@"版本:%@",_item.version];
     self.cateLabel.text = [NSString stringWithFormat:@"类别:%@",_item.subject_type_name];
     //价格
@@ -99,6 +100,8 @@
         //优惠
         self.discountsLabel.text = _item.subject_discount;
     }else {
+        //名称
+        self.orderNameLabel.text = _item.subject_full_name;
         self.bottmOrderView.hidden = YES;
         self.bottomSubmitView.hidden = NO;
         if (_payStatus == AEOrderPaidStatus) { //已支付
