@@ -26,9 +26,9 @@ PODS:
   - MJRefresh (3.1.15.1)
   - OpenUDID (1.0.0)
   - RSAEncryptor (0.0.1)
-  - SDWebImage (4.2.2):
-    - SDWebImage/Core (= 4.2.2)
-  - SDWebImage/Core (4.2.2)
+  - SDWebImage (4.4.3):
+    - SDWebImage/Core (= 4.4.3)
+  - SDWebImage/Core (4.4.3)
   - WebViewJavascriptBridge (6.0.3)
   - XXNibBridge (2.3.1)
   - YYCache (1.0.4)
@@ -89,7 +89,7 @@ SPEC CHECKSUMS:
   MJRefresh: 5f8552bc25ca8751c010f621c1098dbdaacbccd6
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   RSAEncryptor: d0c9c7f81493aa42e6cdf64e533bcb6ce37377b7
-  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
+  SDWebImage: c5594f1a19c48d526d321e548902b56b479cd508
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   XXNibBridge: addb780e6db076eb2c61716aa60b176a6799b80f
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952

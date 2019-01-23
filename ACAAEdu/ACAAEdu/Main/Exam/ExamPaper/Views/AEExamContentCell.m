@@ -56,11 +56,12 @@
     }];
     //存在图片 启动图片下载
     if (imageArray.count > 0) {
+        WS(weakSelf)
         [imageArray enumerateObjectsUsingBlock:^(AEQuestionSubItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [self downQuestion:obj.content completed:^(UIImage * image) {
                 obj.image = image;
-                self.headQuestionView.questionData = self.result.question;
-                self.tableView.tableHeaderView =  self.headQuestionView;
+                weakSelf.headQuestionView.questionData = weakSelf.result.question;
+                weakSelf.tableView.tableHeaderView =  weakSelf.headQuestionView;
             }];
         }];
     }else {
@@ -228,6 +229,8 @@
 }
 -  (void)downQuestion:(NSString *)url completed:(void(^)(UIImage *))hander{
     [[SDWebImageDownloader sharedDownloader]downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+//        SDImageFormat format = image.sd_imageFormat;
+//        #import "UIImage+MultiFormat.h"
         hander(image);
     }];
 }
