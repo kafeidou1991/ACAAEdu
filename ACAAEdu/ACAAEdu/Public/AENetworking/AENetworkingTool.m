@@ -208,9 +208,11 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
             _faile(error.code,error.domain);
         }
         if (error.code == 2000) {
-            [self deleteApiToken];
-            [User removeLoginData];
-            [[NSNotificationCenter defaultCenter]postNotificationName:kLoginExit object:nil];
+            if (User.isLogin) {
+                [self deleteApiToken];
+                [User removeLoginData];
+                [[NSNotificationCenter defaultCenter]postNotificationName:kLoginExit object:nil];
+            }
             [[NSNotificationCenter defaultCenter]postNotificationName:kreLogin object:nil];
         }
     }
