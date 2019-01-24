@@ -8,10 +8,11 @@
 
 #import "AEQuestionHeaderVIew.h"
 #import "XHImageViewer.h"
+#import "FLAnimatedImageView+WebCache.h"
 
 @interface AEQuestionHeaderVIew ()
 
-@property (nonatomic, strong) UIImageView * imageV;
+@property (nonatomic, strong) FLAnimatedImageView * imageV;
 
 @end
 
@@ -29,27 +30,36 @@
             UILabel * label = [AEBase createLabel:CGRectMake(leftMargin, viewHeight, self.width - 2 * leftMargin, 0) font:[UIFont systemFontOfSize:15] text:item.content defaultSizeTxt:nil color:AEColorLightText backgroundColor:[UIColor clearColor] alignment:NSTextAlignmentLeft];
             label.numberOfLines = 0;
             [label sizeToFit];
-            viewHeight += label.height;
+            viewHeight += (label.height + leftMargin);
             [self addSubview:label];
         }else if ([item.type isEqualToString:@"img"]) {
-            imageV = [[UIImageView alloc]init];
+//            GIF图片
+            imageV = [[FLAnimatedImageView alloc]init];
+            
             imageV.userInteractionEnabled = YES;
+            CGFloat w = MIN(self.width - 2 * leftMargin, item.image.size.width);
+            CGFloat h = item.image.size.height * (w / item.image.size.width);
             if (item.image) {
-                CGFloat w = MIN(self.width - 2 * leftMargin, item.image.size.width);
-                imageV.frame = CGRectMake((self.width - w )/2 , viewHeight, w, item.image.size.height);
+                imageV.frame = CGRectMake((self.width - w )/2 , viewHeight, w, h);
             }else {
-                imageV.frame = CGRectMake(leftMargin, viewHeight, self.width - 2 * leftMargin, (self.width - 2 * leftMargin) * 9 / 16);
+                w = self.width - 2 * leftMargin;
+                h = (self.width - 2 * leftMargin) * 9 / 16;
+                imageV.frame = CGRectMake(leftMargin, viewHeight, w, h);
             }
             imageV.contentMode = UIViewContentModeScaleAspectFit;
             if (!item.image) {
+                NSLog(@"%@",item.content);
                 [imageV sd_setImageWithURL:[NSURL URLWithString:item.content]completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
                     
                 }];
             }else {
-                imageV.image = item.image;
-//                imageV.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"123123" ofType:@"gif"]];
+                if (item.isGIF) {
+                    imageV.animatedImage = [FLAnimatedImage animatedImageWithGIFData:item.imageData];
+                }else {
+                    imageV.image = item.image;
+                }
             }
-            viewHeight += imageV.size.height;
+            viewHeight += h;
             [self addSubview:imageV];
             
             UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHandle:)];

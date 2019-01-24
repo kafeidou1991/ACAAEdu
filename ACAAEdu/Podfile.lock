@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Bugly (2.5.0)
+  - FLAnimatedImage (1.0.12)
   - HcdGuideView (0.0.5)
   - IQKeyboardManager (6.0.3)
   - JCore (1.1.6)
@@ -29,6 +30,9 @@ PODS:
   - SDWebImage (4.4.3):
     - SDWebImage/Core (= 4.4.3)
   - SDWebImage/Core (4.4.3)
+  - SDWebImage/GIF (4.4.3):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - WebViewJavascriptBridge (6.0.3)
   - XXNibBridge (2.3.1)
   - YYCache (1.0.4)
@@ -49,6 +53,7 @@ DEPENDENCIES:
   - OpenUDID
   - RSAEncryptor
   - SDWebImage
+  - SDWebImage/GIF
   - WebViewJavascriptBridge
   - XXNibBridge
   - YYCache
@@ -59,6 +64,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Bugly
+    - FLAnimatedImage
     - HcdGuideView
     - IQKeyboardManager
     - JCore
@@ -79,6 +85,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   HcdGuideView: 3ffaa22aebe7409bbd3fd6bcfcbe912d391a237a
   IQKeyboardManager: c390e612f4b98c8fd748016470138537dc163ead
   JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
@@ -96,6 +103,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZLPhotoBrowser: ab32e3bf7ef4a3569c96cdfea3be393d45595b5a
 
-PODFILE CHECKSUM: 2f617a1732690896c8d4d58fa01e580f8d3fcfa9
+PODFILE CHECKSUM: 7aa26ce44f60c3bf9e658483ed7347d7e1a401b6
 
 COCOAPODS: 1.5.3

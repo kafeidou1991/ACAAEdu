@@ -103,11 +103,11 @@
         //名称
         self.orderNameLabel.text = _item.subject_full_name;
         self.bottmOrderView.hidden = YES;
-        self.bottomSubmitView.hidden = NO;
-        if (_payStatus == AEOrderPaidStatus) { //已支付
-            self.payNowBtn.hidden = YES;
-            self.leftSpaceContraint.constant = SCREEN_WIDTH /2;
-        }
+        self.bottomSubmitView.hidden = _payStatus == AEOrderPaidStatus;  //已支付 不显示删除订单
+//        if (_payStatus == AEOrderPaidStatus) { //已支付 不显示删除订单
+//            self.payNowBtn.hidden = YES;
+//            self.leftSpaceContraint.constant = SCREEN_WIDTH /2;
+//        }
     }
 }
 //MARK:购买考试

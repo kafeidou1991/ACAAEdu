@@ -9,6 +9,7 @@
 #import "AEExamContentCell.h"
 #import "AEExamQuestionCell.h"
 #import "AEQuestionHeaderVIew.h"
+#import "UIImage+MultiFormat.h"
 
 @interface AEExamContentCell () <UITableViewDelegate,UITableViewDataSource>
 
@@ -58,8 +59,10 @@
     if (imageArray.count > 0) {
         WS(weakSelf)
         [imageArray enumerateObjectsUsingBlock:^(AEQuestionSubItem *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            [self downQuestion:obj.content completed:^(UIImage * image) {
+            [self downQuestion:obj.content completed:^(UIImage * image, NSData * data) {
                 obj.image = image;
+                obj.imageData = data;
+                obj.isGIF = image.sd_imageFormat == SDImageFormatGIF;
                 weakSelf.headQuestionView.questionData = weakSelf.result.question;
                 weakSelf.tableView.tableHeaderView =  weakSelf.headQuestionView;
             }];
@@ -227,11 +230,10 @@
     }
     return _headQuestionView;
 }
--  (void)downQuestion:(NSString *)url completed:(void(^)(UIImage *))hander{
+-  (void)downQuestion:(NSString *)url completed:(void(^)(UIImage * image, NSData * data))hander{
     [[SDWebImageDownloader sharedDownloader]downloadImageWithURL:[NSURL URLWithString:url] options:0 progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
-//        SDImageFormat format = image.sd_imageFormat;
-//        #import "UIImage+MultiFormat.h"
-        hander(image);
+        //因为GIF需要使用data才能展示，普通图片直接用image即可
+        hander(image,data);
     }];
 }
 

@@ -4,6 +4,7 @@ target 'ACAAEdu' do
  pod 'YYModel'
  pod 'OpenUDID'
  pod 'SDWebImage'
+ pod 'SDWebImage/GIF'
  pod 'MBProgressHUD'
  pod 'YYCache'
  pod 'IQKeyboardManager'

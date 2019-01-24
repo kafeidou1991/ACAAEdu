@@ -64,6 +64,15 @@
 
 @implementation AEQuestionSubItem
 
+- (void)setContent:(NSString *)content {
+    if ([content hasPrefix:@"http"]) {
+        //图片链接内部有空格 用%20替换 否则无法显示出来
+        _content = [content stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
+    }else {
+        _content = content;
+    }
+}
+
 @end
 
 @implementation AEResultItem

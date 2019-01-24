@@ -187,7 +187,16 @@
 /**
  性能优化 本地使用储存进行下载避免多次加载
  */
-@property (nonatomic, copy) UIImage * image;
+@property (nonatomic, strong) UIImage * image;
+/**
+ GIF图片显示用
+ */
+@property (nonatomic, strong) NSData * imageData;
+
+/**
+ 是否是gif
+ */
+@property (nonatomic, assign) BOOL isGIF;
 
 @end;
 
