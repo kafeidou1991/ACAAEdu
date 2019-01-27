@@ -85,7 +85,7 @@
     self.examNameLabel.text = item.subject_name;
     self.examTimeLabel.text = [NSString stringWithFormat:@"考试时间：%@",[NSString dateToStringFormatter:@"yyyy-MM-dd HH:mm" date:[NSDate dateWithTimeIntervalSince1970:item.exam_time.integerValue]]];
     self.scoreLabel.text = [NSString stringWithFormat:@"分数：%@",[NSString stringWithFormat:@"%@/%@",item.total_score,item.paper_score]];
-    self.examNoLabel.text = [NSString stringWithFormat:@"准考证号：%@",item.idcard];
+    self.examNoLabel.text = [NSString stringWithFormat:@"准考证号：%@",item.exam_code];
     self.examStatusLabel.text = [NSString stringWithFormat:@"状态：%@",item.pass.integerValue == 1 ? @"通过" : @"未通过"];
     
     //第二分区

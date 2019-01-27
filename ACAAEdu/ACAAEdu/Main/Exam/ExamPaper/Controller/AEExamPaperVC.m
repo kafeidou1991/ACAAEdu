@@ -219,10 +219,11 @@ static CGFloat const timeViewHeight = 50.f;
     self.bottomView.block = ^(BOOL isNext,UIButton * nextBtn) {
         //下一题 上一题
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf.contentView scrollQuestion:isNext lastHandle:^(BOOL last, int index) {
-                [nextBtn setTitle:last ? @"交卷" : @"下一题" forState:UIControlStateNormal];
-            }];
+            [weakSelf.contentView scrollQuestion:isNext];
         });
+    };
+    self.contentView.lastBlock = ^(BOOL last, int index) {
+        [weakSelf.bottomView.nextBtn setTitle:last ? @"交卷" : @"下一题" forState:UIControlStateNormal];
     };
     self.contentView.didScrollePage = ^(int page) {
         weakSelf.timerView.examNumLabel.text = [NSString stringWithFormat:@"%d / %ld",page,item.question.count];

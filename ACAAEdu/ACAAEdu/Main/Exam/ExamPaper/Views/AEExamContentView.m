@@ -11,6 +11,7 @@
 
 @interface AEExamContentView ()<UICollectionViewDataSource, UICollectionViewDelegate>{
     int questionCount;
+    int lastPage; //上报答案时用
 }
 /**
  试题数据源
@@ -26,6 +27,7 @@
 -(void)refreshData:(AEExamQuestionItem *)data {
     self.data = data;
     questionCount = (int)self.data.question.count;
+    lastPage = 0;
     [self reloadData];
 }
 -(instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
@@ -41,6 +43,7 @@
         self.dataSource = self;
         self.delegate = self;
         self.pagingEnabled = YES;
+        lastPage = 0;
         self.showsHorizontalScrollIndicator = NO;
     }
     return self;
@@ -54,23 +57,28 @@
     
     [cell updateCell:self.data.question[indexPath.item]];
     
+    //选择答案，上传答案
+    WS(weakSelf)
+    cell.selectAnswerBlock = ^{
+        [weakSelf updateAnswer];
+    };
+    
     return cell;
 }
-- (void)scrollQuestion:(BOOL)isNext lastHandle:(void(^)(BOOL last,int index))lastBlock {
+- (void)scrollQuestion:(BOOL)isNext{
     int page = self.contentOffset.x / self.width;
     //即将显示最后一页   //试卷就一道题
     if (isNext && (questionCount == 1 || page == questionCount - 2 || page == questionCount - 1)) {
-        if (lastBlock) {
-            lastBlock(YES,page);
+        if (_lastBlock) {
+            _lastBlock(YES,page);
         }
     }else {
-        if (lastBlock) {
-            lastBlock(NO,page);
+        if (_lastBlock) {
+            _lastBlock(NO,page);
         }
     }
     //上一题 下一题
     if (isNext) {
-        [self updateAnswer:page];
         if (page != questionCount - 1) {
             [self scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:page + 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionRight animated:YES];
         }else {
@@ -86,21 +94,28 @@
         }
     }
 }
-
+//MARK: 点击下一题结束
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     int page = self.contentOffset.x / self.width;
     if (_didScrollePage) {
         _didScrollePage(page + 1);
     }
 }
+//MARK: 滑动下一题结束
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     int page = self.contentOffset.x / self.width;
+    //滚动到了jj第几题
     if (_didScrollePage) {
         _didScrollePage(page + 1);
     }
+    //滑动显示 是否交卷
+    if (_lastBlock) {
+        _lastBlock((questionCount == 1 || page == questionCount - 1),page);
+    }
 }
 //上传答案
-- (void)updateAnswer:(int)page {
+- (void)updateAnswer{
+    int page = self.contentOffset.x / self.width;
     AEQuestionRresult * result = self.data.question[page];
     //上报答案
     if (STRISEMPTY(result.answer)) {

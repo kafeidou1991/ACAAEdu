@@ -12,5 +12,6 @@
 
 - (void)updateCell:(AEQuestionRresult *)data;
 
+@property (nonatomic, copy) dispatch_block_t selectAnswerBlock;
 
 @end

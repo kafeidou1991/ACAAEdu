@@ -52,7 +52,7 @@ static NSString * const fourSectionReuseIdentifier = @"fourSectionReuseIdentifie
     //第一分区
     NSArray * arr1 = @[@{@"title":@"考试科目:",@"content":item.subject_name},
                        @{@"title":@"考试时间:",@"content":[NSString dateToStringFormatter:@"yyyy-MM-dd HH:mm" date:[NSDate dateWithTimeIntervalSinceNow:item.exam_time.integerValue]]},
-                       @{@"title":@"准考证号:",@"content":item.idcard},
+                       @{@"title":@"准考证号:",@"content":item.exam_code},
                        @{@"title":@"考试状态:",@"content":item.pass.integerValue == 1 ? @"通过" : @"未通过"}];
     [self.dataSources addObject:arr1];
     

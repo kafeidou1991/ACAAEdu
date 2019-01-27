@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, QuestionType) {
 };
 //记录已经滚动到第几页
 typedef void(^DidScrollePage)(int page);
+//判断是否是最后一页m，改变按钮文案
+typedef void (^IsLastPageBlock)(BOOL last,int index);
 
 @interface AEExamContentView : UICollectionView
 
@@ -43,7 +45,12 @@ typedef void(^DidScrollePage)(int page);
 
  @param isNext 是否是下一题 上一题
  */
-- (void)scrollQuestion:(BOOL)isNext lastHandle:(void(^)(BOOL last,int index))lastBlock;
+- (void)scrollQuestion:(BOOL)isNext;
+
+/**
+ 是否是最后一题
+ */
+@property (nonatomic, copy) IsLastPageBlock lastBlock;
 
 
 @end

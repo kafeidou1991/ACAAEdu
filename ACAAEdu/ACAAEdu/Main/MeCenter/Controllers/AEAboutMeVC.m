@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.baseTopView];
-    self.appNameLabel.text = AEAppName;
+    self.appNameLabel.text = @"设计师 - ACAA行业资格万能通";//AEAppName;
     self.appVersionLabel.text = [NSString stringWithFormat:@"V%@",AEVersion];
     
     

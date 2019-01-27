@@ -158,13 +158,13 @@
         if (lastCell == cell) {
             //取消选中
             self.result.answer = @"";
-            return;
+        }else {
+            AEResultItem * item = self.dataSources[indexPath.row];
+            item.isSelect = YES;
+            [cell select:YES];
+            //末尾赋值 否则会覆盖
+            self.result.answer = [NSString stringWithFormat:@"%ld",(long)indexPath.row + 1];
         }
-        AEResultItem * item = self.dataSources[indexPath.row];
-        item.isSelect = YES;
-        [cell select:YES];
-        //末尾赋值 否则会覆盖
-        self.result.answer = [NSString stringWithFormat:@"%ld",(long)indexPath.row + 1];
     }else {
         //多选题
         AEExamQuestionCell * cell = (AEExamQuestionCell *)[tableView cellForRowAtIndexPath:indexPath];
@@ -185,6 +185,10 @@
             answerString = [answerString substringToIndex:answerString.length - 1].mutableCopy;
         }
         self.result.answer = answerString;
+    }
+    //选择回调  上报答案
+    if (_selectAnswerBlock) {
+        _selectAnswerBlock();
     }
 }
 //获取已经选择的

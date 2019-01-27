@@ -228,7 +228,7 @@
 @interface AEExamEvaluateItem : DateCenter
 @property (nonatomic, copy) NSString * total_question; //总共题目数
 @property (nonatomic, copy) NSString * exam_time; // 考试时间
-@property (nonatomic, copy) NSString * idcard; // 准考证号
+@property (nonatomic, copy) NSString * exam_code; // 准考证号
 @property (nonatomic, copy) NSString * subject_name; // 考卷名称
 @property (nonatomic, copy) NSString * total_score; //得分
 @property (nonatomic, copy) NSString * paper_score; //总分
