@@ -7,6 +7,7 @@
 //
 
 #import "DateCenter.h"
+#import "NSString+EncodeXMLCharacters.h"
 
 @implementation DateCenter
 //+ (nullable NSDictionary<NSString *, id> *)modelCustomPropertyMapper {
@@ -69,7 +70,8 @@
         //图片链接内部有空格 用%20替换 否则无法显示出来
         _content = [content stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     }else {
-        _content = content;
+        //替换文案中的XML特殊标记
+        _content = [content decodeXMLCharacters];
     }
 }
 
@@ -77,6 +79,9 @@
 
 @implementation AEResultItem
 
+- (void)setAnswer:(NSString *)answer {
+    _answer = [answer decodeXMLCharacters];
+}
 @end
 
 @implementation AEExamEvaluateSubItem

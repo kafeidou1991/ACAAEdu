@@ -101,7 +101,10 @@
 #define kValidateReceipt  @"mobile/shop/apple"
 
 #pragma mark ---------------------- 通知消息----------------------------
+//通知列表
 #define kMessageList @"mobile/message/index"
+//设置已读
+#define kMessageRead @"mobile/message/read"
 
 
 #endif /* API_Parameter_h */

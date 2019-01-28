@@ -57,6 +57,7 @@
     _circleV.strokelineWidth = 3;
 }
 - (void)backAction:(UIButton *)sender {
+    
     for (UIViewController *viewController in self.navigationController.viewControllers) {
         if ([viewController isKindOfClass:[AEMyTestExamVC class]]) {
             [[NSNotificationCenter defaultCenter]postNotificationName:kExamResultBack object:nil];

@@ -26,8 +26,8 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="abountme" translatesAutoresizingMaskIntoConstraints="NO" id="wjW-VV-c73">
                     <rect key="frame" x="152.5" y="274" width="70" height="59"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACAA教育" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBd-6Z-h8A">
-                    <rect key="frame" x="145" y="348" width="85" height="21.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设计师 - ACAA行业资格万能通" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBd-6Z-h8A">
+                    <rect key="frame" x="63.5" y="348" width="248.5" height="21.5"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -37,8 +37,8 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y91-Vi-5wZ">
-                    <rect key="frame" x="54.5" y="625.5" width="266" height="31.5"/>
-                    <string key="text">ACAA教育 版权所有
+                    <rect key="frame" x="53" y="625.5" width="269" height="31.5"/>
+                    <string key="text">北京万华创力数码科技开发有限公司 版权所有
 copyright ©2011-2019 .ALL Right Reserved.</string>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.62352941179999999" green="0.62745098040000002" blue="0.63529411759999999" alpha="1" colorSpace="calibratedRGB"/>

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-static const CGFloat cellHeight = 60.f;
+static const CGFloat cellHeight = 70.f;
 
 @interface AEMessageListCell : UITableViewCell
 

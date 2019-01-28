@@ -45,6 +45,10 @@
 		B7D86B71205C1AAC001CAA02 /* AEMessageListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B6F205C1AAC001CAA02 /* AEMessageListCell.m */; };
 		B7D86B72205C1AAC001CAA02 /* AEMessageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */; };
 		B7D86B75205C2086001CAA02 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D86B74205C2085001CAA02 /* NSDate+Extension.m */; };
+		B7E9A64721FEB143005E8B7D /* NSString+EncodeXMLCharacters.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E9A64621FEB143005E8B7D /* NSString+EncodeXMLCharacters.m */; };
+		B7E9A64B21FEE020005E8B7D /* AEMessageDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E9A64A21FEE020005E8B7D /* AEMessageDetailVC.m */; };
+		B7E9A64C21FEE02D005E8B7D /* AEMessageDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7E9A64821FEE020005E8B7D /* AEMessageDetailVC.xib */; };
+		B7E9A64F21FEEE84005E8B7D /* UITabBar+CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E9A64E21FEEE84005E8B7D /* UITabBar+CustomBadge.m */; };
 		B7ECFF642070C002002E9DF5 /* AEAnswerCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */; };
 		B7FB011021F07CA9006A209F /* AEHomeSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FB010F21F07CA9006A209F /* AEHomeSectionView.m */; };
 		B7FB011221F07CB2006A209F /* AEHomeSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7FB011121F07CB2006A209F /* AEHomeSectionView.xib */; };
@@ -265,6 +269,13 @@
 		B7D86B70205C1AAC001CAA02 /* AEMessageListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEMessageListCell.xib; sourceTree = "<group>"; };
 		B7D86B73205C2084001CAA02 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		B7D86B74205C2085001CAA02 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		B7E9A64521FEB143005E8B7D /* NSString+EncodeXMLCharacters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+EncodeXMLCharacters.h"; sourceTree = "<group>"; };
+		B7E9A64621FEB143005E8B7D /* NSString+EncodeXMLCharacters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+EncodeXMLCharacters.m"; sourceTree = "<group>"; };
+		B7E9A64821FEE020005E8B7D /* AEMessageDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEMessageDetailVC.xib; sourceTree = "<group>"; };
+		B7E9A64921FEE020005E8B7D /* AEMessageDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEMessageDetailVC.h; sourceTree = "<group>"; };
+		B7E9A64A21FEE020005E8B7D /* AEMessageDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEMessageDetailVC.m; sourceTree = "<group>"; };
+		B7E9A64D21FEEE83005E8B7D /* UITabBar+CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+CustomBadge.h"; sourceTree = "<group>"; };
+		B7E9A64E21FEEE84005E8B7D /* UITabBar+CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+CustomBadge.m"; sourceTree = "<group>"; };
 		B7ECFF622070C002002E9DF5 /* AEAnswerCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEAnswerCardView.h; sourceTree = "<group>"; };
 		B7ECFF632070C002002E9DF5 /* AEAnswerCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEAnswerCardView.m; sourceTree = "<group>"; };
 		B7FB010E21F07CA9006A209F /* AEHomeSectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEHomeSectionView.h; sourceTree = "<group>"; };
@@ -725,6 +736,8 @@
 				B918BBBE202B088700EDB00D /* WLSpecScaleLayoutConstrain.m */,
 				B7897CF4207265C900F53E36 /* NSString+AEMatchTextMix.h */,
 				B7897CF5207265C900F53E36 /* NSString+AEMatchTextMix.m */,
+				B7E9A64521FEB143005E8B7D /* NSString+EncodeXMLCharacters.h */,
+				B7E9A64621FEB143005E8B7D /* NSString+EncodeXMLCharacters.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1084,6 +1097,8 @@
 			children = (
 				B9B916EE201874F9002A63CE /* AETabBarController.h */,
 				B9B916EF201874F9002A63CE /* AETabBarController.m */,
+				B7E9A64D21FEEE83005E8B7D /* UITabBar+CustomBadge.h */,
+				B7E9A64E21FEEE84005E8B7D /* UITabBar+CustomBadge.m */,
 				B9B916F12018770E002A63CE /* AENavigationController.h */,
 				B9B916F22018770E002A63CE /* AENavigationController.m */,
 			);
@@ -1169,6 +1184,9 @@
 				B94C1CC5203FC155006344F2 /* AEModifierInfoVC.xib */,
 				B7D86B6B205C0DC2001CAA02 /* AEMessageListVC.h */,
 				B7D86B6C205C0DC2001CAA02 /* AEMessageListVC.m */,
+				B7E9A64921FEE020005E8B7D /* AEMessageDetailVC.h */,
+				B7E9A64A21FEE020005E8B7D /* AEMessageDetailVC.m */,
+				B7E9A64821FEE020005E8B7D /* AEMessageDetailVC.xib */,
 				B7432DFB20DA8BAC00A07A75 /* AEBindIdCardVC.h */,
 				B7432DFD20DA8BAC00A07A75 /* AEBindIdCardVC.m */,
 				B7432DFC20DA8BAC00A07A75 /* AEBindIdCardVC.xib */,
@@ -1442,6 +1460,7 @@
 				B9B1CD46202C54360017C97D /* AEAboutMeVC.xib in Resources */,
 				B96FD9B52029B98A00FE7495 /* MeCenterCell.xib in Resources */,
 				B93C7CF4205AA0F000FC5E6C /* AEMyOrderCell.xib in Resources */,
+				B7E9A64C21FEE02D005E8B7D /* AEMessageDetailVC.xib in Resources */,
 				B94C1CE320401B3F006344F2 /* CGXAddressCity.plist in Resources */,
 				B758DB3A204ED4DC0017B270 /* AEOrderDetailVC.xib in Resources */,
 				B762D4B121DC983700FADCD5 /* AEExamTimeView.xib in Resources */,
@@ -1556,6 +1575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7E9A64F21FEEE84005E8B7D /* UITabBar+CustomBadge.m in Sources */,
 				B918BB1E202ACEBD00EDB00D /* AELoginVC.m in Sources */,
 				B94C1CE520401B3F006344F2 /* NSDate+CGXPicker.m in Sources */,
 				B7C4424A206D268F00D4EA03 /* AEExamQuestionCell.m in Sources */,
@@ -1597,6 +1617,7 @@
 				B916E37620591D64007EB40B /* AEScreeningCell.m in Sources */,
 				B918BBCB202B088700EDB00D /* NSString+category.m in Sources */,
 				B9B1CD1F202C2FBB0017C97D /* UIView+Animation.m in Sources */,
+				B7E9A64B21FEE020005E8B7D /* AEMessageDetailVC.m in Sources */,
 				B9DFA1E3206F70B400AFAD27 /* UIView+RectCorner.m in Sources */,
 				B9DFA1DA206F6F8400AFAD27 /* AEAnswerCardVC.m in Sources */,
 				B9DE2B522074C9EF00BC09C9 /* UIControl+AcceptEventInterval.m in Sources */,
@@ -1663,6 +1684,7 @@
 				B96FD9B42029B98A00FE7495 /* MeCenterCell.m in Sources */,
 				B918BBCC202B088700EDB00D /* UIFont+wl.m in Sources */,
 				B93C7CF3205AA0F000FC5E6C /* AEMyOrderCell.m in Sources */,
+				B7E9A64721FEB143005E8B7D /* NSString+EncodeXMLCharacters.m in Sources */,
 				B79C92582029DFB9002D0B66 /* MeCenterHeaderView.m in Sources */,
 				B9DFA1E0206F6FF700AFAD27 /* AnswerCardReusableView.m in Sources */,
 				B9B18F02201826C200BA38BE /* AppDelegate.m in Sources */,

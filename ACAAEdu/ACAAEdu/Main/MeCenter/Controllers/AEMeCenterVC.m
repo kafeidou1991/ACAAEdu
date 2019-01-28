@@ -19,6 +19,7 @@
 #import "AEModifierInfoVC.h"
 #import "AEBindIdCardVC.h"
 #import "AEUserInfoVC.h"
+#import "UITabBar+CustomBadge.h"
 
 @interface AEMeCenterVC ()
 @property (nonatomic, strong) MeCenterHeaderView * loginHeaderView;
@@ -48,6 +49,7 @@
     [self updateInfo];
     [self getNoPayOrderCount];
     [self getNoPayExamCount];
+    [self getNoReadNoticeCount];
 }
 
 - (void)addNotifications{
@@ -190,6 +192,21 @@
         }
         [weakSelf.dataSources replaceObjectAtIndex:2 withObject:mutableDict.copy];
         [weakSelf.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:2 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
+#pragma mark - 查询未读通知数量
+- (void)getNoReadNoticeCount {
+    if (!User.isLogin) {
+        return;
+    }
+    WS(weakSelf);
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:@{@"status":@"0",@"page":[NSString stringWithFormat:@"%d",1]}.mutableCopy path:nil body:nil success:^(id object) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSInteger count = [object[@"data"]count];
+            [weakSelf.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNumber value:count atIndex:3];
+        });
     } faile:^(NSInteger code, NSString *error) {
         [AEBase alertMessage:error cb:nil];
     }];

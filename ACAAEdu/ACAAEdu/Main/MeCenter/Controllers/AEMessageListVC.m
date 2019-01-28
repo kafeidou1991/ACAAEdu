@@ -8,6 +8,7 @@
 
 #import "AEMessageListVC.h"
 #import "AEMessageListCell.h"
+#import "AEMessageDetailVC.h"
 
 @interface AEMessageListVC ()
 
@@ -32,21 +33,26 @@
     }];
 }
 
-
 -(void)afterProFun {
+    [self loadData:YES];
+}
+- (void)loadData:(BOOL)isHud {
     WS(weakSelf);
-    [self hudShow:self.view msg:STTR_ater_on];
+    if (isHud) {
+        [self hudShow:self.view msg:STTR_ater_on];
+    }
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:@{@"status":(_messageType == UnReadMessageListType ? @"0" : @"1"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]}.mutableCopy path:nil body:nil success:^(id object) {
-        [weakSelf hudclose];
+        if (isHud) {
+            [weakSelf hudclose];
+        }
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (weakSelf.currPage == 1) {
+                [weakSelf.dataSources removeAllObjects];
+            }
             if ([object[@"data"]count] > 0) {
-                if (weakSelf.currPage == 1) {
-                    [weakSelf.dataSources removeAllObjects];
-                }
                 [weakSelf.dataSources addObjectsFromArray:[NSArray yy_modelArrayWithClass:[AEMessageList class] json:object[@"data"]]];
-                [weakSelf.tableView reloadData];
                 NSInteger total = [object[@"total"] integerValue];
                 if (total > 1) {
                     if (weakSelf.currPage < total) {
@@ -64,10 +70,12 @@
                     [weakSelf noHasMoreData];
                 }
             }
+            [weakSelf.tableView reloadData];
         });
-        
     } faile:^(NSInteger code, NSString *error) {
-        [weakSelf hudclose];
+        if (isHud) {
+            [weakSelf hudclose];
+        }
         [weakSelf endRefesh:YES];
         [weakSelf endRefesh:NO];
         [AEBase alertMessage:error cb:nil];
@@ -88,5 +96,23 @@
     return cellHeight;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    AEMessageDetailVC * vc = [AEMessageDetailVC new];
+    vc.item = self.dataSources[indexPath.row];
+    PUSHCustomViewController(vc, self);
+    if (_messageType == UnReadMessageListType) {
+        //标记未已读
+        [self messageHasRead:self.dataSources[indexPath.row]];
+    }
+}
+
+- (void)messageHasRead:(AEMessageList *)item {
+    WS(weakSelf)
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageRead query:@{@"id":item.id}.mutableCopy path:nil body:nil success:^(id object) {
+        [weakSelf loadData:NO];
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
+}
 
 @end

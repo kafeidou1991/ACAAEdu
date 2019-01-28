@@ -17,6 +17,7 @@
 #import "AEHomeSectionView.h"
 #import "AEHomeModuleItem.h"
 #import "AEMyTestExamVC.h"
+#import "UITabBar+CustomBadge.h"
 
 @interface AEHomePageVC ()
 @property (nonatomic, strong) AEHomeHeaderView * headerView;
@@ -32,9 +33,7 @@
     [self initTableView];
     [self.noticeView updateNoShowNumber:0];
     [self addNotifications];
-    [self createEmptyViewBlock:^{
-        
-    }];
+    [self createEmptyViewBlock:^{}];
 }
 - (void)initTableView {
     for (int i = 0; i < 2; i++) {
@@ -119,6 +118,9 @@
         [weakSelf endLoadData:isEnd];
         [AEBase alertMessage:error cb:nil];
     }];
+    
+    //获取未读数量
+    [self getNoReadNoticeCount];
 }
 
 - (void)endLoadData:(NSInteger)isEnd {
@@ -228,6 +230,21 @@
     readMessageVC.messageType = ReadMessageListType;
     [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
     PUSHLoginCustomViewController(customVC, self)
+}
+#pragma mark - 查询未读通知数量
+- (void)getNoReadNoticeCount {
+    if (!User.isLogin) {
+        return;
+    }
+    WS(weakSelf);
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:@{@"status":@"0",@"page":[NSString stringWithFormat:@"%d",1]}.mutableCopy path:nil body:nil success:^(id object) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSInteger count = [object[@"data"]count];
+            [weakSelf.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNumber value:count atIndex:3];
+        });
+    } faile:^(NSInteger code, NSString *error) {
+        [AEBase alertMessage:error cb:nil];
+    }];
 }
 #pragma mark - 懒加载
 -(AEHomeHeaderView *)headerView {
