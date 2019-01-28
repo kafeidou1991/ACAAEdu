@@ -29,7 +29,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-z5-Wkv">
-                    <rect key="frame" x="16" y="48" width="21" height="22"/>
+                    <rect key="frame" x="16" y="40" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="06E-9v-ZU0"/>
+                        <constraint firstAttribute="width" constant="50" id="DbS-AD-L8C"/>
+                    </constraints>
                     <viewLayoutGuide key="safeArea" id="6xb-6U-p5y"/>
                     <state key="normal" image="left_back_arrow"/>
                     <connections>
@@ -37,7 +41,7 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_top_logo" translatesAutoresizingMaskIntoConstraints="NO" id="lrW-BK-4KU">
-                    <rect key="frame" x="87" y="70" width="201" height="201"/>
+                    <rect key="frame" x="87" y="90" width="201" height="201"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xt7-v8-vnH">
                     <rect key="frame" x="0.0" y="607" width="375" height="60"/>
@@ -184,9 +188,9 @@
                 <constraint firstAttribute="bottom" secondItem="aHE-OI-ybR" secondAttribute="bottom" id="GiI-hp-9ct"/>
                 <constraint firstItem="2my-QL-s3W" firstAttribute="height" secondItem="tb6-fc-jHD" secondAttribute="height" id="I2i-vB-sJO"/>
                 <constraint firstItem="du0-2z-lvV" firstAttribute="width" secondItem="Xt7-v8-vnH" secondAttribute="width" id="JRz-N3-hkg"/>
-                <constraint firstItem="lrW-BK-4KU" firstAttribute="top" secondItem="ol1-z5-Wkv" secondAttribute="bottom" id="KTE-j4-svM"/>
                 <constraint firstItem="du0-2z-lvV" firstAttribute="height" secondItem="Xt7-v8-vnH" secondAttribute="height" id="LbP-uv-rI9"/>
                 <constraint firstAttribute="trailing" secondItem="Xt7-v8-vnH" secondAttribute="trailing" id="Ok5-ML-hzY"/>
+                <constraint firstItem="ol1-z5-Wkv" firstAttribute="top" secondItem="fmY-O5-ewF" secondAttribute="top" constant="20" id="PXm-cP-K19"/>
                 <constraint firstItem="mom-Wl-AFg" firstAttribute="trailing" secondItem="tb6-fc-jHD" secondAttribute="trailing" id="TMk-hy-YjS"/>
                 <constraint firstItem="aHE-OI-ybR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Uyv-if-IqK"/>
                 <constraint firstItem="Xt7-v8-vnH" firstAttribute="top" secondItem="du0-2z-lvV" secondAttribute="bottom" id="aaA-0K-KI3"/>
@@ -194,7 +198,7 @@
                 <constraint firstItem="2my-QL-s3W" firstAttribute="trailing" secondItem="mom-Wl-AFg" secondAttribute="trailing" id="bmw-Kg-UIQ"/>
                 <constraint firstItem="tb6-fc-jHD" firstAttribute="top" secondItem="mom-Wl-AFg" secondAttribute="bottom" id="bw8-bH-nca"/>
                 <constraint firstItem="du0-2z-lvV" firstAttribute="centerX" secondItem="Xt7-v8-vnH" secondAttribute="centerX" id="ga5-fV-2f5"/>
-                <constraint firstItem="fmY-O5-ewF" firstAttribute="top" secondItem="ol1-z5-Wkv" secondAttribute="bottom" constant="-50" id="iJg-H8-AZC"/>
+                <constraint firstItem="lrW-BK-4KU" firstAttribute="top" secondItem="ol1-z5-Wkv" secondAttribute="bottom" id="h3O-ta-tDF"/>
                 <constraint firstItem="lrW-BK-4KU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="l7m-yC-zS6"/>
                 <constraint firstItem="du0-2z-lvV" firstAttribute="top" secondItem="tb6-fc-jHD" secondAttribute="bottom" id="lAq-P0-Itw"/>
                 <constraint firstItem="2my-QL-s3W" firstAttribute="leading" secondItem="mom-Wl-AFg" secondAttribute="leading" id="mlD-rA-AZL"/>
@@ -203,7 +207,7 @@
                 <constraint firstItem="tb6-fc-jHD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="xk9-ec-PUJ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fmY-O5-ewF"/>
-            <point key="canvasLocation" x="32.5" y="77.5"/>
+            <point key="canvasLocation" x="31.199999999999999" y="76.911544227886068"/>
         </view>
         <tapGestureRecognizer id="Qc1-hR-W2U">
             <connections>

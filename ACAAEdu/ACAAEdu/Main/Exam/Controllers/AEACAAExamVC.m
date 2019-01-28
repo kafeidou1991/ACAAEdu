@@ -128,7 +128,7 @@
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
     VC.payStatus = AEOrderAffirmPay;
-    PUSHLoginCustomViewController(VC, self);
+    PUSHCustomViewController(VC, self);
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];

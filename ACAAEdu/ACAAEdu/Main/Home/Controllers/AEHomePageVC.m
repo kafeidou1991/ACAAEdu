@@ -221,7 +221,7 @@
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
     VC.payStatus = AEOrderAffirmPay;
-    PUSHLoginCustomViewController(VC, self);
+    PUSHCustomViewController(VC, self);
 }
 //MARK: 通知列表
 - (void)gotoNoticeDetail {
