@@ -75,6 +75,10 @@
     }
     [self.loginHeaderView updateheaderInfo];
     [self.tableView reloadData];
+    if (!User.isLogin) {
+        //未登录隐藏红点
+        [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNumber value:0 atIndex:3];
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

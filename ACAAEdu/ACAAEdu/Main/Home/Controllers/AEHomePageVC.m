@@ -77,7 +77,7 @@
         [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypePOST methodName:kHomeMyExam query:nil path:nil body:nil success:^(id object) {
             isEnd += 1;
             AEHomeModuleItem * item = weakSelf.dataSources[0];
-            item.data = [NSArray yy_modelArrayWithClass:[AEMyExamItem class] json:object].mutableCopy;
+            item.data = [NSArray yy_modelArrayWithClass:[AEMyExamItem class] json:object].copy;
             [weakSelf.dataSources replaceObjectAtIndex:0 withObject:item];
             [weakSelf endLoadData:isEnd];
         } faile:^(NSInteger code, NSString *error) {
@@ -86,13 +86,16 @@
             [AEBase alertMessage:error cb:nil];
         }];
     }else {
+        AEHomeModuleItem * item = weakSelf.dataSources[0];
+        item.data = [NSArray array];
+        [weakSelf.dataSources replaceObjectAtIndex:0 withObject:item];
         isEnd += 1;
     }
     //热门考试
     [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kHomeHotExam query:nil path:nil body:nil success:^(id object) {
         isEnd += 1;
         AEHomeModuleItem * item = weakSelf.dataSources[1];
-        item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].mutableCopy;
+        item.data = [NSArray yy_modelArrayWithClass:[AEExamItem class] json:object].copy;
         [weakSelf.dataSources replaceObjectAtIndex:1 withObject:item];
         [weakSelf endLoadData:isEnd];
     } faile:^(NSInteger code, NSString *error) {
