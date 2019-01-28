@@ -2,7 +2,7 @@ platform :ios, '8.0'
 target 'ACAAEdu' do
  pod 'AFNetworking'
  pod 'YYModel'
- pod 'OpenUDID'
+ pod 'FCUUID'
  pod 'SDWebImage'
  pod 'SDWebImage/GIF'
  pod 'MBProgressHUD'

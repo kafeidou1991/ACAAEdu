@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "AETabBarController.h"
 #import <Bugly/Bugly.h>
+#import "UIDevice+FCUUID.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,9 @@
     // Override point for customization after application launch.
     [self setupKeyWindow];
     [self setupIQKeyBoard];
+    //设备唯一标识符
+    NSLog(@"%@",[UIDevice currentDevice].uuid);
+    
     return YES;
 }
 
