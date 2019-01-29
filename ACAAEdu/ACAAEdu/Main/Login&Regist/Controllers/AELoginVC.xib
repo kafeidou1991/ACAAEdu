@@ -41,9 +41,6 @@
                         <action selector="backAction:" destination="-1" eventType="touchUpInside" id="OE2-pX-YY3"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_top_logo" translatesAutoresizingMaskIntoConstraints="NO" id="lrW-BK-4KU">
-                    <rect key="frame" x="87" y="90" width="201" height="201"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xt7-v8-vnH">
                     <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <constraints>
@@ -217,8 +214,6 @@
                 <constraint firstItem="2my-QL-s3W" firstAttribute="trailing" secondItem="mom-Wl-AFg" secondAttribute="trailing" id="bmw-Kg-UIQ"/>
                 <constraint firstItem="tb6-fc-jHD" firstAttribute="top" secondItem="mom-Wl-AFg" secondAttribute="bottom" id="bw8-bH-nca"/>
                 <constraint firstItem="du0-2z-lvV" firstAttribute="centerX" secondItem="Xt7-v8-vnH" secondAttribute="centerX" id="ga5-fV-2f5"/>
-                <constraint firstItem="lrW-BK-4KU" firstAttribute="top" secondItem="ol1-z5-Wkv" secondAttribute="bottom" id="h3O-ta-tDF"/>
-                <constraint firstItem="lrW-BK-4KU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="l7m-yC-zS6"/>
                 <constraint firstItem="du0-2z-lvV" firstAttribute="top" secondItem="tb6-fc-jHD" secondAttribute="bottom" id="lAq-P0-Itw"/>
                 <constraint firstItem="2my-QL-s3W" firstAttribute="leading" secondItem="mom-Wl-AFg" secondAttribute="leading" id="mlD-rA-AZL"/>
                 <constraint firstItem="aHE-OI-ybR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ni3-WW-x0g"/>
@@ -245,6 +240,5 @@
         <image name="login_account" width="20" height="19"/>
         <image name="login_bg" width="375" height="667"/>
         <image name="login_password" width="20" height="22"/>
-        <image name="login_top_logo" width="201" height="201"/>
     </resources>
 </document>

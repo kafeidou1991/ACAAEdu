@@ -54,6 +54,7 @@
                  ||[viewController isKindOfClass:NSClassFromString(@"AEExamAnalyzeVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AELoginVC")]
                  ||[viewController isKindOfClass:NSClassFromString(@"AEMessageDetailVC")]
+                 ||[viewController isKindOfClass:NSClassFromString(@"AEMessageListVC")]
     ;
     [navigationController setNavigationBarHidden:isShow animated:YES];
 }

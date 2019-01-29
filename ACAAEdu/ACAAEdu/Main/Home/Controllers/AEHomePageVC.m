@@ -123,7 +123,7 @@
     }];
     
     //获取未读数量
-    [self getNoReadNoticeCount];
+//    [self getNoReadNoticeCount];
 }
 
 - (void)endLoadData:(NSInteger)isEnd {

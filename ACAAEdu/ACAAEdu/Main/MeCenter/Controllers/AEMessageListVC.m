@@ -18,8 +18,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:self.baseTopView];
+    self.baseTopView.titleName = @"通知";
     [self initTableView];
-    self.tableView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight - 44.f - HOME_INDICATOR_HEIGHT);
+    self.tableView.frame = CGRectMake(0, ySpace, SCREEN_WIDTH, SCREEN_HEIGHT - AEBaseTopViewHeight);
     
 }
 - (void)initTableView {
@@ -41,7 +43,8 @@
     if (isHud) {
         [self hudShow:self.view msg:STTR_ater_on];
     }
-    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:@{@"status":(_messageType == UnReadMessageListType ? @"0" : @"1"),@"page":[NSString stringWithFormat:@"%ld",self.currPage]}.mutableCopy path:nil body:nil success:^(id object) {
+//    @"status":(_messageType == UnReadMessageListType ? @"0" : @"1"),
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kMessageList query:@{@"page":[NSString stringWithFormat:@"%ld",self.currPage]}.mutableCopy path:nil body:nil success:^(id object) {
         if (isHud) {
             [weakSelf hudclose];
         }
@@ -98,11 +101,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     AEMessageDetailVC * vc = [AEMessageDetailVC new];
-    vc.item = self.dataSources[indexPath.row];
+    AEMessageList * item = self.dataSources[indexPath.row];
+    vc.item = item;
     PUSHCustomViewController(vc, self);
-    if (_messageType == UnReadMessageListType) {
+    if ([item.status isEqualToString:@"0"]) {
         //标记未已读
-        [self messageHasRead:self.dataSources[indexPath.row]];
+        [self messageHasRead:item];
     }
 }
 

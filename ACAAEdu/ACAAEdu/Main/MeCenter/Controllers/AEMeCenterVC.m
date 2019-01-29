@@ -31,7 +31,7 @@
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = nil;
 //    self.view.backgroundColor = UIColorFromRGB(0x747476);
-    self.view.layer.contents = (__bridge id)[UIImage imageNamed:@"login_bg"].CGImage;
+    self.view.layer.contents = (__bridge id)[UIImage imageNamed:@"mecenter_bg"].CGImage;
     [self addNotifications];
     self.dataSources =@[@{@"icon" :@"meceter1",@"title":@"设置",@"des":@""},
                         @{@"icon" :@"meceter2",@"title":@"通知",@"des":@""},
@@ -50,7 +50,7 @@
     [self visitorSuccess];
     [self getNoPayOrderCount];
     [self getNoPayExamCount];
-    [self getNoReadNoticeCount];
+//    [self getNoReadNoticeCount];
 }
 
 - (void)addNotifications{
@@ -145,14 +145,15 @@
     }else if ([title isEqualToString:@"设置"]) {
         PUSHCustomViewController([AESettingVC new], self)
     }else if ([title isEqualToString:@"通知"]) {
-        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
-        customVC.baseTopView.titleName = @"通知";
-        AEMessageListVC * unReadMessageVC = [[AEMessageListVC alloc] init];
-        unReadMessageVC.messageType = UnReadMessageListType;
-        AEMessageListVC *readMessageVC = [[AEMessageListVC alloc] init];
-        readMessageVC.messageType = ReadMessageListType;
-        [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
-        PUSHLoginCustomViewController(customVC, self)
+//        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+//        customVC.baseTopView.titleName = @"通知";
+//        AEMessageListVC * unReadMessageVC = [[AEMessageListVC alloc] init];
+//        unReadMessageVC.messageType = UnReadMessageListType;
+//        AEMessageListVC *readMessageVC = [[AEMessageListVC alloc] init];
+//        readMessageVC.messageType = ReadMessageListType;
+//        [customVC setupPageView:@[@"未读", @"已读"] ContentViewControllers:@[unReadMessageVC, readMessageVC]];
+//        PUSHLoginCustomViewController(customVC, self)
+        PUSHLoginCustomViewController([AEMessageListVC new], self)
     }else if ([title isEqualToString:@"我的模考"]) {
 //        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
 //        customVC.baseTopView.titleName = @"我的模考";
