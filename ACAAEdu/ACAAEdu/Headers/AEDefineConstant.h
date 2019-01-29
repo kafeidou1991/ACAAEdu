@@ -56,6 +56,8 @@ alpha:1.0]
 #define AEUserDefaults [NSUserDefaults standardUserDefaults]
 //User
 #define User  [AEUserInfo shareInstance]
+//全局配置接口
+#define Visotor  [AEVistiorInfo shareInstance]
 // 6.版本号
 #define AEVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
 #define AEAppName [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleDisplayName"]

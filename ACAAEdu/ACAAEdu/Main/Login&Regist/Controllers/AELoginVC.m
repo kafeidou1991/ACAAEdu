@@ -34,6 +34,10 @@
  */
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
+/**
+ 游客模式登录
+ */
+@property (weak, nonatomic) IBOutlet UIButton *visitorBtn;
 
 
 @end
@@ -46,12 +50,20 @@
     self.title =@"登录";
     [self initComonpent];
     
+    
 }
 - (void)initComonpent {
     self.pwdBgView.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     self.accountBgView.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.3];
     
     self.accountTextField.text = [AEUserDefaults objectForKey:@"ACAA_MobileAcount"];
+    
+    //游客模式 是否显示游客登录
+    if (!Visotor.isShow) {
+        self.visitorBtn.hidden = YES;
+    }else {
+        self.visitorBtn.hidden = Visotor.isLogin;
+    }
 }
 
 #pragma mark - 忘记密码 登录 注册
@@ -90,6 +102,7 @@
     if (object) {
         [AEUserInfo yy_modelWithDictionary:object];
         [User save];
+        Visotor.isLogin = NO;
     }
     if (self.loginCompletion) {
         self.loginCompletion(YES);
@@ -142,6 +155,11 @@
     if ([self.accountTextField canBecomeFirstResponder]) {
         [self.accountTextField becomeFirstResponder];
     }
+}
+#pragma mark - 游客模式登录
+- (IBAction)visitorLoginAction:(id)sender {
+    [Visotor visitorLogin:NO];
+    [self backAction:nil];
 }
 #pragma mark - other
 //吊起登录

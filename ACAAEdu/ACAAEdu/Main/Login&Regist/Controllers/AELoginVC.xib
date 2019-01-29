@@ -18,6 +18,7 @@
                 <outlet property="passwordTextField" destination="acU-6e-zlQ" id="2SO-fd-fyt"/>
                 <outlet property="pwdBgView" destination="tb6-fc-jHD" id="oJz-RL-Fxh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="visitorBtn" destination="4g2-Gr-vRd" id="tRf-pP-9Lb"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,7 +30,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-z5-Wkv">
-                    <rect key="frame" x="16" y="40" width="50" height="50"/>
+                    <rect key="frame" x="0.0" y="40" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="06E-9v-ZU0"/>
                         <constraint firstAttribute="width" constant="50" id="DbS-AD-L8C"/>
@@ -61,6 +62,22 @@
                     <state key="normal" title="登  录"/>
                     <connections>
                         <action selector="loginClick:" destination="-1" eventType="touchUpInside" id="k8j-Wz-x3z"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4g2-Gr-vRd">
+                    <rect key="frame" x="295" y="376.5" width="80" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="hR1-nh-Kl8"/>
+                        <constraint firstAttribute="width" constant="80" id="oM8-wC-npc"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="Vq2-fg-2At"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                    <state key="normal" title="游客登录 &gt;&gt;">
+                        <color key="titleColor" red="0.2274509804" green="0.81960784310000001" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="Bix-wh-by5"/>
+                        <action selector="visitorLoginAction:" destination="-1" eventType="touchUpInside" id="KGq-uW-uvC"/>
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2my-QL-s3W">
@@ -180,7 +197,8 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ol1-z5-Wkv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="6DE-SB-OH7"/>
+                <constraint firstItem="2my-QL-s3W" firstAttribute="top" secondItem="4g2-Gr-vRd" secondAttribute="bottom" id="657-KT-FIe"/>
+                <constraint firstItem="ol1-z5-Wkv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6DE-SB-OH7"/>
                 <constraint firstItem="Xt7-v8-vnH" firstAttribute="top" secondItem="fmY-O5-ewF" secondAttribute="bottom" constant="-60" id="6es-e4-xef"/>
                 <constraint firstAttribute="trailing" secondItem="aHE-OI-ybR" secondAttribute="trailing" id="EVi-me-736"/>
                 <constraint firstAttribute="trailing" secondItem="tb6-fc-jHD" secondAttribute="trailing" id="EtX-g3-nuK"/>
@@ -193,6 +211,7 @@
                 <constraint firstItem="ol1-z5-Wkv" firstAttribute="top" secondItem="fmY-O5-ewF" secondAttribute="top" constant="20" id="PXm-cP-K19"/>
                 <constraint firstItem="mom-Wl-AFg" firstAttribute="trailing" secondItem="tb6-fc-jHD" secondAttribute="trailing" id="TMk-hy-YjS"/>
                 <constraint firstItem="aHE-OI-ybR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Uyv-if-IqK"/>
+                <constraint firstItem="fmY-O5-ewF" firstAttribute="trailing" secondItem="4g2-Gr-vRd" secondAttribute="trailing" id="YGE-A8-MuK"/>
                 <constraint firstItem="Xt7-v8-vnH" firstAttribute="top" secondItem="du0-2z-lvV" secondAttribute="bottom" id="aaA-0K-KI3"/>
                 <constraint firstItem="mom-Wl-AFg" firstAttribute="top" secondItem="2my-QL-s3W" secondAttribute="bottom" id="alq-yj-7EB"/>
                 <constraint firstItem="2my-QL-s3W" firstAttribute="trailing" secondItem="mom-Wl-AFg" secondAttribute="trailing" id="bmw-Kg-UIQ"/>

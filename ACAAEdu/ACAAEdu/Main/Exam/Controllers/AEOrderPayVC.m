@@ -8,6 +8,7 @@
 
 #import "AEOrderPayVC.h"
 #import "AEPurchaseManage.h"
+#import "AECustomSegmentVC.h"
 
 @interface AEOrderPayVC ()
 @property (weak, nonatomic) IBOutlet UILabel *orderNoLabel; //订单信息
@@ -37,7 +38,12 @@
             //回到根页面
             if (weakSelf.comeType == ComeFromMyOrderType) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:kPayOrderSuccess object:nil];
-                [weakSelf.navigationController popViewControllerAnimated:YES];
+                [weakSelf.navigationController.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    if ([obj isKindOfClass:[AECustomSegmentVC class]]) {
+                        [weakSelf.navigationController popToViewController:obj animated:YES];
+                        *stop = YES;
+                    }
+                }];
             }else {
                 [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             }

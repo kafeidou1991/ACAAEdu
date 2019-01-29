@@ -221,7 +221,11 @@
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
     VC.payStatus = AEOrderAffirmPay;
-    PUSHCustomViewController(VC, self);
+    if (Visotor.isShow) {
+        PUSHCustomViewController(VC, self);
+    }else {
+        PUSHLoginCustomViewController(VC, self);
+    }
 }
 //MARK: 通知列表
 - (void)gotoNoticeDetail {

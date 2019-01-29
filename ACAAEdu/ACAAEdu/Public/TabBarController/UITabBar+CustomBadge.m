@@ -43,13 +43,13 @@ static NSString * const kBadgeTop = @"kBadgeTop";
         [badgeNumberViews[index] setHidden:NO];
         UILabel *label = badgeNumberViews[index];
         [self adjustBadgeNumberViewWithLabel:label number:badgeValue];
-        //0条不显示
-        label.hidden = !(badgeValue > 0);
+        //0条不显示  游客模式下显示提醒
+        label.hidden = !(badgeValue > 0) || Visotor.isShow;
     }else if(type == kCustomBadgeStyleNone){
     }
 }
 
--(void)addBadgeViews{
+- (void)addBadgeViews{
     id idIconWith = [self valueForKey:kTabIconWidth];
     CGFloat tabIconWidth = idIconWith ? [idIconWith floatValue] : 32;
     id idBadgeTop = [self valueForKey:kBadgeTop];

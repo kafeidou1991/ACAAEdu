@@ -47,6 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self updateInfo];
+    [self visitorSuccess];
     [self getNoPayOrderCount];
     [self getNoPayExamCount];
     [self getNoReadNoticeCount];
@@ -55,6 +56,9 @@
 - (void)addNotifications{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginSuccess object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateInfo) name:kLoginExit object:nil];
+    
+    //游客模式登录成功,改变文案
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(visitorSuccess) name:kVisitorLoginSuccess object:nil];
 }
 
 #pragma mark - 登陆成功
@@ -79,6 +83,9 @@
         //未登录隐藏红点
         [self.tabBarController.tabBar setBadgeStyle:kCustomBadgeStyleNumber value:0 atIndex:3];
     }
+}
+- (void)visitorSuccess {
+    [self.loginHeaderView updateVisitorHeaderInfo];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -119,17 +126,22 @@
 #pragma mark - 跳转
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * title = self.dataSources[indexPath.row][@"title"];
+    WS(weakSelf)
     if ([title isEqualToString:@"关于我们"]) {
         PUSHCustomViewController([AEAboutMeVC new], self)
     }else if ([title isEqualToString:@"我的订单"]) {
-        AECustomSegmentVC * customVC = [AECustomSegmentVC new];
-        customVC.baseTopView.titleName = @"我的订单";
-        AEMyOrderVC * noPayVC = [[AEMyOrderVC alloc] init];
-        noPayVC.payType = ExamNoPayType;
-        AEMyOrderVC * hasPayVC = [[AEMyOrderVC alloc] init];
-        hasPayVC.payType = ExamHasPayType;
-        [customVC setupPageView:@[@"未支付",@"已支付"] ContentViewControllers:@[noPayVC, hasPayVC]];
-        PUSHLoginCustomViewController(customVC, self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Visotor alertLoginType:self Compliont:^{
+                AECustomSegmentVC * customVC = [AECustomSegmentVC new];
+                customVC.baseTopView.titleName = @"我的订单";
+                AEMyOrderVC * noPayVC = [[AEMyOrderVC alloc] init];
+                noPayVC.payType = ExamNoPayType;
+                AEMyOrderVC * hasPayVC = [[AEMyOrderVC alloc] init];
+                hasPayVC.payType = ExamHasPayType;
+                [customVC setupPageView:@[@"未支付",@"已支付"] ContentViewControllers:@[noPayVC, hasPayVC]];
+                PUSHCustomViewController(customVC, self)
+            }];
+        });
     }else if ([title isEqualToString:@"设置"]) {
         PUSHCustomViewController([AESettingVC new], self)
     }else if ([title isEqualToString:@"通知"]) {
@@ -149,8 +161,11 @@
 //        AEMyTestExamVC * hasExamVC = [[AEMyTestExamVC alloc] init];
 //        hasExamVC.examType = HasTestExamType;
 //        [customVC setupPageView:@[@"未考试",@"已考试"] ContentViewControllers:@[noExamVC,hasExamVC]];
-        AEMyTestExamVC * noExamVC = [[AEMyTestExamVC alloc] init];
-        PUSHLoginCustomViewController(noExamVC, self)
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [Visotor alertLoginType:self Compliont:^{
+                PUSHCustomViewController([AEMyTestExamVC new], weakSelf)
+            }];
+        });
     }else if ([title isEqualToString:@"退出"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self exitAction];

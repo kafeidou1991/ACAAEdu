@@ -128,7 +128,11 @@
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
     VC.payStatus = AEOrderAffirmPay;
-    PUSHCustomViewController(VC, self);
+    if (Visotor.isShow) {
+        PUSHCustomViewController(VC, self);
+    }else {
+        PUSHLoginCustomViewController(VC, self);
+    }
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter]removeObserver:self];

@@ -9,6 +9,7 @@
 #import "MeCenterHeaderView.h"
 #import "AEAboutMeVC.h"
 #import "AEUserInfoVC.h"
+#import "UIDevice+FCUUID.h"
 
 @interface MeCenterHeaderView()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -45,6 +46,18 @@
         self.nameLabel.text = STRISEMPTY(User.user_profile.user_name) ? [NSString stringWithFormat:@"%@", User.username] : [NSString stringWithFormat:@"%@", User.user_profile.user_name];
     }else {
         self.nameLabel.text = @"点击头像登录";
+    }
+    self.iconImageView.image = [UIImage imageNamed:@"mecenter_headnomal"];
+}
+
+- (void)updateVisitorHeaderInfo {
+    if (Visotor.isShow) {
+        if (Visotor.isLogin) {
+            //设备唯一标识符
+            NSString * uuid = [UIDevice currentDevice].uuid;
+            self.nameLabel.text = [NSString stringWithFormat:@"iOS游客-%@", uuid.length > 4 ? [uuid substringWithRange:NSMakeRange(0, 4)] : uuid];
+            self.iconImageView.image = [UIImage imageNamed:@"mecenter_head_visitor"];
+        }
     }
 }
 

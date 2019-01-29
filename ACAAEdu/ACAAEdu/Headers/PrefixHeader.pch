@@ -34,6 +34,7 @@
 #import "AEDefineConstant.h"
 #import "AENetworkingTool.h"
 #import "AEUserInfo.h"
+#import "AEVistiorInfo.h"
 #import "AETextField.h"
 #import "AEBase.h"
 #import "AETimerHelper.h"

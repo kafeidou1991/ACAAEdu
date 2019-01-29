@@ -16,4 +16,10 @@
  @param sender 按钮
  */
 - (IBAction)loginClick:(UITapGestureRecognizer *)sender;
+
+
+/**
+ 游客模式下登录成功
+ */
+- (void)updateVisitorHeaderInfo;
 @end

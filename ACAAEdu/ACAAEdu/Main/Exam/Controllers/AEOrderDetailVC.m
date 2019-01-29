@@ -112,11 +112,14 @@
 }
 //MARK: 提交订单 逻辑更改 新增游客模式登录，游客仅可以进行考试
 - (IBAction)submitOrderAction:(UIButton *)sender {
-    
+    //登录直接购买
     if (User.isLogin) {
         [self buyExam];
     }else {
-        [self visitorLogin];
+        WS(weakSelf)
+        [Visotor alertLoginType:self Compliont:^{
+            [weakSelf buyExam];
+        }];
     }
 }
 //MARK:购买考试
@@ -142,33 +145,6 @@
         }
     }];
 }
-//MARK: 游客购买登录
-- (void)visitorLogin {
-    WS(weakSelf)
-    UIAlertController * alertVC = [UIAlertController alertControllerWithTitle:@"购买提示" message:@"请选择登录购买，在其他iOS设备上也可以参加考试，游客购买只能在本台iOS设备参加考试。" preferredStyle:UIAlertControllerStyleAlert];
-    //本地登录
-    UIAlertAction * loginAction = [UIAlertAction actionWithTitle:@"登录购买(推荐)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [AELoginVC OpenLogin:self callback:^(BOOL compliont) {
-            if (compliont) {
-                [weakSelf buyExam];
-            }
-        }];
-    }];
-    [loginAction setValue:[UIColor orangeColor] forKey:@"titleTextColor"];
-    [alertVC addAction:loginAction];
-    
-    //游客登录
-    UIAlertAction * visitorAction = [UIAlertAction actionWithTitle:@"游客购买(仅限本设备)" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        
-    }];
-    [visitorAction setValue:AEHexColor(@"999999") forKey:@"titleTextColor"];
-    [alertVC addAction:visitorAction];
-    
-    UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:@"暂不购买" style:UIAlertActionStyleCancel handler:nil];
-    [alertVC addAction:cancelAction];
-    [self presentViewController:alertVC animated:YES completion:nil];
-}
-
 //MARK: 创建订单
 - (void)createOrderDetailSuccess:(void(^)(AEMyOrderList * item))success {
     WS(weakSelf);

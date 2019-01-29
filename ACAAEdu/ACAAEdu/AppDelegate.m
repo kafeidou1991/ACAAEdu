@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "AETabBarController.h"
 #import <Bugly/Bugly.h>
-#import "UIDevice+FCUUID.h"
 
 @interface AppDelegate ()
 
@@ -22,8 +21,8 @@
     // Override point for customization after application launch.
     [self setupKeyWindow];
     [self setupIQKeyBoard];
-    //设备唯一标识符
-    NSLog(@"%@",[UIDevice currentDevice].uuid);
+    //获取全局配置接口
+    [self setUserProfile];
     
     return YES;
 }
@@ -31,7 +30,6 @@
 #pragma mark - Private
 - (void)setupKeyWindow {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
     AETabBarController *tabBarVC = [AETabBarController new];
     self.window.rootViewController = tabBarVC;
     [self.window makeKeyAndVisible];
@@ -46,6 +44,14 @@
 }
 - (void)setupBugly {
     [Bugly startWithAppId:BuglyAppID];
+}
+
+- (void)setUserProfile {
+    //全局配置接口
+    [AENetworkingTool httpRequestAsynHttpType:HttpRequestTypeGET methodName:kUserProfile query:nil path:nil body:nil success:^(id object) {
+        [AEVistiorInfo yy_modelWithJSON:object];
+    } faile:^(NSInteger code, NSString *error) {
+    }];
 }
 
 

@@ -109,7 +109,11 @@
     AEOrderDetailVC * VC = [AEOrderDetailVC new];
     VC.item = item;
     VC.payStatus = AEOrderAffirmPay;
-    PUSHCustomViewController(VC, self);
+    if (Visotor.isShow) {
+        PUSHCustomViewController(VC, self);
+    }else {
+        PUSHLoginCustomViewController(VC, self);
+    }
 }
 //MARK: 初始化titleView
 - (void)setupTitleView{

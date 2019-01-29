@@ -94,14 +94,14 @@
     return [carTest evaluateWithObject:self];
 }
 - (BOOL)validateIdentityCard{
-    if (self.length != 18) return NO;
+     if (self.length != 18) return NO;
     // 正则表达式判断基本 身份证号是否满足格式
     NSString *regex = @"^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$";
     //  NSString *regex = @"^(^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$)|(^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])((\\d{4})|\\d{3}[Xx])$)$";
     NSPredicate *identityStringPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
     //如果通过该验证，说明身份证格式正确，但准确性还需计算
     if(![identityStringPredicate evaluateWithObject:self]) return NO;
-    //** 开始进行校验 *//
+    //开始进行校验//
     //将前17位加权因子保存在数组里
     NSArray *idCardWiArray = @[@"7", @"9", @"10", @"5", @"8", @"4", @"2", @"1", @"6", @"3", @"7", @"9", @"10", @"5", @"8", @"4", @"2"];
     //这是除以11后，可能产生的11位余数、验证码，也保存成数组

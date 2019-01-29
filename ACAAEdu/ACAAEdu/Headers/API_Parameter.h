@@ -36,6 +36,8 @@
 #define kGetProfile @"mobile/user/getProfile"
 //绑定身份证
 #define kBindIdCard @"mobile/user/bindIdCard"
+//用户配置接口
+#define kUserProfile @"mobile/system/purchase"
 
 #pragma mark ---------------------- 新注册流程----------------------------
 //注册账号
