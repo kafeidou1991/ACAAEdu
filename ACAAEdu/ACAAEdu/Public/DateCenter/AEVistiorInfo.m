@@ -18,6 +18,7 @@ static AEVistiorInfo * info = nil;
 //MARK: 判断是否显示游客模式下
 //判断当前版本是否跟系统版本一直，一致的话使用接口返回，其他为no，这样做是为了受到防止升级时候影响
 - (BOOL)isShow {
+    return NO;
     if ([_version isEqualToString:AEVersion]) {
         return _isShow;
     }else {
