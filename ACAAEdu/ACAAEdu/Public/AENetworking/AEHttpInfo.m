@@ -18,7 +18,7 @@
 #ifdef DEBUG
         self.networkDomain = [self getNetworkDomain];
 #else
-        self.networkDomain = @"http://id.acaa.cn/";
+        self.networkDomain = @"https://id.acaa.cn/";
 #endif
         
         self.apiToken = @"";
