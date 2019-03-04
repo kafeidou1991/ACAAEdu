@@ -60,7 +60,7 @@
 
 
 - (NSString *)getNetworkDomain {
-    NSString * domain = @"http://id.acaa.cn/";
+    NSString * domain = @"https://id.acaa.cn/";
     NSString * temp = [AEUserDefaults objectForKey:ChangeServerEnv];
     if (STRISEMPTY(temp)) {
         return domain;
