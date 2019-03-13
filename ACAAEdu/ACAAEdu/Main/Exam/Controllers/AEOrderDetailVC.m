@@ -30,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UIView *bottmOrderView;
 ///应付金额 500
 @property (weak, nonatomic) IBOutlet UILabel *payLabel;
+//优惠文字文案
+@property (weak, nonatomic) IBOutlet UILabel *discountsLeftLebal;
 ///优惠了多少 400
 @property (weak, nonatomic) IBOutlet UILabel *discountsLabel;
 /// q我要测试
@@ -85,20 +87,35 @@
     self.versionLabel.text = [NSString stringWithFormat:@"版本:%@",_item.version];
     self.cateLabel.text = [NSString stringWithFormat:@"类别:%@",_item.subject_type_name];
     //价格
-    self.orderPriceLabel.text = [NSString stringWithFormat:@"￥%@",_item.subject_realPrice];
+    if (_item.subject_realPrice.intValue != 0) {
+        self.orderPriceLabel.text = [NSString stringWithFormat:@"￥%@",_item.subject_realPrice];
+    }else {
+        self.orderPriceLabel.text = [NSString stringWithFormat:@"免费"];
+    }
     //原价
-    NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"原价 ￥%@",_item.subject_price] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13],NSForegroundColorAttributeName:AEHexColor(@"999999"),NSStrikethroughStyleAttributeName : @1}];
-    self.orginPriceLabel.attributedText = att;
-    
+    if ([_item.subject_price isEqualToString:_item.subject_realPrice]) {
+        //原价现价相等不显示
+        self.orginPriceLabel.attributedText = [[NSAttributedString alloc]initWithString:@""];
+    }else {
+        NSAttributedString * att = [[NSAttributedString alloc]initWithString:[NSString stringWithFormat:@"原价 ￥%@",_item.subject_price] attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:13],NSForegroundColorAttributeName:AEHexColor(@"999999"),NSStrikethroughStyleAttributeName : @1}];
+        self.orginPriceLabel.attributedText = att;
+    }
     
     if (_payStatus == AEOrderAffirmPay) {
         //确认订单
         self.bottmOrderView.hidden = NO;
         self.bottomSubmitView.hidden = YES;
         //应付
-        self.payLabel.text = _item.subject_realPrice;
+        self.payLabel.text = _item.subject_realPrice.intValue == 0 ? @"免费" : [NSString stringWithFormat:@"%@元",_item.subject_realPrice];
         //优惠
-        self.discountsLabel.text = _item.subject_discount;
+        if (_item.subject_discount.intValue == 0) {
+            self.discountsLeftLebal.hidden = YES;
+            self.discountsLabel.hidden = YES;
+        }else {
+            self.discountsLeftLebal.hidden = NO;
+            self.discountsLabel.hidden = NO;
+            self.discountsLabel.text = _item.subject_discount;
+        }
     }else {
         //名称
         self.orderNameLabel.text = _item.subject_full_name;

@@ -17,6 +17,7 @@
                 <outlet property="cateLabel" destination="dyl-UY-Pl6" id="45w-Bd-hn7"/>
                 <outlet property="deleteOrderBtn" destination="hYF-D3-hv3" id="Zfv-Lw-uaF"/>
                 <outlet property="discountsLabel" destination="Yod-dY-vIZ" id="7kj-pl-MtY"/>
+                <outlet property="discountsLeftLebal" destination="eUo-Ww-bWW" id="0qV-sg-GJg"/>
                 <outlet property="leftSpaceContraint" destination="dP4-mE-TyE" id="7YY-0X-NOe"/>
                 <outlet property="orderNameLabel" destination="G4r-Ws-ism" id="DFw-zg-jRF"/>
                 <outlet property="orderPriceLabel" destination="GJR-Ke-p3O" id="H5b-m4-e8y"/>
@@ -115,21 +116,52 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSN-1q-XXH">
                             <rect key="frame" x="315.5" y="21" width="39.5" height="18.5"/>
                             <attributedString key="attributedText">
-                                <fragment content="原价">
+                                <fragment content="原价￥">
                                     <attributes>
-                                        <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="13" name="PingFangSC-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                            <tabStops>
+                                                <textTab alignment="left" location="28">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="56">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="84">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="112">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="140">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="168">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="196">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="224">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="252">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="280">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="308">
+                                                    <options/>
+                                                </textTab>
+                                                <textTab alignment="left" location="336">
+                                                    <options/>
+                                                </textTab>
+                                            </tabStops>
+                                        </paragraphStyle>
                                         <integer key="NSStrikethrough" value="1"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="￥">
-                                    <attributes>
-                                        <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <font key="NSFont" size="13" name="PingFangSC-Regular"/>
-                                        <font key="NSOriginalFont" size="14" name="PingFangSC-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        <integer key="NSStrikethrough" value="1"/>
+                                        <color key="NSStrikethroughColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </attributes>
                                 </fragment>
                             </attributedString>
@@ -171,7 +203,7 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款后立即生效" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-0Y-jUg">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="购买后立即生效" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEi-0Y-jUg">
                             <rect key="frame" x="255" y="21.5" width="100" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -219,24 +251,24 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jll-I4-cZE">
                     <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应付 ￥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-eJ-IVd">
-                            <rect key="frame" x="20" y="21.5" width="47" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="应付：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zZ2-eJ-IVd">
+                            <rect key="frame" x="20" y="21.5" width="43" height="17"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6U-mY-B2b">
-                            <rect key="frame" x="67" y="30" width="0.0" height="0.0"/>
+                            <rect key="frame" x="63" y="30" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠 ￥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUo-Ww-bWW">
-                            <rect key="frame" x="87" y="22" width="43.5" height="16"/>
+                            <rect key="frame" x="83" y="22" width="43.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yod-dY-vIZ">
-                            <rect key="frame" x="130.5" y="22" width="25" height="16"/>
+                            <rect key="frame" x="126.5" y="22" width="25" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -281,7 +313,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96U-Cy-r0E">
-                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="507" width="375" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwz-YP-t8U">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -339,7 +371,7 @@
                 <constraint firstItem="nen-bx-ChC" firstAttribute="top" secondItem="sij-A9-7eA" secondAttribute="top" id="Qzg-Cf-AbR"/>
                 <constraint firstItem="Nya-Mz-mfM" firstAttribute="leading" secondItem="9KV-kR-nur" secondAttribute="leading" id="TAr-K3-RuD"/>
                 <constraint firstItem="mr6-Kz-wEc" firstAttribute="top" secondItem="Nya-Mz-mfM" secondAttribute="bottom" id="Yxl-pt-Pf9"/>
-                <constraint firstItem="nen-bx-ChC" firstAttribute="bottom" secondItem="96U-Cy-r0E" secondAttribute="bottom" id="YzK-fJ-f2t"/>
+                <constraint firstItem="nen-bx-ChC" firstAttribute="bottom" secondItem="96U-Cy-r0E" secondAttribute="bottom" constant="100" id="YzK-fJ-f2t"/>
                 <constraint firstItem="9KV-kR-nur" firstAttribute="trailing" secondItem="sij-A9-7eA" secondAttribute="trailing" id="Zxi-9Q-Ows"/>
                 <constraint firstItem="9KV-kR-nur" firstAttribute="top" secondItem="sij-A9-7eA" secondAttribute="bottom" id="bh9-9o-RUj"/>
                 <constraint firstItem="sij-A9-7eA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i43-oW-fMy"/>
