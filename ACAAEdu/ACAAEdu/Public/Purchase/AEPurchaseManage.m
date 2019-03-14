@@ -129,7 +129,6 @@ static AEPurchaseManage * manage = nil;
 #if DEBUG
                 NSLog(@"已经购买过商品");
 #endif
-                // 消耗型不支持恢复购买
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 break;
             case SKPaymentTransactionStateFailed:
@@ -299,12 +298,6 @@ static AEPurchaseManage * manage = nil;
 //                               }
 //                           }];
     
-}
-
-// 恢复购买(主要是针对非消耗产品)
--(void)replyToBuy{
-    
-    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 - (void)dealloc{
     // 移除观察者
