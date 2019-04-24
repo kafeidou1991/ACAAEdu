@@ -120,46 +120,7 @@
                                     <attributes>
                                         <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <font key="NSFont" size="13" name="PingFangSC-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                            <tabStops>
-                                                <textTab alignment="left" location="28">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="56">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="84">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="112">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="140">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="168">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="196">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="224">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="252">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="280">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="308">
-                                                    <options/>
-                                                </textTab>
-                                                <textTab alignment="left" location="336">
-                                                    <options/>
-                                                </textTab>
-                                            </tabStops>
-                                        </paragraphStyle>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         <integer key="NSStrikethrough" value="1"/>
                                         <color key="NSStrikethroughColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     </attributes>
@@ -313,7 +274,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96U-Cy-r0E">
-                    <rect key="frame" x="0.0" y="507" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwz-YP-t8U">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
@@ -371,7 +332,7 @@
                 <constraint firstItem="nen-bx-ChC" firstAttribute="top" secondItem="sij-A9-7eA" secondAttribute="top" id="Qzg-Cf-AbR"/>
                 <constraint firstItem="Nya-Mz-mfM" firstAttribute="leading" secondItem="9KV-kR-nur" secondAttribute="leading" id="TAr-K3-RuD"/>
                 <constraint firstItem="mr6-Kz-wEc" firstAttribute="top" secondItem="Nya-Mz-mfM" secondAttribute="bottom" id="Yxl-pt-Pf9"/>
-                <constraint firstItem="nen-bx-ChC" firstAttribute="bottom" secondItem="96U-Cy-r0E" secondAttribute="bottom" constant="100" id="YzK-fJ-f2t"/>
+                <constraint firstItem="nen-bx-ChC" firstAttribute="bottom" secondItem="96U-Cy-r0E" secondAttribute="bottom" id="YzK-fJ-f2t"/>
                 <constraint firstItem="9KV-kR-nur" firstAttribute="trailing" secondItem="sij-A9-7eA" secondAttribute="trailing" id="Zxi-9Q-Ows"/>
                 <constraint firstItem="9KV-kR-nur" firstAttribute="top" secondItem="sij-A9-7eA" secondAttribute="bottom" id="bh9-9o-RUj"/>
                 <constraint firstItem="sij-A9-7eA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="i43-oW-fMy"/>
