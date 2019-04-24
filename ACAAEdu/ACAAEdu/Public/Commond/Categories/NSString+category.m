@@ -94,6 +94,8 @@
     return [carTest evaluateWithObject:self];
 }
 - (BOOL)validateIdentityCard{
+    return self.length == 18;
+    /*
      if (self.length != 18) return NO;
     // 正则表达式判断基本 身份证号是否满足格式
     NSString *regex = @"^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$";
@@ -119,7 +121,9 @@
     NSString *idCardLast= [self substringWithRange:NSMakeRange(17, 1)];
     //如果等于2，则说明校验码是10，身份证号码最后一位应该是X
     if(idCardMod==2) {
-        if(![idCardLast isEqualToString:@"X"]|| ![idCardLast isEqualToString:@"x"]) {
+        if([idCardLast isEqualToString:@"X"] || [idCardLast isEqualToString:@"x"]) {
+            return YES;
+        }else {
             return NO;
         }
     }
@@ -130,6 +134,7 @@
         }
     }
     return YES;
+     */
 }
 
 
