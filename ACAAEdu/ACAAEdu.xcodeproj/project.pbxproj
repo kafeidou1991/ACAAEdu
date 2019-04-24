@@ -1355,7 +1355,6 @@
 				B9B18EFA201826C200BA38BE /* Frameworks */,
 				B9B18EFB201826C200BA38BE /* Resources */,
 				05F4AF30245C506B507D983D /* [CP] Copy Pods Resources */,
-				B7CF029C21F8354F0031E18C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1537,23 +1536,6 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		B7CF029C21F8354F0031E18C /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ $CONFIGURATION == Release ]; then\necho \"当前为 Release Configuration,开始自增 Build\"\nplist=${INFOPLIST_FILE}\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"Error：在Plist文件里没有 Build 值\"\nexit 2\nfi\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/PlistBuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\n\necho \"开始自增 Version 最后一位\"\nversionNum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleShortVersionString\" \"${plist}\")\nthirdPartVersonNum=`echo $versionNum | awk -F \".\" '{print $3}'`\nthirdPartVersonNum=$(($thirdPartVersonNum + 1))\nnewVersionStr=`echo $versionNum | awk -F \".\" '{print $1 \".\" $2 \".'$thirdPartVersonNum'\" }'`\n/usr/libexec/PlistBuddy -c \"Set CFBundleShortVersionString $newVersionStr\" \"${plist}\"\nelse\necho $CONFIGURATION \"当前不为 Release Configuration\"\nfi\n";
 		};
 		E3163BB0BDFE615F33503777 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
