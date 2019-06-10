@@ -1517,7 +1517,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu-resources.sh",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib",
@@ -1534,7 +1534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ACAAEdu/Pods-ACAAEdu-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E3163BB0BDFE615F33503777 /* [CP] Check Pods Manifest.lock */ = {

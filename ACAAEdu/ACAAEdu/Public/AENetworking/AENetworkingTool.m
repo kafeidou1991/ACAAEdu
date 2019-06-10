@@ -20,6 +20,7 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
 @property (nonatomic, strong) dispatch_group_t dispathGroup;    //实现异步请求同步回调
 @property (nonatomic, copy) RequestSuccessBlock success;
 @property (nonatomic, copy) RequestFailureBlock faile;
+@property (nonatomic, strong) AFSecurityPolicy *defaultSecurityPolicy;
 @end
 
 @implementation AENetworkingTool
@@ -102,6 +103,8 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     if (openHttpsSSL) {
         [manager setSecurityPolicy:[self customSecurityPolicy]];
+    } else {
+        [manager setSecurityPolicy:self.defaultSecurityPolicy];
     }
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -130,6 +133,8 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     manager.responseSerializer = responseSerialiazer;
     if (openHttpsSSL) {
         [manager setSecurityPolicy:[self customSecurityPolicy]];
+    } else {
+        [manager setSecurityPolicy:self.defaultSecurityPolicy];
     }
     
     NSMutableURLRequest *requst = [self configSeccsionManagerApiSign:apiSign method:method url:url body:body];
@@ -256,6 +261,8 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     if (openHttpsSSL) {
         [manager setSecurityPolicy:[self customSecurityPolicy]];
+    } else {
+        [manager setSecurityPolicy:self.defaultSecurityPolicy];
     }
     AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
     [requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
@@ -422,6 +429,18 @@ static NSString *publicKey = @"MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCn54Dv6njGv
     securityPolicy.pinnedCertificates = [[NSSet alloc] initWithObjects:certData, nil];
     
     return securityPolicy;
+}
+
+- (AFSecurityPolicy *)defaultSecurityPolicy {
+    if (!_defaultSecurityPolicy) {
+        //无条件的信任服务器上的证书
+        _defaultSecurityPolicy = [AFSecurityPolicy defaultPolicy];
+        // 客户端是否信任非法证书
+        _defaultSecurityPolicy.allowInvalidCertificates = YES;
+        // 是否在证书域字段中验证域名
+        _defaultSecurityPolicy.validatesDomainName = NO;
+    }
+    return _defaultSecurityPolicy;
 }
 
 - (void)dealloc{
