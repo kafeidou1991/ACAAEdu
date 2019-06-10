@@ -69,7 +69,7 @@
 
 
 - (void)updateBannerInfo:(NSArray *)imageArray timeInterval:(CGFloat)timeInterval defaultImg:(UIImage *)defaultImg styleType:(BannerStyle)styleType{
-    
+    if (imageArray.count <= 0) return;
     _imageArr = imageArray;
     _totalNumber  = imageArray.count;
     _timeInterval = timeInterval;
