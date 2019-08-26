@@ -89,10 +89,6 @@
 - (void)updateData:(AEExamEvaluateItem *)item {
     //第一分区
     NSString * title = item.subject_name;
-    if (Visotor.isShow && [item.subject_id isEqualToString:@"325"]) {
-        //apple审核时候做的判断
-        title = @"设计师考试";
-    }
     self.examNameLabel.text = title;
     self.examTimeLabel.text = [NSString stringWithFormat:@"考试时间：%@",[NSString dateToStringFormatter:@"yyyy-MM-dd HH:mm" date:[NSDate dateWithTimeIntervalSince1970:item.exam_time.integerValue]]];
     self.scoreLabel.text = [NSString stringWithFormat:@"分数：%@",[NSString stringWithFormat:@"%@/%@",item.total_score,item.paper_score]];
