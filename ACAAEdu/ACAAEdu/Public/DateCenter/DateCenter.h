@@ -237,7 +237,7 @@
 @property (nonatomic, strong) NSArray * part_info;
 @property (nonatomic, strong) NSArray * category_info; //知识点明细
 @property (nonatomic, copy) NSString * pass; //通过状态
-@property (nonatomic, assign) double rate; // z正确率
+@property (nonatomic, assign) float rate; // z正确率
 @end
 
 

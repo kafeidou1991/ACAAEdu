@@ -7,7 +7,7 @@
 //
 
 #import "AEExamAnalyzeVC.h"
-#import "CircleView.h"
+#import "ZZCircleProgress.h"
 #import "AEMyTestExamVC.h"
 
 @interface AEExamAnalyzeVC ()
@@ -31,7 +31,7 @@
 //答对题目
 @property (weak, nonatomic) IBOutlet UILabel *correctLabel;
 //进度条
-@property (weak, nonatomic) IBOutlet CircleView *circleV;
+@property (weak, nonatomic) IBOutlet ZZCircleProgress *circleV;
 
 /*=============================================================*/
 //知识点分析
@@ -54,7 +54,12 @@
 }
 - (void)initComponent {
     //进度条宽度
-    _circleV.strokelineWidth = 3;
+    self.circleV.pathBackColor = UIColorFromRGB(0xe5e5e5);
+    self.circleV.pathFillColor = UIColorFromRGB(0x1DCFC2);
+    self.circleV.strokeWidth = 3.f;
+    self.circleV.startAngle = -90;
+    self.circleV.duration = 0.4;
+    self.circleV.showPoint = NO;
 }
 - (void)backAction:(UIButton *)sender {
     
@@ -102,7 +107,8 @@
         self.correctLabel.text = [NSString stringWithFormat:@"答对题目数：%@",subItem.part_correct];
     }
     //设置进度,是否有动画效果
-    [self.circleV circleWithProgress:item.rate == 1 ? 100 : (int)item.rate andIsAnimate:YES];
+//    [self.circleV circleWithProgress:item.rate == 1 ? 100 : (int)item.rate andIsAnimate:YES];
+    self.circleV.progress = item.rate / 100.0;
     //第三分区 知识点分析
     if (item.category_info.count > 0) {
         NSMutableAttributedString * mutableStr = [[NSMutableAttributedString alloc]initWithString:@"" attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]}];

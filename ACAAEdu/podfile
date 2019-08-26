@@ -18,4 +18,5 @@ target 'ACAAEdu' do
  pod 'LYEmptyView'
  pod 'WebViewJavascriptBridge'
  pod 'RSAEncryptor'
+ pod 'ZZCircleProgress'
 end

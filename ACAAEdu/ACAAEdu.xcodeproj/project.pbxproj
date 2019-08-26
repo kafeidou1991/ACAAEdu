@@ -166,7 +166,6 @@
 		B9DB4587219D472E009A999A /* AEMyExamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DB4585219D472E009A999A /* AEMyExamCell.xib */; };
 		B9DB458B219D65DA009A999A /* AEExamAnalyzeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DB4589219D65DA009A999A /* AEExamAnalyzeVC.m */; };
 		B9DB458C219D65DA009A999A /* AEExamAnalyzeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DB458A219D65DA009A999A /* AEExamAnalyzeVC.xib */; };
-		B9DB4590219D7C72009A999A /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DB458E219D7C72009A999A /* CircleView.m */; };
 		B9DB4594219D8524009A999A /* AEExamInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DB4592219D8524009A999A /* AEExamInfoVC.m */; };
 		B9DB4595219D8524009A999A /* AEExamInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9DB4593219D8524009A999A /* AEExamInfoVC.xib */; };
 		B9DE2B4A2074A17900BC09C9 /* AEExamPaperVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B9DE2B492074A17900BC09C9 /* AEExamPaperVC.m */; };
@@ -497,8 +496,6 @@
 		B9DB4588219D65DA009A999A /* AEExamAnalyzeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamAnalyzeVC.h; sourceTree = "<group>"; };
 		B9DB4589219D65DA009A999A /* AEExamAnalyzeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamAnalyzeVC.m; sourceTree = "<group>"; };
 		B9DB458A219D65DA009A999A /* AEExamAnalyzeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamAnalyzeVC.xib; sourceTree = "<group>"; };
-		B9DB458E219D7C72009A999A /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
-		B9DB458F219D7C72009A999A /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		B9DB4591219D8524009A999A /* AEExamInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AEExamInfoVC.h; sourceTree = "<group>"; };
 		B9DB4592219D8524009A999A /* AEExamInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AEExamInfoVC.m; sourceTree = "<group>"; };
 		B9DB4593219D8524009A999A /* AEExamInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AEExamInfoVC.xib; sourceTree = "<group>"; };
@@ -594,7 +591,6 @@
 		B79C92512029DC84002D0B66 /* Commond(通用类) */ = {
 			isa = PBXGroup;
 			children = (
-				B9DB458D219D7C53009A999A /* ProcessCircle */,
 				B992CED9207371E7007F3EF2 /* XHImageViewer */,
 				B9DFA1C7206F309200AFAD27 /* Timer */,
 				B9D2F6A1206CEA5B00C5A034 /* SwitchView */,
@@ -1303,15 +1299,6 @@
 			path = SwitchView;
 			sourceTree = "<group>";
 		};
-		B9DB458D219D7C53009A999A /* ProcessCircle */ = {
-			isa = PBXGroup;
-			children = (
-				B9DB458F219D7C72009A999A /* CircleView.h */,
-				B9DB458E219D7C72009A999A /* CircleView.m */,
-			);
-			path = ProcessCircle;
-			sourceTree = "<group>";
-		};
 		B9DFA1C7206F309200AFAD27 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1523,6 +1510,7 @@
 				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoActionSheet.xib",
 				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowserCell.xib",
 				"${PODS_ROOT}/ZLPhotoBrowser/PhotoBrowser/resource/ZLPhotoBrowser.bundle",
+				"${PODS_ROOT}/ZZCircleProgress/ZZCircleProgressDemo/ZZCircleProgress/ZZCircleProgress.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -1531,6 +1519,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoActionSheet.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowserCell.nib",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZLPhotoBrowser.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ZZCircleProgress.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1614,7 +1603,6 @@
 				B93C7CEF205A9DFB00FC5E6C /* AEMyOrderFooterView.m in Sources */,
 				B9D2F645206CBFFC00C5A034 /* AEExamPaperVC_deprecated.m in Sources */,
 				B94C1CCA203FF54E006344F2 /* AEAccountSetVC.m in Sources */,
-				B9DB4590219D7C72009A999A /* CircleView.m in Sources */,
 				B918BBC3202B088700EDB00D /* NSString+CommonFunc.m in Sources */,
 				B9176FF421840DE70093D292 /* AEHomeNoticeIconView.m in Sources */,
 				B7CCD8E92200230900771AF4 /* AEVistiorInfo.m in Sources */,

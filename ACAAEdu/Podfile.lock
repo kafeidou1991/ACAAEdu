@@ -41,6 +41,7 @@ PODS:
   - YYModel (1.0.4)
   - ZLPhotoBrowser (2.6.0):
     - SDWebImage
+  - ZZCircleProgress (0.3.1)
 
 DEPENDENCIES:
   - AFNetworking
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - YYCache
   - YYModel
   - ZLPhotoBrowser
+  - ZZCircleProgress
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -84,6 +86,7 @@ SPEC REPOS:
     - YYCache
     - YYModel
     - ZLPhotoBrowser
+    - ZZCircleProgress
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -106,7 +109,8 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   ZLPhotoBrowser: ab32e3bf7ef4a3569c96cdfea3be393d45595b5a
+  ZZCircleProgress: 207e454a96f05321be6df16357671d9a870656b6
 
-PODFILE CHECKSUM: 4670930029cf4ceee3a16b20a7fbaecf2e3875b3
+PODFILE CHECKSUM: 341637cdeb2ef496b2c6283e1cad58fb8cd3f131
 
 COCOAPODS: 1.6.2
