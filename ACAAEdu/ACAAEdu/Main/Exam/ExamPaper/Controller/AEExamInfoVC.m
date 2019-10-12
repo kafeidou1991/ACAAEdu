@@ -26,7 +26,7 @@
 - (void)topNavtiation {
     [self.view addSubview:self.baseTopView];
     self.baseTopView.titleName = @"开始考试";
-    self.baseTopView.imageViewName = @"exam_top_banner";
+    self.baseTopView.imageViewName = @"ic_data_banner_b";
     self.topConstraint.constant = ySpace;
 }
 

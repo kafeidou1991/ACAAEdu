@@ -24,6 +24,7 @@
     [self.navigationBar setBackgroundImage:[UIImage imageWithColor:AEThemeColor] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.delegate = self;
+    self.modalPresentationStyle = UIModalPresentationFullScreen;
 }
 
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated

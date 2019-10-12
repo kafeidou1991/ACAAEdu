@@ -91,14 +91,13 @@
 #pragma mark - setter
 - (void)setPlaceholderColor:(UIColor *)placeholderColor {
     _placeholderColor = placeholderColor;
-    
-    [self setValue:placeholderColor forKeyPath:@"_placeholderLabel.textColor"];
+//    [self setValue:placeholderColor forKeyPath:@"_placeholderLabel.textColor"];
 }
 
 - (void)setPlaceholderFontSize:(NSInteger)placeholderFontSize {
     _placeholderFontSize = placeholderFontSize;
     
-    [self setValue:[UIFont systemFontOfSize:placeholderFontSize] forKeyPath:@"_placeholderLabel.font"];
+//    [self setValue:[UIFont systemFontOfSize:placeholderFontSize] forKeyPath:@"_placeholderLabel.font"];
 }
 
 

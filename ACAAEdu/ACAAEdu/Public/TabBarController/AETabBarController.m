@@ -50,6 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.delegate = self;
+    [self.tabBarController.tabBar setShadowImage:[UIImage new]];
     [self setupChildViewControllers];
 }
 #pragma mark - Private
@@ -91,7 +92,11 @@
     
     UITabBarItem *item = controller.tabBarItem;
     //去除偏移
-    item.imageInsets = UIEdgeInsetsMake(5.5, 0, -5.5, 0);
+    if (@available(iOS 13.0, *)) {
+        //iOS 13 不需要偏移
+    } else {
+        item.imageInsets = UIEdgeInsetsMake(5.5, 0, -5.5, 0);
+    }
     item.image = normalImg;
     item.selectedImage = selectedImg;
     

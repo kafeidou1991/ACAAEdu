@@ -147,7 +147,7 @@
 - (void)topNavtiation {
     [self.view addSubview:self.baseTopView];
     self.baseTopView.titleName = @"我的模考";
-    self.baseTopView.imageViewName = @"exam_top_banner";
+    self.baseTopView.imageViewName = @"ic_data_banner_b";
 }
 
 
